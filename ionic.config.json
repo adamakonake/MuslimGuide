@@ -1,0 +1,7 @@
+{
+  "name": "Muslim Guide",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
