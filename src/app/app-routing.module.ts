@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'user-liste-des-sourates',
+    loadChildren: () => import('./user-liste-des-sourates/user-liste-des-sourates.module').then( m => m.UserListeDesSouratesPageModule)
   },
+
 ];
 
 @NgModule({
