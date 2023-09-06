@@ -10,24 +10,57 @@ h1{
     margin-top: -5px;
 }
 
+//minute debut audio
 .audio-min-start{
+    margin-top: 16px;
     color: white;
+    size: 20px ;
+    margin-left: 5px;
+    font-size: 15px;
 }
 
-.audio-min-end{
-    color: white;
-    margin-left: 35px;
-}
-
-.music{
-    display: flex;
-}
-
-.contain{
-    width: 270px;
-    margin-left: 10px;
+// bar de progression  en jaune
+.contain-p-bar{
+    width: 50%;
     height: 15px;
     border-radius: 20px;
+    background-color: yellow;
+}
+
+// minute fin  audio
+.audio-min-end{
+    margin-top: 16px;
+    font-size: 20px;
+    color: white;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+//div pour la partie music de minute debut à la minute fin
+.music{
+    display: flex;
+    margin-top: 110px;
+}
+
+// barre de progression en blanc 
+.contain{
+    margin-top: 10px;
+    width: 270px;
+    height: 15px;
+    border-radius: 20px;
+    margin-left: 13px;
     margin-top: 18px !important;
     background-color: whitesmoke;
 }
+
+.contenu-bas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: -15vh;
+}
+
+ion-content {
+    --background: #25A069;
+  }
+  
