@@ -1,0 +1,77 @@
+
+:root{
+ --vert : #25A069;
+}
+
+
+
+
+.chapelet{
+    color: #25A069;
+    margin-left: 20vh;
+    font-size: 30px !important;
+}
+
+
+.count{
+    display: flex;
+    margin-left: 25vh;
+    margin-top: 20px;
+    font-size: 50px;
+    color: #25A069;
+}
+
+.im1{
+    margin-left: 50px;
+}
+.im2{
+    margin-left: 140px;
+
+}
+
+.image{
+    margin-top: 40px;
+    margin-left: 100px;
+    width: 150px;
+    height: 150px;
+    
+}
+h2{
+    font-family: poppins, serif;
+}
+.liste-lecture{
+    margin-right: 10px;
+    display: block;
+    margin-left: 5px;
+    border:  1px solid #25A069;
+    width: auto !important;
+    height: 200px;
+    overflow: scroll;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+.line{
+    // height: 2px;
+    color: #25A069;
+    border: 1px solid #a1dbc1;
+    width: 100%;
+    background-color: #25A069;
+}
+.titre,.contenu{
+    margin-left: 7px;
+    padding-top: -5px;
+}
+.contenu{
+    
+    color: rgb(61, 60, 60);
+    margin-top: -12px;
+}
+
+.el{
+    margin-top: -10px;
+    left: 5px;
+    padding-top: -15px;
+    height: 45px;
+}

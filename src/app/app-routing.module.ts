@@ -8,9 +8,18 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'chapelet',
     pathMatch: 'full'
   },
+  {
+    path: 'chapelet',
+    loadChildren: () => import('./users/chapelet/chapelet.module').then( m => m.ChapeletPageModule)
+  },  {
+    path: 'lire-coran',
+    loadChildren: () => import('./users/lire-coran/lire-coran.module').then( m => m.LireCoranPageModule)
+  },
+
+
 ];
 
 @NgModule({
