@@ -1,23 +1,30 @@
-<ion-header [translucent]="true">
+<!--<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-button >
       <ion-icon name="home-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-content>
+  <ion-card class="card-info">
       <div class="iman-info">
         <div class="fullname">
           <p>nom et prenom</p>
         </div>
       <div class="photo">
-        <img src="" alt="la photo de l\'iman">
+        <img src="../../assets/icon/avatar.jpg" alt="la photo de l'iman">
       </div>
     </div>
-    </ion-card-content>
 </ion-card>
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar placeholder="Recherche" autocomplete="on" autocorrect="on" [(ngModel)]="recherche"></ion-searchbar>
+<ion-item-divider></ion-item-divider>
+  <ion-card *ngFor="let i = index; let sourate of sourateFiltres">
+    <ion-card-content>
+      <div class="conteneur-sourate">
+        <div class="numéro">{{i+1}}</div>
+        <div class="sourate">{{ sourate }}</div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
