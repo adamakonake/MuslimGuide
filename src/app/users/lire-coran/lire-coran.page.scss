@@ -81,9 +81,7 @@ ion-content {
 
 //   barre en rond avec 2 icon en bas 
 
-.espace{
- 
-}
+
   .bas{
 
     display: flex; 
@@ -95,6 +93,10 @@ ion-content {
     margin-left: 10% ;
     margin-top: -20%;
     
+  }
+
+  .int{
+    margin-top: -10px;
   }
   
   ion-icon{

@@ -22,6 +22,14 @@ const routes: Routes = [
     path: 'details-mosquees',
     loadChildren: () => import('./users/details-mosquees/details-mosquees.module').then( m => m.DetailsMosqueesPageModule)
   },
+  {
+    path: 'liste-evenement',
+    loadChildren: () => import('./admin/liste-evenement/liste-evenement.module').then( m => m.ListeEvenementPageModule)
+  },
+  {
+    path: 'lire-corans',
+    loadChildren: () => import('./admin/lire-corans/lire-corans.module').then( m => m.LireCoransPageModule)
+  },
 
 
 ];
