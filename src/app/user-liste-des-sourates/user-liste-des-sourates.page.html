@@ -10,10 +10,10 @@
   <ion-card class="card-info">
       <div class="iman-info">
         <div class="fullname">
-          <p>nom et prenom</p>
+          <p>{{nom}} {{prenom}}</p>
         </div>
       <div class="photo">
-        <img src="../../assets/icon/avatar.jpg" alt="la photo de l'iman">
+        <img src={{photo}} alt="la photo de l'iman">
       </div>
     </div>
 </ion-card>
@@ -24,9 +24,9 @@
       <div class="conteneur-sourate">
         <div class="numéro">
           <div class="cercle1">
-            <div class="cercle2">
-            </div>{{i+1}}</div>
-            </div>
+            {{i+1}}
+          </div>
+        </div>
         <div class="sourate">{{ sourate }}</div>
       </div>
     </ion-card-content>
