@@ -7,7 +7,7 @@
 </ion-header>-->
 
 <ion-content [fullscreen]="true">
-  <ion-card class="card-info">
+  <div class="card-info">
       <div class="iman-info">
         <div class="fullname">
           <p>{{nom}} {{prenom}}</p>
@@ -16,18 +16,23 @@
         <img src={{photo}} alt="la photo de l'iman">
       </div>
     </div>
-</ion-card>
+</div>
   <ion-searchbar placeholder="Recherche" autocomplete="on" autocorrect="on" [(ngModel)]="recherche"></ion-searchbar>
 <ion-item-divider></ion-item-divider>
-  <ion-card *ngFor="let i = index; let sourate of sourateFiltres">
-    <ion-card-content>
+  <ion-card *ngFor="let i= index ;let sourate of sourateFiltres">
+    <ion-card-content class="card-sourate">
       <div class="conteneur-sourate">
         <div class="numéro">
           <div class="cercle1">
-            {{i+1}}
+            {{sourate.index+1}}
           </div>
         </div>
-        <div class="sourate">{{ sourate }}</div>
+        <div class="sourate">{{ sourate.nom }}</div>
+        <div class="bouton-jouer">
+          <button ion-button color="primary" *ngIf="isPlayVisible" (click)="togglePlay(sourate)">
+            <ion-icon [name]="sourate.isPlaying?'play-outline': 'play-outline' "></ion-icon>
+          </button>
+        </div>
       </div>
     </ion-card-content>
   </ion-card>
