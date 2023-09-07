@@ -22,7 +22,11 @@
   <ion-card *ngFor="let i = index; let sourate of sourateFiltres">
     <ion-card-content>
       <div class="conteneur-sourate">
-        <div class="numéro">{{i+1}}</div>
+        <div class="numéro">
+          <div class="cercle1">
+            <div class="cercle2">
+            </div>{{i+1}}</div>
+            </div>
         <div class="sourate">{{ sourate }}</div>
       </div>
     </ion-card-content>
