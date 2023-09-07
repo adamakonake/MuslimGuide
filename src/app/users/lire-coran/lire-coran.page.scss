@@ -15,7 +15,7 @@ h1{
     margin-top: 16px;
     color: white;
     size: 20px ;
-    margin-left: 5px;
+    margin-left: 2px;
     font-size: 15px;
 }
 
@@ -26,11 +26,22 @@ h1{
     border-radius: 20px;
     background-color: yellow;
 }
+.flex_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-top: -190px;
+}
+
+ion-range{
+    margin-left: 5px;
+}
 
 // minute fin  audio
 .audio-min-end{
     margin-top: 16px;
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     margin-left: 10px;
     margin-right: 5px;
@@ -63,4 +74,22 @@ h1{
 ion-content {
     --background: #25A069;
   }
+
+//   barre en rond avec 2 icon en bas 
+
+  .bas{
+
+    display: flex; 
+    justify-content: space-between;
+    width: 260px;
+    height: 40px;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 20px ;
+    margin-top: -60px;
+    
+  }
   
+  ion-icon{
+    font-weight: 500;
+  }

@@ -8,8 +8,8 @@
 
 .chapelet{
     color: #25A069;
-    margin-left: 20vh;
-    font-size: 30px !important;
+    margin-left: 15vh;
+    font-size: 40px ;
 }
 
 
@@ -17,6 +17,7 @@
     display: flex;
     margin-left: 25vh;
     margin-top: 20px;
+    position: relative;
     font-size: 50px;
     color: #25A069;
 }
@@ -40,15 +41,15 @@ h2{
     font-family: poppins, serif;
 }
 .liste-lecture{
-    margin-right: 10px;
+    margin-right: 20px;
     display: block;
-    margin-left: 5px;
+    margin-left: 10px;
     border:  1px solid #25A069;
     width: auto !important;
     height: 200px;
     overflow: scroll;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 150px;
     margin-bottom: -20px;
 }
 
@@ -74,4 +75,18 @@ h2{
     left: 5px;
     padding-top: -15px;
     height: 45px;
+}
+
+.icon-btn{
+ display: flex;
+ margin-left: 10px;
+ position: relative;
+ padding-left: -10px;
+ justify-content: space-around;
+}
+
+ion-icon{
+    font-size: 60px;
+    margin-left: 5px;
+    position: relative;
 }
