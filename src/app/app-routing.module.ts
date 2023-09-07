@@ -15,7 +15,8 @@ const routes: Routes = [
   {
     path: 'lecteur-corant',
     loadChildren: () => import('./users/lecteur-corant/lecteur-corant.module').then( m => m.LecteurCorantPageModule)
-  },  {
+  },
+  {
     path: 'list-mosques',
     loadChildren: () => import('./users/list-mosques/list-mosques.module').then( m => m.ListMosquesPageModule)
   },
@@ -23,6 +24,14 @@ const routes: Routes = [
     path: 'inscription',
     loadChildren: () => import('./admin/inscription/inscription.module').then( m => m.InscriptionPageModule)
   },
+  {
+    path: 'connexion',
+    loadChildren: () => import('./admin/connexion/connexion.module').then( m => m.ConnexionPageModule)
+  },  {
+    path: 'list-radio',
+    loadChildren: () => import('./admin/list-radio/list-radio.module').then( m => m.ListRadioPageModule)
+  },
+
 
 
 ];

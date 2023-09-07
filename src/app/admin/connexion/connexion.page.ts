@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-inscription',
-  templateUrl: './inscription.page.html',
-  styleUrls: ['./inscription.page.scss'],
+  selector: 'app-connexion',
+  templateUrl: './connexion.page.html',
+  styleUrls: ['./connexion.page.scss'],
 })
-export class InscriptionPage implements OnInit {
+export class ConnexionPage implements OnInit {
 
   passwordType : string  = 'password';
   passwordShown : boolean  = false;
@@ -14,7 +14,7 @@ export class InscriptionPage implements OnInit {
 
   ngOnInit() {
   }
-
+  
   // pour le password pour le cachée 
   public togglePassword() {
     this.passwordShown = !this.passwordShown;

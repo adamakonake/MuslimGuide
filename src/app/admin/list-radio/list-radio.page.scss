@@ -1,0 +1,20 @@
+:root {
+    --color-principal : #25A069;
+    --color-secondaire : #D79A10;
+    --color-blanc: #FFFFFF;
+    --color-noir: #000000;
+    --font-w200: 200;
+    --font-w300: 300;
+    --font-w400: 400;
+    --font-w500: 500;
+    --font-w600: 600;
+    --font-w700: 700;
+}
+
+// style de mon header 
+
+.container_header {
+    width: 100%;
+    height: 50px;
+    background-color: var(--color-principal);
+}

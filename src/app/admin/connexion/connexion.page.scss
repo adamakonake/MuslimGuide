@@ -18,6 +18,10 @@
     top: 0;
 }
 
+.container_connexion_global {
+    margin-top: 40px;
+}
+
 .header_content {
     width: 100%;
     height: 60px;
@@ -60,6 +64,7 @@
 .div_title_inscription {
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: 25px;
 }
 
 .div_title_inscription .title_inscrire {
@@ -101,14 +106,14 @@
     min-width: 337px;
     height: 49px;
     // padding: 10px 10px;
-    padding-left: 10px;
+    padding-left: 55px;
     outline: none;
     background-color: var(--color-blanc);
     border: 2px solid rgba(212, 212, 212, 0.855);
     border-radius: 10px;
     margin: 10px 0;
     transition: all 0.3s;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 9px;
     border: 1px solid rgba(0, 0, 0, 0.10);
     box-shadow: 0px 1px 12px 0px rgba(5, 188, 45, 0.10);
@@ -121,11 +126,20 @@
 .champ_input .label {
     position: absolute;
     top: 26px;
-    left: 15px;
+    left: 50px;
     pointer-events: none;
     color: #000;
 }
 
+// Les identifiant des champs input 
+
+.identfiant_icon {
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+    line-height: 70px;
+    opacity: 0.8;
+}
 
 /*  Verificatiion de label si le champs est vide ou pas  */
 
@@ -182,6 +196,10 @@
     --ion-color-secondary: #25A069;
 }
 
+.btn_submit_global {
+    margin-top: 20px;
+}
+
 // style de verification si un utilisateur a deja un compte ou pas 
 .verifier_admin {
     text-align: center;
@@ -194,4 +212,50 @@
 .message2_para .message_lien {
     color: var(--color-principal);
     letter-spacing: 0.60px;
+}
+
+// Le petit bare qui est en bas 
+
+.container_bare {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.bare {
+    width: 70%;
+    height: 1px;
+    background: var(--color-noir);
+    position: relative;
+    opacity: 0.6;
+}
+
+.bare .or {
+    margin: 0;
+    top: -10px;
+    left: 46%;
+    position: absolute;
+    background-color: var(--color-blanc);
+    padding: 0 5px;
+}
+
+// style de mon image qui est en haut 
+
+.container_image_connexion {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_connexion {
+    width: 130px;
+    height: 130px;
+}
+
+.image_connexion .img_connexion {
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
 }
