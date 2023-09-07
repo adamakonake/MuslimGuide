@@ -2,55 +2,59 @@
     background-color: #25A069;
     height: 100%;
     width: 100%;
+}   
+
+.container>img{
+    margin-left: 15%;
 }
 
 h1{
     color: white !important;
-    margin-left: 14vh;
+    margin-left: 30%;
     margin-top: -5px;
 }
 
 //minute debut audio
 .audio-min-start{
-    margin-top: 16px;
+    margin-top: -8%;  
     color: white;
     size: 20px ;
-    margin-left: 2px;
+    margin-left: 2%;
     font-size: 15px;
 }
 
 // bar de progression  en jaune
-.contain-p-bar{
-    width: 50%;
-    height: 15px;
-    border-radius: 20px;
-    background-color: yellow;
-}
+
 .flex_box{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 200px;
-    margin-top: -190px;
+    margin-top: -50%;
+}
+
+.flex_box>ion-button{
+    margin-top: -20%;
 }
 
 ion-range{
     margin-left: 5px;
+    margin-top: -11%;
 }
 
 // minute fin  audio
 .audio-min-end{
-    margin-top: 16px;
+    margin-top: -8%;
     font-size: 15px;
     color: white;
     margin-left: 10px;
-    margin-right: 5px;
+    margin-right: 2%;
 }
 
 //div pour la partie music de minute debut à la minute fin
 .music{
     display: flex;
-    margin-top: 110px;
+    margin-top: 50%;
 }
 
 // barre de progression en blanc 
@@ -68,7 +72,7 @@ ion-range{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: -15vh;
+    margin-top: -10%;
 }
 
 ion-content {
@@ -77,19 +81,23 @@ ion-content {
 
 //   barre en rond avec 2 icon en bas 
 
+.espace{
+ 
+}
   .bas{
 
     display: flex; 
     justify-content: space-between;
-    width: 260px;
+    width: 80%;
     height: 40px;
     background-color: white;
     border-radius: 10px;
-    margin-left: 20px ;
-    margin-top: -60px;
+    margin-left: 10% ;
+    margin-top: -20%;
     
   }
   
   ion-icon{
     font-weight: 500;
+    font-size: 20px !important;
   }
