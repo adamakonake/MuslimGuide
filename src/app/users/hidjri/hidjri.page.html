@@ -1,0 +1,27 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>hidjri</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <div class="headRoundVert">
+      <div class="headRoundBlanc">
+
+      </div>
+    </div>
+  </ion-header>
+  <div class="titleBarr">
+    <p>HIJDRI</p>
+  </div>
+  <!-- <div class="calendar">
+    <mbsc-datepicker  [controls]="['calendar']" [calendarSystem]="hijriCalendar" [locale]="localeAr" display="inline" placeholder="Please Select..."></mbsc-datepicker>
+  </div>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker> -->
+  <mat-card class="calendar">
+  <mat-calendar [(selected)]="selectDate" (viewChanged)="changeThColor()" (monthSelected)="changeThColor()" (selectedChange)="changeColor()" ></mat-calendar>
+</mat-card>
+</ion-content>

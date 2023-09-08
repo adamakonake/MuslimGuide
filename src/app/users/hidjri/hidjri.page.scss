@@ -1,0 +1,51 @@
+
+.headRoundVert{
+    width: 100%;
+    height: 50px;
+    background-color: #25A069;
+    position: relative;
+}
+.headRoundBlanc{
+    width: 100%;
+    height: 20px;
+    background-color: white;
+    border-radius: 20px 20px 0px 0px;
+    position: absolute;
+    bottom: 0px;
+}
+.titleBarr{
+    min-width: 350px;
+    height: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid rgba($color: #25A069, $alpha: 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titleBarr P{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+}
+.calendar{
+    min-width: 350px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px rgba($color: #25A069, $alpha: 0.25);
+}
+button.example-custom-date-class {
+    background: orange;
+    border-radius: 100%;
+}
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    /* border-color: var(--mat-datepicker-calendar-date-today-outline-color); */
+    border: none;
+}
+.mat-calendar-body-selected{
+    background-color: #25A069;
+}

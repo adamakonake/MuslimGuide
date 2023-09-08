@@ -8,13 +8,26 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'chapelet',
+    redirectTo: 'accueil',
     pathMatch: 'full'
+  },
+  {
+    path: 'accueil',
+    loadChildren: () => import('./users/accueil/accueil.module').then( m => m.AccueilPageModule)
+  },
+  {
+    path: 'hidjri',
+    loadChildren: () => import('./users/hidjri/hidjri.module').then( m => m.HidjriPageModule)
+  },
+  {
+    path: 'admin-accueil',
+    loadChildren: () => import('./admin/admin-accueil/admin-accueil.module').then( m => m.AdminAccueilPageModule)
   },
   {
     path: 'chapelet',
     loadChildren: () => import('./users/chapelet/chapelet.module').then( m => m.ChapeletPageModule)
-  },  {
+  },
+  {
     path: 'lire-coran',
     loadChildren: () => import('./users/lire-coran/lire-coran.module').then( m => m.LireCoranPageModule)
   },
@@ -34,7 +47,6 @@ const routes: Routes = [
     path: 'liste-mosquee',
     loadChildren: () => import('./admin/liste-mosquee/liste-mosquee.module').then( m => m.ListeMosqueePageModule)
   },
-
 
 ];
 
