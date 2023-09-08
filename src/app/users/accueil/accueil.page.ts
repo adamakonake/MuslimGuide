@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { Geolocation } from '@capacitor/geolocation';
 import { async } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-accueil',
@@ -9,11 +12,20 @@ import { async } from 'rxjs';
 })
 export class AccueilPage implements OnInit {
 
-  constructor( private route : Router) { }
+  apiKey = environment.geoCodeApiKey;
+  test:string = "salut"
+  constructor( private route : Router, private http : HttpClient) { }
 
   ngOnInit() {
-    
+    Geolocation.getCurrentPosition().then((result) =>{
+      this.http.get("https://api.opencagedata.com/geocode/v1/json?q="+result.coords.latitude+"+"+result.coords.longitude+"&key="+this.apiKey).subscribe((data : any) =>{
+        //console.log(data)
+        this.test = data.results[0].components.suburb;
+        //console.log(data)
+      })
+    })
   }
+  
 
   goToHijri(){
     this.route.navigateByUrl("/hidjri")

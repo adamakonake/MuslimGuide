@@ -9,6 +9,7 @@ import { AccueilPageRoutingModule } from './accueil-routing.module';
 import { AccueilPage } from './accueil.page';
 import { IgxCarouselModule, IgxSliderModule } from "igniteui-angular";
 import {MatCardModule} from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {MatCardModule} from '@angular/material/card';
     AccueilPageRoutingModule,
     IgxCarouselModule,
 	  IgxSliderModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   declarations: [AccueilPage],
   providers: [Geolocation]
