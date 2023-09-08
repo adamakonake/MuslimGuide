@@ -8,9 +8,22 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'hidjri',
     pathMatch: 'full'
   },
+  {
+    path: 'accueil',
+    loadChildren: () => import('./users/accueil/accueil.module').then( m => m.AccueilPageModule)
+  },
+  {
+    path: 'hidjri',
+    loadChildren: () => import('./users/hidjri/hidjri.module').then( m => m.HidjriPageModule)
+  },
+  {
+    path: 'admin-accueil',
+    loadChildren: () => import('./admin/admin-accueil/admin-accueil.module').then( m => m.AdminAccueilPageModule)
+  },
+
 ];
 
 @NgModule({

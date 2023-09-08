@@ -1,0 +1,100 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>accueil</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <div class="headRoundVert">
+      <div class="headRoundBlanc">
+
+      </div>
+    </div>
+  </ion-header>
+
+  <div class="carousel-container">
+    <igx-carousel #carousel [pause]="false" [interval]="5000" >
+        <igx-slide >
+          <div class="cardSlide">
+            <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
+            <div class="hintGreen">
+              <div class="infoPriere">
+                <p class="nomPriere">Fadjr</p>
+                <p class="heurePriere">05 : 10</p>
+                <p class="nomMosquee">Mille et une merveille</p>
+              </div>
+              <div class="localPosition">
+                <img src="../../../assets/icone_position_sm.png" alt="" srcset="">
+                <span>Hamdallaye ACI</span>
+              </div>
+            </div>
+          </div>
+        </igx-slide>
+        <igx-slide >
+          <div class="cardSlide">
+            <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
+            <div class="hintGreen">
+              <div class="infoPriere">
+                <p class="nomPriere">Dohr</p>
+                <p class="heurePriere">05 : 10</p>
+                <p class="nomMosquee">Mille et une merveille</p>
+              </div>
+              <div class="localPosition">
+                <img src="../../../assets/icone_position_sm.png" alt="" srcset="">
+                <span>Hamdallaye ACI</span>
+              </div>
+            </div>
+          </div>
+        </igx-slide>
+        <igx-slide >
+          <div class="cardSlide">
+            <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
+            <div class="hintGreen">
+              <div class="infoPriere">
+                <p class="nomPriere">Fadjr</p>
+                <p class="heurePriere">05 : 10</p>
+                <p class="nomMosquee">Mille et une merveille</p>
+              </div>
+              <div class="localPosition">
+                <img src="../../../assets/icone_position_sm.png" alt="" srcset="">
+                <span>Hamdallaye ACI</span>
+              </div>
+            </div>
+          </div>
+        </igx-slide>
+        <ng-template igxCarouselIndicator></ng-template>
+        <ng-template  igxCarouselPrevButton let-disabled></ng-template>
+        <ng-template  igxCarouselNextButton let-disabled></ng-template>
+    </igx-carousel>
+    <div class="btnMosquee">
+      <img class="logoMapMosquee" src="../../../assets/icons8-marqueur-de-plan-96.png" alt="" srcset="">
+      <p>MOSQUEE</p>
+    </div>
+    <div class="btnGroupe">
+      <div class="btnKaaba">
+        <img class="logoKaaba" src="../../../assets/logo_kaaba_bouss.png" alt="" srcset="">
+        <p>KAABA</p>
+      </div>
+      <div class="btnHidjri" (click)="goToHijri()">
+        <img class="logoCalendar" src="../../../assets/logo_calendar.png" alt="" srcset="">
+        <p>HIDJRI</p>
+      </div>
+    </div>
+    <div class="btnGroupe">
+      <div class="btnAnnonce">
+        <img class="logoAnnonce" src="../../../assets/icons8-annonce-80.png" alt="" srcset="">
+        <p>ANNONCE</p>
+      </div>
+      <div class="btnTasbih">
+        <img class="logoTasbih" src="../../../assets/icons8-chapelet-64.png" alt="" srcset="">
+        <p>TASBIH</p>
+      </div>
+    </div>
+    <div class="btnFm">
+      <img class="logoFm" src="../../../assets/icons8-radio-50.png" alt="" srcset="">
+      <p>TASBIH</p>
+    </div>
+</div>
+
+</ion-content>
