@@ -20,6 +20,7 @@ import {MatCardModule} from '@angular/material/card';
 	  IgxSliderModule,
     MatCardModule
   ],
-  declarations: [AccueilPage]
+  declarations: [AccueilPage],
+  providers: [Geolocation]
 })
 export class AccueilPageModule {}

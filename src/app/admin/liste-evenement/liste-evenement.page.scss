@@ -1,0 +1,110 @@
+
+.titre{
+    color: #25A068;
+    margin-left: 18%;
+}
+
+.btn-add{
+    text-transform: capitalize;
+}
+
+.btn{
+    margin-left: 10%;
+    margin-top: 10%;
+    border-radius: 20px;
+    height: 30px;
+    width: 100px;
+    color: white;
+    background-color: #25A068;
+}
+
+
+.event-info{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 70px;
+    border: 2px solid rgba(233, 230, 230, 0.9);
+    margin-left: 3%;
+    margin-top: 5%;
+    border-radius: 20px;
+
+}
+
+.localisation{
+
+    margin: -1%;
+    width: 250px;
+}
+.localisation>i{
+    color: #25A068;
+}
+
+#icon-location{
+    margin-top: 7%;
+    margin-left: 7%;
+    color: #25A068;
+}
+
+.loc{
+    display: flex;
+    margin-left: 10%;
+    width: 120px;
+}
+.lieu{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.icon-user{
+    margin-top: 10px;
+}
+
+.date{
+    margin-left: 10%;
+}
+.date-exact{
+    width: 100px;
+    margin-top: 8px;
+}
+
+
+.action{
+    display: flex;
+    margin: 5%;
+    margin-top: 10%;
+    margin-left: -5%;
+}
+
+.heure{
+    margin-top: -2%;
+}
+
+.action>i{
+    margin-left: 15px;
+    margin-top: 5%;
+}
+
+.fa-regular{
+    color: #25A068;
+}
+
+.action>.fa-solid {
+    color: red;
+}
+
+.info-imam{
+    margin-top: -3%;
+    display: flex;
+    margin-top: 10px;
+}
+
+.nom-imam{
+    margin-top: -10px;
+    margin-left: 20px;
+}
+#icon-imam{
+    margin-left: 14%;
+    margin-top: -12px;
+}
+

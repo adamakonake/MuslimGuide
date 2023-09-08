@@ -1,0 +1,134 @@
+
+
+
+ion-content{
+    --background:rgb(245, 240, 240);
+}
+
+.photo{
+    background-color: #25A068;;
+}
+
+    .info-adresse{
+        // overflow: hidden;
+    color:#FFFEFE;
+    // background-color: #e4dcdc;
+
+    margin-left: 5%;
+    align-items: center;
+
+    // backdrop-filter: blur(1px);
+    background: rgb(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    width: 90%;
+    height: auto !important;
+    border-radius: 20px;
+    border: 2px solid #FFFEFE;
+    margin-top:-40%;
+    box-shadow: 0ox 1px 1px 0px;
+
+    }
+
+.long{
+    background-color: #bbb1b1;
+    border-radius: 10px;
+    width: 70px;
+    height: 33px;
+    margin-top: -5px;
+    margin-left: 10px;
+}
+
+.titre-mosque{
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+ion-icon{
+    font-size: 30px;
+    color: #25A068;
+    cursor: pointer;
+}
+.metre{
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 15px;
+    color: black;
+    font-family: poppins;
+}
+
+.loc>div{
+    display: block;
+    width: 100%;
+    // display: flex;
+    
+}
+
+.loc-lieu{
+    // display: flex;
+    font-size: 20px;
+    color: black;
+    margin-top: -28px;
+    font-weight: bold;
+    margin-left: 50px;
+   position: relative;
+   align-items: center;
+   font-weight: bold;
+}
+
+.icon-loc{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.liste,.liste1,.liste2,.liste3,.liste4,.liste5,.liste6{
+    // background-color: yellow;
+    // width: 90%;
+    // height: 50%;
+    // border-radius: 20px;
+    // margin: 5%;
+    // background-color: #25A068;
+    // border-radius: 10px;
+    // width: 90%;
+    // height: 15%;
+    // margin-top: 15px;
+    display: flex;
+    background-color: #25A068;
+    border-radius: 10px;
+    width:90% !important;
+    height: 50px !important;
+    margin-top: 20px;
+    margin-left: 5%;
+
+
+}
+
+.priere, .heure, .clock, .horloge{
+  margin-left: 8%;
+  color: white;
+//   font-weight: bold;
+}
+
+.priere {
+    margin-top: -2px;
+}
+
+.priere>h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.don{
+    margin: 10px;
+    color: #25A068;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: poppins;
+    margin-left: 22%;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'hidjri',
+    redirectTo: 'accueil',
     pathMatch: 'full'
   },
   {
@@ -22,6 +22,26 @@ const routes: Routes = [
   {
     path: 'admin-accueil',
     loadChildren: () => import('./admin/admin-accueil/admin-accueil.module').then( m => m.AdminAccueilPageModule)
+  },
+  {
+    path: 'chapelet',
+    loadChildren: () => import('./users/chapelet/chapelet.module').then( m => m.ChapeletPageModule)
+  },
+  {
+    path: 'lire-coran',
+    loadChildren: () => import('./users/lire-coran/lire-coran.module').then( m => m.LireCoranPageModule)
+  },
+  {
+    path: 'details-mosquees',
+    loadChildren: () => import('./users/details-mosquees/details-mosquees.module').then( m => m.DetailsMosqueesPageModule)
+  },
+  {
+    path: 'liste-evenement',
+    loadChildren: () => import('./admin/liste-evenement/liste-evenement.module').then( m => m.ListeEvenementPageModule)
+  },
+  {
+    path: 'lire-corans',
+    loadChildren: () => import('./admin/lire-corans/lire-corans.module').then( m => m.LireCoransPageModule)
   },
 
 ];
