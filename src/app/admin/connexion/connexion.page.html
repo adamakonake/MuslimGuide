@@ -1,0 +1,116 @@
+
+<ion-content class="global_container">
+
+  <!-- Tout les header  -->
+  <ion-header class="container_header">
+
+    <!-- conception de mon header  -->
+    <div class="header_content" collapse="condense">
+        <!-- mon icon de retour -->
+        <div class="icon_retour">
+          <!-- <i class="ri-reply-all-line"></i> -->
+          <p class="logo">Logo</p>
+        </div>
+  
+        <!-- Le code de premium  -->
+        <div class="premium">
+          <button class="btn_premium">
+            <p>icon</p>
+          </button>
+        </div>
+    </div>
+
+    <!-- ======================================HEADER DE RETOUR  -->
+
+        <!-- conception de mon header  -->
+        <div class="header_content header_content1">
+          <!-- mon icon de retour -->
+          <div class="icon_retour">
+            <i class="ri-reply-all-line"></i>
+          </div>
+    
+          <!-- Le code de premium  -->
+          <div class="premium">
+            <button class="btn_premium btn_pre">
+              Passer au Premium
+            </button>
+          </div>
+      </div>
+  
+    <!-- ======================== FIN DE HEADER  -->
+  
+  </ion-header>
+
+
+  <div class="container_connexion_global">
+      <!-- de titre de Inscription  -->
+      <div class="div_title_inscription">
+        <h2 class="title_inscrire">Connexion</h2>
+      </div>
+
+      <!-- les champs de input pour l'inscription  -->
+
+      <form class="container_formulaire">
+
+          <div class="formulaire">
+
+            <!-- input de votre email  -->
+            <div class="champ_input">
+              <i class="ri-mail-line identfiant_icon"></i>
+              <input type="email" class="input_focus" name="email" id="email" placeholder="example@gmail.com" autocomplete="off" required>
+              <label for="email" class="label">Votre email</label>
+              <i class="ri-information-line input_info_icon"></i>
+            </div>
+
+            <!-- input de votre password  -->
+            <div class="champ_input">
+              <i class="ri-git-repository-private-fill identfiant_icon"></i>
+              <input [type]="passwordType" class="input_focus" name="password" id="password" placeholder="**************" autocomplete="off" required>
+              <label for="password" class="label">Votre Mot de passe</label>
+              <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
+              <i class="input_info_icon" (click)="togglePassword()">
+                <ng-container *ngIf="!passwordShown">
+                  <i class="ri-eye-close-line"></i> <!-- icône de l'œil barré -->
+                </ng-container>
+                <ng-container *ngIf="passwordShown">
+                  <i class="ri-eye-line"></i> <!-- icône de l'œil -->
+                </ng-container>
+              </i>
+            </div>
+
+            <!-- le button de submit  -->
+            <div class="btn_submit_global">
+              <ion-button type="submit" class="btn_submit"> Se connecter </ion-button>
+            </div>
+
+            <!-- Pour verifier si un administrateur a deja un compte  -->
+            <div class="verifier_admin">
+              <p class="message_para">Contunier en tant que ?</p>
+              <p class="message2_para"> <a class="message_lien" href="#">Utilisateur</a></p>
+            </div>
+
+          </div>
+
+      </form>
+
+      <!-- Le bare de or qui est en dessous de ma formulaire  -->
+      <div class="container_bare">
+        <div class="bare">
+          <p class="or"> Or</p>
+        </div>
+      </div>
+
+      <!-- image qui est en dessous de mon bare  -->
+      <div class="container_image_connexion">
+
+        <div class="image_connexion">
+          <img class="img_connexion" src="../../../assets/img_sy/image_coran.png" alt="image de logo">
+        </div>
+
+      </div>
+
+
+  </div>
+  
+</ion-content>
+
