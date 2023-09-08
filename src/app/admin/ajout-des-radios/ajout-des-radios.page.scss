@@ -1,0 +1,60 @@
+ion-content {
+    --background: url("../../../assets/image/mosquee.png") no-repeat center center / cover;
+}
+ion-input {
+    border: 1px solid white; 
+    border-radius: 10px;
+    // padding: 10px;
+    font-size: 16px;
+    color: rgb(133, 125, 125);
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+     height : '40px' ;
+  }
+
+  
+  
+// .entete{
+//     margin-right: 20%;
+//     display: flex;
+//     justify-content: space-between;
+// }
+ion-label{
+    color: #f0f0f0;
+    font-size: large;
+}
+.ion{
+    margin-right: 35px;
+}
+
+ion-button{
+    margin-top: 120%; 
+    margin-left: 20%;
+    width: 50%; 
+    // color: #25A069; 
+    background-color: #25A069;
+}
+ion-label{
+    background-color: transparent;
+    // justify-content: start;
+    align-items: center;
+    margin-left: 0%;
+    display: flex;
+    font-size: large;
+    // color: azure;
+}
+form{
+margin-left: 10%;
+}
+
+ 
+
+
+h1{
+    text-align: center;
+    color: azure;
+}
+
+
+
+
