@@ -5,9 +5,44 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">lire-corans</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
+
+
+  
+  <div class="container">
+    <img src="../../../assets/image/mosqué-play.png" alt="mosquée"> <br>
+    <h1>Titre Sourate</h1>
+    <div class="music">
+      <div class="espace"></div>
+      <span class="audio-min-start" style="font-size: 15px;">02:30 </span> <ion-range min="0" max="100" value="50" color="warning"></ion-range>  <span class="audio-min-end"> 04:30 </span>
+      <!-- <p class="audio-min-start" style="font-size: 20px;">02:30 </p> <span class="contain"><div class="contain-p-bar"></div> </span> <p class="audio-min-end"> 04:30</p> -->
+    </div>
+  </div>
+
+
+  <div class="flex_box">
+    <ion-button fill="clear" color="light">
+      <ion-icon slot="icon-only" name="play-back"> </ion-icon>
+    </ion-button>
+    <ion-button shape="round" color="light">
+      <ion-icon slot="icon-only" name="play"> </ion-icon>
+    </ion-button>
+    <ion-button fill="clear" color="light">
+      <ion-icon slot="icon-only" name="play-forward"> </ion-icon>
+    </ion-button>
+  </div>
+  <div class="bas">
+   
+    <!-- <ion-button fill="clear" color="success"> -->
+      <ion-icon  color="success" name="arrow-down-outline" class="int"></ion-icon>   
+     <!-- </ion-button> -->
+    <!-- <ion-button fill="clear" color="success"> -->
+      <ion-icon color="success" name="musical-note-outline" style="margin-right: 5%;" class="int"></ion-icon> 
+     <!-- </ion-button> -->
+  </div>
+
 </ion-content>
