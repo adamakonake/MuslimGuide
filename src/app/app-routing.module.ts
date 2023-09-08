@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'lire-corans',
     loadChildren: () => import('./admin/lire-corans/lire-corans.module').then( m => m.LireCoransPageModule)
   },
+  {
+    path: 'liste-mosquee',
+    loadChildren: () => import('./admin/liste-mosquee/liste-mosquee.module').then( m => m.ListeMosqueePageModule)
+  },
 
 
 ];
