@@ -1,0 +1,90 @@
+.headRoundVert{
+  width: 100%;
+  height: 50px;
+  position: relative;
+  background-color: #25A069;
+
+}
+.headRoundBlanc{
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  border-radius: 20px 20px 0px 0px;
+  background-color: white;
+  bottom: 0px;
+}
+.cont1{
+  margin-left: 0.1%;
+  margin-right: 2%;
+  width: 100%;
+  height: 300%;
+  background-color: #25A069;
+  padding: 8px;
+  border-radius: 18px;
+  align-items: center;
+}
+.element{
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+  background-color: white;
+
+}
+.conteneur{
+  padding-top: 0.1%;
+  padding-right: 1px;
+  margin-right: 0.1%;
+}
+.imag{
+  display: flex;
+  justify-content: space-between;
+}
+h4{
+  text-align: start;
+  font-size: 12px;
+  margin-left: 5%;
+}
+h6{
+  text-align: end;
+font-size: 10px;
+margin-right: 5%;
+}
+.titreFm{
+  font-size: 70px;
+  margin: 0px;
+}
+.logoRadio{
+  display: flex;
+  margin-right: 46px;
+}
+.h3{
+  font-size: 18px;
+  text-align: right;
+}
+
+.cont2{
+  width: 100%;
+  height: 78px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 12px rgba($color: #25A069, $alpha: 0.25);
+  padding: 15px;
+  margin-top: 30px;
+}
+.cont2 p{
+  color: black;
+  font-size: 20px;
+  margin: 0px;
+}
+.cont2 h1{
+  color: black;
+  font-size: 30px;
+  text-align: end;
+  margin: 0px;
+}
+.cont2 h1 span{
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0px;
+}
+
