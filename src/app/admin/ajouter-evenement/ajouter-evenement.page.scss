@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+   background: url("../../../assets/image/mosquee.png") no-repeat center center / cover;
+background-color: #fff;
+flex-direction: column;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    margin-bottom: 80%;
+    background-color:rgba(255, 255,255,0.25); 
+    border-bottom: 1px solid rgba(255, 255,255,0.25);
+    border-right: 1px solid rgba(255, 255,255,0.25);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    height: 53%;
+    width: 80%;
+   }
+   img{
+    height: 30%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+h2 {
+    color: #fff; /* Blanc */
+}
+
+.form-group {
+    margin-left:10%;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #fff;
+}
+textarea{
+    background-color:rgba(255, 255,255,0.25); 
+    border-bottom: 1px solid rgba(255, 255,255,0.25);
+    border-right: 1px solid rgba(255, 255,255,0.25);
+    width: 90%;
+}
+input[type="text"]{
+    color: #181616;
+}
+input{
+ height: 40px;   
+ width: 90%;
+}
+input[type="color"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #fff; 
+    border-radius: 5px;
+    background-color: #fff; 
+    color: #181616; 
+}
+
+button {
+    background-color: #007F6E; /* Blanc */
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 100%;
+    width: 60%;
+}
+
+button:hover {
+    background-color: #007F6E; 
+    color: #fff; /* Blanc */
+}
+
+
+
+
+
+

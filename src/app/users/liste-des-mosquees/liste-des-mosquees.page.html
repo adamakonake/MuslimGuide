@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Liste des Mosquées</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let mosque of mosquee">
+
+     <div class="list">
+      <div class="mosque-item">
+        <div class="mosque-image">
+          <img src="../../../assets/image/image 10.png" alt=" Mosquée" />
+        </div>
+        <div class="mosque-details">
+          <h2>{{ mosque.name }}</h2>
+          <p>{{ mosque.annexe }}</p>
+         
+        </div>
+        <div class="location-icon">
+          <ion-icon name="location"></ion-icon>
+        </div>
+      </div>
+      <div class="mosque-item">
+        <div class="mosque-image">
+          <img src="../../../assets/image/image 10.png" alt=" Mosquée" />
+        </div>
+        <div class="mosque-details">
+          <h2>{{ mosque.name }}</h2>
+          <p>{{ mosque.annexe }}</p>
+          
+         
+        </div>
+        <div class="location-icon">
+          <ion-icon name="location"></ion-icon>
+        </div>
+      </div>
+      <div class="mosque-item">
+        <div class="mosque-image">
+          <img src="../../../assets/image/image 10.png" alt=" Mosquée" />
+        </div>
+        <div class="mosque-details">
+          <h2>{{ mosque.name }}</h2>
+          <p>{{ mosque.annexe }}</p>
+         
+        </div>
+        <div class="location-icon">
+          <ion-icon name="location"></ion-icon>
+        </div>
+      </div>
+     </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+

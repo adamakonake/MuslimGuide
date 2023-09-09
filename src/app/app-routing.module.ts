@@ -43,6 +43,26 @@ const routes: Routes = [
     path: 'lire-corans',
     loadChildren: () => import('./admin/lire-corans/lire-corans.module').then( m => m.LireCoransPageModule)
   },
+  {
+    path: 'liste-des-mosquees',
+    loadChildren: () => import('./users/liste-des-mosquees/liste-des-mosquees.module').then( m => m.ListeDesMosqueesPageModule)
+  },
+  {
+    path: 'page-de-bienvenu',
+    loadChildren: () => import('./users/page-de-bienvenu/page-de-bienvenu.module').then( m => m.PageDeBienvenuPageModule)
+  },
+  {
+    path: 'ajout-des-radios',
+    loadChildren: () => import('./admin/ajout-des-radios/ajout-des-radios.module').then( m => m.AjoutDesRadiosPageModule)
+  },
+  {
+    path: 'ajouter-sourate',
+    loadChildren: () => import('./admin/ajouter-sourate/ajouter-sourate.module').then( m => m.AjouterSouratePageModule)
+  },
+  {
+    path: 'ajouter-evenement',
+    loadChildren: () => import('./admin/ajouter-evenement/ajouter-evenement.module').then( m => m.AjouterEvenementPageModule)
+  },
 
 ];
 
