@@ -71,7 +71,7 @@
 .cardSlide{
     position: relative;
     height: 170px;
-    min-width: 360px;
+    width: 100px;
     margin: 15px;
     border-radius: 20px;
 }
@@ -90,6 +90,8 @@
     border-radius: 20px;
 }
 .imgMosquee{
+    width: 50%;
+    height: auto;
     margin-left: 11px;
 }
 .infoPriere{
