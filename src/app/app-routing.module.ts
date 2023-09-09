@@ -104,6 +104,14 @@ const routes: Routes = [
   {
     path: 'list-radio',
     loadChildren: () => import('./admin/list-radio/list-radio.module').then( m => m.ListRadioPageModule)
+  },
+  {
+    path: 'radio',
+    loadChildren: () => import('./users/radio/radio.module').then( m => m.RadioPageModule)
+  },
+  {
+    path: 'ajout-lecteur',
+    loadChildren: () => import('./admin/ajout-lecteur/ajout-lecteur.module').then( m => m.AjoutLecteurPageModule)
   }
 
 ];
