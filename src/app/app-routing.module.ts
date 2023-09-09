@@ -18,10 +18,8 @@ const routes: Routes = [
   {
     path: 'page-de-bienvenu',
     loadChildren: () => import('./user/page-de-bienvenu/page-de-bienvenu.module').then( m => m.PageDeBienvenuPageModule)
-  },  {
-    path: 'ajouter-mosquee',
-    loadChildren: () => import('./admin/ajouter-mosquee/ajouter-mosquee.module').then( m => m.AjouterMosqueePageModule)
   },
+ 
   {
     path: 'ajout-des-radios',
     loadChildren: () => import('./admin/ajout-des-radios/ajout-des-radios.module').then( m => m.AjoutDesRadiosPageModule)
