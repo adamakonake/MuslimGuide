@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class AccueilPage implements OnInit, AfterViewInit {
 
   apiKey = "ee179fc833ed4af9ad062cfabc51004b";
-  test:string = "salut"
+  test:string = "salut";
   constructor( private route : Router, private http : HttpClient) { }
 
   ngOnInit() {
