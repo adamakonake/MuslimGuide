@@ -1,0 +1,130 @@
+
+<ion-content class="global_container">
+
+  <!-- Tout les header  -->
+  <ion-header class="container_header">
+
+    <!-- conception de mon header  -->
+    <div class="header_content" collapse="condense">
+        <!-- mon icon de retour -->
+        <div class="icon_retour">
+          <!-- <i class="ri-reply-all-line"></i> -->
+          <p class="logo">Logo</p>
+        </div>
+  
+        <!-- Le code de premium  -->
+        <div class="premium">
+          <button class="btn_premium">
+            <p>icon</p>
+          </button>
+        </div>
+    </div>
+
+    <!-- ======================================HEADER DE RETOUR  -->
+
+        <!-- conception de mon header  -->
+        <div class="header_content header_content1">
+          <!-- mon icon de retour -->
+          <div class="icon_retour">
+            <i class="ri-reply-all-line"></i>
+          </div>
+    
+          <!-- Le code de premium  -->
+          <div class="premium">
+            <button class="btn_premium btn_pre">
+              Passer au Premium
+            </button>
+          </div>
+      </div>
+  
+    <!-- ======================== FIN DE HEADER  -->
+  
+  </ion-header>
+
+  <!-- de titre de Inscription  -->
+  <div class="div_title_inscription">
+    <h2 class="title_inscrire">Inscription</h2>
+  </div>
+
+  <!-- Image pour inscription  -->
+  <div class="div_image_admin">
+
+    <div class="image_admin">
+      <img src="../../../assets/img_sy/avatar2.png" alt="image de l'administrateur">
+    </div>
+
+  </div>
+
+  <!-- les champs de input pour l'inscription  -->
+
+  <form class="container_formulaire">
+
+      <div class="formulaire">
+        
+        <!-- input de votre nom  -->
+        <div class="champ_input">
+          <input type="text" class="input_focus" name="name" id="name" placeholder="Saisir votre nom" autocomplete="off" required>
+          <label for="name" class="label">Votre nom</label>
+        </div>
+
+        <!-- input de votre prénom  -->
+        <div class="champ_input">
+          <input type="text" class="input_focus" name="prenom" id="prenom" placeholder="Saisir votre prénom" autocomplete="off" required>
+          <label for="prenom" class="label">Votre prénom</label>
+        </div>
+
+        <!-- input de votre email  -->
+        <div class="champ_input">
+          <input type="email" class="input_focus" name="email" id="email" placeholder="example@gmail.com" autocomplete="off" required>
+          <label for="email" class="label">Votre email</label>
+          <i class="ri-information-line input_info_icon"></i>
+        </div>
+
+        <!-- input de votre password  -->
+        <div class="champ_input">
+          <input [type]="passwordType" class="input_focus" name="password" id="password" placeholder="**************" autocomplete="off" required>
+          <label for="password" class="label">Votre Mot de passe</label>
+          <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
+          <i class="input_info_icon" (click)="togglePassword()">
+            <ng-container *ngIf="!passwordShown">
+              <i class="ri-eye-close-line"></i> <!-- icône de l'œil barré -->
+            </ng-container>
+            <ng-container *ngIf="passwordShown">
+              <i class="ri-eye-line"></i> <!-- icône de l'œil -->
+            </ng-container>
+          </i>
+        </div>
+
+        <!-- input de votre cormfir password  -->
+        <div class="champ_input">
+          <input [type]="passwordType" class="input_focus" name="passwordConfirm" id="passwordConfirm" placeholder="**************" autocomplete="off" required>
+          <label for="passwordConfirm" class="label">Confirm mot de passe</label>
+          <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
+          <i class="input_info_icon" (click)="togglePassword()">
+            <ng-container *ngIf="!passwordShown">
+              <i class="ri-eye-close-line"></i> <!-- icône de l'œil barré -->
+            </ng-container>
+            <ng-container *ngIf="passwordShown">
+              <i class="ri-eye-line"></i> <!-- icône de l'œil -->
+            </ng-container>
+          </i>
+        </div>
+
+        <!-- le button de submit  -->
+        <div class="btn_submit_global">
+          <ion-button type="submit" class="btn_submit"> S'inscrire </ion-button>
+        </div>
+
+        <!-- Pour verifier si un administrateur a deja un compte  -->
+        <div class="verifier_admin">
+          <p class="message_para">Vous avez un compte ?</p>
+          <p class="message2_para"> <a class="message_lien" href="#">Connectez-vous</a></p>
+        </div>
+
+      </div>
+
+  </form>
+
+
+</ion-content>
+

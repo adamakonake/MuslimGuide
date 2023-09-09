@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LecteurCorantPage } from './users/lecteur-corant/lecteur-corant.page';
 
 const routes: Routes = [
   {
@@ -84,6 +85,26 @@ const routes: Routes = [
     path: 'ajouter-evenement',
     loadChildren: () => import('./admin/ajouter-evenement/ajouter-evenement.module').then( m => m.AjouterEvenementPageModule)
   },
+  {
+    path: 'lecteur-corant',
+    loadChildren: () => import('./users/lecteur-corant/lecteur-corant.module').then( m => m.LecteurCorantPageModule)
+  },
+  {
+    path: 'list-mosques',
+    loadChildren: () => import('./users/list-mosques/list-mosques.module').then( m => m.ListMosquesPageModule)
+  },
+  {
+    path: 'inscription',
+    loadChildren: () => import('./admin/inscription/inscription.module').then( m => m.InscriptionPageModule)
+  },
+  {
+    path: 'connexion',
+    loadChildren: () => import('./admin/connexion/connexion.module').then( m => m.ConnexionPageModule)
+  },
+  {
+    path: 'list-radio',
+    loadChildren: () => import('./admin/list-radio/list-radio.module').then( m => m.ListRadioPageModule)
+  }
 
 ];
 

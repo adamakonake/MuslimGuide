@@ -1,0 +1,221 @@
+:root {
+    --color-principal : #25A069;
+    --color-secondaire : #D79A10;
+    --color-blanc: #FFFFFF;
+    --color-noir: #000000;
+    --font-w200: 200;
+    --font-w300: 300;
+    --font-w400: 400;
+    --font-w500: 500;
+    --font-w600: 600;
+    --font-w700: 700;
+}
+
+// style de mon header 
+
+.container_header {
+    width: 100%;
+    height: 60px;
+    background-color: var(--color-principal);
+    position: relative;
+}
+
+.cadre_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadre {
+    width: 360px;
+    height: 147px;
+    background-color: var(--color-principal);
+    border-radius: 20px;
+    position: relative;
+}
+
+.color_blanc {
+    width: 100%;
+    height: 15px;
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    bottom: 0px;
+    background-color: #fff;
+}
+
+.mon_titre {
+    margin-top: -10px;
+}
+
+.cadre .titleh1 {
+    color: #fff;
+    font-size: 80px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.image_radio {
+    position: absolute;
+    right: 70px;
+    top: 5px;
+    width: 110px;
+    height: 110px;
+}
+
+.image_radio .img_radio {
+    width: 100%;
+    height: 100%;
+}
+
+.para_p {
+    color: var(--color-blanc);
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.mon_para {
+    margin-left: 15px;
+}
+
+.div_desc {
+    position: absolute;
+    bottom: -5px;
+    right: 20px;
+}
+
+.div_desc .desc_h2 {
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+// =======================================
+
+
+// ==================== Style pour les recherche 
+
+.search_container {
+    margin-top: 12px;
+    margin-right: 10px;
+}
+.recherche_bare input {
+    width: 239px;
+    height: 40px;
+    border: none;
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    padding-left: 55px;
+    outline: none;
+}
+
+.recherche_bare {
+    position: relative;
+}
+
+.recherche_bare .icon_search {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 2px;
+    border-radius: 10px;
+    background-color: var(--color-secondaire);
+    width: 42px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_ajouter_search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: static;
+    top: 0;
+}
+
+.btn_container {
+    margin-top: 12px;
+    margin-left: 10px;
+}
+
+button.btn_ajout {
+    padding: 12px 25px;
+    background-color: var(--color-principal);
+    color: var(--color-blanc);
+    border-radius: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+
+
+// Style pour les different l'imam 
+
+.container_radio_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.tout_les_radio_container {
+    width: 349px;
+    height: 90px;
+    box-shadow: 0px 0px 12px 0px rgba(5, 188, 45, 0.20);
+    border-radius: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // position: relative;
+}
+
+.titre_radio .titre_radio_h3 {
+    font-size: 20px;
+    margin: 0 0 0 10px;
+
+}
+
+.chaine_nombre_radio {
+    padding-left: 10px;
+    margin-top: -15px;
+}
+
+.link_radio .para_radio{
+    padding-left: 10px;
+    margin-top: -15px;
+    text-decoration: none;
+    color: var(--color-noir);
+}
+
+.chaine_nombre_radio .chaine_nombre {
+    font-size: 20px;
+    // padding: 0 0 0 10px;
+}
+
+.chaine_nombre strong {
+    font-size: 15px;
+}
+
+// ================ POUR LE SUPPRIMER 
+
+.action_delete_put {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding: 15px;
+    margin: 15px;
+}
+
+.action_delete_put .icon_edit i {
+    font-size: 25px;
+    color: var(--color-noir);
+    padding: 10px;
+}
+
+.action_delete_put .icon_delete i {
+    font-size: 25px;
+    color: red;
+}
+

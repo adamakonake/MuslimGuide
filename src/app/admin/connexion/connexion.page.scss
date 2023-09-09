@@ -1,0 +1,261 @@
+:root {
+    --color-principal : #25A069;
+    --color-secondaire : #D79A10;
+    --color-blanc: #FFFFFF;
+    --color-noir: #000000;
+    --font-w200: 200;
+    --font-w300: 300;
+    --font-w400: 400;
+    --font-w500: 500;
+    --font-w600: 600;
+    --font-w700: 700;
+}
+
+// style de mon header 
+
+.container_header {
+    position: sticky;
+    top: 0;
+}
+
+.container_connexion_global {
+    margin-top: 40px;
+}
+
+.header_content {
+    width: 100%;
+    height: 60px;
+    background-color: var(--color-principal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.header_content1 {
+    background-color: #fafafa;
+}
+
+// style de mon icon de retour 
+.icon_retour {
+    margin-left: 20px;
+    color: var(--color-blanc);
+    font-size: 25px;
+}
+.icon_retour i {
+    margin-left: 20px;
+    color: var(--color-noir);
+    font-size: 25px;
+}
+
+// style de mon côté premium 
+.btn_premium {
+    bottom: none;
+    font-size: 15px;
+    margin-right: 20px;
+    color: var(--color-blanc)  ;
+    background: none;
+}
+
+.btn_pre {
+    color: var(--color-noir)  ;
+}
+
+.div_title_inscription {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.div_title_inscription .title_inscrire {
+    font-size: 18px;
+}
+
+.div_image_admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_admin {
+    width: 100px;
+    height: 100px;
+}
+
+.div_image_admin .image_admin img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 12px 0px rgba(5, 188, 45, 0.20);
+}
+
+// ====================== INPUT DE INSCRIPION D'ADMINISTRATEUR 
+
+.container_formulaire {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.champ_input {
+    position: relative;
+}
+
+.input_focus {
+    width: 100%;
+    min-width: 337px;
+    height: 49px;
+    // padding: 10px 10px;
+    padding-left: 55px;
+    outline: none;
+    background-color: var(--color-blanc);
+    border: 2px solid rgba(212, 212, 212, 0.855);
+    border-radius: 10px;
+    margin: 10px 0;
+    transition: all 0.3s;
+    font-size: 16px;
+    border-radius: 9px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0px 1px 12px 0px rgba(5, 188, 45, 0.10);
+}
+
+.input_focus:focus {
+    border: 2px solid var(--color-principal);
+}
+
+.champ_input .label {
+    position: absolute;
+    top: 26px;
+    left: 50px;
+    pointer-events: none;
+    color: #000;
+}
+
+// Les identifiant des champs input 
+
+.identfiant_icon {
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+    line-height: 70px;
+    opacity: 0.8;
+}
+
+/*  Verificatiion de label si le champs est vide ou pas  */
+
+.input_focus:not(:placeholder-shown) + .label,
+.input_focus:focus + .label {
+    color: var(--color-principal);
+    top: 3px;
+    left: 5px;
+    transition: all 0.3s ease-in-out;
+    background: var(--color-blanc);
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+.input_focus::placeholder
+ {
+    opacity: 0;
+}
+
+.input_focus:focus::placeholder
+{
+    opacity: 1;
+    animation-delay: 1s;
+    font-size: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+// ========= email icon ===========
+
+.input_info_icon {
+    position: absolute;
+    right: 15px;
+    font-size: 20px;
+    line-height: 70px;
+}
+
+.btn_submit {
+    background-color: var(--color-principal);
+    // width: 360px;
+    width: 100%;
+    min-width: 337px;
+    border-radius: 9px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    height: 49px;
+    // color: #25A069;
+}
+
+.btn_submit:hover {
+    // --ion-color-primary: #25A069;
+    background-color: var(--color-principal);
+    transition: all 0.3s;
+    --ion-color-primary-shade: #227e55;
+    --ion-color-secondary: #25A069;
+}
+
+.btn_submit_global {
+    margin-top: 20px;
+}
+
+// style de verification si un utilisateur a deja un compte ou pas 
+.verifier_admin {
+    text-align: center;
+}
+
+.message2_para {
+    margin-top: -15px;
+}
+
+.message2_para .message_lien {
+    color: var(--color-principal);
+    letter-spacing: 0.60px;
+}
+
+// Le petit bare qui est en bas 
+
+.container_bare {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.bare {
+    width: 70%;
+    height: 1px;
+    background: var(--color-noir);
+    position: relative;
+    opacity: 0.6;
+}
+
+.bare .or {
+    margin: 0;
+    top: -10px;
+    left: 46%;
+    position: absolute;
+    background-color: var(--color-blanc);
+    padding: 0 5px;
+}
+
+// style de mon image qui est en haut 
+
+.container_image_connexion {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_connexion {
+    width: 130px;
+    height: 130px;
+}
+
+.image_connexion .img_connexion {
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+}
