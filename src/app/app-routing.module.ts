@@ -112,7 +112,16 @@ const routes: Routes = [
   {
     path: 'ajout-lecteur',
     loadChildren: () => import('./admin/ajout-lecteur/ajout-lecteur.module').then( m => m.AjoutLecteurPageModule)
-  }
+  },
+  {
+    path: 'liste-lecteurs',
+    loadChildren: () => import('./admin/liste-lecteurs/liste-lecteurs.module').then( m => m.ListeLecteursPageModule)
+  },
+  {
+    path: 'liste-lecteur',
+    loadChildren: () => import('./users/liste-lecteur/liste-lecteur.module').then( m => m.ListeLecteurPageModule)
+  },
+
 
 ];
 
