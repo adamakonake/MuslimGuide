@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true">
+  <div class="card-info">
+      <div class="iman-info">
+        <div class="fullname">
+          <p>{{nom}} {{prenom}}</p>
+        </div>
+      <div class="photo">
+        <img src={{photo}} alt="la photo de l'iman">
+      </div>
+    </div>
+</div>
+  <div class="search_container">
+    <div class="recherche_bare">
+      <input type="search" name="search" placeholder="Recherche" [(ngModel)]="recherche">
+      <!-- mon icon de recherche  -->
+      <i class="ri-search-line icon_search"></i>
+    </div>
+  </div>
+<ion-item-divider></ion-item-divider>
+  <ion-card *ngFor="let i= index ;let sourate of sourateFiltres">
+    <ion-card-content class="card-sourate">
+      <div class="conteneur-sourate">
+        <div class="numéro">
+          <div class="cercle1">
+            {{sourate.numero}}
+          </div>
+        </div>
+        <div class="sourate">
+          {{ sourate.nom }}
+        </div>
+        <div class="bouton-jouer">
+          <button ion-button color="primary" (click)="togglePlay(sourate)">
+            <ion-icon [name]="sourate.isPlaying ? 'pause-circle-outline' : 'play-outline'"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

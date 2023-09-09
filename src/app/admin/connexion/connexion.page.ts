@@ -9,13 +9,19 @@ export class ConnexionPage implements OnInit {
 
   passwordType : string  = 'password';
   passwordShown : boolean  = false;
-
+  /*password!:string;
+  email!:string;*/
+  formData: any = {};
+  admininfo=[
+    {email:'amadouit223@gmail.com', password:'1234567890'},
+      {email:'cptbarbossa23@gmail.com', password:'1234567890'},
+  ];
   constructor() { }
 
   ngOnInit() {
   }
-  
-  // pour le password pour le cachée 
+
+  // pour le password pour
   public togglePassword() {
     this.passwordShown = !this.passwordShown;
     this.passwordType = this.passwordShown ? 'text' : 'password';
@@ -24,6 +30,15 @@ export class ConnexionPage implements OnInit {
       this.passwordType = 'text';
     } else {
       this.passwordType = 'password';
+    }
+  }
+  Submit(){
+      const admin = this.admininfo.find(admin => admin.email === this.formData.email && admin.password === this.formData.password);
+    console.log(this.formData);
+    if (admin) {
+      console.log('Admin authenticatifié!');
+    } else {
+      console.log('Admin non authenticatifié!');
     }
   }
 

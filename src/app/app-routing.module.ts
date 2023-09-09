@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LecteurCorantPage } from './users/lecteur-corant/lecteur-corant.page';
 
 const routes: Routes = [
   {
@@ -14,11 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'annonce',
-    loadChildren: () => import('./user/annonce/annonce.module').then( m => m.AnnoncePageModule)
+    loadChildren: () => import('./users/annonce/annonce.module').then( m => m.AnnoncePageModule)
   },
   {
     path: 'pageaffichage',
-    loadChildren: () => import('./user/pageaffichage/pageaffichage.module').then( m => m.PageaffichagePageModule)
+    loadChildren: () => import('./users/pageaffichage/pageaffichage.module').then( m => m.PageaffichagePageModule)
   },
   {
     path: 'ajoutannonces',
@@ -121,7 +120,8 @@ const routes: Routes = [
     path: 'liste-lecteur',
     loadChildren: () => import('./users/liste-lecteur/liste-lecteur.module').then( m => m.ListeLecteurPageModule)
   },
-
+  {path: 'user-liste-des-sourates', loadChildren: () => import('./users/user-liste-des-sourates/user-liste-des-sourates.module').then( m => m.UserListeDesSouratesPageModule)},
+  {path: 'admin-liste-sourate', loadChildren:() => import('./admin/admin-liste-des-sourates/admin-liste-des-sourates.module').then(m => m.AdminListeDesSouratesPageModule)}
 
 ];
 

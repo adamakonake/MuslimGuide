@@ -11,7 +11,7 @@
           <!-- <i class="ri-reply-all-line"></i> -->
           <p class="logo">Logo</p>
         </div>
-  
+
         <!-- Le code de premium  -->
         <div class="premium">
           <button class="btn_premium">
@@ -28,7 +28,7 @@
           <div class="icon_retour">
             <i class="ri-reply-all-line"></i>
           </div>
-    
+
           <!-- Le code de premium  -->
           <div class="premium">
             <button class="btn_premium btn_pre">
@@ -36,9 +36,9 @@
             </button>
           </div>
       </div>
-  
+
     <!-- ======================== FIN DE HEADER  -->
-  
+
   </ion-header>
 
 
@@ -50,14 +50,14 @@
 
       <!-- les champs de input pour l'inscription  -->
 
-      <form class="container_formulaire">
+      <form class="container_formulaire" #formElement="ngForm" (ngSubmit)="Submit()">
 
-          <div class="formulaire">
+          <div class="formulaire" >
 
             <!-- input de votre email  -->
             <div class="champ_input">
               <i class="ri-mail-line identfiant_icon"></i>
-              <input type="email" class="input_focus" name="email" id="email" placeholder="example@gmail.com" autocomplete="off" required>
+              <input type="email" [(ngModel)]="formData.email" class="input_focus" id="email" placeholder="example@gmail.com" autocomplete="on" [ngModelOptions]="{standalone: true}" required>
               <label for="email" class="label">Votre email</label>
               <i class="ri-information-line input_info_icon"></i>
             </div>
@@ -65,7 +65,7 @@
             <!-- input de votre password  -->
             <div class="champ_input">
               <i class="ri-git-repository-private-fill identfiant_icon"></i>
-              <input [type]="passwordType" class="input_focus" name="password" id="password" placeholder="**************" autocomplete="off" required>
+              <input [type]="passwordType" class="input_focus" id="password" placeholder="**************" [(ngModel)]="formData.password" autocomplete="on" [ngModelOptions]="{standalone: true}" required>
               <label for="password" class="label">Votre Mot de passe</label>
               <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
               <i class="input_info_icon" (click)="togglePassword()">
@@ -111,6 +111,6 @@
 
 
   </div>
-  
+
 </ion-content>
 

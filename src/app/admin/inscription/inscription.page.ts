@@ -9,13 +9,13 @@ export class InscriptionPage implements OnInit {
 
   passwordType : string  = 'password';
   passwordShown : boolean  = false;
-
+  FormData:any ={};
+  NouveauUtilisateur:any =[];
   constructor() { }
 
   ngOnInit() {
   }
 
-  // pour le password pour le cachée 
   public togglePassword() {
     this.passwordShown = !this.passwordShown;
     this.passwordType = this.passwordShown ? 'text' : 'password';
@@ -26,5 +26,10 @@ export class InscriptionPage implements OnInit {
       this.passwordType = 'password';
     }
   }
+
+  Submit() {
+    const utilisateurDonnees=this.FormData;
+  }
+
 
 }
