@@ -8,9 +8,10 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'ajoutmosque',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'annonce',
     loadChildren: () => import('./user/annonce/annonce.module').then( m => m.AnnoncePageModule)
   },
