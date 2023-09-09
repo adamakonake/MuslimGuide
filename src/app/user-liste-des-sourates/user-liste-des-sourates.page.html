@@ -1,11 +1,3 @@
-<!--<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-button >
-      <ion-icon name="home-outline"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
-</ion-header>-->
-
 <ion-content [fullscreen]="true">
   <div class="card-info">
       <div class="iman-info">
@@ -17,20 +9,28 @@
       </div>
     </div>
 </div>
-  <ion-searchbar placeholder="Recherche" autocomplete="on" autocorrect="on" [(ngModel)]="recherche"></ion-searchbar>
+  <div class="search_container">
+    <div class="recherche_bare">
+      <input type="search" name="search" placeholder="Recherche" [(ngModel)]="recherche">
+      <!-- mon icon de recherche  -->
+      <i class="ri-search-line icon_search"></i>
+    </div>
+  </div>
 <ion-item-divider></ion-item-divider>
   <ion-card *ngFor="let i= index ;let sourate of sourateFiltres">
     <ion-card-content class="card-sourate">
       <div class="conteneur-sourate">
         <div class="numéro">
           <div class="cercle1">
-            {{sourate.index+1}}
+            {{sourate.numero}}
           </div>
         </div>
-        <div class="sourate">{{ sourate.nom }}</div>
+        <div class="sourate">
+          {{ sourate.nom }}
+        </div>
         <div class="bouton-jouer">
-          <button ion-button color="primary" *ngIf="isPlayVisible" (click)="togglePlay(sourate)">
-            <ion-icon [name]="sourate.isPlaying?'play-outline': 'play-outline' "></ion-icon>
+          <button ion-button color="primary" (click)="togglePlay(sourate)">
+            <ion-icon [name]="sourate.isPlaying ? 'pause-circle-outline' : 'play-outline'"></ion-icon>
           </button>
         </div>
       </div>

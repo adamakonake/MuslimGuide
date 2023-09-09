@@ -1,4 +1,6 @@
 export interface Sourate {
-    name: string;
+    nom: string;
     isPlaying: boolean;
+    numeroSourate:number;
+    index: number;
 }

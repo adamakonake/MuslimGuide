@@ -1,29 +1,72 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user-liste-des-sourates',
-  templateUrl: './user-liste-des-sourates.page.html',
-  styleUrls: ['./user-liste-des-sourates.page.scss'],
+  selector: 'app-admin-liste-des-sourates',
+  templateUrl: './admin-liste-des-sourates.page.html',
+  styleUrls: ['./admin-liste-des-sourates.page.scss'],
 })
-export class UserListeDesSouratesPage implements OnInit {
+export class AdminListeDesSouratesPage implements OnInit {
   sourates=[
-    { nom: 'Al-Fatiha', isPlaying: false,numeroSourate:1 },
-    { nom: 'Al-Baqara', isPlaying: false,numeroSourate:2},
-    { nom: 'Al-Imran', isPlaying: false,numeroSourate:3 },
-    { nom: 'An-Nisa', isPlaying: false,numeroSourate:4 },
-    { nom: 'Al-Maaida', isPlaying: false ,numeroSourate:5},
-    { nom: 'Al-An`am', isPlaying: false ,numeroSourate:6},
-    { nom: 'Al-A`raf', isPlaying: false,numeroSourate:7 },
-   { nom: 'Al-Anfal', isPlaying: false,numeroSourate:8 },
-    { nom: 'At-Tawba', isPlaying: false,numeroSourate:9 },
-    { nom: 'Yunus', isPlaying: false,numeroSourate:10 },
-    { nom: 'Hud', isPlaying: false,numeroSourate:11 },
-    { nom: 'Yusuf', isPlaying: false,numeroSourate:12 },
-    { nom: 'Ibrahim', isPlaying: false,numeroSourate:13 },
-    { nom: 'Al-Hijr', isPlaying: false,numeroSourate:14 },
-    { nom: 'An-Nahl', isPlaying: false,numeroSourate:15 },
-    { nom: 'Al-Isra', isPlaying: false,numeroSourate:16 },
-    { nom: 'Al-Kahf', isPlaying: false,numeroSourate:17 }/*
+    { nom: 'Al-Fatiha', isPlaying: false,numero:1 ,index:0},
+    { nom: 'Al-Baqara', isPlaying: false,numero:2 ,index:1},
+    { nom: 'Al-Imran', isPlaying: false,numero:3 ,index:2}];
+  nom='Mamadou';
+  prenom='Daffé'
+  photo="../../assets/icon/mamadou_daffe.jpg";
+  recherche: string='';
+  /*index = this.sourates.map((sourate, index) => ({nom: sourate.nom, isPlaying: sourate.isPlaying, index}));*/
+  get sourateFiltres() {
+    return this.sourates
+      .map((sourate, index) => ({ nom: sourate.nom, isPlaying: sourate.isPlaying,numero:sourate.numero ,index}))
+      .filter(sourate  => sourate.nom.toLowerCase().includes(this.recherche.toLowerCase()));
+  }
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+    playIcon: string = 'play-outline';
+  isPlaying: boolean = false;
+  img:string= "../../assets/icon/poubelle.png";
+    togglePlayIcon(sourate:any) {
+    if (sourate && sourate.isPlaying ===false) {
+      if(sourate.isPlaying) {
+        sourate.isPlaying = !sourate.isPlaying;
+        this.playIcon = !sourate.isPlaying ? 'play-outline' : 'pause-circle-outline';
+        this.isPlaying = sourate.isPlaying;
+        console.log(this.isPlaying);
+      } else {
+        sourate.isPlaying = true;
+        this.playIcon = 'pause-circle-outline';
+        this.isPlaying = true;
+        console.log(this.isPlaying);
+      }
+    }
+  }
+
+  supprimerSourate(sourate: { isPlaying: boolean; index: number; nom: string;numero: number; }) {
+    this.sourates.splice(sourate.index,1);
+    for (let i = sourate.index; i < this.sourates.length; i++) {
+      this.sourates[i].index = i;
+    }
+  }
+
+}
+/*,
+    { nom: 'An-Nisa', isPlaying: false },
+    { nom: 'Al-Maaida', isPlaying: false },
+    { nom: 'Al-An`am', isPlaying: false },
+    { nom: 'Al-A`raf', isPlaying: false },
+    { nom: 'Al-Anfal', isPlaying: false },
+    { nom: 'At-Tawba', isPlaying: false },
+    { nom: 'Yunus', isPlaying: false },
+    { nom: 'Hud', isPlaying: false },
+    { nom: 'Yusuf', isPlaying: false },
+    { nom: 'Ibrahim', isPlaying: false },
+    { nom: 'Al-Hijr', isPlaying: false },
+    { nom: 'An-Nahl', isPlaying: false },
+    { nom: 'Al-Isra', isPlaying: false },
+    { nom: 'Al-Kahf', isPlaying: false },
     { nom: 'Maryam', isPlaying: false },
     { nom: 'Ta-Ha', isPlaying: false },
     { nom: 'Al-Anbiya', isPlaying: false },
@@ -92,39 +135,5 @@ export class UserListeDesSouratesPage implements OnInit {
     { nom: 'Al-Masad', isPlaying: false },
     { nom: 'Al-Ikhlas', isPlaying: false },
     { nom: 'Al-Falaq', isPlaying: false },
-    { nom: 'An-Nas', isPlaying: false }*/
-  ];
-  nom='Mamadou';
-  prenom='Daffé'
-  photo="../../assets/icon/mamadou_daffe.jpg";
-  recherche: string='';
-  /*index = this.sourates.map((sourate, index) => ({nom: sourate.nom, isPlaying: sourate.isPlaying, index}));*/
-  get sourateFiltres() {
-    return this.sourates.map((sourate, index) => ({ nom: sourate.nom, isPlaying: sourate.isPlaying,numero:sourate.numeroSourate, index})).filter(sourate => sourate.nom.toLowerCase().includes(this.recherche.toLowerCase()));
-  }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-
-  playIcon: string = 'play-outline';
-  isPlaying: boolean = false;
-
-  togglePlay(sourate: any) {
-      if (sourate && sourate.isPlaying ===false) {
-        if(sourate.isPlaying) {
-          sourate.isPlaying = !sourate.isPlaying;
-          this.playIcon = sourate.isPlaying ? 'pause-circle-outline' : 'play-outline';
-          this.isPlaying = sourate.isPlaying;
-          console.log(this.isPlaying);
-      } else {
-          sourate.isPlaying = true;
-          this.playIcon = 'pause-circle-outline';
-          this.isPlaying = true;
-          console.log(this.isPlaying);
-      }
-    }
-  }
-}
+    { nom: 'An-Nas', isPlaying: false }
+  ];*/

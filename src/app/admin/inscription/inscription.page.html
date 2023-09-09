@@ -11,7 +11,7 @@
           <!-- <i class="ri-reply-all-line"></i> -->
           <p class="logo">Logo</p>
         </div>
-  
+
         <!-- Le code de premium  -->
         <div class="premium">
           <button class="btn_premium">
@@ -28,7 +28,7 @@
           <div class="icon_retour">
             <i class="ri-reply-all-line"></i>
           </div>
-    
+
           <!-- Le code de premium  -->
           <div class="premium">
             <button class="btn_premium btn_pre">
@@ -36,9 +36,9 @@
             </button>
           </div>
       </div>
-  
+
     <!-- ======================== FIN DE HEADER  -->
-  
+
   </ion-header>
 
   <!-- de titre de Inscription  -->
@@ -57,32 +57,32 @@
 
   <!-- les champs de input pour l'inscription  -->
 
-  <form class="container_formulaire">
+  <form class="container_formulaire" #formElement="ngForm" (ngSubmit)="Submit()">
 
       <div class="formulaire">
-        
+
         <!-- input de votre nom  -->
         <div class="champ_input">
-          <input type="text" class="input_focus" name="name" id="name" placeholder="Saisir votre nom" autocomplete="off" required>
+          <input type="text" class="input_focus" [(ngModel)]="FormData.nom" id="name" placeholder="Saisir votre nom" autocomplete="on" [ngModelOptions]="{standalone: true}" required>
           <label for="name" class="label">Votre nom</label>
         </div>
 
         <!-- input de votre prénom  -->
         <div class="champ_input">
-          <input type="text" class="input_focus" name="prenom" id="prenom" placeholder="Saisir votre prénom" autocomplete="off" required>
+          <input type="text" class="input_focus" [(ngModel)]="FormData.prenom" id="prenom" placeholder="Saisir votre prénom" autocomplete="off" [ngModelOptions]="{standalone: true}" required>
           <label for="prenom" class="label">Votre prénom</label>
         </div>
 
         <!-- input de votre email  -->
         <div class="champ_input">
-          <input type="email" class="input_focus" name="email" id="email" placeholder="example@gmail.com" autocomplete="off" required>
+          <input type="email" class="input_focus" [(ngModel)]="FormData.email" id="email" placeholder="example@gmail.com" autocomplete="off" [ngModelOptions]="{standalone: true}" required>
           <label for="email" class="label">Votre email</label>
           <i class="ri-information-line input_info_icon"></i>
         </div>
 
         <!-- input de votre password  -->
         <div class="champ_input">
-          <input [type]="passwordType" class="input_focus" name="password" id="password" placeholder="**************" autocomplete="off" required>
+          <input [type]="passwordType" class="input_focus" [(ngModel)]="FormData.mdp" id="password" placeholder="**************" autocomplete="off" [ngModelOptions]="{standalone: true}" required>
           <label for="password" class="label">Votre Mot de passe</label>
           <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
           <i class="input_info_icon" (click)="togglePassword()">
@@ -99,7 +99,6 @@
         <div class="champ_input">
           <input [type]="passwordType" class="input_focus" name="passwordConfirm" id="passwordConfirm" placeholder="**************" autocomplete="off" required>
           <label for="passwordConfirm" class="label">Confirm mot de passe</label>
-          <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
           <i class="input_info_icon" (click)="togglePassword()">
             <ng-container *ngIf="!passwordShown">
               <i class="ri-eye-close-line"></i> <!-- icône de l'œil barré -->
