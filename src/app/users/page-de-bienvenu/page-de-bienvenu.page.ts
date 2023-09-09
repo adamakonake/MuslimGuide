@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-de-bienvenu',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageDeBienvenuPage implements OnInit {
 
-  constructor() { }
+  constructor(private route : Router){}
 
   ngOnInit() {
+  }
+
+  goToAccueil(){
+    this.route.navigateByUrl("/accueil")
+  }
+
+  goToLogin(){
+    this.route.navigateByUrl("/connexion")
   }
 
 }

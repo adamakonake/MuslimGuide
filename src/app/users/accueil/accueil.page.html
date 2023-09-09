@@ -72,9 +72,19 @@
         <ng-template  igxCarouselPrevButton let-disabled></ng-template>
         <ng-template  igxCarouselNextButton let-disabled></ng-template>
     </igx-carousel>
-    <div class="btnMosquee">
-      <img class="logoMapMosquee" src="../../../assets/icons8-marqueur-de-plan-96.png" alt="" srcset="">
+    <div class="btnMosquee" >
+      <img (click)="goToMosquee()" class="logoMapMosquee" src="../../../assets/icons8-marqueur-de-plan-96.png" alt="" srcset="">
       <p>MOSQUEE</p>
+    </div>
+    <div class="btnGroupe">
+      <div class="btnQuran" (click)="goToQuran()">
+        <img class="logoQuran" src="../../../assets/logo_quran.png" alt="" srcset="">
+        <p>QURAN</p>
+      </div>
+      <div class="btnAudio" (click)="goToAudio()">
+        <img class="logoCalendar" src="../../../assets/soudais.png" alt="" srcset="">
+        <p>AUDIO QURAN</p>
+      </div>
     </div>
     <div class="btnGroupe">
       <div class="btnKaaba">
@@ -87,7 +97,7 @@
       </div>
     </div>
     <div class="btnGroupe">
-      <div class="btnAnnonce">
+      <div class="btnAnnonce" (click)="goToAnnonce()">
         <img class="logoAnnonce" src="../../../assets/icons8-annonce-80.png" alt="" srcset="">
         <p>ANNONCE</p>
       </div>
@@ -96,9 +106,9 @@
         <p>TASBIH</p>
       </div>
     </div>
-    <div class="btnFm">
+    <div class="btnFm" (click)="goToRadio()">
       <img class="logoFm" src="../../../assets/icons8-radio-50.png" alt="" srcset="">
-      <p>TASBIH</p>
+      <p>RADIO</p>
     </div>
     <p>{{test}}</p>
 </div>
