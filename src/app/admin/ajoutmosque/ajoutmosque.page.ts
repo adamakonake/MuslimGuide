@@ -20,6 +20,12 @@ export class AjoutmosquePage implements OnInit {
     imam:['',Validators.required],
     longitude: [0, Validators.required],
     latitude: [0, Validators.required],
+    fadjr:['',Validators.required ],
+    zohr:['',Validators.required],
+    asri:['',Validators.required],
+    magreb:['',Validators.required],
+    isha:['',Validators.required],
+    djouma:['',Validators.required],
   });
 
   constructor(
@@ -32,7 +38,14 @@ export class AjoutmosquePage implements OnInit {
       this.createMosqueeForm.value.adresse!,
       this.createMosqueeForm.value.imam!,
       this.createMosqueeForm.value.longitude!,
-      this.createMosqueeForm.value.latitude!
+      this.createMosqueeForm.value.latitude!,
+       this.createMosqueeForm.value.fadjr!,
+       this.createMosqueeForm.value.zohr!,
+       this.createMosqueeForm.value.asri!,
+       this.createMosqueeForm.value.magreb!,
+       this.createMosqueeForm.value.isha!,
+       this.createMosqueeForm.value.djouma!
+
     )
     console.log(this.createMosqueeForm.value)
     console.log(this.mosqueeService.createMosquee(mosquee));

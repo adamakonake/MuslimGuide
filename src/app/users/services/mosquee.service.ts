@@ -23,10 +23,16 @@ export class MosqueeService {
       adresse : mosquee.adresse,
       longitude:mosquee.longitude,
       latitude:mosquee.latitude,
+     
     }).then(docRef => {
-      const heuresCollection = collection(docRef, 'heures');
+      const heuresCollection = collection(docRef, 'Heures');
       return addDoc(heuresCollection, {
-        imam : mosquee.imam
+        fadjr:mosquee.fadjr,
+        zohr:mosquee.zohr,
+        asri:mosquee.asri,
+        magreb:mosquee.magreb,
+        isha:mosquee.isha,
+        djouma:mosquee.djouma
       });
     })
 ;
