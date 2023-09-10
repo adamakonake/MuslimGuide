@@ -1,0 +1,103 @@
+<!-- <ion-header>
+
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+
+  <div class="container_header">
+    <div class="color_blanc">
+
+    </div>
+  </div>
+
+  <div class="cadre_container">
+    <div class="cadre">
+
+      <!-- Le titre de FN  -->
+      <div class="mon_titre">
+        <h1 class="titleh1">
+          FM
+        </h1>
+      </div>
+
+      <!-- Le div de l'image de radio  -->
+      <div class="image_radio">
+        <img class="img_radio" src="../../../assets/img_sy/icons8-radio-50 3.png" alt="image de radio">
+      </div>
+
+      <!-- Le div d'un petit paragraphe  -->
+      <div class="mon_para">
+        <p class="para_p"> 20 safar 1445 AH </p>
+      </div>
+
+      <!-- Le div de Mhz  -->
+      <div class="div_desc">
+        <h2 class="desc_h2"> Mhz </h2>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- /////////////////////////////////////////////// -->
+
+  <div class="div_ajouter_search">
+
+    <div class="btn_container">
+      <button class="btn_ajout">
+        Ajouter
+      </button>
+    </div>
+
+    <!-- Debut Pour les recherche bare search_container  -->
+    <div class="search_container">
+      <div class="recherche_bare">
+        <input type="search" name="search" placeholder="Recherche" [(ngModel)]="recherche">
+        <!-- mon icon de recherche  -->
+        <i class="ri-search-line icon_search"></i>
+      </div>
+    </div>
+    <!-- Fin Pour les recherche bare search_container  -->
+
+  </div>
+
+
+  <!-- 111111111111111111111 -->
+  <div class="container_radio_list" *ngFor="let i= index,let radios of fmFilterer">
+
+    <div class="tout_les_radio_container" >
+      <!-- l'imam   -->
+      <div class="list_radio">
+        <!-- section de titre radio  -->
+        <div class="titre_radio">
+          <h3 class="titre_radio_h3"> {{radios.nom}} </h3>
+        </div>
+
+        <!-- section de nombre de chaine radio   -->
+        <div class="chaine_nombre_radio">
+          <h2 class="chaine_nombre"> {{radios.frequence}}<strong>Mhz</strong> </h2>
+        </div>
+
+        <!-- section de lien de radio  -->
+        <div class="link_radio">
+          <a href="#" class="para_radio"> Lien : </a>
+        </div>
+
+      </div>
+
+    <!-- ==================================== delete et edit  -->
+      <div class="action_delete_put">
+        <!-- icon pour edit  -->
+        <div class="icon_edit">
+          <i class="ri-edit-box-line"></i>
+        </div>
+
+        <!-- icon pour delete  -->
+        <div class="icon_delete">
+          <button>
+           <i class="ri-delete-bin-line"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

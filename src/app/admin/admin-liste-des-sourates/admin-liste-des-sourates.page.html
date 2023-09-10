@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true">
+  <div class="card-info">
+    <div class="iman-info">
+      <div class="fullname">
+        <span>{{nom}}</span>
+        <span>{{prenom}}</span>
+      </div>
+      <div class="photo">
+        <img [ngSrc]=photo alt="la photo de l'iman" [width]="40" [height]="40">
+      </div>
+    </div>
+  </div>
+  <div class="div_ajouter_search">
+
+    <div class="btn_container">
+      <button class="btn_ajout">
+        Ajouter
+      </button>
+    </div>
+
+    <!-- Debut Pour les recherche bare search_container  -->
+    <div class="search_container">
+      <div class="recherche_bare">
+        <input type="search" name="search" placeholder="Recherche" [(ngModel)]="recherche">
+        <!-- mon icon de recherche  -->
+        <i class="ri-search-line icon_search"></i>
+      </div>
+    </div>
+    <!-- Fin Pour les recherche bare search_container  -->
+
+  </div>
+  <ion-item-divider></ion-item-divider>
+  <ion-card *ngFor="let i= index ;let sourate of sourateFiltres">
+    <ion-card-content class="card-sourate">
+      <div class="conteneur-sourate">
+        <div class="numéro">
+          <div class="cercle1">
+            {{sourate.numero}}
+          </div>
+        </div>
+        <div class="sourate">
+          {{ sourate.nom }}
+        </div>
+        <div class="boutons">
+            <button ion-button color="primary">
+              <ion-icon name="create"></ion-icon>
+            </button>
+            <button ion-button color="warning" (click)="supprimerSourate(sourate)">
+              <img [ngSrc]="img" alt="supprimer" [width]="30" [height]="30">
+            </button>
+          <button ion-button color="primary" (click)="togglePlayIcon(sourate)">
+          <ion-icon [name]="sourate.isPlaying ? 'pause-circle-outline' : 'play-outline'"></ion-icon>
+        </button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

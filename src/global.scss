@@ -12,6 +12,9 @@
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
 
+// mon google font 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
@@ -24,3 +27,25 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import "~leaflet/dist/leaflet.css";
+
+// * {
+//     padding: 0;
+//     margin: 0;
+//     box-sizing: border-box;
+// }
+
+
+
+:root {
+    --color-principal : #25A069;
+    --color-secondaire : #D79A10;
+    --color-blanc: #FFFFFF;
+    --color-noir: #000000;
+    --font-w200: 200;
+    --font-w300: 300;
+    --font-w400: 400;
+    --font-w500: 500;
+    --font-w600: 600;
+    --font-w700: 700;
+}

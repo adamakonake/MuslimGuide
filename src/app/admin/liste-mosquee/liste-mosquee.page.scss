@@ -1,0 +1,166 @@
+
+
+
+.titre{
+    color: #25A068;
+    display: flex;
+    display:flex;
+    justify-content:center;
+}
+
+.btn-add{
+    text-transform: capitalize;
+}
+
+.btn{
+    margin-left: 5%;
+    margin-top: 3%;
+    border-radius: 20px;
+    height: 30px;
+    width: 100px;
+    color: white;
+    background-color: #25A068;
+}
+
+
+.event-info{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 70px;
+    border: 2px solid rgba(233, 230, 230, 0.9);
+    margin-left: 3%;
+    margin-top: 5%;
+    border-radius: 20px;
+
+}
+
+.localisation{
+
+    margin: -1%;
+    width: 250px;
+}
+.localisation>i{
+    color: #25A068;
+}
+
+#icon-location{
+    margin-top: 7%;
+    margin-left: 7%;
+    color: #25A068;
+}
+
+.loc{
+    display: flex;
+    margin-left: 10%;
+    width: 120px;
+}
+.lieu{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.icon-user{
+    margin-top: 10px;
+}
+
+.date{
+    margin-left: 10%;
+}
+.date-exact{
+    width: 100px;
+    margin-top: 8px;
+}
+
+
+.action{
+    display: flex;
+    margin: 5%;
+    margin-top: 10%;
+    margin-left: 8%;
+}
+
+.heure{
+    margin-top: -2%;
+}
+
+.action>i{
+    margin-left: 20px;
+    margin-top: 10%;
+}
+
+.fa-regular{
+    color: #25A068;
+}
+
+.action>.fa-solid {
+    color: red;
+}
+
+.info-imam{
+    margin-top: -3%;
+    display: flex;
+    margin-top: 10px;
+}
+
+.nom-imam{
+    margin-top: -10px;
+    margin-left: 20px;
+}
+#icon-imam{
+    margin-left: 13%;
+    margin-top: -12px;
+}
+
+
+// recherche
+
+.container{
+    display: flex;
+}
+
+.recherche{
+    padding-left: 30px; 
+    padding-right: 35px; 
+    height: 30px;
+    width: 80%; 
+    border: 1px solid rgb(223, 223, 183);
+    margin-top: 4%;
+    margin-left: 9%;
+    margin-right: 5%;
+    border-radius: 15px;
+    background-color:#E0E0E0;
+    text-align: center; 
+    position: relative; 
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 10%;
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 5px;
+    left: 1px;
+    margin-left: 8%;
+    top: 58%;
+    width: 18%;
+    height: 30px;
+    margin-left: 9%;
+    border-radius: 20px;
+    transform: translateY(-50%);
+    background: var(--Couleur-Or, #D79A10); 
+  } 
+
+  .search-icon>ion-icon{
+    margin-left: 19%;
+    margin-top: 10%;
+  }
+
+
+  .container{
+    display: flex;
+}
+
