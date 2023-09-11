@@ -13,7 +13,6 @@ import { Mosquee } from 'src/app/users/models/mosquee';
 })
 export class AjoutmosquePage implements OnInit {
 
- 
   createMosqueeForm = this.formBuilder.group({
     nom: ['', Validators.required],
     adresse: ['', Validators.required],
