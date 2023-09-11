@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./users/annonce/annonce.module').then( m => m.AnnoncePageModule)
   },
   {
-    path: 'pageaffichage',
+    path: 'pageaffichage/:numero',
     loadChildren: () => import('./users/pageaffichage/pageaffichage.module').then( m => m.PageaffichagePageModule)
   },
   {
@@ -121,10 +121,16 @@ const routes: Routes = [
     loadChildren: () => import('./users/liste-lecteur/liste-lecteur.module').then( m => m.ListeLecteurPageModule)
   },
   {path: 'user-liste-des-sourates', loadChildren: () => import('./users/user-liste-des-sourates/user-liste-des-sourates.module').then( m => m.UserListeDesSouratesPageModule)},
-  {path: 'admin-liste-sourate', loadChildren:() => import('./admin/admin-liste-des-sourates/admin-liste-des-sourates.module').then(m => m.AdminListeDesSouratesPageModule)},  {
+  {path: 'admin-liste-sourate', loadChildren:() => import('./admin/admin-liste-des-sourates/admin-liste-des-sourates.module').then(m => m.AdminListeDesSouratesPageModule)},
+  {
     path: 'map-page',
     loadChildren: () => import('./users/map-page/map-page.module').then( m => m.MapPagePageModule)
+  },
+  {
+    path: 'sourate-liste',
+    loadChildren: () => import('./users/sourate-liste/sourate-liste.module').then( m => m.SourateListePageModule)
   }
+
 
 
 ];

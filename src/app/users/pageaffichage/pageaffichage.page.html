@@ -2,34 +2,24 @@
   <ion-toolbar>
     <ion-title>pageaffichage</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">pageaffichage</ion-title>
     </ion-toolbar>
-  </ion-header>
-</ion-content> -->
+  </ion-header> -->
+  <div class="headRoundVert">
+    <div class="headRoundBlanc">
 
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>pageaffichage</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">pageaffichage</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content> -->
-<div class="background">
-  
-  <div class="backhaut">
-    
-    <div class="backblanc"></div>
+    </div>
   </div>
-</div>
-
+  <div class="titleBarr">
+    <p>{{contenue.name}}</p>
+  </div>
+  <div class="sourateDive" *ngFor="let ayas of contenue.ayahs">
+    <p class="sourateAyas">{{ayas.text}}</p>
+  </div>
+  
+</ion-content> 
