@@ -23,13 +23,13 @@ export class AccueilPage implements OnInit, AfterViewInit {
         this.test = data.results[0].components.suburb;
         //console.log(data)
         console.log(result.coords.latitude+" "+result.coords.longitude);
-        this.watchPosition();
+        //this.watchPosition();
       })
     })
   }
-  watchPosition() {
-    const wait = Geolocation.watchPosition({}, (position, err) => {});
-  }
+  // watchPosition() {
+  //   const wait = Geolocation.watchPosition({}, (position, err) => {});
+  // }
   
   goToMosquee(){
     this.route.navigateByUrl("/map-page")
