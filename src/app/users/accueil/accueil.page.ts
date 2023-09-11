@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class AccueilPage implements OnInit, AfterViewInit {
 
   apiKey = "ee179fc833ed4af9ad062cfabc51004b";
-  test:string = "salut"
+  test:string = "salut";
   constructor( private route : Router, private http : HttpClient) { }
 
   ngOnInit() {
@@ -23,17 +23,21 @@ export class AccueilPage implements OnInit, AfterViewInit {
         this.test = data.results[0].components.suburb;
         //console.log(data)
         console.log(result.coords.latitude+" "+result.coords.longitude);
+        this.watchPosition();
       })
     })
   }
+  watchPosition() {
+    const wait = Geolocation.watchPosition({}, (position, err) => {});
+  }
   
   goToMosquee(){
-    this.route.navigateByUrl("/liste-des-mosquees")
-    console.log("hbfezklm")
+    this.route.navigateByUrl("/map-page")
+    // console.log("hbfezklm")liste-des-mosquees
   }
   
   goToQuran(){
-    this.route.navigateByUrl("/pageaffichage")
+    this.route.navigateByUrl("/sourate-liste")
   }
 
   goToAudio(){

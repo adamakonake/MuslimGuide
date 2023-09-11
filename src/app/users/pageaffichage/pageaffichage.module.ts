@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PageaffichagePageRoutingModule } from './pageaffichage-routing.module';
 
 import { PageaffichagePage } from './pageaffichage.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PageaffichagePageRoutingModule
+    PageaffichagePageRoutingModule,
+    HttpClientModule
   ],
   declarations: [PageaffichagePage]
 })

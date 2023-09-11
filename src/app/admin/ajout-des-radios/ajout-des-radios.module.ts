@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,6 +13,7 @@ import { AjoutDesRadiosPage } from './ajout-des-radios.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     AjoutDesRadiosPageRoutingModule
   ],
   declarations: [AjoutDesRadiosPage]

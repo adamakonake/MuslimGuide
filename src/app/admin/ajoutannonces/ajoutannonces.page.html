@@ -11,7 +11,7 @@
     </ion-toolbar>
   </ion-header>
 </ion-content> -->
-  <!-- <ion-header class="vert">
+<!-- <ion-header class="vert">
 
       <div class="barrehaut"></div>
 
@@ -20,40 +20,46 @@
 <div class="vert">
   .
 </div>
- 
-<ion-content class="" >
-<div class="contourt">
-  <h1 style="padding-top: 30px;">Ajouter Annonce</h1>
-<div class="cadreblanc">
-  
-  <div class="first" >
-  <div>
-    <ion-label position="floating" style="margin-left: 10%; font-weight: bold;">Date :</ion-label>
-    <ion-input type="date" style=" text-align: center;" class="input"></ion-input>
-  </div>
-    
-   <div>
-    <ion-label position="floating"style="margin-left: 10px; font-weight: bold;">Nom Mosquée :</ion-label>
-    <ion-input type="text"  style="text-align: center;" class="input"placeholder=".........." ></ion-input>
-  </div>
-  
-  </div>
-  <div class="seconds">
-    <div>
-      <ion-label position="floating" style="margin-left: 10px; font-weight: bold;">Heure preche :</ion-label>
-      <ion-input type="text"  style=" text-align: center;" class="input" placeholder="hh:mm" ></ion-input>
+
+
+<ion-content class="">
+  <form [formGroup]="addannonceForm" (ngSubmit)="onSubmit()">
+    <div class="contourt">
+      <h1 style="padding-top: 30px;">Ajouter Annonce</h1>
+      <div class="cadreblanc">
+
+        <div class="first">
+          <div>
+            <ion-label position="floating" style="margin-left: 10%; font-weight: bold;">Date :</ion-label>
+            <ion-input type="date" style=" text-align: center;" class="input" formControlName='date'></ion-input>
+          </div>
+
+          <div>
+            <ion-label position="floating" style="margin-left: 10px; font-weight: bold;">Nom Mosquée :</ion-label>
+            <ion-input type="text" style="text-align: center;" class="input" placeholder=".........."
+              formControlName='nomMosquee'></ion-input>
+          </div>
+
+        </div>
+        <div class="seconds">
+          <div>
+            <ion-label position="floating" style="margin-left: 10px; font-weight: bold;">Heure preche :</ion-label>
+            <ion-input type="text" style=" text-align: center;" class="input" placeholder="hh:mm"
+              formControlName='heurePreche'></ion-input>
+          </div>
+
+          <div>
+            <ion-label position="floating" style="margin-left: 10px; font-weight: bold;">Heures tabsir :</ion-label>
+            <ion-input type="text" style=" text-align: center;" class="input" placeholder="hh:mm"
+              formControlName='heureTabsir'></ion-input>
+          </div>
+
+          <div class="button">
+            <input type="submit" ajoutAnonnce.valid value="Ajouter"
+              style=" text-align: center;height: 50px;width: 100%; background-color: #25A069; border-radius: 20px;">
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div>
-    <ion-label position="floating" style="margin-left: 10px; font-weight: bold;">Heures tabsir :</ion-label>
-    <ion-input type="text"  style=" text-align: center;" class="input" placeholder="hh:mm"></ion-input>
-  </div>
-
-  <div class="button">
-    <input type="submit" value="Ajouter" style=" text-align: center;height: 50px;width: 100%; background-color: #25A069; border-radius: 20px;">
-  </div>
-  </div>
-</div>
-</div>
-</ion-content> 
-
+  </form>
+</ion-content>
