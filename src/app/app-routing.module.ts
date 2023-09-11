@@ -125,7 +125,11 @@ const routes: Routes = [
   {
     path: 'map-page',
     loadChildren: () => import('./users/map-page/map-page.module').then( m => m.MapPagePageModule)
+  },  {
+    path: 'kaba',
+    loadChildren: () => import('./users/kaba/kaba.module').then( m => m.KabaPageModule)
   }
+
 
 
 ];
