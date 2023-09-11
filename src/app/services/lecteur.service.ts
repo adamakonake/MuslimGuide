@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
-// Import Firebase modules + environment
-
-import { Radio } from '../ajout-des-radios/mode';
 import { Firestore } from '@angular/fire/firestore';
+import { Lecteur } from '../admin/ajout-lecteur/mode';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'any'
 })
-export class RadioService {
-  
+export class LecteurService {
+
   constructor(private readonly firestore: Firestore) { }
 
-  addRadio(radio: Radio) {
-    const data = collection(this.firestore, "Radio");
+  addLecteur(lecteur: Lecteur) {
+    const data = collection(this.firestore, "Lecteur");
     console.log( "Radio");
     return addDoc(data,{
-      nom: radio.nom,
-      frequence: radio.frequence,
-      
+      nom: lecteur.nom,
+      prenom: lecteur.prenom,
+      nationalite: lecteur.nationalite,
+      photo: lecteur.photo,
       
     });
     
   }
-
-  
 }

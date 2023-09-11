@@ -16,10 +16,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { environment } from 'src/environments/environment';
+import {AngularFireModule} from '@angular/fire/compat'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import {getFirestore} from 'firebase/firestore';
-import {provideFirestore} from '@angular/fire/firestore';
+import { provideFirestore } from '@angular/fire/firestore';
+import { getFirestore } from 'firebase/firestore';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCyhWnG7QEm7mREbarlNojsc9Ncf0wSBpQ",
@@ -34,15 +35,12 @@ const firebaseConfig = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    // AngularFireModule.initializeApp(firebaseConfig),
     MbscModule,   
     FormsModule, 
-    AngularFireAuthModule,
-    // AngularFireStorageModule,
-    // AngularFirestoreModule,
-    provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideFirestore(() => getFirestore()),
-    BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule
-  ],
+    provideFirebaseApp(()=>initializeApp(firebaseConfig)), 
+    provideFirestore(()=>getFirestore()),
+    BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
