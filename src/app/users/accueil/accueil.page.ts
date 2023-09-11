@@ -37,7 +37,7 @@ export class AccueilPage implements OnInit, AfterViewInit {
   }
   
   goToQuran(){
-    this.route.navigateByUrl("/pageaffichage")
+    this.route.navigateByUrl("/sourate-liste")
   }
 
   goToAudio(){

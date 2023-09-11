@@ -4,6 +4,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
+// Import Firebase modules + environment
+
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+//import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
@@ -13,6 +20,7 @@ import {AngularFireModule} from '@angular/fire/compat'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
 import { getFirestore } from 'firebase/firestore';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCyhWnG7QEm7mREbarlNojsc9Ncf0wSBpQ",

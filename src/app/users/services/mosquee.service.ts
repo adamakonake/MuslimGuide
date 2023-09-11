@@ -34,8 +34,8 @@ export class MosqueeService {
         isha:mosquee.isha,
         djouma:mosquee.djouma
       });
-    })
-;
+    });
+
   };
 
 }
