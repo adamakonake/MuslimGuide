@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-radio',
@@ -13,14 +14,14 @@ export class ListRadioPage implements OnInit {
     {nom: 'RADIO RENOUVEAU', frequence:'91.8',index: 2},
   ];
 
-  constructor() { }
+  constructor(private route: Router) { }
   get fmFilterer(){
     return this.radios.map((radio, index) =>({nom:radio.nom,frequence:radio.frequence,index})).filter((radio=>radio.nom.toLowerCase().includes(this.recherche.toLowerCase())));
   }
   ngOnInit() {
   }
 
-  supprimer(radios:{nom:string,frequence:string,index:number}) {
-
+  ajouterRadio() {
+    this.route.navigateByUrl('/ajout-des-radios')
   }
 }

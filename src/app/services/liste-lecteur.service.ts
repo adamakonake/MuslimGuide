@@ -13,7 +13,7 @@ export class ListeLecteurService {
     this.listeLecteurRef$ = this.database.list('liste-lecteur');
   }
 
-  listeListeLecteurs() {
+  AllListeLecteurs() {
     return this.listeLecteurRef$.valueChanges();
   }
 

@@ -5,7 +5,7 @@
   <div class="div_ajouter_search">
 
     <div class="btn_container">
-      <button class="btn_ajout">
+      <button class="btn_ajout" (click)="goToAjouter()">
         Ajouter
       </button>
     </div>
@@ -21,25 +21,21 @@
     <!-- Fin Pour les recherche bare search_container  -->
   </div>
 
-<ion-card *ngFor="let i=index,let imans of imanFiltres">
+<ion-card *ngFor="let i=index,let imam of imanFiltres">
   <ion-card-content>
     <div class="iman">
       <div class="photo">
-        <img [ngSrc]="imans.photo" [height]="100" [width]="100" alt="la photo de l'iman">
+        <img src="" alt="la photo de l'iman">
       </div>
       <div class="nom">
-        <h2>Nom:{{imans.nom}}</h2>
-        <h2>Prénom: {{imans.prenom}}</h2>
-        <h2>Nationalité: {{imans.nationalite}}</h2>
+        <h2>Nom:{{imam.nom}}</h2>
+        <h2>Prénom: {{imam.prenom}}</h2>
+        <h2>Nationalité: {{imam.nationalite}}</h2>
       </div>
     </div>
     <div class="btn-actions">
-        <button ion-button="editer">
           <ion-icon color="success" name="create-outline"></ion-icon>
-        </button>
-        <button ion-button="delete">
           <ion-icon color="danger"  name="trash-outline"></ion-icon>
-        </button>
     </div>
   </ion-card-content>
 </ion-card>
