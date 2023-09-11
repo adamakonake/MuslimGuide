@@ -1,57 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>liste-lecteurs</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">liste-lecteurs</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
-
-
   <h2 class="titre"> Liste des lecteurs</h2>
 
-   <div class="container">
-   <button  class="btn">
-    <i class="fa-solid fa-plus"></i>
-    Ajouter
-   </button>
+  <div class="div_ajouter_search">
 
-   <div class="search-container">
-    <input type="search" value="" class="recherche">
-    <div class="search-icon">
-      <ion-icon name="search-outline"></ion-icon>
-      <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
-      <!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
+    <div class="btn_container">
+      <button class="btn_ajout">
+        Ajouter
+      </button>
     </div>
+
+    <!-- Debut Pour les recherche bare search_container  -->
+    <div class="search_container">
+      <div class="recherche_bare">
+        <input type="search" name="search" placeholder="Recherche" [(ngModel)]="recherche">
+        <!-- mon icon de recherche  -->
+        <i class="ri-search-line icon_search"></i>
+      </div>
+    </div>
+    <!-- Fin Pour les recherche bare search_container  -->
   </div>
-<!-- </div> -->
-</div>
 
-   
-   <div class="event-info">
-    <div class="localisation">
-      <img src="../../../assets/image/img_1.jpeg" alt="" class="img">
-      <div class="loc">
-     <p class="nom">Nom Imam</p>
-     <p class="prenom">Prenom Imam</p>
-     <p class="nationnalite">Nationnalite Imam</p>
+<ion-card *ngFor="let i=index,let imans of imanFiltres">
+  <ion-card-content>
+    <div class="iman">
+      <div class="photo">
+        <img [ngSrc]="imans.photo" [height]="100" [width]="100" alt="la photo de l'iman">
       </div>
-   
-      
+      <div class="nom">
+        <h2>Nom:{{imans.nom}}</h2>
+        <h2>Prénom: {{imans.prenom}}</h2>
+        <h2>Nationalité: {{imans.nationalite}}</h2>
       </div>
-   
-   <div class="icon" style="margin-left: 4%;">
-     <ion-icon color="success" name="create-outline"></ion-icon>
-     <ion-icon color="danger"  name="trash-outline"></ion-icon>
-
-   </div>
-
-   </div>
-
-   
-
+    </div>
+    <div class="btn-actions">
+        <button ion-button="editer">
+          <ion-icon color="success" name="create-outline"></ion-icon>
+        </button>
+        <button ion-button="delete">
+          <ion-icon color="danger"  name="trash-outline"></ion-icon>
+        </button>
+    </div>
+  </ion-card-content>
+</ion-card>
 </ion-content>
