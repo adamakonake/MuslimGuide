@@ -1,0 +1,40 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>sourateListe</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">sourateListe</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <div class="headRoundVert">
+    <div class="headRoundBlanc">
+
+    </div>
+  </div>
+
+  <div class="titleBarr">
+    <p>AL QURAN</p>
+  </div>
+  
+  <ion-card *ngFor="let i= index ;let sourate of sourates" >
+    <ion-card-content class="card-sourate">
+      <div class="conteneur-sourate" (click)="goToSourate(sourate.number)">
+        <div class="numéro">
+          <div class="cercle1">
+            {{sourate.number}}
+          </div>
+        </div>
+        <div class="sourate">
+          <p class="sourateNameAr">{{ sourate.name }}</p>
+          <p>{{ sourate.englishName }}</p>
+        </div>
+        <p class="nbreAyahs">Nombre de versets : {{ sourate.numberOfAyahs }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

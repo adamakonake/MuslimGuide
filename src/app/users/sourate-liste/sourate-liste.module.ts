@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PageaffichagePageRoutingModule } from './pageaffichage-routing.module';
+import { SourateListePageRoutingModule } from './sourate-liste-routing.module';
 
-import { PageaffichagePage } from './pageaffichage.page';
+import { SourateListePage } from './sourate-liste.page';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     IonicModule,
-    PageaffichagePageRoutingModule,
+    SourateListePageRoutingModule,
     HttpClientModule
   ],
-  declarations: [PageaffichagePage]
+  declarations: [SourateListePage]
 })
-export class PageaffichagePageModule {}
+export class SourateListePageModule {}

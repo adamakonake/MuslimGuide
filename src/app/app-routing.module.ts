@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'ajout-lecteur',
+    redirectTo: 'page-de-bienvenu',
     pathMatch: 'full'
   },
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./users/annonce/annonce.module').then( m => m.AnnoncePageModule)
   },
   {
-    path: 'pageaffichage',
+    path: 'pageaffichage/:numero',
     loadChildren: () => import('./users/pageaffichage/pageaffichage.module').then( m => m.PageaffichagePageModule)
   },
   {
@@ -129,6 +129,10 @@ const routes: Routes = [
   {
     path: 'kaba',
     loadChildren: () => import('./users/kaba/kaba.module').then( m => m.KabaPageModule)
+  },
+  {
+    path: 'sourate-liste',
+    loadChildren: () => import('./users/sourate-liste/sourate-liste.module').then( m => m.SourateListePageModule)
   }
 
 
