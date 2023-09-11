@@ -16,10 +16,11 @@
     </div>
   </div>
   <div class="titleBarr">
-    <p>{{contenue.name}}</p>
+    <p>{{ name }}</p>
   </div>
-  <div class="sourateDive" *ngFor="let ayas of contenue.ayahs">
+  <div class="sourateDive" *ngFor="let i= index ; let ayas of ayahs">
     <p class="sourateAyas">{{ayas.text}}</p>
+    <p class="sourateAyasTrans">{{traslateAyahs[i].text}}</p>
   </div>
   
 </ion-content> 
