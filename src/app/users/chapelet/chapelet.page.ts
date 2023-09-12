@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChapeletPage implements OnInit {
 
+  reset:any;   
+   count!:number; 
+
+  
+
   constructor() { }
 
+    
   ngOnInit() {
+    this.count = 0;
+  }
+
+  increment(count:number):any{
+    this.count++;
+  }
+
+  resetNumber():any{
+   this.count = 0;
   }
 
 }

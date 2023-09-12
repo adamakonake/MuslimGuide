@@ -18,7 +18,7 @@
   <h2 class="chapelet">Chapelet</h2> <br>
 
   <div class="counter">
-    <span class="count">0</span>
+    <span class="count">{{count}}</span>
   </div>
 
   <div class="image">
@@ -27,10 +27,10 @@
 
   <div class="icon-btn">
      
-      <ion-icon color="success" name="refresh-outline"></ion-icon>
+      <ion-icon color="success" (click)="resetNumber()" class="retour" name="refresh-outline"></ion-icon>
 
    
-      <ion-icon color="success" name="add-outline"></ion-icon>   
+      <ion-icon  color="success" (click)="increment(count)" class="plus" name="add-outline"></ion-icon>   
 
   </div>
   <!-- <div class="icon-btn">
@@ -59,3 +59,5 @@
   <!-- main  -->
 
 </ion-content>
+
+
