@@ -10,10 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 export class PageaffichagePage implements OnInit {
 
   name ="";
-  ayahs : any[] = [];
+  ayahs : any;
   contenue : any;
   translate : any;
-  traslateAyahs : any[] = [];
+  traslateAyahs : any;
 
   constructor( private activatedRoute : ActivatedRoute,private http : HttpClient,private zone : NgZone) { }
 
@@ -21,16 +21,17 @@ export class PageaffichagePage implements OnInit {
     this.activatedRoute.paramMap.subscribe((result)=>{
       const number = result.get("numero");
       this.zone.run(()=>{
-        this.http.get("http://api.alquran.cloud/v1/surah/"+number).subscribe((response : any) => {
+        this.http.get("https://api.alquran.cloud/v1/surah/"+number).subscribe((response : any) => {
         console.log(response.data.ayahs);
-        this.contenue = response.data;
-            this.name = this.contenue.name;
-            this.ayahs = this.contenue.ayahs
-          })
+          this.contenue = response.data;
+          this.name = this.contenue.name;
+          this.ayahs = this.contenue.ayahs
           this.http.get("https://api.alquran.cloud/v1/surah/"+number+"/fr.hamidullah").subscribe((result : any) =>{
             this.translate = result.data;
             this.traslateAyahs = this.translate.ayahs;
+          })
         })
+          
       })
     })
   }
