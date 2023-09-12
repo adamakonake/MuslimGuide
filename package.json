@@ -37,10 +37,11 @@
     "@igniteui/material-icons-extended": "^3.0.0",
     "@ionic/angular": "^7.0.0",
     "@ionic/lab": "^3.2.15",
+    "@jcesarmobile/ssl-skip": "0.2.0",
     "@mobiscroll/angular": "https://npm.mobiscroll.com/@mobiscroll/angular-ivy-trial/-/angular-ivy-trial-5.26.2.tgz",
     "@types/leaflet-routing-machine": "^3.2.5",
     "fflate": "^0.7.3",
-    "firebase": "^9.16.0",
+    "firebase": "^10.3.0",
     "hammerjs": "^2.0.8",
     "igniteui-angular": "^16.0.21",
     "ionicons": "^7.0.0",
@@ -87,5 +88,4 @@
     "typescript": "~5.0.2"
   },
   "description": "An Ionic project"
-
 }

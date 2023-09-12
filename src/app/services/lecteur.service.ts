@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import {collectionData, Firestore} from '@angular/fire/firestore';
 import { Lecteur } from '../admin/ajout-lecteur/mode';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import {addDoc, collection, deleteDoc, doc} from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'any'
 })
 export class LecteurService {
-
+  lecteur:any[]=[];
   constructor(private readonly firestore: Firestore) { }
 
   addLecteur(lecteur: Lecteur) {
     const data = collection(this.firestore, "Lecteur");
-    console.log( "Radio");
     return addDoc(data,{
       nom: lecteur.nom,
       prenom: lecteur.prenom,
       nationalite: lecteur.nationalite,
       photo: lecteur.photo,
-      
+
     });
-    
+  }
+  getLecteur(){
+    const data = collection(this.firestore, "Lecteur")
+    collectionData(data,{idField:'id'}).subscribe((resultat:any[]) => {
+      resultat.forEach(async lecteur => {
+        /*const lecteurRef = doc(this.firestore, "Lecteur", lecteur.id);*/
+        lecteur = lecteur
+        this.lecteur.push(lecteur);
+      })
+    })
+    return this.lecteur;
   }
 }
+

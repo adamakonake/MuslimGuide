@@ -41,12 +41,12 @@ export class MapPagePage implements OnInit, OnDestroy {
         // markPoint.bindPopup('<p>Vous</p>')
         // this.map.addLayer(markPoint);
         // this.map.panTo(L.latLng(12.632895, -8.028002));
-    
+
           L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution:
               '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(this.map);
-    
+
           this.routing = L.Routing.control({
             waypoints: [L.latLng(result.coords.latitude,result.coords.longitude), L.latLng(12.632895, -8.028002)],
             routeWhileDragging: true
@@ -69,7 +69,7 @@ export class MapPagePage implements OnInit, OnDestroy {
     }catch(e){
       console.log(e);
     }
-    
+
     // Geolocation.getCurrentPosition().then((result) =>{
 
     //   Marker.prototype.options.icon = this.defaultIcon;
@@ -90,17 +90,17 @@ export class MapPagePage implements OnInit, OnDestroy {
     //     waypoints: [L.latLng(result.coords.latitude,result.coords.longitude), L.latLng(12.632895, -8.028002)],
     //     routeWhileDragging: true
     // }).addTo(this.map);
-    
+
 
     // L.Routing.control({
     //   waypoints: [L.latLng(57.74, 11.94), L.latLng(57.6792, 11.949)],
     //   routeWhileDragging: true
     // }).addTo(this.map);
-    
+
 
     //})
 
-    
+
   }
 
 }
