@@ -20,7 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AngularFireModule} from '@angular/fire/compat'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth'
 import { getFirestore } from 'firebase/firestore';
+import { from } from 'rxjs';
 
 
 const firebaseConfig = {
@@ -43,6 +45,7 @@ const firebaseConfig = {
       closeButton:true,
       progressBar:true
     }),
+    provideAuth(()=>getAuth()),
     provideFirebaseApp(()=>initializeApp(firebaseConfig)), 
     provideFirestore(()=>getFirestore()),
     BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],

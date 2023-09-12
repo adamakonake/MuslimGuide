@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { InscriptionService } from 'src/app/services/inscription.service';
+import { MosqueeService } from 'src/app/users/services/mosquee.service';
 
 @Component({
   selector: 'app-connexion',
@@ -16,7 +19,13 @@ export class ConnexionPage implements OnInit {
     {email:'amadouit223@gmail.com', password:'1234567890'},
       {email:'cptbarbossa23@gmail.com', password:'1234567890'},
   ];
-  constructor() { }
+
+  connexionForm = this.formBuilder.group({
+    email : ['', Validators.required],
+    password : ['', Validators.required]
+  })
+
+  constructor(private inscriptionService : InscriptionService, private formBuilder : FormBuilder) { }
 
   ngOnInit() {
   }
@@ -33,13 +42,17 @@ export class ConnexionPage implements OnInit {
     }
   }
   Submit(){
-      const admin = this.admininfo.find(admin => admin.email === this.formData.email && admin.password === this.formData.password);
-    console.log(this.formData);
-    if (admin) {
-      console.log('Admin authenticatifié!');
-    } else {
-      console.log('Admin non authenticatifié!');
-    }
+    //   const admin = this.admininfo.find(admin => admin.email === this.formData.email && admin.password === this.formData.password);
+    // console.log(this.formData);
+    // if (admin) {
+    //   console.log('Admin authenticatifié!');
+    // } else {
+    //   console.log('Admin non authenticatifié!');
+    // }
+    const email = this.connexionForm.value.email!;
+    const password = this.connexionForm.value.password!;
+    console.log(this.inscriptionService.logIn(email,password))
+
   }
 
 }

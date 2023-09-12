@@ -69,6 +69,10 @@ const routes: Routes = [
     loadChildren: () => import('./users/liste-des-mosquees/liste-des-mosquees.module').then( m => m.ListeDesMosqueesPageModule)
   },
   {
+    path: 'liste-mosquee',
+    loadChildren: () => import('./admin/liste-mosquee/liste-mosquee.module').then( m => m.ListeMosqueePageModule)
+  },
+  {
     path: 'page-de-bienvenu',
     loadChildren: () => import('./users/page-de-bienvenu/page-de-bienvenu.module').then( m => m.PageDeBienvenuPageModule)
   },

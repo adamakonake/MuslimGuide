@@ -59,6 +59,7 @@ export class ListRadioPage implements OnInit {
 
   }
   
+  // ::::::::::::::::::::::::::::::::::::traitement poppup pour animation::::::::::::::::::::::::::::::
   enterAnimation = (baseEl: HTMLElement) => {
     const root = baseEl.shadowRoot;
 
