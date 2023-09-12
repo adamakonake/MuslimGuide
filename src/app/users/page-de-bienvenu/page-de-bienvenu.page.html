@@ -1,22 +1,40 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>page_de_bienvenu</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
   <ion-content>
     <div class="bienvenu">
-<img src="../../../assets/image/Group 193.png" alt="">
-<img class="img2" src="../../../assets/image/icone.png" alt="">
-<div>
-  <h2>Bienvenue sur</h2>
-<h1>MuslimGuide</h1><br><br><br>
-</div>
-<div class="bouton">
-  <button (click)="goToAccueil()">Commencer</button><br><br>
-<button class="bt2" (click)="goToLogin()">Compte</button>
-</div>
+
+      <img src="../../../assets/image/Group 193.png" alt="">
+
+      <!-- Container de mon logo  -->
+      <div class="container_logo">
+        <!-- mon logo  -->
+        <div class="mon_logo">
+          <img class="img2" src="../../../assets/image/icone.png" alt="">
+        </div>
+
+        <!-- le nom de mon logo  -->
+        <div class="name_logo">
+          <h2>Bienvenue sur</h2>
+          <h1 class="name_logo_h1">MuslimGuide</h1>
+        </div>
+      </div>
+
+      <!-- Container de button  -->
+      <div class="container_button">
+        <!-- mon button de pour commencer  -->
+        <div class="bouton">
+
+          <button class="btn_connect" (click)="goToAccueil()">Commencer</button><br><br>
+          <button class="btn_connect" (click)="goToLogin()">Compte</button>
+
+        </div>
+      </div>
+
     </div>
   </ion-content>
 </ion-content>
