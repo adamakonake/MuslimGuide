@@ -1,4 +1,3 @@
-
 <ion-content class="global_container">
 
   <!-- Tout les header  -->
@@ -57,32 +56,32 @@
 
   <!-- les champs de input pour l'inscription  -->
 
-  <form class="container_formulaire" #formElement="ngForm" (ngSubmit)="Submit()">
+  <form class="container_formulaire" [formGroup]="inscription" #formElement="ngForm" (ngSubmit)="submit()">
 
       <div class="formulaire">
 
         <!-- input de votre nom  -->
         <div class="champ_input">
-          <input type="text" class="input_focus" [(ngModel)]="FormData.nom" id="name" placeholder="Saisir votre nom" autocomplete="on" [ngModelOptions]="{standalone: true}" required>
+          <input type="text" class="input_focus" formControlName="nom" id="name" placeholder="Saisir votre nom" autocomplete="on" required>
           <label for="name" class="label">Votre nom</label>
         </div>
 
         <!-- input de votre prénom  -->
         <div class="champ_input">
-          <input type="text" class="input_focus" [(ngModel)]="FormData.prenom" id="prenom" placeholder="Saisir votre prénom" autocomplete="off" [ngModelOptions]="{standalone: true}" required>
+          <input type="text" class="input_focus" formControlName="prenom" id="prenom" placeholder="Saisir votre prénom" autocomplete="off" required>
           <label for="prenom" class="label">Votre prénom</label>
         </div>
 
         <!-- input de votre email  -->
         <div class="champ_input">
-          <input type="email" class="input_focus" [(ngModel)]="FormData.email" id="email" placeholder="example@gmail.com" autocomplete="off" [ngModelOptions]="{standalone: true}" required>
+          <input type="email" class="input_focus" formControlName="email" id="email" placeholder="example@gmail.com" autocomplete="off" required>
           <label for="email" class="label">Votre email</label>
           <i class="ri-information-line input_info_icon"></i>
         </div>
 
         <!-- input de votre password  -->
         <div class="champ_input">
-          <input [type]="passwordType" class="input_focus" [(ngModel)]="FormData.mdp" id="password" placeholder="**************" autocomplete="off" [ngModelOptions]="{standalone: true}" required>
+          <input [type]="passwordType" class="input_focus" formControlName="password" id="password" placeholder="**************" autocomplete="off" required>
           <label for="password" class="label">Votre Mot de passe</label>
           <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
           <i class="input_info_icon" (click)="togglePassword()">
@@ -126,4 +125,3 @@
 
 
 </ion-content>
-

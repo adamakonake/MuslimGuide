@@ -23,60 +23,78 @@
 </div>
 
 <ion-content >
+  <form [formGroup]="createMosqueeForm" (ngSubmit)="onSubmit()">
 
 <div class="contourt">
   <h1>Ajout Mosquées</h1>
 
   <div class="ioninput">
     <ion-label class="inpu">Nom :</ion-label>
-    <ion-input class="custom.input" type="text"style="background-color:#fffffff1; border-radius: 20px; font-size: 25px; text-align: center;font-family: poppins"></ion-input>
+    <ion-input class="custom.input" type="text"style="background-color:#fffffff1; border-radius: 20px; font-size: 25px; text-align: center;font-family: poppins" formControlName="nom"></ion-input>
   </div>
   
   <div class="ioninput">
     <ion-label class="inpu">Adresse :</ion-label>
-    <ion-input type="text" style="background-color:#fffffff1; border-radius: 20px; text-align: center; font-size: 25px;font-family: poppins;"></ion-input>
+    <ion-input type="text" style="background-color:#fffffff1; border-radius: 20px; text-align: center; font-size: 25px;font-family: poppins;" formControlName="adresse"></ion-input>
   </div>
+
+  <div class="ioninput">
+    <ion-label class="inpu">Imam:</ion-label>
+    <ion-input type="text" style="background-color:#fffffff1; border-radius: 20px; text-align: center; font-size: 25px;font-family: poppins;" formControlName="imam"></ion-input>
+  </div>
+
+  <div class="ioninput">
+    <ion-label class="inpu">longitude:</ion-label>
+    <ion-input type="number" style="background-color:#fffffff1; border-radius: 20px; text-align: center; font-size: 25px;font-family: poppins;" formControlName="longitude"></ion-input>
+  </div>
+
+  <div class="ioninput">
+    <ion-label class="inpu">latitude :</ion-label>
+    <ion-input type="number" style="background-color:#fffffff1; border-radius: 20px; text-align: center; font-size: 25px;font-family: poppins;" formControlName="latitude"></ion-input>
+  </div>
+
   <h2>Heure de prière :</h2>
 
 <div class="contour-input" >
     <div class="first" >
       <div>
         <ion-label position="floating"style="margin-left: 10px; font-weight: bold;"></ion-label>
-        <ion-input type="text"  class="input"placeholder="Fadjr"></ion-input>
+        <ion-input type="time"  class="input"placeholder="Fadjr" formControlName="fadjr"></ion-input>
       </div>
         
        <div>
         <ion-label position="floating"style="margin-left: 10px; font-weight: bold;"></ion-label>
-        <ion-input type="text"  class="input"placeholder="Magreb"></ion-input>
+        <ion-input type="time"  class="input"placeholder="Magreb" formControlName="magreb"></ion-input>
       </div>
       
       </div>
       <div class="seconds">
         <div>
           <ion-label position="floating" style="margin-left: 10px; font-weight: bold;"></ion-label>
-          <ion-input type="text" class="input" placeholder="Zohr" ></ion-input>
+          <ion-input type="time" class="input" placeholder="Zohr" formControlName="zohr"></ion-input>
         </div>
     
         <div>
         <ion-label position="floating" style="margin-left: 10px; font-weight: bold;"></ion-label>
-        <ion-input type="text" class="input" placeholder="Isha"></ion-input>
+        <ion-input type="time" class="input" placeholder="Isha" formControlName="isha"></ion-input>
       </div>
       </div>
 
       <div class="third">
         <div>
           <ion-label position="floating" style="margin-left: 10px; font-weight: bold;"></ion-label>
-          <ion-input type="text"  class="input" placeholder="Asr" ></ion-input>
+          <ion-input type="time"  class="input" placeholder="Asr" formControlName="asri"></ion-input>
         </div>
     
         <div>
         <ion-label position="floating" style="margin-left: 10px; font-weight: bold;"></ion-label>
-        <ion-input type="text"class="input" placeholder="Djouma"></ion-input>
+        <ion-input type="time"class="input" placeholder="Djouma" formControlName="djouma"></ion-input>
       </div>
       </div>
   </div>
-  <div class="button"> 
+  <div  class="button"> 
     <input style="width: 50%;" type="submit" value="Ajouter" class="submit"></div>
  
 </div>
+</form>
 </ion-content>
