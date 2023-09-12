@@ -2,5 +2,8 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-   </div>
+    <p>{{(!!data ? data.magneticHeading : 0)}}°</p>
+    <img src="../../../assets/image/compass.png" width="200em" [ngStyle]="{'transform': 'rotate('+(qiblaLocation*-1)+'deg)'}">
+    <!-- <p>Current Location<br>{{!!currentLocation ? "["+currentLocation.coords.latitude+","+currentLocation.coords.longitude+"]" : 'Not Allowed'}}</p> -->
+  </div>
 </ion-content>

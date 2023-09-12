@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // Import Firebase modules + environment
 
-import { Radio } from '../ajout-des-radios/mode';
+import { Radio } from '../list-radio/mode';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 
@@ -19,10 +19,11 @@ export class RadioService {
       nom: radio.nom,
       frequence: radio.frequence,
       
-      
     });
     
   }
+
+  
 
   
 }

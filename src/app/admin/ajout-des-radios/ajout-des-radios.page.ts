@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-import { Radio } from './mode';
+import { Radio } from '../list-radio/mode';
 import { RadioService } from '../services/radio.service';
 
 

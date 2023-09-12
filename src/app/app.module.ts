@@ -1,5 +1,6 @@
 import { MbscModule } from '@mobiscroll/angular';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -38,6 +39,10 @@ const firebaseConfig = {
     // AngularFireModule.initializeApp(firebaseConfig),
     MbscModule,   
     FormsModule, 
+    ToastrModule.forRoot({
+      closeButton:true,
+      progressBar:true
+    }),
     provideFirebaseApp(()=>initializeApp(firebaseConfig)), 
     provideFirestore(()=>getFirestore()),
     BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
