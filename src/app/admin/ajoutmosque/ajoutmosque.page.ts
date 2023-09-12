@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Mosquee } from 'src/app/users/models/mosquee';
+import { HorairesPrière } from 'src/app/users/models/horaires-prière';
 // import {AngularFireStore} from '@angular/fire/firestore'
 
 @Component({
@@ -39,16 +40,24 @@ export class AjoutmosquePage implements OnInit {
       this.createMosqueeForm.value.imam!,
       this.createMosqueeForm.value.longitude!,
       this.createMosqueeForm.value.latitude!,
-       this.createMosqueeForm.value.fadjr!,
-       this.createMosqueeForm.value.zohr!,
-       this.createMosqueeForm.value.asri!,
-       this.createMosqueeForm.value.magreb!,
-       this.createMosqueeForm.value.isha!,
-       this.createMosqueeForm.value.djouma!
+      //  this.createMosqueeForm.value.fadjr!,
+      //  this.createMosqueeForm.value.zohr!,
+      //  this.createMosqueeForm.value.asri!,
+      //  this.createMosqueeForm.value.magreb!,
+      //  this.createMosqueeForm.value.isha!,
+      //  this.createMosqueeForm.value.djouma!
 
     )
+    const horaires = new HorairesPrière(
+      this.createMosqueeForm.value.fadjr!,
+      this.createMosqueeForm.value.zohr!,
+      this.createMosqueeForm.value.asri!,
+      this.createMosqueeForm.value.magreb!,
+      this.createMosqueeForm.value.isha!,
+      this.createMosqueeForm.value.djouma!
+    )
     console.log(this.createMosqueeForm.value)
-    console.log(this.mosqueeService.createMosquee(mosquee));
+    console.log(this.mosqueeService.createMosquee(mosquee, horaires));
   }
   // async createMosquee() {
   //   const loading = await this.loadingCtrl.create();
@@ -78,6 +87,12 @@ export class AjoutmosquePage implements OnInit {
 
   
   ngOnInit() {
+    this.getData()
+    
+  }
+
+  async getData(){
+    return this.mosqueeService.getMosquee()
   }
 
 

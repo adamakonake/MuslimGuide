@@ -1,0 +1,23 @@
+export class HorairesPrière {
+    fadjr!:string;
+    zohr!:string;
+    asri!:string; 
+    magreb!:string;
+    isha!:string;
+    djouma!:string
+    constructor(
+        fadjr:string,
+        zohr:string,
+        asri:string,
+        magreb:string,
+        isha:string,
+        djouma:string, 
+    ){
+            this.fadjr=fadjr;
+            this.zohr=zohr;
+            this.asri=asri;
+            this.magreb=magreb;
+            this.isha=isha;
+            this.djouma=djouma
+    }
+}

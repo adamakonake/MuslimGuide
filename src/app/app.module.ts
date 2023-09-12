@@ -13,6 +13,10 @@ import {AngularFireModule} from '@angular/fire/compat'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
 import { getFirestore } from 'firebase/firestore';
+import { FirestoreModule } from '@angular/fire/firestore';
+
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCyhWnG7QEm7mREbarlNojsc9Ncf0wSBpQ",
@@ -23,11 +27,14 @@ const firebaseConfig = {
   appId: "1:975293651580:web:fafb2bc9b8b1917f5507f9",
   measurementId: "G-DRCYLTXDRG"
 };
-
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    // AngularFireModule.initializeApp(firebaseConfig),
+    // FirestoreModule.initializeApp(environment.firebase), 
+    FirestoreModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     MbscModule,   
     FormsModule, 
     provideFirebaseApp(()=>initializeApp(firebaseConfig)), 

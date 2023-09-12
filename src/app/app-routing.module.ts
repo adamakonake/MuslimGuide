@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'ajoutmosque',
+    redirectTo: 'liste-des-mosquees',
     pathMatch: 'full'
   },
   {
