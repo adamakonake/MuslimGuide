@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-accueil',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminAccueilPage implements OnInit {
 
-  constructor() { }
+  constructor(private auth:Auth, private route:Router) { }
 
   ngOnInit() {
   }
+
+
+  // logout(){
+  //   this.auth.signOut();
+  //   this.route.navigateByUrl("connexion");
+  // }
+
+
 
 }
