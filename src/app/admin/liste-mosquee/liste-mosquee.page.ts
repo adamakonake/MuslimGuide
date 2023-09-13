@@ -60,7 +60,7 @@ export class ListeMosqueePage implements OnInit {
 
     )
     console.log(this.createMosqueeForm.value)
-    console.log(this.mosqueeService.createMosquee(mosquee));
+    // console.log(this.mosqueeService.createMosquee(mosquee));
   }
   // ::::::::::::::::::::::::::::::::fin de traitement de formulaire :::::::::::::::::::::::::::::::::::::::::::
   isModalOpen = false;
