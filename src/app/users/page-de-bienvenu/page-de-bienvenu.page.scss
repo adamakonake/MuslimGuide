@@ -1,34 +1,62 @@
+
+
+
+.mon_logo {
+  position: absolute;
+  top: 20%;
+  left: 25px;
+}
+
+// .container_logo {
+//   position: relative;
+// }
+
+.name_logo {
+position: relative;
+top: -5px;
+}
+
+.name_logo_h1 {
+margin: 12px;
+}
+
+.container_button {
+margin-top: 50px;
+}
+
+
+h1{
+text-align: center;
+color: #04a755 ;
+font-size: 35px;
+margin-bottom: 10px;
+}
+
+H2{
+text-align: center;
+}
+
+
 /* Style de base pour un bouton */
-button {
-    background-color: #04a755; 
-    color: #fff; 
-    padding: 10px 40px; 
-    border: none; 
-    border-radius: 5px;
-    border-color: darkgoldenrod; 
-    font-size: 50%;
-    text-align: center; 
-    cursor: pointer; 
-    transition: background-color 0.3s, color 0.3s; 
-    margin-left: 10%;
-    width: 80%;
-    justify-content: center;
-  }
-  .img2{
-    margin-left: 20px;
-  }
-  
-  
-  h1{
-    text-align: center;
-    color: #04a755 ;
-    font-size: 35px;
-    margin-bottom: 10px;
-  }
-  H2{
-    text-align: center;
-  }
- 
-  
-  
-  
+
+.btn_connect {
+background-color: #04a755; 
+color: #fff; 
+border: none; 
+border-radius: 5px;
+border-color: darkgoldenrod; 
+// font-size: 50%;
+text-align: center; 
+cursor: pointer; 
+width: 350px;
+height: 49px;
+transition: background-color 0.3s, color 0.3s; 
+font-size: 17px;
+}
+
+.container_button {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 200px;
+}

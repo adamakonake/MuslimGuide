@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LecteurService } from 'src/app/services/lecteur.service';
 
 @Component({
   selector: 'app-user-liste-des-sourates',
@@ -94,37 +97,80 @@ export class UserListeDesSouratesPage implements OnInit {
     { nom: 'Al-Falaq', isPlaying: false },
     { nom: 'An-Nas', isPlaying: false }*/
   ];
+  audio : any;
+  sourateList : any;
+  sourateAudioList : any;
   nom='Mamadou';
   prenom='Daffé'
   photo="../../assets/icon/mamadou_daffe.jpg";
   recherche: string='';
+  isPlay! : number;
+  isPause! : number;
   /*index = this.sourates.map((sourate, index) => ({nom: sourate.nom, isPlaying: sourate.isPlaying, index}));*/
   get sourateFiltres() {
     return this.sourates.map((sourate, index) => ({ nom: sourate.nom, isPlaying: sourate.isPlaying,numero:sourate.numeroSourate, index})).filter(sourate => sourate.nom.toLowerCase().includes(this.recherche.toLowerCase()));
   }
 
-  constructor() { }
+  constructor(private activatedRoute : ActivatedRoute, private http : HttpClient, private lecteurService : LecteurService) { }
 
   ngOnInit() {
+    this.lecteurService.playEnd.subscribe(result=>{
+      this.isPause = result;
+    })
+    this.activatedRoute.paramMap.subscribe(params =>{
+      const id = params.get("identifient")
+      this.http.get("https://api.quran.com/api/v4/chapters").subscribe((result : any)=>{
+        this.sourateList = result.chapters;
+      });
+      this.http.get("https://api.quran.com/api/v4/chapter_recitations/"+id).subscribe((result : any)=>{
+        this.sourateAudioList = result.audio_files;
+      })
+    })
   }
 
 
   playIcon: string = 'play-outline';
   isPlaying: boolean = false;
 
-  togglePlay(sourate: any) {
-      if (sourate && sourate.isPlaying ===false) {
-        if(sourate.isPlaying) {
-          sourate.isPlaying = !sourate.isPlaying;
-          this.playIcon = sourate.isPlaying ? 'pause-circle-outline' : 'play-outline';
-          this.isPlaying = sourate.isPlaying;
-          console.log(this.isPlaying);
-      } else {
-          sourate.isPlaying = true;
-          this.playIcon = 'pause-circle-outline';
-          this.isPlaying = true;
-          console.log(this.isPlaying);
-      }
+  // togglePlay(index : number) {
+  //   this.isPlay = index;
+  //     // if (sourate && sourate.isPlaying ===false) {
+  //     //   if(sourate.isPlaying) {
+  //     //     sourate.isPlaying = !sourate.isPlaying;
+  //     //     this.playIcon = sourate.isPlaying ? 'pause-circle-outline' : 'play-outline';
+  //     //     this.isPlaying = sourate.isPlaying;
+  //     //     console.log(this.isPlaying);
+  //     // } else {
+  //     //     sourate.isPlaying = true;
+  //     //     this.playIcon = 'pause-circle-outline';
+  //     //     this.isPlaying = true;
+  //     //     console.log(this.isPlaying);
+  //     // }
+  //   //}
+  // }
+
+  playQuran(index : number){
+    if(this.isPlay == index){
+      if(this.isPause == index)
+        this.isPause = -1;
+      else
+        this.isPause = index;
     }
+    this.isPlay = index;
+    this.lecteurService.playQuran(index,this.sourateAudioList[index].audio_url)
+    // if(index == this.isPlay ){
+    //   this.audio.pause()
+    // }else{
+    //   if(this.isPlay == null || undefined){
+    //     this.isPlay = index;
+    //     this.audio = new Audio(this.sourateAudioList[index].audio_url);
+    //     this.audio.play();
+    //   }else{
+    //     this.isPlay = index;
+    //     this.audio.src = this.sourateAudioList[index].audio_url;
+    //     this.audio.load();
+    //     this.audio.play();
+    //   }
+    // }
   }
 }
