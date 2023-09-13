@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { Radio } from './mode';
-import { RadioService } from '../services/radio.service';
+import { RadioService } from '../services/RadioService';
 
 
 @Component({
@@ -14,10 +14,10 @@ import { RadioService } from '../services/radio.service';
 export class AjoutDesRadiosPage implements OnInit {
 
   ajoutRadio: FormGroup;
-  
+
 
   ngOnInit() {
-    
+
   }
 
   constructor(private fb: FormBuilder, private radioService: RadioService, ) {
@@ -26,9 +26,9 @@ export class AjoutDesRadiosPage implements OnInit {
       frequence: ['', Validators.required]
     });
    }
-   
-   
-  
+
+
+
    submit(){
     const newRadio = new Radio(
       this.ajoutRadio.value.nom!,
@@ -37,11 +37,11 @@ export class AjoutDesRadiosPage implements OnInit {
     )
     console.log(this.ajoutRadio.value + "je trouve quelque chose")
     console.log(this.radioService.addRadio(newRadio));
-  
+
    }
-  
+
 }
-  
-  
+
+
 
 

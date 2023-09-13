@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 import { Radio } from '../ajout-des-radios/mode';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'any'
 })
 export class RadioService {
-  
+
   constructor(private readonly firestore: Firestore) { }
 
   addRadio(radio: Radio) {
@@ -18,11 +19,12 @@ export class RadioService {
     return addDoc(data,{
       nom: radio.nom,
       frequence: radio.frequence,
-      
-      
+
+
     });
-    
+
+
   }
 
-  
+
 }

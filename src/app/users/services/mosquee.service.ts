@@ -3,7 +3,7 @@ import { Firestore } from '@angular/fire/firestore';
 // import { Mosquee } from '../models/mosquee';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 // import { Observable } from 'rxjs';
-import { DocumentReference } from 'firebase/firestore/lite';
+ import { DocumentReference } from 'firebase/firestore/lite';
 import { DocumentData } from '@firebase/firestore';
 import { Mosquee } from '../models/mosquee';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';

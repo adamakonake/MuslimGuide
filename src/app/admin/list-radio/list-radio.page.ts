@@ -12,6 +12,7 @@ export class ListRadioPage implements OnInit {
     {nom: 'RADIO KLEDOU', frequence:'84.6',index: 1},
     {nom: 'RADIO RENOUVEAU', frequence:'91.8',index: 2},
   ];
+  static payload: any;
 
   constructor() { }
   get fmFilterer(){
