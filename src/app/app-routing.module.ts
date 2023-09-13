@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'list-radio',
+    redirectTo: 'page-de-bienvenu',
     pathMatch: 'full'
   },
   {
