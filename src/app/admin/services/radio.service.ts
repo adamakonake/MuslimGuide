@@ -33,13 +33,7 @@ export class RadioService {
 
   getRadio(){
   const data = collection(this.firestore,'Radio');
-  return collectionData(data, {idField:'id'})//.subscribe((result:any[])=>{
-  // result.forEach(async radio=>{
-  //   radio=radio
-  //   this.radio.push(radio)
-  // })
-  // })
-  // return this.radio
+  return collectionData(data, {idField:'id'}) 
   }
 
    // Importez deleteDoc

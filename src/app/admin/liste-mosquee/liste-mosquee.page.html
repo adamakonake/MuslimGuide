@@ -1,8 +1,8 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>liste-mosquee</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
   <!-- <ion-header collapse="condense">
@@ -30,6 +30,63 @@
 </div>
 
 
+  <!-- <div class="event-info">
+   <div class="localisation">
+     <div class="loc">
+       <i id="icon-location" class="fa-solid fa-location-dot"></i>
+    <p class="lieu">ACI 2000</p>
+     </div>
+     <div class="info-imam">
+       <i id="icon-imam" class="fa-regular fa-user"></i>
+       <p class="nom-imam">Imam Aly</p> 
+     </div>
+  
+     
+     </div>
+
+   <div class="action">
+     <i class="fa-regular fa-pen-to-square"></i>  
+     <i class="fa-solid fa-trash"></i> </div> -->
+
+  <!-- </div>
+  <div class="event-info">
+   <div class="localisation">
+     <div class="loc">
+       <i id="icon-location" class="fa-solid fa-location-dot"></i>
+    <p class="lieu">ACI 2000</p>
+     </div>
+     <div class="info-imam">
+       <i id="icon-imam" class="fa-regular fa-user"></i>
+       <p class="nom-imam">Imam Aly</p> 
+     </div>
+  
+     
+     </div> -->
+
+   <!-- <div class="action">
+     <i class="fa-regular fa-pen-to-square"></i>  
+     <i class="fa-solid fa-trash"></i> </div>
+
+  </div>
+  <div class="event-info">
+   <div class="localisation">
+     <div class="loc">
+       <i id="icon-location" class="fa-solid fa-location-dot"></i>
+    <p class="lieu">ACI 2000</p>
+     </div>
+     <div class="info-imam">
+       <i id="icon-imam" class="fa-regular fa-user"></i>
+       <p class="nom-imam">Imam Aly</p> 
+     </div>
+  
+     
+     </div> -->
+
+   <!-- <div class="action">
+     <i class="fa-regular fa-pen-to-square"></i>  
+     <i class="fa-solid fa-trash"></i> </div> -->
+
+  <!-- </div>
   <div class="event-info">
    <div class="localisation">
      <div class="loc">
@@ -48,8 +105,8 @@
      <i class="fa-regular fa-pen-to-square"></i>  
      <i class="fa-solid fa-trash"></i> </div>
 
-  </div>
-  <div class="event-info">
+  </div> -->
+  <!-- <div class="event-info">
    <div class="localisation">
      <div class="loc">
        <i id="icon-location" class="fa-solid fa-location-dot"></i>
@@ -67,64 +124,7 @@
      <i class="fa-regular fa-pen-to-square"></i>  
      <i class="fa-solid fa-trash"></i> </div>
 
-  </div>
-  <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
-
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
-
-  </div>
-  <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
-
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
-
-  </div>
-  <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
-
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
-
-  </div>
+  </div> -->
   <div class="event-info">
    <div class="localisation">
      <div class="loc">
@@ -147,4 +147,50 @@
  
   
 
+<!-- </ion-content> -->
+
+
+
+<div *ngFor="let mosque of mosquee; let i = index" class="event-info">
+      <!-- <img src="../../../assets/image/image 10.png" alt=""> -->
+      
+      <div class="localisation">
+        
+        <div class="loc">
+          <i id="icon-location" class="fa-solid fa-location-dot"></i>
+       <p class="lieu">{{ mosque.adresse }}</p>
+        </div>
+
+        <div class="info-imam">
+          <i id="icon-imam" class="fa-regular fa-user"></i>
+          <p class="nom-imam">{{ mosque.nom }}</p> 
+        </div>
+
+      </div>
+    
+<div class="action">
+  <i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square"></i>  
+  <i (click)="supprimerMosquee(i)" class="fa-solid fa-trash"></i>
+ </div>
+</div>
+
+
+
+<div class="event-info">
+  <div class="localisation">
+    <div class="loc">
+      <i id="icon-location" class="fa-solid fa-location-dot"></i>
+   <p class="lieu">ACI 2000</p>
+    </div>
+    <div class="info-imam">
+      <i id="icon-imam" class="fa-regular fa-user"></i>
+      <p class="nom-imam">Imam Aly</p> 
+    </div>
+    </div>
+
+  <div class="action">
+    <i class="fa-regular fa-pen-to-square"></i>  
+    <i class="fa-solid fa-trash"></i> </div>
+
+ </div>
 </ion-content>
