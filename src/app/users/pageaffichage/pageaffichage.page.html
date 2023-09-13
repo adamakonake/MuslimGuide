@@ -20,9 +20,63 @@
   </div>
   <div *ngIf="ayahs">
     <div class="sourateDive" *ngFor="let i= index ; let ayas of ayahs">
-      <p class="sourateAyas">{{ayas.text}}</p>
-      <p *ngIf="traslateAyahs" class="sourateAyasTrans">{{traslateAyahs[i].text}}</p>
+
+
+      <div class="container_title" style="display: flex; align-items: center; justify-content: right;">
+        <!-- compteur container en arabe -->
+        <div class="compteur_container">
+
+          <div class="compteur">
+            <div class="icon_compteur">
+              <i class="ri-hexagon-fill icon_hexagon"></i>
+              <!-- <i class="ri-hexagon-line icon_hexagon"></i> -->
+            </div>
+            <p class="paragraphe"> {{ (i + 1).toLocaleString('ar-EG', { minimumFractionDigits: 0 }) }} </p>
+          </div>
+          
+          <div class="essaye">
+            <p class="sourateAyas">{{ayas.text}}</p>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="description_container">
+        <div class="description_content">
+
+          <!-- compteur container en arabe -->
+          <div class="compteur_container_chiffre">
+
+            <div class="compteur_chiffre">
+              <p class="paragraphe_chiffre"> {{ i + 1 }} </p>
+              <p class="tire"> , </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="compteur_chiffre_francais">
+          <p *ngIf="traslateAyahs" class="sourateAyasTrans">{{traslateAyahs[i].text}}</p>
+        </div>
+      </div>
+
+
+
+      <!-- Debut Mon bare pour différencier  -->
+      <div class="bare_container">
+        <!-- Mon bare div -->
+        <div class="bare">
+          
+        </div>
+
+
+      </div>
+      <!-- Fin Mon bare pour différencier  -->
+
     </div>
   </div>
+
+
   
 </ion-content> 

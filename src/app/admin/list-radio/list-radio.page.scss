@@ -1,6 +1,6 @@
 :root {
-    --color-principal : #25A069;
-    --color-secondaire : #D79A10;
+    --color-principal: #25A069;
+    --color-secondaire: #D79A10;
     --color-blanc: #FFFFFF;
     --color-noir: #000000;
     --font-w200: 200;
@@ -50,7 +50,7 @@
 .cadre .titleh1 {
     color: #fff;
     font-size: 80px;
-    margin-left: 30px;
+    margin-left: -174px;
     margin-top: 20px;
 }
 
@@ -65,6 +65,8 @@
 .image_radio .img_radio {
     width: 100%;
     height: 100%;
+    margin-top: -4px;
+    margin-left: 40px;
 }
 
 .para_p {
@@ -98,6 +100,7 @@
     margin-top: 12px;
     margin-right: 10px;
 }
+
 .recherche_bare input {
     width: 239px;
     height: 40px;
@@ -182,7 +185,7 @@ button.btn_ajout {
     margin-top: -15px;
 }
 
-.link_radio .para_radio{
+.link_radio .para_radio {
     padding-left: 10px;
     margin-top: -15px;
     text-decoration: none;
@@ -219,3 +222,116 @@ button.btn_ajout {
     color: red;
 }
 
+// :::::::::::::::::::::::::::::::::popup_ajouter radio::::::::::::::::::::::::::::::::::::::
+
+ion-input {
+    border-radius: 10px;
+    // padding: 10px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+    height: 40px;
+    width: 220px;
+    justify-content: center;
+   
+
+}
+
+
+
+
+ion-label {
+    color: #ffffff;
+    font-size: large;
+    margin-bottom: 10px;
+}
+
+.ion {
+    // margin-left: 15%;
+    // border: red 1px solid;
+    margin-top: 10%;
+    padding: 0;
+    justify-content: center;
+    
+}
+
+.poppup{
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+     background-image: url("../../../assets/image/mosquee.png") ;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+    
+}
+
+.buttonIonic{
+    // border: #000000 solid 1px;
+    justify-content: center;
+    display: flex;
+    // margin-left: 20%;
+    width: 100%;
+    
+   
+
+}
+#close{
+    background-color: #f1a009;
+    // border-radius: 20px;
+    padding: 10px 10px;
+    margin: 10px;
+
+    // background-color: var(--color-principal);
+    color: var(--color-blanc);
+    border-radius: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    
+    &:hover{
+        background-color: #78a792;
+    }
+}
+
+#open{
+    // border-radius: 20px;
+    padding: 10px 10px;
+    margin: 10px;
+
+    background-color: var(--color-principal);
+    color: var(--color-blanc);
+    border-radius: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    &:hover{
+        background-color: #78a792;
+    }
+}
+
+ion-label {
+    background-color: transparent;
+    align-items: center;
+    margin-left: 0%;
+    display: flex;
+    font-size: large;
+}
+
+
+h1 {
+    text-align: center;
+    color: azure;
+}
+.formlairePoppup{
+    // border: #D79A10 1px solid;
+    // margin-top: 20%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toastr.success{
+    background-color: #25A069;
+    color: #ffffff;
+}

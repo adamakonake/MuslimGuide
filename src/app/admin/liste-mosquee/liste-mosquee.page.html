@@ -1,150 +1,159 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>liste-mosquee</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">liste-mosquee</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
 
-  
-  <h2 class="titre"> Liste des mosquées</h2>
+
+  <h2 class="titre"> Liste des mosquées</h2> <!---titre-->
   <div class="container">
-  <button  class="btn">
-   <i class="fa-solid fa-plus"></i>
-   Ajouter
-  </button>
+    <button class="btn" id="open-modal" expand="block">
+      <i class="fa-solid fa-plus"></i>
+      Ajouter
+    </button>
 
-  <div class="search-container">
-    <input type="search" value="" class="recherche">
-    <div class="search-icon">
-      <ion-icon name="search-outline"></ion-icon>
-      <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
-      <!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
+    <div class="search-container">
+      <input type="search" value="" class="recherche">
+      <div class="search-icon">
+        <ion-icon name="search-outline"></ion-icon>
+        <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
+        <!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
+      </div>
     </div>
   </div>
-</div>
 
 
   <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
+    <div class="localisation">
 
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
+      <div class="loc">
+        <i id="icon-location" class="fa-solid fa-location-dot"></i>
+        <p class="lieu">ACI 2000</p>
+      </div>
 
+      <div class="info-imam">
+        <i id="icon-imam" class="fa-regular fa-user"></i>
+        <p class="nom-imam">Imam Aly</p>
+      </div>
+    </div>
+
+    <div class="action"><!--different action icon-->
+      <i class="fa-regular fa-pen-to-square"></i>
+      <i class="fa-solid fa-trash"></i>
+    </div>
   </div>
-  <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
 
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
 
-  </div>
-  <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
+  <!--::::::::::::::::::::::::::::::::::: formlairePoppup::::::::::::::::::::::::::::::::::::::::::::::; -->
 
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
+  <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+    <ng-template>
+      <ion-content>
+        <div class="poppup">
+          <h1>Ajout Mosquées</h1>
+          <div class="formlairePoppup">
+            <form [formGroup]="createMosqueeForm" >
+              <div class="contourt">
 
-  </div>
-  <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
+                <div class="block">
+                  <div class="bloc1"><!--block 1-->
+                    <div class="ioninput">
+                      <ion-label class="inputLabel">Nom :</ion-label>
+                      <ion-input class="custom.input" type="text" formControlName="nom"></ion-input>
+                    </div>
 
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
+                    <div class="ioninput">
+                      <ion-label class="inputLabel">Adresse :</ion-label>
+                      <ion-input type="text" formControlName="adresse"></ion-input>
+                    </div>
+                  </div>
 
-  </div>
-  <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
+                  <div class="bloc2"><!--block 2-->
+                    <div class="ioninput">
+                      <ion-label style="margin-bottom: 30px !important;" class="inputLabel">Imam:</ion-label>
+                      <ion-input type="text" formControlName="imam"></ion-input>
+                    </div>
 
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
+                    <div class="ioninput">
+                      <ion-label class="inputLabel">longitude:</ion-label>
+                      <ion-input type="number" formControlName="longitude"></ion-input>
+                    </div>
+                  </div>
 
-  </div>
-  <div class="event-info">
-   <div class="localisation">
-     <div class="loc">
-       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-    <p class="lieu">ACI 2000</p>
-     </div>
-     <div class="info-imam">
-       <i id="icon-imam" class="fa-regular fa-user"></i>
-       <p class="nom-imam">Imam Aly</p> 
-     </div>
-  
-     
-     </div>
+                </div>
+                <div class="bloc3"><!--block 3-->
+                  <div class="ioninput">
+                    <ion-label class="inputLabel">latitude :</ion-label>
+                    <ion-input id="inputBloc3" type="number" formControlName="latitude"></ion-input>
+                  </div>
+                </div>
 
-   <div class="action">
-     <i class="fa-regular fa-pen-to-square"></i>  
-     <i class="fa-solid fa-trash"></i> </div>
 
-  </div>
- 
-  
+                <!--::::::::::::::::::::::::::::::::::::::::::::::: heure de  priere du mosque:::::::::::::::::::::::::::::::::::::::-->
+                <h2>Heure de prière :</h2>
+                <div class="horairePriere" >
 
+                  <div class="horaire">
+
+                    <div class="contour-input">
+                      <div class="first">
+                        <div>
+                          <ion-label position="floating"
+                            style=" font-weight: bold; margin-left: 15px;">Fadjr</ion-label>
+                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Fadjr" formControlName="fadjr"></ion-input>
+                        </div>
+
+                        <div>
+                          <ion-label position="floating"
+                            style=" font-weight: bold; margin-left: 15px;">Magreb</ion-label>
+                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Magreb" formControlName="magreb"></ion-input>
+                        </div>
+
+                      </div>
+                      <div class="seconds">
+                        <div>
+                          <ion-label position="floating" style=" font-weight: bold; margin-left: 15px;">Zohr</ion-label>
+                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Zohr" formControlName="zohr"></ion-input>
+                        </div>
+
+                        <div>
+                          <ion-label position="floating" style=" font-weight: bold; margin-left: 15px;">Isha</ion-label>
+                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Isha" formControlName="isha"></ion-input>
+                        </div>
+                      </div>
+
+                      <div class="third">
+                        <div>
+                          <ion-label style=" font-weight: bold; margin-left: 15px;">Asr</ion-label>
+                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Asr" formControlName="asri"></ion-input>
+                        </div>
+
+
+                        <div>
+                          <label position="floating"
+                            style=" font-weight: bold; margin-bottom: 20px; margin-left: 15px;">Djouma</label>
+                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Djouma" formControlName="djouma"></ion-input>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+
+                <div class="buttonIonic">
+                  <button id="open" type="button" (click)="onSubmit()" ajoutRadio.valid>Enregistrer</button>
+                  <button id="close" (click)="modal.dismiss()">Fermer</button>
+                </div>
+              </div>
+
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
