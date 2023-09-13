@@ -4,6 +4,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+// import { AngularFireModule } from '@angular/fire';
 
 // Import Firebase modules + environment
 
@@ -17,7 +18,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AngularFireModule} from '@angular/fire/compat'
+ import {AngularFireModule} from '@angular/fire/compat'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth'
@@ -38,7 +39,7 @@ const firebaseConfig = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    // AngularFireModule.initializeApp(firebaseConfig),
+     AngularFireModule.initializeApp(firebaseConfig),
     MbscModule,   
     FormsModule, 
     ToastrModule.forRoot({
