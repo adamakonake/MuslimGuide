@@ -3,6 +3,9 @@ import { RadioService } from '../services/radio.service';
 import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { AjoutDesRadiosPage } from '../ajout-des-radios/ajout-des-radios.page';
 import { doc, updateDoc, deleteDoc, Firestore } from '@firebase/firestore';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Radio } from '../ajout-des-radios/mode';
 
 @Component({
   selector: 'app-list-radio',
@@ -13,6 +16,8 @@ export class ListRadioPage implements OnInit {
   recherche:string= '';
   radios:any;
   firestore!: Firestore;
+  // searchControl = new FormControl();
+  // items$: Observable<any[]> | undefined;
   // radios=[
   //   {nom: 'RADIO DAMBE', frequence:'90.6',index:0},
   //   {nom: 'RADIO KLEDOU', frequence:'84.6',index: 1},
@@ -23,9 +28,10 @@ export class ListRadioPage implements OnInit {
     public alertController: AlertController,
     public modalController: ModalController,
     public navCtrl: NavController,) { }
-  // get fmFilterer(){
-  //   return this.radios.map((radio, index) =>({nom:radio.nom,frequence:radio.frequence,index})).filter((radio=>radio.nom.toLowerCase().includes(this.recherche.toLowerCase())));
-  // }
+  get fmFilterer(){
+    return this.radios.map((radio: { nom: any; frequence: any; }, index: any) =>({nom:radio.nom,frequence:radio.frequence,index}))
+    .filter(((radio: { nom: string; })=>radio.nom.toLowerCase().includes(this.recherche.toLowerCase())));
+  }
   ngOnInit() {
     this.radioService.getRadio().subscribe((result)=>{
       this.radios = result;
