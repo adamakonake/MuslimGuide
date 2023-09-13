@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 // import { Mosquee } from '../models/mosquee';
-import { addDoc, deleteDoc, collection, doc,  } from 'firebase/firestore';
+import { addDoc, deleteDoc, collection, doc  } from 'firebase/firestore';
 
 import { Mosquee } from '../models/mosquee';
+import { AlertController } from '@ionic/angular';
 
 import { HorairesPrière } from '../models/horaires-prière';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -17,53 +18,29 @@ export class MosqueeService {
 
  mosque:any[] = [];
  horairesPrière=[]
+  alertController: any;
 
   constructor(private readonly firestore: Firestore) { }
-  createMosquee(mosquee:Mosquee, HorairesPrière:HorairesPrière ){
-
-    // créer une référence à la collection “Mosquee” dans Firestore
-   const collectionMosquee= collection(this.firestore, "Mosquee"); 
-    const collectionHeure = collection(this.firestore, "Horaires")
-   //  ajouter un nouveau document à la collection “Mosquee” avec les propriétés spécifiées 
-    // return addDoc(collectionMosquee,{
-    //   nom : mosquee.nom,
-    //   adresse : mosquee.adresse,
-    //   longitude:mosquee.longitude,
-    //   latitude:mosquee.latitude,
+  createMosquee(mosquee:Mosquee ){
+   const document= collection(this.firestore, "Mosquee");
+    return addDoc(document,{
+      nom : mosquee.nom,
+      adresse : mosquee.adresse,
+      longitude:mosquee.longitude,
+      latitude:mosquee.latitude,
      
-    // })
-    
-    return addDoc(collectionHeure,{
-      fadjr:HorairesPrière.fadjr,
-      zohr:HorairesPrière.zohr,
-      asri:HorairesPrière.asri,
-      magreb:HorairesPrière.magreb,
-      isha:HorairesPrière.isha,
-      djouma:HorairesPrière.djouma
+    }).then(docRef => {
+      const heuresCollection = collection(docRef, 'Heures');
+      return addDoc(heuresCollection, {
+        // fadjr:mosquee.fadjr,
+        // zohr:mosquee.zohr,
+        // asri:mosquee.asri,
+        // magreb:mosquee.magreb,
+        // isha:mosquee.isha,
+        // djouma:mosquee.djouma
+      });
     })
-    .then(docRef => {
-
-      return addDoc(collectionMosquee,{
-          nom : mosquee.nom,
-          adresse : mosquee.adresse,
-          longitude:mosquee.longitude,
-          latitude:mosquee.latitude,
-         horaire : docRef
-        });
-
-      //  créer une référence à une sous-collection ‘Heures’ dans le document
-      // const heuresCollection = collection(docRef, 'Heures');
-
-      // // ajouter un nouveau document à la sous-collection ‘Heures’ avec les propriétés spécifiées
-      // return addDoc(heuresCollection, {
-      //   fadjr:mosquee.fadjr,
-      //   zohr:mosquee.zohr,
-      //   asri:mosquee.asri,
-      //   magreb:mosquee.magreb,
-      //   isha:mosquee.isha,
-      //   djouma:mosquee.djouma
-      // });
-    });
+;
   };
 
   getMosquee(){
@@ -80,27 +57,28 @@ export class MosqueeService {
   }
  
 
-  // getMosquee(): Observable<any[]> {
-  //   const collectionMosquee = collection(this.firestore, 'Mosquee');
-  //   return collectionData(collectionMosquee, { idField: 'id' }).pipe(
-  //     switchMap(mosquees => {
-  //       const horaireObservables = mosquees.map(mosquee => {
-  //         const horaireQuery = query(collectionGroup(this.firestore, 'horaire'));
-  //         return collectionData(horaireQuery, { idField: 'id' }).pipe(
-  //           map(horaires => {
-  //             if (horaires.length > 0) {
-  //               mosquee['horaires'] = horaires[0];  // Utilisez la notation d'indexation ici
-  //             } else {
-  //               console.log('Aucun document correspondant !');
-  //             }
-  //             return mosquee;
-  //           })
-  //         );
-  //       });
-  //       return combineLatest(horaireObservables);
-  //     })
-  //   );
-  // }
+  async removeMosque(index: number) {
+    const alert = await this.alertController.create({
+      header: 'Confirmation',
+      message: 'Voulez-vous vraiment supprimer cette mosquée ?',
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Supprimer',
+          handler: async () => { // Ajoutez async ici
+            const mosqueDoc = doc(this.firestore, 'Mosquee', this.mosque[index].id); // Utilisez l'ID de la mosquée
+            await deleteDoc(mosqueDoc); // Supprimez le document de Firestore
+            this.mosque.splice(index, 1); // Supprimez la mosquée de la liste locale
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
   
 //   let horaireReference = collection/collectionMosquee/collection/collectionMosquee // Votre référence de document Firestore pour 'horaire'
 // horaireReference.get().then((doc) => {

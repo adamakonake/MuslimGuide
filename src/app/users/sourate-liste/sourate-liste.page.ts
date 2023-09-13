@@ -9,20 +9,21 @@ import { Router } from '@angular/router';
 })
 export class SourateListePage implements OnInit {
 
-  sourates : any[]=[];
+  sourates : any;
   nom='Mamadou';
   prenom='Daffé'
   photo="../../assets/icon/mamadou_daffe.jpg";
   recherche: string='';
   /*index = this.sourates.map((sourate, index) => ({nom: sourate.nom, isPlaying: sourate.isPlaying, index}));*/
-  get sourateFiltres() {
-    return this.sourates.map((sourate, index) => ({ nom: sourate.nom, isPlaying: sourate.isPlaying,numero:sourate.numeroSourate, index})).filter(sourate => sourate.nom.toLowerCase().includes(this.recherche.toLowerCase()));
-  }
+  // get sourateFiltres() {
+  //   return this.sourates.map((sourate, index) => ({ nom: sourate.nom, isPlaying: sourate.isPlaying,numero:sourate.numeroSourate, index})).filter(sourate => sourate.nom.toLowerCase().includes(this.recherche.toLowerCase()));
+  // }
+
 
   constructor(private http : HttpClient, private route : Router) { }
 
   ngOnInit() {
-    this.http.get("http://api.alquran.cloud/v1/surah").subscribe((result : any)=>{
+    this.http.get("https://api.alquran.cloud/v1/surah").subscribe((result : any)=>{
       this.sourates = result.data;
     })
   }

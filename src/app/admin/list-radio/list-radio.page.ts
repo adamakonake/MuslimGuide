@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { RadioService } from '../services/radio.service';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
+import { AjoutDesRadiosPage } from '../ajout-des-radios/ajout-des-radios.page';
+import { doc, updateDoc, deleteDoc, Firestore } from '@firebase/firestore';
 
 @Component({
   selector: 'app-list-radio',
@@ -8,20 +11,66 @@ import {Router} from "@angular/router";
 })
 export class ListRadioPage implements OnInit {
   recherche:string= '';
-  radios=[
-    {nom: 'RADIO DAMBE', frequence:'90.6',index:0},
-    {nom: 'RADIO KLEDOU', frequence:'84.6',index: 1},
-    {nom: 'RADIO RENOUVEAU', frequence:'91.8',index: 2},
-  ];
+  radios:any;
+  firestore!: Firestore;
+  // radios=[
+  //   {nom: 'RADIO DAMBE', frequence:'90.6',index:0},
+  //   {nom: 'RADIO KLEDOU', frequence:'84.6',index: 1},
+  //   {nom: 'RADIO RENOUVEAU', frequence:'91.8',index: 2},
+  // ];
 
-  constructor(private route: Router) { }
-  get fmFilterer(){
-    return this.radios.map((radio, index) =>({nom:radio.nom,frequence:radio.frequence,index})).filter((radio=>radio.nom.toLowerCase().includes(this.recherche.toLowerCase())));
-  }
+  constructor( private radioService: RadioService,
+    public alertController: AlertController,
+    public modalController: ModalController,
+    public navCtrl: NavController,) { }
+  // get fmFilterer(){
+  //   return this.radios.map((radio, index) =>({nom:radio.nom,frequence:radio.frequence,index})).filter((radio=>radio.nom.toLowerCase().includes(this.recherche.toLowerCase())));
+  // }
   ngOnInit() {
+    this.radioService.getRadio().subscribe((result)=>{
+      this.radios = result;
+    })
+    console.log(this.radios);
+  }
+  removeRadio(index: number) {
+    //this.radios.splice(index, 1);
+    this.radioService.removeRadio(this.radios[index].id)
   }
 
-  ajouterRadio() {
-    this.route.navigateByUrl('/ajout-des-radios')
+  modifierRadio( index: number){
+    this.radioService.updateRadio(this.radios[index].id,this.radios[index])
   }
+
+  // async removeRadio(index: number) {
+  //   const alert = await this.alertController.create({
+  //     header: 'Confirmation',
+  //     message: 'Voulez-vous vraiment supprimer cette radio ?',
+  //     buttons: [
+  //       {
+  //         text: 'Annuler',
+  //         role: 'cancel',
+  //         cssClass: 'secondary',
+  //       }, {
+  //         text: 'Supprimer',
+  //         handler: () => {
+  //           this.radios.splice(index, 1);
+  //         }
+  //       }
+  //     ]
+  //   });
+
+  //   await alert.present();
+  // }
+
+  // async removeRadio(index: number) {}
+
+
+  
+
+
 }
+
+  // supprimer(radios:{nom:string,frequence:string,index:number}) {
+
+  // }
+

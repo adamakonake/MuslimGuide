@@ -62,7 +62,7 @@
 
 
   <!-- 111111111111111111111 -->
-  <div class="container_radio_list" *ngFor="let i= index,let radios of fmFilterer">
+  <div class="container_radio_list" *ngFor="let radios of radios; let i = index">
 
     <div class="tout_les_radio_container" >
       <!-- l'imam   -->
@@ -88,13 +88,13 @@
       <div class="action_delete_put">
         <!-- icon pour edit  -->
         <div class="icon_edit">
-          <i class="ri-edit-box-line"></i>
+          <i (click)="modifierRadio(i)" class="ri-edit-box-line"></i>
         </div>
 
         <!-- icon pour delete  -->
         <div class="icon_delete">
-          <button>
-           <i class="ri-delete-bin-line"></i>
+          <button >
+           <i (click)="removeRadio(i)" class="ri-delete-bin-line"></i>
           </button>
         </div>
       </div>

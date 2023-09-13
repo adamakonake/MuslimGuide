@@ -50,14 +50,14 @@
 
       <!-- les champs de input pour l'inscription  -->
 
-      <form class="container_formulaire" #formElement="ngForm" (ngSubmit)="Submit()">
+      <form [formGroup]="connexionForm" class="container_formulaire" #formElement="ngForm" (ngSubmit)="Submit()">
 
           <div class="formulaire" >
 
             <!-- input de votre email  -->
             <div class="champ_input">
               <i class="ri-mail-line identfiant_icon"></i>
-              <input type="email" [(ngModel)]="formData.email" class="input_focus" id="email" placeholder="example@gmail.com" autocomplete="on" [ngModelOptions]="{standalone: true}" required>
+              <input type="email"  class="input_focus" id="email" placeholder="example@gmail.com" autocomplete="on" formControlName="email" required>
               <label for="email" class="label">Votre email</label>
               <i class="ri-information-line input_info_icon"></i>
             </div>
@@ -65,7 +65,7 @@
             <!-- input de votre password  -->
             <div class="champ_input">
               <i class="ri-git-repository-private-fill identfiant_icon"></i>
-              <input [type]="passwordType" class="input_focus" id="password" placeholder="**************" [(ngModel)]="formData.password" autocomplete="on" [ngModelOptions]="{standalone: true}" required>
+              <input [type]="passwordType" class="input_focus" id="password" placeholder="**************" autocomplete="on" formControlName="password" required>
               <label for="password" class="label">Votre Mot de passe</label>
               <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
               <i class="input_info_icon" (click)="togglePassword()">
