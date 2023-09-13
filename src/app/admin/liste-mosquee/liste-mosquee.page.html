@@ -48,7 +48,7 @@
         <div class="poppup">
           <h1>Ajout Mosquées</h1>
           <div class="formlairePoppup">
-            <form [formGroup]="createMosqueeForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="createMosqueeForm" >
               <div class="contourt">
 
                 <div class="block">
@@ -142,7 +142,7 @@
                 
 
                 <div class="buttonIonic">
-                  <button id="open" type="submit" ajoutRadio.valid>Enregistrer</button>
+                  <button id="open" type="button" (click)="onSubmit()" ajoutRadio.valid>Enregistrer</button>
                   <button id="close" (click)="modal.dismiss()">Fermer</button>
                 </div>
               </div>

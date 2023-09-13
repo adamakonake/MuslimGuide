@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AjoutDesRadiosPage } from '../ajout-des-radios/ajout-des-radios.page';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RadioService } from '../services/radio.service';
 import { Radio } from './mode';
 import { ToastrService } from 'ngx-toastr';
-import { AnimationController } from '@ionic/angular';
+import { AlertController, AnimationController, ModalController, NavController ,} from '@ionic/angular';
 
+import { RadioService } from '../services/radio.service';
+import { Firestore } from '@firebase/firestore';
 
 @Component({
   selector: 'app-list-radio',
@@ -15,19 +15,24 @@ import { AnimationController } from '@ionic/angular';
 export class ListRadioPage implements OnInit {
   ajoutRadio: FormGroup;
   isModalOpen = false;
+  radios:any;
+  firestore!: Firestore;
 
-  recherche:string= '';
-  radios=[
-    {nom: 'RADIO DAMBE', frequence:'90.6',index:0},
-    {nom: 'RADIO KLEDOU', frequence:'84.6',index: 1},
-    {nom: 'RADIO RENOUVEAU', frequence:'91.8',index: 2},
-  ];
-  AjoutDesRadiosPage: any;
+  // recherche:string= '';
+  // // radios=[
+  // //   {nom: 'RADIO DAMBE', frequence:'90.6',index:0},
+  // //   {nom: 'RADIO KLEDOU', frequence:'84.6',index: 1},
+  // //   {nom: 'RADIO RENOUVEAU', frequence:'91.8',index: 2},
+  // // ];
+  // AjoutDesRadiosPage: any;
 
   constructor(private fb: FormBuilder, 
     private radioService: RadioService, 
     private animationCtrl: AnimationController,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public alertController: AlertController,
+    public modalController: ModalController,
+    public navCtrl: NavController,
      )
      {
     this.ajoutRadio = this.fb.group({
@@ -49,15 +54,21 @@ export class ListRadioPage implements OnInit {
   
    }
    
-  get fmFilterer(){
-    return this.radios.map((radio, index) =>({nom:radio.nom,frequence:radio.frequence,index})).filter((radio=>radio.nom.toLowerCase().includes(this.recherche.toLowerCase())));
-  }
   ngOnInit() {
+    this.radioService.getRadio().subscribe((result)=>{
+      this.radios = result;
+    })
+    console.log(this.radios);
+  }
+  removeRadio(index: number) {
+    //this.radios.splice(index, 1);
+    this.radioService.removeRadio(this.radios[index].id)
   }
 
-  supprimer(radios:{nom:string,frequence:string,index:number}) {
-
+  modifierRadio( index: number){
+    this.radioService.updateRadio(this.radios[index].id,this.radios[index])
   }
+
   
   // ::::::::::::::::::::::::::::::::::::traitement poppup pour animation::::::::::::::::::::::::::::::
   enterAnimation = (baseEl: HTMLElement) => {
@@ -89,3 +100,8 @@ export class ListRadioPage implements OnInit {
   };
 
 }
+
+  // supprimer(radios:{nom:string,frequence:string,index:number}) {
+
+  // }
+

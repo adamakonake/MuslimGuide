@@ -51,12 +51,12 @@ export class ListeMosqueePage implements OnInit {
       this.createMosqueeForm.value.imam!,
       this.createMosqueeForm.value.longitude!,
       this.createMosqueeForm.value.latitude!,
-      this.createMosqueeForm.value.fadjr!,
-      this.createMosqueeForm.value.zohr!,
-      this.createMosqueeForm.value.asri!,
-      this.createMosqueeForm.value.magreb!,
-      this.createMosqueeForm.value.isha!,
-      this.createMosqueeForm.value.djouma!
+      // this.createMosqueeForm.value.fadjr!,
+      // this.createMosqueeForm.value.zohr!,
+      // this.createMosqueeForm.value.asri!,
+      // this.createMosqueeForm.value.magreb!,
+      // this.createMosqueeForm.value.isha!,
+      // this.createMosqueeForm.value.djouma!
 
     )
     console.log(this.createMosqueeForm.value)
