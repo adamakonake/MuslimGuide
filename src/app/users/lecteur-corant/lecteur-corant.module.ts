@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LecteurCorantPageRoutingModule } from './lecteur-corant-routing.module';
 
 import { LecteurCorantPage } from './lecteur-corant.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LecteurCorantPageRoutingModule
+    LecteurCorantPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [LecteurCorantPage]
 })

@@ -124,7 +124,7 @@ const routes: Routes = [
     path: 'liste-lecteur',
     loadChildren: () => import('./users/liste-lecteur/liste-lecteur.module').then( m => m.ListeLecteurPageModule)
   },
-  {path: 'user-liste-des-sourates', loadChildren: () => import('./users/user-liste-des-sourates/user-liste-des-sourates.module').then( m => m.UserListeDesSouratesPageModule)},
+  {path: 'user-liste-des-sourates/:identifient', loadChildren: () => import('./users/user-liste-des-sourates/user-liste-des-sourates.module').then( m => m.UserListeDesSouratesPageModule)},
   {path: 'admin-liste-sourate', loadChildren:() => import('./admin/admin-liste-des-sourates/admin-liste-des-sourates.module').then(m => m.AdminListeDesSouratesPageModule)},
   {
     path: 'map-page',

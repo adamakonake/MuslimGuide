@@ -70,10 +70,18 @@ ion-item-divider{
 }
 .sourate{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   width:100px;
+}
+.sourateNameAr{
+  font-size: 20px;
+  color: black;
+}
+.sourateNameEn{
+  margin: 0px;
 }
 @media screen and (min-width: 400px) {
 .sourate{
@@ -102,6 +110,7 @@ ion-item-divider{
 ion-card{
   border-radius: 15px;
   background: var(--Blanc, #FFF);
+  //background: rgba($color: #25A069, $alpha: 0.1);
   box-shadow: 0px 4px 6px 0px rgba(37, 160, 105, 0.33);
 }
 .search_container {

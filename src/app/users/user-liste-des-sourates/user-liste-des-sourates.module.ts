@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { UserListeDesSouratesPageRoutingModule } from './user-liste-des-sourates-routing.module';
 
 import { UserListeDesSouratesPage } from './user-liste-des-sourates.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserListeDesSouratesPageRoutingModule
+    UserListeDesSouratesPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [UserListeDesSouratesPage]
 })
