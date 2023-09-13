@@ -13,7 +13,8 @@
     <!-- Debut Pour les recherche bare search_container  -->
     <div class="search_container">
       <div class="recherche_bare">
-        <input type="search" name="search" placeholder="Recherche" (input)="chercheLecteur()">
+        <input type="search" name="search" placeholder="Recherche" [(ngModel)]="recherche" (input)="filterLecteur()">
+
         <!-- mon icon de recherche  -->
         <i class="ri-search-line icon_search"></i>
       </div>
@@ -21,7 +22,7 @@
     <!-- Fin Pour les recherche bare search_container  -->
   </div>
 
-<ion-card *ngFor="let lecteur of lecteur">
+<ion-card *ngFor="let lecteur of lecteurs">
   <ion-card-content>
     <div class="iman">
       <div class="photo">
@@ -34,8 +35,8 @@
       </div>
     </div>
     <div class="btn-actions">
-          <ion-icon color="success" name="create-outline" ></ion-icon>
-          <ion-icon color="danger"  name="trash-outline"></ion-icon>
+          <ion-icon color="success" name="create-outline"></ion-icon>
+          <ion-icon color="danger" name="trash-outline" (click)="deleteLecteur(lecteur)"></ion-icon>
     </div>
   </ion-card-content>
 </ion-card>

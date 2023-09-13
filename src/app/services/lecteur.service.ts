@@ -31,5 +31,11 @@ export class LecteurService {
     })
     return this.lecteur;
   }
+  deleteLecteur(lecteurId: string) {
+    const data = doc(this.firestore, "Lecteur", lecteurId);
+    return deleteDoc(data);
+  }
+
+
 }
 

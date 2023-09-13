@@ -39,13 +39,13 @@ const firebaseConfig = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    // FirestoreModule.initializeApp(environment.firebase), 
+    // FirestoreModule.initializeApp(environment.firebase),
     FirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    MbscModule,   
-    FormsModule, 
+    MbscModule,
+    FormsModule,
     provideAuth(()=>getAuth()),
-    provideFirebaseApp(()=>initializeApp(firebaseConfig)), 
+    provideFirebaseApp(()=>initializeApp(firebaseConfig)),
     provideFirestore(()=>getFirestore()),
     BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

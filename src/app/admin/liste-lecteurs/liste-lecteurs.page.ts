@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {LecteurService} from "../../services/lecteur.service";
 import {Lecteur} from "../ajout-lecteur/mode";
@@ -9,29 +9,32 @@ import {Lecteur} from "../ajout-lecteur/mode";
   styleUrls: ['./liste-lecteurs.page.scss'],
 })
 export class ListeLecteursPage implements OnInit{
-  lecteur: Lecteur[]=[];
-  recherche= '';
 
+  lecteurs:Lecteur[]= []
+  recherche= '';
   constructor(private route : Router, private readonly lecteurService:LecteurService) {
   }
-    chercheLecteur() {
-        this.lecteur = this.lecteurService.getLecteur().map((lecteur, index) => {
-            return {
-                nom: lecteur.nom,
-                prenom: lecteur.prenom,
-                nationalite: lecteur.nationalite,
-                photo: lecteur.photo,
-            };
-        }).filter((lecteur) => {
-            return (lecteur.nom.includes(this.recherche) || lecteur.prenom.includes(this.recherche) || lecteur.nationalite.includes(this.recherche));
-        });
-    }
     ngOnInit() {
-    this.lecteur = this.lecteurService.getLecteur()
+    this.lecteurs = this.lecteurService.getLecteur()
   }
     goToAjouter(){
         this.route.navigateByUrl('/ajout-lecteur')
     }
+  filterLecteur(){
+    this.lecteurs = this.lecteurService.getLecteur()
+        .filter(lecteur =>
+            lecteur.nom.includes(this.recherche) ||
+            lecteur.prenom.includes(this.recherche) ||
+            lecteur.nationalite.includes(this.recherche)
+        );
+  }
+  deleteLecteur(lecteur: Lecteur) {
+    this.lecteurService.deleteLecteur(lecteur.id).then(() => {
+      this.lecteurs = this.lecteurs.filter(l => l !== lecteur);
+    }).catch((error) => {
+      console.error("Error deleting lecteur: ", error);
+    });
+  }
 
 
 
