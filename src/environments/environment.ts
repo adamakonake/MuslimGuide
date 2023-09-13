@@ -4,6 +4,15 @@
 
 export const environment = {
   production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyCyhWnG7QEm7mREbarlNojsc9Ncf0wSBpQ",
+    authDomain: "ionic-project-muslim-guide.firebaseapp.com",
+    projectId: "ionic-project-muslim-guide",
+    storageBucket: "ionic-project-muslim-guide.appspot.com",
+    messagingSenderId: "975293651580",
+    appId: "1:975293651580:web:fafb2bc9b8b1917f5507f9",
+    measurementId: "G-DRCYLTXDRG"
+  }
   //geoCodeApiKey: "ee179fc833ed4af9ad062cfabc51004b"
   
 };

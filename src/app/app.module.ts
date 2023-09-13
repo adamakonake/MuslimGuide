@@ -4,6 +4,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
+// Import Firebase modules + environment
+
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+//import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
@@ -12,10 +19,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AngularFireModule} from '@angular/fire/compat'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth'
 import { getFirestore } from 'firebase/firestore';
 import { FirestoreModule } from '@angular/fire/firestore';
-
-
+import { from } from 'rxjs';
 
 
 const firebaseConfig = {
@@ -37,6 +44,7 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     MbscModule,   
     FormsModule, 
+    provideAuth(()=>getAuth()),
     provideFirebaseApp(()=>initializeApp(firebaseConfig)), 
     provideFirestore(()=>getFirestore()),
     BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
