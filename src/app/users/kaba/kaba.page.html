@@ -1,10 +1,14 @@
-
-
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="section" style="background-color: #68c49a8e;">
   <div id="container">
-    <p>{{(!!data ? data.magneticHeading : 0)}}°</p>
-    <img src="../../../assets/image/compass.png" width="200em" [ngStyle]="{'transform': 'rotate('+(qiblaLocation*-1)+'deg)'}">
-    <!-- <p>Current Location<br>{{!!currentLocation ? "["+currentLocation.coords.latitude+","+currentLocation.coords.longitude+"]" : 'Not Allowed'}}</p> -->
+    <div class="image">
+      <p>{{(!!data ? data.magneticHeading : 0)}}°</p>
+      <img src="../../../assets/image/compass.png" width="200em"
+        [ngStyle]="{'transform': 'rotate('+(qiblaLocation*-1)+'deg)'}">
+      <!-- <p>Current Location<br>{{!!currentLocation ? "["+currentLocation.coords.latitude+","+currentLocation.coords.longitude+"]" : 'Not Allowed'}}</p> -->
+
+    </div>
+
+   
   </div>
   <div class="imgMosque">
     <img src="../../../assets/image/r-bg-mosque 1.png" alt="">
