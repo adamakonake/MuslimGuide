@@ -52,8 +52,12 @@ const routes: Routes = [
     path: 'lire-coran',
     loadChildren: () => import('./users/lire-coran/lire-coran.module').then( m => m.LireCoranPageModule)
   },
+  // {
+  //   path: 'details-mosquees',
+  //   loadChildren: () => import('./users/details-mosquees/details-mosquees.module').then( m => m.DetailsMosqueesPageModule)
+  // },
   {
-    path: 'details-mosquees',
+    path: 'details-mosquees/:id',
     loadChildren: () => import('./users/details-mosquees/details-mosquees.module').then( m => m.DetailsMosqueesPageModule)
   },
   {
