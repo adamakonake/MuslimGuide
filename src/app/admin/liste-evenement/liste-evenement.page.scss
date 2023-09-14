@@ -112,50 +112,110 @@
 
 
 
+// ==================== Style pour les recherche 
+
+.search_container {
+    margin-top: 12px;
+    margin-right: 10px;
+}
+
+.recherche_bare input {
+    width: 239px;
+    height: 40px;
+    border: none;
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    padding-left: 55px;
+    outline: none;
+}
+
+.recherche_bare {
+    position: relative;
+}
+
+.recherche_bare .icon_search {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 2px;
+    border-radius: 10px;
+    background-color: var(--color-secondaire);
+    width: 42px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_ajouter_search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: static;
+    top: 0;
+}
+
+.btn_container {
+    margin-top: 12px;
+    margin-left: 10px;
+}
+
+button.btn_ajout {
+    padding: 12px 25px;
+    background-color: var(--color-principal);
+    color: var(--color-blanc);
+    border-radius: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+
+
+
 // recherche
 
-.container{
-    display: flex;
-}
+// .container{
+//     display: flex;
+// }
 
-.recherche{
-    padding-left: 30px; 
-    padding-right: 35px; 
-    height: 30px;
-    width: 80%; 
-    border: 1px solid rgb(223, 223, 183);
-    margin-top: 4%;
-    margin-left: 9%;
-    margin-right: 5%;
-    border-radius: 15px;
-    background-color:#E0E0E0;
-    text-align: center; 
-    position: relative; 
-}
+// .recherche{
+//     padding-left: 30px; 
+//     padding-right: 35px; 
+//     height: 30px;
+//     width: 80%; 
+//     border: 1px solid rgb(223, 223, 183);
+//     margin-top: 4%;
+//     margin-left: 9%;
+//     margin-right: 5%;
+//     border-radius: 15px;
+//     background-color:#E0E0E0;
+//     text-align: center; 
+//     position: relative; 
+// }
 
-.search-container {
-    position: relative;
-    display: inline-block;
-    margin-left: 10%;
-  }
+// .search-container {
+//     position: relative;
+//     display: inline-block;
+//     margin-left: 10%;
+//   }
 
-  .search-icon {
-    position: absolute;
-    right: 5px;
-    left: 1px;
-    margin-left: 8%;
-    top: 58%;
-    width: 18%;
-    height: 30px;
-    margin-left: 9%;
-    border-radius: 20px;
-    transform: translateY(-50%);
-    background: var(--Couleur-Or, #D79A10); 
-  } 
+//   .search-icon {
+//     position: absolute;
+//     right: 5px;
+//     left: 1px;
+//     margin-left: 8%;
+//     top: 58%;
+//     width: 18%;
+//     height: 30px;
+//     margin-left: 9%;
+//     border-radius: 20px;
+//     transform: translateY(-50%);
+//     background: var(--Couleur-Or, #D79A10); 
+//   } 
 
-  .search-icon>ion-icon{
-    margin-left: 19%;
-    margin-top: 10%;
-  }
+//   .search-icon>ion-icon{
+//     margin-left: 19%;
+//     margin-top: 10%;
+//   }
 
 

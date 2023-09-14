@@ -14,22 +14,28 @@
 
    <h2 class="titre"> Liste des évènements</h2>
 
-   <div class="container">
-   <button  class="btn">
-    <i class="fa-solid fa-plus"></i>
-    Ajouter
-   </button>
+    <!-- /////////////////////////////////////////////// -->
 
-   <div class="search-container">
-    <input type="search" value="" class="recherche">
-    <div class="search-icon">
-      <ion-icon name="search-outline"></ion-icon>
-      <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
-      <!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
+    <div class="div_ajouter_search">
+
+      <div class="btn_container">
+        <button id="open-modal" expand="block" class="btn_ajout">
+          Ajouter
+        </button>
+      </div>
+  
+      <!-- Debut Pour les recherche bare search_container  -->
+      <div  class="search_container">
+        <div class="recherche_bare">
+          <input type="search" name="search" placeholder="Recherche">
+          <!-- mon icon de recherche  -->
+          <i class="ri-search-line icon_search"></i>
+        </div>
+      </div>
+      <!-- Fin Pour les recherche bare search_container  -->
+  
     </div>
-  </div>
-<!-- </div> -->
-</div>
+
 
    <div class="event-info">
     <div class="localisation">
