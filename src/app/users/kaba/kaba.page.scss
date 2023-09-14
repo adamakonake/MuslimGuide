@@ -1,7 +1,12 @@
 #container{
-    background-color: #4d8d70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #2b946598;
 }
-.imgMosque{
-    height: 100px;
+img{
+    height: 292px;
     width: 100%;
 }

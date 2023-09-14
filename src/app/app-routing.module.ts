@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Path } from 'leaflet';
 
 const routes: Routes = [
   {
@@ -137,9 +138,12 @@ const routes: Routes = [
   {
     path: 'sourate-liste',
     loadChildren: () => import('./users/sourate-liste/sourate-liste.module').then( m => m.SourateListePageModule)
+  },
+
+  {
+    path: 'liste-mosquee',
+    loadChildren: () => import('./admin/liste-mosquee/liste-mosquee.module').then( m => m.ListeMosqueePageModule)
   }
-
-
 
 ];
 

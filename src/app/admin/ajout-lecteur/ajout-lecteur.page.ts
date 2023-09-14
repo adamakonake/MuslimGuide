@@ -10,10 +10,13 @@ import { LecteurService } from 'src/app/services/lecteur.service';
   styleUrls: ['./ajout-lecteur.page.scss'],
 })
 export class AjoutLecteurPage implements OnInit {
+  // selectedFile: File | undefined;
+
+  // =============================================
   
   ajoutLecteur: FormGroup;
-  selectedImage: File | undefined;
-  
+  // selectedImage: File | undefined;
+  selectedImage: any = '../../../assets/img_sy/avatar1.png';
 
 
   ngOnInit() {
@@ -29,22 +32,38 @@ export class AjoutLecteurPage implements OnInit {
    }
 
    
+   // Vous pouvez également prévisualiser l'image si nécessaire
+   // e.target.result contient l'URL de l'image prévisualisée
 
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.selectedImage = file;
 
-      // Vous pouvez également prévisualiser l'image si nécessaire
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        // e.target.result contient l'URL de l'image prévisualisée
-        const imageUrl = e.target.result;
-        console.log('URL de l\'image prévisualisée :', imageUrl);
-      };
-      reader.readAsDataURL(file);
-    }
-  }
+   onFileSelected(event: any) {
+     const file: File = event.target.files[0];
+     if (file) {
+       // Utilisez FileReader pour prévisualiser l'image
+       const reader = new FileReader();
+       reader.onload = (e: any) => {
+         // e.target.result contient l'URL de l'image prévisualisée
+         this.selectedImage = e.target.result;
+            const imageUrl = e.target.result;
+            console.log('URL de l\'image prévisualisée :', imageUrl);
+       };
+       reader.readAsDataURL(file);
+     }
+   }
+   
+
+  // onFileSelected(event: any) {
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     this.selectedImage = file;
+  //     const reader = new FileReader();
+  //     reader.onload = (e: any) => {
+  //       const imageUrl = e.target.result;
+  //       console.log('URL de l\'image prévisualisée :', imageUrl);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
 
     submit() {
       console.log("je suis clik")

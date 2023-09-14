@@ -1,53 +1,186 @@
-ion-content{
-  --background: url("../../../assets/ad.png") no-repeat center center/cover;
-}
-input{
-  background-color: rgb(248, 246, 246);
-  border-radius: 10px;
-  border-color: #fdfdfd;
-  height: 35px;
-  margin-top: 10px;
-
-}
-label{
-  color: #f0eded;
-  text-align: start;
-  margin-top: 10px;
+:root {
+  --color-principal : #25A069;
+  --color-secondaire : #D79A10;
+  --color-blanc: #FFFFFF;
+  --color-noir: #000000;
+  --font-w200: 200;
+  --font-w300: 300;
+  --font-w400: 400;
+  --font-w500: 500;
+  --font-w600: 600;
+  --font-w700: 700;
 }
 
-.imagePlace{
-  width: 100px;
-  height: 60px;
-  background-color: aliceblue;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0px 0px 20px rgba($color: #000000, $alpha: 1.0);
-  border-radius: 10px;
-}
-.photo{
-  margin-left: 25%;
+.container_ajout_lecteur {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../../../assets/image/mosquee.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 10;
 }
 
-.liste{
+.title_principal {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.image_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tilte {
+  text-align: center;
+  color: #fff;
+  letter-spacing: 0.67px;
+}
+
+.image {
+  width: 130px;
+  height: 130px;
+  border: 1px solid #25A069;
+  border-radius: 50%;
+}
+
+.image img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
 }
-.pDiv{
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
+
+// ===================== style de upload_input
+
+.upload_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
 }
-.ajout{
-  text-align: center;
-  font-size: large;
-}
-.btn{
-  font-size: 20px;
-  background-color: #25A069;
+
+input[type="file"] {
+  background-color: #d79b1017;
+  padding: 10px 17px;
+  border: 1px solid #25A069;
+  color: var(--color-blanc);
+  font-size: 10px;
   border-radius: 10px;
-  width: 50%;
-  height: 60px;
-  margin-top: 80%;
-  margin-left: 97px;
-  margin-right: auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+input[type="file"]::file-selector-button {
+  /* Ajoutez ici vos styles personnalisés */
+  background-color: #25A069;
+  color: #fff;
+  padding: 5px 17px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 1px;
+}
+
+
+// ====================== INPUT DE INSCRIPION D'ADMINISTRATEUR 
+
+.formulaire {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.champ_input {
+  position: relative;
+  margin-top: 10px;
+}
+
+.input_focus {
+  width: 280px;
+  // min-width: 280px;
+  height: 49px;
+  // padding: 10px 10px;
+  padding-left: 10px;
+  outline: none;
+  background-color: var(--color-blanc);
+  border: 2px solid rgba(212, 212, 212, 0.855);
+  border-radius: 10px;
+  margin: 10px 0;
+  transition: all 0.3s;
+  font-size: 18px;
+  border-radius: 9px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 1px 12px 0px rgba(5, 188, 45, 0.288);
+}
+
+.input_focus:focus {
+  border: 2px solid var(--color-principal);
+}
+
+.champ_input .label {
+  position: absolute;
+  top: 26px;
+  left: 15px;
+  pointer-events: none;
+  color: #000;
+}
+
+
+/*  Verificatiion de label si le champs est vide ou pas  */
+
+.input_focus:not(:placeholder-shown) + .label,
+.input_focus:focus + .label {
+  color: var(--color-noir);
+  font-weight: 500;
+  top: -10px;
+  left: 0px;
+  transition: all 0.5s ease-in-out;
+  // background: var(--color-blanc);
+  font-size: 14px;
+  padding: 0 0 15px 0;
+  letter-spacing: 0.60px;
+}
+
+.input_focus::placeholder
+{
+  opacity: 0;
+}
+
+.input_focus:focus::placeholder
+{
+  opacity: 1;
+  animation-delay: 1s;
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+// ============ Button 
+
+.container_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+.btn_submit {
+  background-color: var(--color-principal);
+  // width: 360px;
+  width: 280px;
+  border-radius: 9px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  height: 49px;
+  // color: #25A069;
+  box-shadow: rgba(0, 0, 0, 0.685) 0px 3px 8px;
+}
+
+.btn_submit:hover {
+  // --ion-color-primary: #25A069;
+  background-color: var(--color-principal);
+  transition: all 0.3s;
+  --ion-color-primary-shade: #227e55;
+  --ion-color-secondary: #25A069;
 }

@@ -18,7 +18,7 @@
   <h2 class="chapelet">Chapelet</h2> <br>
 
   <div class="counter">
-    <span class="count">0</span>
+    <span class="count">{{count}}</span>
   </div>
 
   <div class="image">
@@ -27,10 +27,10 @@
 
   <div class="icon-btn">
      
-      <ion-icon color="success" name="refresh-outline"></ion-icon>
+      <ion-icon color="success" (click)="resetNumber()" class="retour" name="refresh-outline"></ion-icon>
 
    
-      <ion-icon color="success" name="add-outline"></ion-icon>   
+      <ion-icon  color="success" (click)="increment(count)" class="plus" name="add-outline"></ion-icon>   
 
   </div>
   <!-- <div class="icon-btn">
@@ -40,18 +40,24 @@
 
   <div class="liste-lecture">
     <div class="el">
-    <h4 class="titre" > Laylat al Miraj</h4>
-    <p class="contenu">Contenu</p>
+      <h4 class="titre"> سبحان الله </h4>
+      <p class="contenu" style="font-weight: bold;">Soubhanallah</p>
+    </div>
+       <div class="line"></div>
+    <div class="el">
+    <h4 class="titre" > الحمد لله</h4>
+    <p class="contenu" style="font-weight: bold;">Al-hamdu-li-l-lah</p>
+  </div>
+     <div class="line"></div>
+   
+    <div class="el">
+    <h4 class="titre">الله أكبر </h4>
+    <p class="contenu" style="font-weight: bold;">Allahou akbar</p>
   </div>
      <div class="line"></div>
     <div class="el">
-    <h4 class="titre"> Laylat al Miraj</h4>
-    <p class="contenu">Contenu</p>
-  </div>
-     <div class="line"></div>
-    <div class="el">
-    <h4 class="titre"> Laylat al Miraj</h4>
-    <p class="contenu">Contenu</p>
+    <h4 class="titre">لا اله الا الله</h4>
+    <p class="contenu" style="font-weight: bold;"> La ilaha illallah</p>
   </div>
      <div class="line"></div>
     
@@ -59,3 +65,5 @@
   <!-- main  -->
 
 </ion-content>
+
+

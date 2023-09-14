@@ -1,3 +1,4 @@
+
 <ion-content [fullscreen]="true">
 
 
@@ -269,4 +270,32 @@
       </ion-content>
     </ng-template>
   </ion-modal>
+
+
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::traitement de Togo:::::::::::::::::::::::::::::::-->
+
+<div *ngFor="let mosque of mosquee; let i = index" class="event-info">
+  <!-- <img src="../../../assets/image/image 10.png" alt=""> -->
+  
+  <div class="localisation">
+    
+    <div class="loc">
+      <i id="icon-location" class="fa-solid fa-location-dot"></i>
+   <p class="lieu">{{ mosque.adresse }}</p>
+    </div>
+
+    <div class="info-imam">
+      <i id="icon-imam" class="fa-regular fa-user"></i>
+      <p class="nom-imam">{{ mosque.nom }}</p> 
+    </div>
+
+  </div>
+
+<div class="action">
+<i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square"></i>  
+<i (click)="supprimerMosquee(i)" class="fa-solid fa-trash"></i>
+</div>
+</div>
+
 </ion-content>
