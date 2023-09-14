@@ -10,42 +10,41 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 })
 export class InscriptionPage implements OnInit {
 
-  // inscription: FormGroup;
+  inscription: FormGroup;
 
   passwordType : string  = 'password';
   passwordShown : boolean  = false;
   FormData:any ={};
   NouveauUtilisateur:any =[];
 
-  constructor(){}
-  // constructor(private fb: FormBuilder, private inscriptionService: InscriptionService ) {
-  //   this.inscription = this.fb.group({
-  //     nom: ['', Validators.required],
-  //     prenom: ['', Validators.required],
-  //     email: ['', Validators.required],
-  //     password: ['', Validators.required],
-  //     confirmPassword: ['', Validators.required],
-  //     telephone: ['', Validators.required],
+  constructor(private fb: FormBuilder, private inscriptionService: InscriptionService ) {
+    this.inscription = this.fb.group({
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      telephone: ['', Validators.required],
       
-  //   });
-  // }
+    });
+  }
 
    ngOnInit() {
   }
-  // submit(){
-  //   const newInscription = new Inscription(
-  //     this.inscription.value.nom!,
-  //     this.inscription.value.prenom!,
-  //     this.inscription.value.email!,
-  //     this.inscription.value.telephone!,
-  //     this.inscription.value.password!,
-  //     this.inscription.value.confirmPassword!,
-      
-  //   )
-  //   console.log(this.inscription.value + "je trouve quelque chose")
-  //   console.log(this.inscriptionService.addInscription(newInscription));
+  submit(){
+    const newInscription = new Inscription(
+      "",
+      this.inscription.value.nom!,
+      this.inscription.value.prenom!,
+      this.inscription.value.email!,
+      this.inscription.value.password!
+    )
+    
+    console.log(this.inscriptionService.addInscription(newInscription));
+    // console.log(this.inscription.value + "je trouve quelque chose")
+    // console.log(this.inscriptionService.addInscription(newInscription));
 
-  // }
+  }
 
 
 

@@ -59,15 +59,7 @@ export class AjoutLecteurPage implements OnInit {
 
         console.log(this.ajoutLecteur.value + "je trouve quelque chose")
     console.log(this.lecteurService.addLecteur(newLecteur));
-        // Ajoutez ici le code pour gérer la réponse réussie, par exemple, réinitialiser le formulaire.
-       // this.ajoutLecteur.reset();
-      
-  //   } catch (error) {
-  //     console.error('Erreur lors de l\'ajout du lecteur :', error);
-  //     // Ajoutez ici le code pour gérer l'erreur, par exemple, afficher un message d'erreur à l'utilisateur.
-  //   // }
-  // }
-    // }
+ 
     
    }
 

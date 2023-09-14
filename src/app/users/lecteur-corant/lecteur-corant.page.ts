@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -16,9 +17,16 @@ interface Personne {
 
 export class LecteurCorantPage implements OnInit {
 
-  constructor() { }
+  lecteurs : any;
+  constructor( private http : HttpClient) { }
 
   ngOnInit() {
+    this.http.get("https://api.quran.com/api/v4/resources/recitations").subscribe((result : any)=>{
+      this.lecteurs = result.recitations;
+      console.log(result)
+    })
   }
+
+
 
 }

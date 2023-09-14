@@ -1,18 +1,16 @@
 export class Inscription{
+    id!:string;
     nom!: string;
     prenom!: string;
     email!: string;
-    telephone!: string;
     password!: string;
-    confirmPassword!: string;
 
-    constructor(nom:string,prenom:string,email:string,telephone:string,password:string,confirmPassword: string){
+    constructor(id:string,nom:string,prenom:string,email:string,password:string){
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.telephone = telephone;
         this.password = password;
-        this.confirmPassword = confirmPassword;
     }
 
 }

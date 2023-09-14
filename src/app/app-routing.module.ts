@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'page-de-bienvenu',
+    redirectTo: 'list-radio',
     pathMatch: 'full'
   },
   {
@@ -69,6 +69,10 @@ const routes: Routes = [
     loadChildren: () => import('./users/liste-des-mosquees/liste-des-mosquees.module').then( m => m.ListeDesMosqueesPageModule)
   },
   {
+    path: 'liste-mosquee',
+    loadChildren: () => import('./admin/liste-mosquee/liste-mosquee.module').then( m => m.ListeMosqueePageModule)
+  },
+  {
     path: 'page-de-bienvenu',
     loadChildren: () => import('./users/page-de-bienvenu/page-de-bienvenu.module').then( m => m.PageDeBienvenuPageModule)
   },
@@ -120,7 +124,7 @@ const routes: Routes = [
     path: 'liste-lecteur',
     loadChildren: () => import('./users/liste-lecteur/liste-lecteur.module').then( m => m.ListeLecteurPageModule)
   },
-  {path: 'user-liste-des-sourates', loadChildren: () => import('./users/user-liste-des-sourates/user-liste-des-sourates.module').then( m => m.UserListeDesSouratesPageModule)},
+  {path: 'user-liste-des-sourates/:identifient', loadChildren: () => import('./users/user-liste-des-sourates/user-liste-des-sourates.module').then( m => m.UserListeDesSouratesPageModule)},
   {path: 'admin-liste-sourate', loadChildren:() => import('./admin/admin-liste-des-sourates/admin-liste-des-sourates.module').then(m => m.AdminListeDesSouratesPageModule)},
   {
     path: 'map-page',

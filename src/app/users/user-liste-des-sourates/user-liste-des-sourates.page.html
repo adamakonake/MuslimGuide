@@ -16,24 +16,27 @@
       <i class="ri-search-line icon_search"></i>
     </div>
   </div>
-<ion-item-divider></ion-item-divider>
-  <ion-card *ngFor="let i= index ;let sourate of sourateFiltres">
-    <ion-card-content class="card-sourate">
-      <div class="conteneur-sourate">
-        <div class="numéro">
-          <div class="cercle1">
-            {{sourate.numero}}
+  <div *ngIf="sourateList">
+    <ion-card *ngFor="let i= index ;let sourate of sourateList">
+      <ion-card-content class="card-sourate">
+        <div class="conteneur-sourate">
+          <div class="numéro">
+            <div class="cercle1">
+              {{sourate.id}}
+            </div>
+          </div>
+          <div class="sourate">
+            <p class="sourateNameAr" >{{ sourate.name_arabic }}</p>
+            <p class="sourateNameEn">{{ sourate.name_simple }}</p>
+          </div>
+          <div class="bouton-jouer">
+            <button [disabled]="!sourateAudioList" [ngStyle]="{'background-color': isPlay == i ? 'rgba(37,160,105, 0.5)' : 'transparent'}" (click)="playQuran(i)">
+              <ion-icon *ngIf="isPlay != i || isPause == i " name="play-outline"></ion-icon>
+              <ion-icon *ngIf="isPlay == i && isPause != i" name="pause-outline"></ion-icon>
+            </button>
           </div>
         </div>
-        <div class="sourate">
-          {{ sourate.nom }}
-        </div>
-        <div class="bouton-jouer">
-          <button ion-button color="primary" (click)="togglePlay(sourate)">
-            <ion-icon [name]="sourate.isPlaying ? 'pause-circle-outline' : 'play-outline'"></ion-icon>
-          </button>
-        </div>
-      </div>
-    </ion-card-content>
-  </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

@@ -53,3 +53,67 @@
   </div>
 
 </ion-content>
+
+<!-- ======================== FOOTER ============================== -->
+
+<!-- ============ MON STYLE DE FOOTER ===========  -->
+
+<style>
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img_profile {
+  width: 70px;
+  height: 70px;
+  margin: 8px 18px 8px 0;
+}
+
+.img_profile .image_admin {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.473) 0px 1px 4px;
+}
+
+.name_profile {
+  margin-left: 20px;
+}
+
+.para_ligne {
+  padding-left: 8px; 
+}
+
+
+.div_name_profil {
+  position: relative;
+}
+
+</style>
+
+<!-- ============ MON STYLE DE FOOTER ===========  -->
+
+<ion-footer>
+  <ion-toolbar>
+    <!-- <ion-button routerLink="/accueil">Accueil</ion-button>
+    <ion-button routerLink="/profil">Profil</ion-button> -->
+
+    <div class="container_profile">
+      <div class="profile">
+        <!-- Le nom de profils de administrateur  -->
+        <div class="div_name_profil">
+          <!-- nom en question  -->
+          <h3 class="name_profile">Adama Konake</h3>
+        </div>
+        <!-- div de image administrateur  -->
+        <div class="img_profile">
+          <!-- Umage de l'administrateur  -->
+          <img class="image_admin" src="../../../assets/img_sy/avatar2.png" alt="image de l'administrateur">
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

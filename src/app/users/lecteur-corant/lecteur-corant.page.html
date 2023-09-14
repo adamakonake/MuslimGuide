@@ -85,10 +85,10 @@
       <!-- 3ème ETAPE -->
 
       <!-- Debut pour les liste des imams qui affiche  -->
-      <div class="container_list_imams">
+      <div *ngIf="lecteurs" class="container_list_imams">
 
         <!-- l'imam 1111111111111  -->
-        <div class="list_imams">
+        <div *ngFor="let lecteur of lecteurs" class="list_imams">
 
           <!-- section de mon image imam  -->
           <div class="img_plus_nom">
@@ -98,175 +98,14 @@
 
               <!-- section de mon de nom et description de l'imams  -->
               <div class="nom_desc_imam">
-                <h5 class="name_imam">Nom l'imam</h5>
+                <h5 class="name_imam">{{lecteur.reciter_name}}</h5>
                 <p>Une petite description de l'imam</p>
               </div>
           </div>
 
           <!-- section pour avoir l'accès  -->
           <div class="acceder_imams">
-              <a href="#"> Acceder </a>
-          </div>
-
-        </div>
-
-        <!-- l'imam 2222222222222  -->
-        <div class="list_imams">
-
-          <!-- section de mon image imam  -->
-          <div class="img_plus_nom">
-              <div class="img_imams">
-                <img src="../../../assets/img_sy/img_1.jpeg" alt="image de imam">
-              </div>
-
-              <!-- section de mon de nom et description de l'imams  -->
-              <div class="nom_desc_imam">
-                <h5 class="name_imam">Nom l'imam</h5>
-                <p>Une petite description de l'imam</p>
-              </div>
-          </div>
-
-          <!-- section pour avoir l'accès  -->
-          <div class="acceder_imams">
-              <a href="#"> Acceder </a>
-          </div>
-
-        </div>
-
-        <!-- l'imam 3333333333333  -->
-        <div class="list_imams">
-
-          <!-- section de mon image imam  -->
-          <div class="img_plus_nom">
-              <div class="img_imams">
-                <img src="../../../assets/img_sy/img_1.jpeg" alt="image de imam">
-              </div>
-
-              <!-- section de mon de nom et description de l'imams  -->
-              <div class="nom_desc_imam">
-                <h5 class="name_imam">Nom l'imam</h5>
-                <p>Une petite description de l'imam</p>
-              </div>
-          </div>
-
-          <!-- section pour avoir l'accès  -->
-          <div class="acceder_imams">
-              <a href="#"> Acceder </a>
-          </div>
-
-        </div>
-
-        <!-- l'imam 4444444444444  -->
-        <div class="list_imams">
-
-          <!-- section de mon image imam  -->
-          <div class="img_plus_nom">
-              <div class="img_imams">
-                <img src="../../../assets/img_sy/img_1.jpeg" alt="image de imam">
-              </div>
-
-              <!-- section de mon de nom et description de l'imams  -->
-              <div class="nom_desc_imam">
-                <h5 class="name_imam">Nom l'imam</h5>
-                <p>Une petite description de l'imam</p>
-              </div>
-          </div>
-
-          <!-- section pour avoir l'accès  -->
-          <div class="acceder_imams">
-              <a href="#"> Acceder </a>
-          </div>
-
-        </div>
-
-        <!-- l'imam 555555555555  -->
-        <div class="list_imams">
-
-          <!-- section de mon image imam  -->
-          <div class="img_plus_nom">
-              <div class="img_imams">
-                <img src="../../../assets/img_sy/img_1.jpeg" alt="image de imam">
-              </div>
-
-              <!-- section de mon de nom et description de l'imams  -->
-              <div class="nom_desc_imam">
-                <h5 class="name_imam">Nom l'imam</h5>
-                <p>Une petite description de l'imam</p>
-              </div>
-          </div>
-
-          <!-- section pour avoir l'accès  -->
-          <div class="acceder_imams">
-              <a href="#"> Acceder </a>
-          </div>
-
-        </div>
-
-        <!-- l'imam 666666666666  -->
-        <div class="list_imams">
-
-          <!-- section de mon image imam  -->
-          <div class="img_plus_nom">
-              <div class="img_imams">
-                <img src="../../../assets/img_sy/img_1.jpeg" alt="image de imam">
-              </div>
-
-              <!-- section de mon de nom et description de l'imams  -->
-              <div class="nom_desc_imam">
-                <h5 class="name_imam">Nom l'imam</h5>
-                <p>Une petite description de l'imam</p>
-              </div>
-          </div>
-
-          <!-- section pour avoir l'accès  -->
-          <div class="acceder_imams">
-              <a href="#"> Acceder </a>
-          </div>
-
-        </div>
-
-        <!-- l'imam 777777777777  -->
-        <div class="list_imams">
-
-          <!-- section de mon image imam  -->
-          <div class="img_plus_nom">
-              <div class="img_imams">
-                <img src="../../../assets/img_sy/img_1.jpeg" alt="image de imam">
-              </div>
-
-              <!-- section de mon de nom et description de l'imams  -->
-              <div class="nom_desc_imam">
-                <h5 class="name_imam">Nom l'imam</h5>
-                <p>Une petite description de l'imam</p>
-              </div>
-          </div>
-
-          <!-- section pour avoir l'accès  -->
-          <div class="acceder_imams">
-              <a href="#"> Acceder </a>
-          </div>
-
-        </div>
-
-        <!-- l'imam 888888888888  -->
-        <div class="list_imams">
-
-          <!-- section de mon image imam  -->
-          <div class="img_plus_nom">
-              <div class="img_imams">
-                <img src="../../../assets/img_sy/img_1.jpeg" alt="image de imam">
-              </div>
-
-              <!-- section de mon de nom et description de l'imams  -->
-              <div class="nom_desc_imam">
-                <h5 class="name_imam">Nom l'imam</h5>
-                <p>Une petite description de l'imam</p>
-              </div>
-          </div>
-
-          <!-- section pour avoir l'accès  -->
-          <div class="acceder_imams">
-              <a href="#"> Acceder </a>
+              <a routerLink="/user-liste-des-sourates/{{lecteur.id}}"> Acceder </a>
           </div>
 
         </div>
@@ -277,3 +116,10 @@
     <!--=============== FIN conception de cadre de ma lecture coran ============ -->
 
 </ion-content>
+<ion-footer>
+  <div>
+    <div>
+      
+    </div>
+  </div>
+</ion-footer>
