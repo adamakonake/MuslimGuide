@@ -3,6 +3,7 @@ import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AnimationController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
+import { HorairesPrière } from 'src/app/users/models/horaires-prière';
 import { Mosquee } from 'src/app/users/models/mosquee';
 import { MosqueeService } from 'src/app/users/services/mosquee.service';
 
@@ -73,8 +74,17 @@ export class ListeMosqueePage implements OnInit {
       // this.createMosqueeForm.value.djouma!
 
     )
+    
+    const horaires = new HorairesPrière(
+      this.createMosqueeForm.value.fadjr!,
+      this.createMosqueeForm.value.zohr!,
+      this.createMosqueeForm.value.asri!,
+      this.createMosqueeForm.value.magreb!,
+      this.createMosqueeForm.value.isha!,
+      this.createMosqueeForm.value.djouma!
+    )
     console.log(this.createMosqueeForm.value)
-    // console.log(this.mosqueeService.createMosquee(mosquee));
+    console.log(this.mosqueeService.createMosquee(mosquee,horaires));
   }
   // ::::::::::::::::::::::::::::::::fin de traitement de formulaire :::::::::::::::::::::::::::::::::::::::::::
   isModalOpen = false;

@@ -3,37 +3,41 @@ import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AjoutannonceService } from '../services/ajoutannonce.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Annonce } from 'src/app/users/models/annonce';
+
 
 @Component({
   selector: 'app-listeannonces',
   templateUrl: './listeannonces.page.html',
   styleUrls: ['./listeannonces.page.scss'],
 })
+
 export class ListeannoncesPage implements OnInit {
-  //searchForm: FormBuilder;
+  
   isconfirmdialogVisible: boolean = false;
   annoncee : any ;
+  annonceSaved:any;
   confirmdialogVisible: boolean | undefined;
    
   constructor( private firestor : Firestore, private ajoutrService : AjoutannonceService, private router: Router, private formBuider : FormBuilder) {
-    // this.searchForm = this.formBuider.group({
-    //   searchQuery: [''], 
-    // })
-
-    //lien ajout button
+   
   }
+ //lien ajout button
   naviguerVersAjoutAnnonces() {
     this.router.navigateByUrl("/ajoutannonces");
   }
 
   ngOnInit(){
+    this.getAllAnnonces();
+  }
 
-    // this.getAnnonces();
-
+  //methode pour la recuperation
+  getAllAnnonces(){
     this.ajoutrService.getlistannonce().subscribe(resul=>{
       this.annoncee = resul;
+      this.annonceSaved = resul;
       console.log(this.annoncee);
+
+      //trier par ordre alphabetique
       this.annoncee.sort((a: { nomMosquee: string; },
         b: { nomMosquee: string; }) => {
         const nomMosqueeA = a.nomMosquee.toLowerCase();
@@ -48,17 +52,27 @@ export class ListeannoncesPage implements OnInit {
         return 0;
       });
     })
+    //return this.annoncee;
   }
 
+  //methode de modification 
+
+  // modifierannonce(index : string){
+  //   this.ajoutrService.updateannonce(this.annoncee[index].id, this.annoncee[index])
+  // }
+  modifierannonce(annonce: any) {
+    this.ajoutrService.updateannonce(annonce.id, annonce);
+  }
+  //code pour la recherche
   onSearch(ev:any) {
-     console.log(ev.target.value) 
-    
-    //const searchTerm = this.searchForm.get('searchQuery').value;
-    //console.log('Recherche effectuée avec le terme : ', searchTerm);
+     console.log(ev.target.value);
+     console.log(this.annoncee);
+      this.annoncee = this.annonceSaved;
+     const filteredData = this.annoncee.filter((ann:any) => ann.nomMosquee.includes(ev.target.value));
+      this.annoncee = filteredData;
+     console.log(filteredData);
     
   }
-
-
 //code pour la suppression des annoonces 
   async deleteAnnonceById(annonceId: string): Promise<void> {
     try {
@@ -72,7 +86,6 @@ export class ListeannoncesPage implements OnInit {
    
   }
   
-
 }
 
 
