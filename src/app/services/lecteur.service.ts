@@ -3,6 +3,7 @@ import {collectionData, Firestore} from '@angular/fire/firestore';
 import { Lecteur } from '../admin/ajout-lecteur/mode';
 import {addDoc, collection, deleteDoc, doc} from 'firebase/firestore';
 import {updateDoc} from "@firebase/firestore";
+import {map, of} from "rxjs";
 
 @Injectable({
   providedIn: 'any'
@@ -21,17 +22,19 @@ export class LecteurService {
 
     });
   }
-  getLecteur(){
-    const data = collection(this.firestore, "Lecteur")
-    collectionData(data,{idField:'id'}).subscribe((resultat:any[]) => {
-      resultat.forEach(async lecteur => {
-        /*const lecteurRef = doc(this.firestore, "Lecteur", lecteur.id);*/
-        lecteur = lecteur
-        this.lecteur.push(lecteur);
-      })
-    })
-    return this.lecteur;
-  }
+    getLecteur(){
+        if (this.lecteur.length > 0) {
+            return of(this.lecteur);
+        }
+        const data = collection(this.firestore, "Lecteur");
+        return collectionData(data, { idField: 'id' }).pipe(
+            map((resultat: any[]) => {
+                this.lecteur = resultat.map(lecteur => ({ id: lecteur.id, ...lecteur }));
+                return this.lecteur;
+            })
+        );
+    }
+
   deleteLecteur(lecteurId: string) {
     const data = doc(this.firestore, "Lecteur", lecteurId);
     return deleteDoc(data);

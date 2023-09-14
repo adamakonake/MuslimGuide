@@ -12,15 +12,21 @@ import {ModifierlecteurPage} from "../modifierlecteur/modifierlecteur.page";
 })
 export class ListeLecteursPage implements OnInit {
 
-  lecteurs: Lecteur[] = []
+  lecteurs:Lecteur[]=[];
   recherche = '';
 
   constructor(private route: Router, private readonly lecteurService: LecteurService, private modalController: ModalController) {
   }
-
   ngOnInit() {
-    this.lecteurs = this.lecteurService.getLecteur()
+    this.refreshLecteurs();
   }
+
+  refreshLecteurs() {
+      this.lecteurService.getLecteur().subscribe((lecteurs: Lecteur[]) => {
+          this.lecteurs = lecteurs;
+      });
+  }
+
 
   goToAjouter() {
     this.route.navigateByUrl('/ajout-lecteur')
@@ -37,20 +43,24 @@ export class ListeLecteursPage implements OnInit {
 
   deleteLecteur(lecteur: Lecteur) {
     this.lecteurService.deleteLecteur(lecteur.id).then(() => {
-      this.lecteurs = this.lecteurs.filter(l => l !== lecteur);
+      this.lecteurs = this.lecteurs.filter((l: Lecteur) => l !== lecteur);
     }).catch((error) => {
       console.error("Error deleting lecteur: ", error);
     });
   }
 
-    async modifier(lecteur: Lecteur) {
-        const modal = await this.modalController.create({
-            component: ModifierlecteurPage,
-            componentProps: {
-                lecteur: lecteur
-            }
-        });
-        await modal.present();
-    }
+
+  async modifier(lecteur: Lecteur) {
+    const modal = await this.modalController.create({
+      component: ModifierlecteurPage,
+      componentProps: {
+        lecteur: lecteur
+      }
+    });
+    modal.onWillDismiss().then(() => {
+      this.refreshLecteurs(); // Rafraîchir la liste après la modification
+    });
+    await modal.present();
+  }
 
 }
