@@ -27,10 +27,11 @@ export class ListeLecteursPage implements OnInit {
   }
 
   lecteurFiltre(lecteur: Lecteur): boolean {
+    const rechercheLowerCase = this.recherche.toLowerCase();
     return (
-      lecteur.nom.includes(this.recherche) ||
-      lecteur.prenom.includes(this.recherche) ||
-      lecteur.nationalite.includes(this.recherche)
+      lecteur.nom.toLowerCase().includes(rechercheLowerCase) ||
+      lecteur.prenom.toLowerCase().includes(rechercheLowerCase) ||
+      lecteur.nationalite.toLowerCase().includes(rechercheLowerCase)
     );
   }
 
@@ -42,14 +43,6 @@ export class ListeLecteursPage implements OnInit {
     });
   }
 
-  updateLecteur(lecteurId: string, updatedData: Partial<Lecteur>) {
-    this.lecteurService.updateLecteur(lecteurId, updatedData)
-      .then(() => {
-      })
-      .catch(error => {
-        console.error("Error updating lecteur: ", error);
-      });
-  }
     async modifier(lecteur: Lecteur) {
         const modal = await this.modalController.create({
             component: ModifierlecteurPage,

@@ -3,18 +3,17 @@
     <ion-title>Modifier Lecteur</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true">
   <ion-item>
-    <ion-label>Nom</ion-label>
-    <ion-input [(ngModel)]="lecteur.nom"></ion-input>
+    <ion-input [(ngModel)]="lecteur.nom" label="Nom"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Prénom</ion-label>
-    <ion-input [(ngModel)]="lecteur.prenom"></ion-input>
+    <ion-input [(ngModel)]="lecteur.prenom" label="Prénom"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Nationalité</ion-label>
-    <ion-input [(ngModel)]="lecteur.nationalite"></ion-input>
+    <ion-input [(ngModel)]="lecteur.nationalite" label="Nationalité"></ion-input>
   </ion-item>
   <ion-button (click)="enregistrerModifications()">Enregistrer</ion-button>
+  <ion-button (click)="dismissModal()">Annuler</ion-button>
 </ion-content>

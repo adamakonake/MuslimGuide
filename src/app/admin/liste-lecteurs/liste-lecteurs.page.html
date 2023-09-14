@@ -22,25 +22,30 @@
     <!-- Fin Pour les recherche bare search_container  -->
   </div>
 
-  <ion-card *ngFor="let lecteur of lecteurs">
-    <ion-card-content>
-      <!-- Add a ngIf check to ensure the lecteur passes the filter -->
-      <div class="iman" *ngIf="lecteurFiltre(lecteur)">
-        <div class="photo">
-          <img [src]="lecteur.photo" alt="la photo de l'iman">
+  <ng-container *ngIf="lecteurs.length > 0; else noLecteurs">
+    <ion-card *ngFor="let lecteur of lecteurs">
+      <ion-card-content>
+        <!-- Ajouter un ngIf pour vous assurer que le lecteur passe le filtre -->
+        <div class="iman" *ngIf="lecteurFiltre(lecteur)">
+          <div class="photo">
+            <img [src]="lecteur.photo" alt="la photo de l'iman">
+          </div>
+          <div class="nom">
+            <h2>Nom:{{lecteur.nom}}</h2>
+            <h2>Prénom: {{lecteur.prenom}}</h2>
+            <h2>Nationalité: {{lecteur.nationalite}}</h2>
+          </div>
+          <div class="btn-actions">
+            <ion-icon color="success" name="create-outline" (click)="modifier(lecteur)"></ion-icon>
+            <ion-icon color="danger" name="trash-outline" (click)="deleteLecteur(lecteur)"></ion-icon>
+          </div>
         </div>
-        <div class="nom">
-          <h2>Nom:{{lecteur.nom}}</h2>
-          <h2>Prénom: {{lecteur.prenom}}</h2>
-          <h2>Nationalité: {{lecteur.nationalite}}</h2>
-        </div>
-      </div>
-      <div class="btn-actions">
-        <ion-icon color="success" name="create-outline" (click)="modifier(lecteur)" ></ion-icon>
-
-        <ion-icon color="danger" name="trash-outline" (click)="deleteLecteur(lecteur)"></ion-icon>
-      </div>
-    </ion-card-content>
-  </ion-card>
-
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+  <ng-template #noLecteurs>
+    <div class="no-lecteurs-message">
+      Aucun lecteur trouvé.
+    </div>
+  </ng-template>
 </ion-content>
