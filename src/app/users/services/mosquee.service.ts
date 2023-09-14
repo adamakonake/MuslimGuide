@@ -19,8 +19,6 @@ export class MosqueeService {
  mosque:any[] = [];
  horairesPrière=[];
 
-  
-
   constructor(private readonly firestore: Firestore,
     public alertController:AlertController) { }
 
@@ -116,9 +114,6 @@ export class MosqueeService {
     await alert.present();
   }
   
-
- 
-
   async removeMosque(index: number) {
     const alert = await this.alertController.create({
       header: 'Confirmation',

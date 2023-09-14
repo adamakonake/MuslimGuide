@@ -23,7 +23,7 @@
             <div class="date_content">
               <label for="date" class="mon_label"> Date </label>
               <br> <!-- Juste un espace -->
-              <input type="date" class="mon_input" id="date" name="date" required>
+              <input type="date" class="mon_input" id="date" name="date" formControlName='date' required>
             </div>
 
             
@@ -32,11 +32,12 @@
               <label for="name_mosque" class="mon_label"> Nom Mosquée </label>
               <br> <!-- Juste un espace -->
               <!-- <input type="date" class="mon_input" id="date" name="date" required> -->
-              <select class="mon_input"  name="name_mosque" id="name_mosque">
+              <select class="mon_input"  name="name_mosque" id="name_mosque" formControlName='nomMosquee'>
                 <option value="Choisis un mosqué">Choisis un mosquée</option>
-                <option value="">Mosquée Mille et une Merveille</option>
+                <option *ngFor="let mosquee of mosqueeData" [value]="mosquee.id">{{ mosquee.nom }}</option>
+                <!-- <option value="Mosquée Mille et une Merveille">Mosquée Mille et une Merveille</option>
                 <option value="">Mosquée Cité Mali Univers</option>
-                <option value="">Mosquée Fayçal</option>
+                <option value="">Mosquée Fayçal</option> -->
               </select>
             </div>
 
@@ -47,14 +48,14 @@
               <div class="date_content_double1">
                 <label for="heure_preche" class="mon_label_double"> Heure preche </label>
                 <br> <!-- Juste un espace -->
-                <input type="time" class="mon_input_double" id="heure_preche" name="heure_preche" required>
+                <input type="time" class="mon_input_double" id="heure_preche" name="heure_preche" formControlName='heurePreche' required>
               </div>
 
               <!-- Pour le deuxième  -->
               <div class="date_content_double2">
                 <label for="heure_tabsir" class="mon_label_double"> Heure Tabsir </label>
                 <br> <!-- Juste un espace -->
-                <input type="time" class="mon_input_double" id="heure_tabsir" name="heure_tabsir" required>
+                <input type="time" class="mon_input_double" id="heure_tabsir" name="heure_tabsir" formControlName='heureTabsir' required>
               </div>
 
             </div>
@@ -62,9 +63,9 @@
 
             
             <div class="buttonIonic">
-              <button type="submit" value="Fermer" id="close" (click)=" naviguerVersliste()">Fermer</button>
+              <button type="submit" value="Fermer" id="close" >Fermer</button>
 
-              <button type="submit" ajoutAnonnce.valid value="Ajouter" id="open" ajoutRadio.valid>Ajouter</button>
+              <button type="submit" ajoutAnonnce.valid value="Ajouter" id="open" >Ajouter</button>
             </div>
 
           </div>
@@ -77,5 +78,5 @@
     </div>
 
   </form>
-
+  <!-- (click)=" naviguerVersliste()" -->
 </div>

@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 // import { SharedDataService } from '../shared-data.service';
 import { AjoutannonceService } from '../services/ajoutannonce.service';
 import { Annonce } from 'src/app/users/models/annonce';
+import { MosqueeService } from 'src/app/users/services/mosquee.service';
 
+import { catchError, map } from 'rxjs/operators';
 
 
 
@@ -14,26 +16,36 @@ import { Annonce } from 'src/app/users/models/annonce';
   styleUrls: ['./ajoutannonces.page.scss'],
 })
 export class AjoutannoncesPage implements OnInit {
-
-  addannonceForm = this.formBuilder.group({
+  mosqueeData: any[] = [];
+    addannonceForm = this.formBuilder.group({
     date: [new Date (), Validators.required],
     nomMosquee: ['', Validators.required],
     heurePreche:['',Validators.required],
     heureTabsir: ['', Validators.required],
+   
 
   })
 
   constructor( private formBuilder: FormBuilder, private ajoutannonce: AjoutannonceService, private router : Router,private ajoutrService : AjoutannonceService,
-              ) { }
+              private mosqueeservice : MosqueeService) { }
 
               naviguerVersliste() {
                 this.router.navigateByUrl("/listeannonces");
               }          
 
-  ngOnInit() {
-    //  this.annoncee = this.ajoutrService.getlistannonce()
-    //this.getData();
-  }
+              ngOnInit() {
+                //recuperation de la liste des mosque dans mon ajout pour la liste 
+                this.mosqueeservice.getMosquee().pipe(
+                  catchError((error) => {
+                    console.error('Erreur lors de la récupération des données :', error);
+                    return []; 
+                  })
+                ).subscribe((data: any[]) => {
+                  this.mosqueeData = data;
+                });
+              }
+
+
   async getData(){
     return this.ajoutannonce.getlistannonce()
   }
@@ -51,7 +63,8 @@ export class AjoutannoncesPage implements OnInit {
     this.router.navigateByUrl("/listeannonces")
     
   };
-  //ajouter l'annonce à la liste 
+
+
   
 
 }

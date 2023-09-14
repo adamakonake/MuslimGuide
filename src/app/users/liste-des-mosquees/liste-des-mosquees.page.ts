@@ -4,10 +4,6 @@ import { doc } from 'firebase/firestore';
 import { Firestore } from 'firebase/firestore';
 import { MosqueeService } from '../services/mosquee.service';
 
-
-
-
-
 @Component({
   selector: 'app-liste-des-mosquees',
   templateUrl: './liste-des-mosquees.page.html',
