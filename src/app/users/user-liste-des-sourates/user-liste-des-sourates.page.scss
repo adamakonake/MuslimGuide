@@ -152,3 +152,80 @@ ion-card{
   position: static;
   top: 0;
 }
+.footerTitreSourate{
+  width: 50%;
+  text-align: center;
+  margin: 0px;
+  color: white;
+  font-size: 18px;
+}
+.flexGroupe{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footerBtnGroup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnPlay{
+  width: 50px;
+  height: 50px;
+}
+// .cote{
+//   width: 90%;
+//   display: flex;
+//   justify-content: space-between;
+// }
+ion-range {
+  padding: 0px;
+  --bar-background: white;
+  // --bar-background-active: #bde0fe;
+  // --bar-height: 8px;
+  // --bar-border-radius: 8px;
+  --knob-background: #D79A10;
+  // --knob-size: 40px;
+  // --pin-background: #ffafcc;
+  // --pin-color: #fff;
+}
+ion-range span{
+  color: white;
+}
+.footerBody{
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  background-color: #25A069;
+  // background-color: rgba(37, 160, 105, 0.5);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.btn{
+  width: 20px;
+  height: 20px;
+}
+.playBack{
+  margin-right: 3px;
+}
+.playNext{
+  margin-left: 3px;
+}
+.footerHide{
+  height: 0px;
+  border: none;
+  background-color: transparent;
+  transition: 1s all;
+  transform: translateY(110px);
+}
+.footerShow{
+  display: block;
+  border: none;
+  background-color: transparent;
+  transition: 1s all;
+  transform: translateY(0px);
+}
+ion-footer button{
+  background-color: transparent;
+}

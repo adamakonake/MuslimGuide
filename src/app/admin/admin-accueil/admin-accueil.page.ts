@@ -14,11 +14,30 @@ export class AdminAccueilPage implements OnInit {
   ngOnInit() {
   }
 
+  goToListMosque(){
+    this.route.navigateByUrl("/liste-mosquee")
+  }
 
-  // logout(){
-  //   this.auth.signOut();
-  //   this.route.navigateByUrl("connexion");
-  // }
+  goToListAnnonce(){
+    this.route.navigateByUrl("/listeannonces")
+  }
+
+  goToListRadio(){
+    this.route.navigateByUrl("/list-radio")
+  }
+
+  goToListSourate(){
+    this.route.navigateByUrl("/liste-lecteurs")
+  }
+
+  goToInscription(){
+    this.route.navigateByUrl("/inscription")
+  }
+
+  logout(){
+    this.auth.signOut();
+    this.route.navigateByUrl("connexion");
+  }
 
 
 

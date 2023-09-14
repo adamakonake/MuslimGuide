@@ -32,7 +32,7 @@ export class AccueilPage implements OnInit, AfterViewInit {
   // }
   
   goToMosquee(){
-    this.route.navigateByUrl("/map-page")
+    this.route.navigateByUrl("/mosquee")
     // console.log("hbfezklm")liste-des-mosquees
   }
   
@@ -58,6 +58,10 @@ export class AccueilPage implements OnInit, AfterViewInit {
 
   goToRadio(){
     this.route.navigateByUrl("/radio")
+  }
+
+  goToKaaba(){
+    this.route.navigateByUrl("/kaba")
   }
 
   ngAfterViewInit(): void {
