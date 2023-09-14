@@ -16,8 +16,8 @@ import { HorairesPrière } from '../models/horaires-prière';
 })
 export class MosqueeService {
 
-  mosque:any[] = [];
-  horairesPrière=[]
+ mosque:any[] = [];
+ horairesPrière=[]
   alertController: any;
 
   constructor(private readonly firestore: Firestore) { }
@@ -31,22 +31,22 @@ export class MosqueeService {
      
     }).then(docRef => {
       const heuresCollection = collection(docRef, 'Heures');
-      // return addDoc(heuresCollection, {
-      //   // fadjr:mosquee.fadjr,
-      //   // zohr:mosquee.zohr,
-      //   // asri:mosquee.asri,
-      //   // magreb:mosquee.magreb,
-      //   // isha:mosquee.isha,
-      //   // djouma:mosquee.djouma
-      // });
-    });
-  }
+      return addDoc(heuresCollection, {
+        // fadjr:mosquee.fadjr,
+        // zohr:mosquee.zohr,
+        // asri:mosquee.asri,
+        // magreb:mosquee.magreb,
+        // isha:mosquee.isha,
+        // djouma:mosquee.djouma
+      });
+    })
+;
+  };
 
   getMosquee(){
     const collectionMosquee = collection(this.firestore,'Mosquee');
-    const collectionHoraire = collection(this.firestore,'Mosquee');
     collectionData(collectionMosquee,{idField:'id'}).subscribe((result : any[])=>{
-        
+      //const docc = doc(this.firestore,result.horaire)
       result.forEach( async mosque =>{
         const documentRef = doc(this.firestore, mosque.horaire.path)
         mosque.horaire = mosque.horaire.path
