@@ -32,7 +32,7 @@ export class AccueilPage implements OnInit, AfterViewInit {
   // }
   
   goToMosquee(){
-    this.route.navigateByUrl("/map-page")
+    this.route.navigateByUrl("/mosquee")
     // console.log("hbfezklm")liste-des-mosquees
   }
   
