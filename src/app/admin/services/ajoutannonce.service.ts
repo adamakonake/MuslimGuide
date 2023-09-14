@@ -17,19 +17,19 @@ import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
 ///////////////////////////ajouter une annonce depuis le sevice///////////////////////////////////
     async addannonce(annonce: Annonce): Promise<DocumentReference> {
       // Vérifiez si tous les champs sont remplis
-      if (!annonce.date || !annonce.nomMosquee || !annonce.heurePreche || !annonce.heureTabsir) {
-        // Affichez un message d'erreur modal à l'utilisateur
-        const alert = await this.alertController.create({
-          header: 'Erreur',
-          message: 'Attention champs vide non enregistrable ',
-          buttons: ['OK']
-        });
+       if (!annonce.date || !annonce.nomMosquee || !annonce.heurePreche || !annonce.heureTabsir) {
+         // Affichez un message d'erreur modal à l'utilisateur
+         const alert = await this.alertController.create({
+           header: 'Erreur',
+           message: 'Attention champs vide non enregistrable ',
+           buttons: ['OK']
+         });
     
-        await alert.present();
+         await alert.present();
     
-        // Rejetez la promesse pour éviter d'ajouter le document incorrect
-        return Promise.reject('Les champs obligatoires ne sont pas définis.');
-      }
+         // Rejetez la promesse pour éviter d'ajouter le document incorrect
+         return Promise.reject('Les champs obligatoires ne sont pas définis.');
+       }
       const document= collection(this.firestore, "Annonce");
       console.log(annonce);
       return addDoc(document,{
