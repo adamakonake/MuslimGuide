@@ -26,8 +26,9 @@
   <form [formGroup]="addannonceForm" (ngSubmit)="onSubmit()">
     <div class="contourt">
       <h1 style="padding-top: 30px;">Ajouter Annonce</h1>
+    
       <div class="cadreblanc">
-
+        
         <div class="first">
           <div>
             <ion-label position="floating" style="margin-left: 10%; font-weight: bold;">Date :</ion-label>
@@ -54,9 +55,12 @@
               formControlName='heureTabsir'></ion-input>
           </div>
 
-          <div class="button">
+          <div class="button" style="display: flex; align-items: center;">
             <input type="submit" ajoutAnonnce.valid value="Ajouter"
-              style=" text-align: center;height: 50px;width: 100%; background-color: #25A069; border-radius: 20px;">
+              style=" text-align: center;height: 50px;width: 95vh; background-color: #25A069; border-radius: 20px; padding: 0 30px; border: none;">
+
+              <input type="submit" value="Fermer"
+              style="width: 95vh; height: 50px; margin-left: 0%; border-radius: 20px; color: #fff; background-color: #D79A10; padding: 0 30px; border: none; " (click)=" naviguerVersliste()">
           </div>
         </div>
       </div>

@@ -11,9 +11,12 @@
       <img src="../../../assets/img_sy/mosque1.jpeg" alt="image de mosque">
     </div>
     
-    <div class="nom_de_la_mosque">
-        <a href="#" class="nomMosque">Nom de la mosquée</a>
-    </div>
+     <div class="nom_de_la_mosque">
+        <a href="#" class="nomMosque"> Mosquée {{selectedMosqueName}}</a>
+    </div> 
+    <!-- <div class="nom_de_la_mosque">
+      <p>{{ selectedMosqueName }}</p>
+    </div> -->
     <!-- ======================== FIN DE HEADER  -->
   
   </ion-header>
@@ -47,159 +50,212 @@
 
           <div class="content_list_tafsif">
               <!-- TAFSIF 1111111111111  -->
-              <div class="list_tafsif">
-      
-                <!-- div de nom de tafsif  -->
+              <ng-container  *ngFor="let detail of detailMosquees">
+                <div class="list_tafsif">
+                <!-- div de nom de tafsif -->
                 <div class="div_name_tafsif">
-                  <h3 class="name_tafsif">tafsif</h3>
+                  <h3 class="name_tafsif">Tafsir</h3>
                 </div>
-
-                <!-- div de date de tafsif  -->
+              
+                <!-- div de date de tafsif -->
                 <div class="div_date_tafsif">
-                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                  <p class="paragraphe_tafsif">{{ detail.date}}</p>
                 </div>
-
-                <!-- div de heure de tafsif  -->
+              
+                <!-- div de heure de tafsif -->
                 <div class="div_heure_tafsif">
-                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                  <h6 class="heure_tafsif">{{ detail.heureTabsir}}</h6>
                 </div>
-              </div> 
-
-              <!-- TAFSIF 2222222222222  -->
+              </div>
               <div class="list_tafsif">
-      
-                <!-- div de nom de tafsif  -->
+                <!-- div de nom de tafsif -->
                 <div class="div_name_tafsif">
-                  <h3 class="name_tafsif">tafsif</h3>
+                  <h3 class="name_tafsif">Prêche</h3>
                 </div>
-
-                <!-- div de date de tafsif  -->
+              
+                <!-- div de date de tafsif -->
                 <div class="div_date_tafsif">
-                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                  <p class="paragraphe_tafsif">{{ detail.date }}</p>
                 </div>
-
-                <!-- div de heure de tafsif  -->
+              
+                <!-- div de heure de tafsif -->
                 <div class="div_heure_tafsif">
-                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                  <h6 class="heure_tafsif">{{ detail.heurePreche}}</h6>
                 </div>
-              </div> 
-
-              <!-- TAFSIF 3333333333333  -->
-              <div class="list_tafsif">
-      
-                <!-- div de nom de tafsif  -->
-                <div class="div_name_tafsif">
-                  <h3 class="name_tafsif">tafsif</h3>
-                </div>
-
-                <!-- div de date de tafsif  -->
-                <div class="div_date_tafsif">
-                  <p class="paragraphe_tafsif">jj/mm/aa</p>
-                </div>
-
-                <!-- div de heure de tafsif  -->
-                <div class="div_heure_tafsif">
-                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
-                </div>
-              </div> 
-
-              <!-- TAFSIF 4444444444444  -->
-              <div class="list_tafsif">
-      
-                <!-- div de nom de tafsif  -->
-                <div class="div_name_tafsif">
-                  <h3 class="name_tafsif">tafsif</h3>
-                </div>
-
-                <!-- div de date de tafsif  -->
-                <div class="div_date_tafsif">
-                  <p class="paragraphe_tafsif">jj/mm/aa</p>
-                </div>
-
-                <!-- div de heure de tafsif  -->
-                <div class="div_heure_tafsif">
-                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
-                </div>
-              </div> 
-
-              <!-- TAFSIF 5555555555555  -->
-              <div class="list_tafsif">
-      
-                <!-- div de nom de tafsif  -->
-                <div class="div_name_tafsif">
-                  <h3 class="name_tafsif">tafsif</h3>
-                </div>
-
-                <!-- div de date de tafsif  -->
-                <div class="div_date_tafsif">
-                  <p class="paragraphe_tafsif">jj/mm/aa</p>
-                </div>
-
-                <!-- div de heure de tafsif  -->
-                <div class="div_heure_tafsif">
-                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
-                </div>
-              </div> 
-
-              <!-- TAFSIF 66666666666666  -->
-              <div class="list_tafsif">
-      
-                <!-- div de nom de tafsif  -->
-                <div class="div_name_tafsif">
-                  <h3 class="name_tafsif">tafsif</h3>
-                </div>
-
-                <!-- div de date de tafsif  -->
-                <div class="div_date_tafsif">
-                  <p class="paragraphe_tafsif">jj/mm/aa</p>
-                </div>
-
-                <!-- div de heure de tafsif  -->
-                <div class="div_heure_tafsif">
-                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
-                </div>
-              </div> 
-
-              <!-- TAFSIF 7777777777777  -->
-              <div class="list_tafsif">
-      
-                <!-- div de nom de tafsif  -->
-                <div class="div_name_tafsif">
-                  <h3 class="name_tafsif">tafsif</h3>
-                </div>
-
-                <!-- div de date de tafsif  -->
-                <div class="div_date_tafsif">
-                  <p class="paragraphe_tafsif">jj/mm/aa</p>
-                </div>
-
-                <!-- div de heure de tafsif  -->
-                <div class="div_heure_tafsif">
-                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
-                </div>
-              </div> 
-
-              <!-- TAFSIF 888888888888  -->
-              <div class="list_tafsif">
-      
-                <!-- div de nom de tafsif  -->
-                <div class="div_name_tafsif">
-                  <h3 class="name_tafsif">tafsif</h3>
-                </div>
-
-                <!-- div de date de tafsif  -->
-                <div class="div_date_tafsif">
-                  <p class="paragraphe_tafsif">jj/mm/aa</p>
-                </div>
-
-                <!-- div de heure de tafsif  -->
-                <div class="div_heure_tafsif">
-                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
-                </div>
-              </div> 
+              </div>
+              
+              </ng-container>
+              
           </div>
 
         </div>
         <!-- Fin pour les liste des imams qui affiche  -->
 
 </ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <!-- TAFSIF 2222222222222  -->
+              <!-- <div class="list_tafsif"> -->
+      
+                <!-- div de nom de tafsif  -->
+                <!-- <div class="div_name_tafsif">
+                  <h3 class="name_tafsif">tafsif</h3>
+                </div> -->
+
+                <!-- div de date de tafsif  -->
+                <!-- <div class="div_date_tafsif">
+                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                </div> -->
+
+                <!-- div de heure de tafsif  -->
+                <!-- <div class="div_heure_tafsif">
+                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                </div>
+              </div>  -->
+
+              <!-- TAFSIF 3333333333333  -->
+              <!-- <div class="list_tafsif"> -->
+      
+                <!-- div de nom de tafsif  -->
+                <!-- <div class="div_name_tafsif">
+                  <h3 class="name_tafsif">tafsif</h3>
+                </div> -->
+
+                <!-- div de date de tafsif  -->
+                <!-- <div class="div_date_tafsif">
+                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                </div> -->
+
+                <!-- div de heure de tafsif  -->
+                <!-- <div class="div_heure_tafsif">
+                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                </div>
+              </div>  -->
+
+              <!-- TAFSIF 4444444444444  -->
+              <!-- <div class="list_tafsif">
+       -->
+                <!-- div de nom de tafsif  -->
+                <!-- <div class="div_name_tafsif">
+                  <h3 class="name_tafsif">tafsif</h3>
+                </div> -->
+
+                <!-- div de date de tafsif  -->
+                <!-- <div class="div_date_tafsif">
+                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                </div> -->
+
+                <!-- div de heure de tafsif  -->
+                <!-- <div class="div_heure_tafsif">
+                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                </div>
+              </div>  -->
+
+              <!-- TAFSIF 5555555555555  -->
+              <!-- <div class="list_tafsif">
+       -->
+                <!-- div de nom de tafsif  -->
+                <!-- <div class="div_name_tafsif">
+                  <h3 class="name_tafsif">tafsif</h3>
+                </div> -->
+
+                <!-- div de date de tafsif  -->
+                <!-- <div class="div_date_tafsif">
+                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                </div> -->
+
+                <!-- div de heure de tafsif  -->
+                <!-- <div class="div_heure_tafsif">
+                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                </div>
+              </div>  -->
+
+              <!-- TAFSIF 66666666666666  -->
+              <!-- <div class="list_tafsif"> -->
+      
+                <!-- div de nom de tafsif  -->
+                <!-- <div class="div_name_tafsif">
+                  <h3 class="name_tafsif">tafsif</h3>
+                </div> -->
+
+                <!-- div de date de tafsif  -->
+                <!-- <div class="div_date_tafsif">
+                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                </div> -->
+
+                <!-- div de heure de tafsif  -->
+                <!-- <div class="div_heure_tafsif">
+                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                </div>
+              </div>  -->
+
+              <!-- TAFSIF 7777777777777  -->
+              <!-- <div class="list_tafsif"> -->
+      
+                <!-- div de nom de tafsif  -->
+                <!-- <div class="div_name_tafsif">
+                  <h3 class="name_tafsif">tafsif</h3>
+                </div> -->
+
+                <!-- div de date de tafsif  -->
+                <!-- <div class="div_date_tafsif">
+                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                </div> -->
+
+                <!-- div de heure de tafsif  -->
+                <!-- <div class="div_heure_tafsif">
+                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                </div>
+              </div>  -->
+
+              <!-- TAFSIF 888888888888  -->
+              <!-- <div class="list_tafsif"> -->
+      
+                <!-- div de nom de tafsif  -->
+                <!-- <div class="div_name_tafsif">
+                  <h3 class="name_tafsif">tafsif</h3>
+                </div> -->
+
+                <!-- div de date de tafsif  -->
+                <!-- <div class="div_date_tafsif">
+                  <p class="paragraphe_tafsif">jj/mm/aa</p>
+                </div> -->
+
+                <!-- div de heure de tafsif  -->
+                <!-- <div class="div_heure_tafsif">
+                  <h6 class="heure_tafsif">14H30 & 16H30</h6>
+                </div> -->
+              <!-- </div>  -->
