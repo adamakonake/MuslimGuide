@@ -2,8 +2,29 @@
 
 
   <h2 class="titre"> Liste des mosquées</h2> <!---titre-->
-  <div class="container">
-    <button class="btn" id="open-modal" expand="block">
+
+  <div class="div_ajouter_search">
+
+    <div class="btn_container">
+      <button id="open-modal" expand="block" class="btn_ajout">
+        Ajouter
+      </button>
+    </div>
+
+    <!-- Debut Pour les recherche bare search_container  -->
+    <div class="search_container">
+      <div class="recherche_bare">
+        <input type="search" name="search" placeholder="Recherche">
+        <!-- mon icon de recherche  -->
+        <i class="ri-search-line icon_search"></i>
+      </div>
+    </div>
+    <!-- Fin Pour les recherche bare search_container  -->
+
+  </div>
+
+  <!--<div class="container">
+     <button class="btn" id="open-modal" expand="block">
       <i class="fa-solid fa-plus"></i>
       Ajouter
     </button>
@@ -12,13 +33,15 @@
       <input type="search" value="" class="recherche">
       <div class="search-icon">
         <ion-icon name="search-outline"></ion-icon>
-        <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
-        <!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
+        
       </div>
     </div>
-  </div>
+  </div> -->
+<!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
+<!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
 
-
+<div class="container_event">
+  
   <div class="event-info">
     <div class="localisation">
 
@@ -39,32 +62,66 @@
     </div>
   </div>
 
+</div>
 
   <!--::::::::::::::::::::::::::::::::::: formlairePoppup::::::::::::::::::::::::::::::::::::::::::::::; -->
 
   <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
     <ng-template>
       <ion-content>
-        <div class="poppup">
+        <div class="poppup" style="padding-top: 25px;">
           <h1>Ajout Mosquées</h1>
           <div class="formlairePoppup">
             <form [formGroup]="createMosqueeForm" >
               <div class="contourt">
 
                 <div class="block">
-                  <div class="bloc1"><!--block 1-->
-                    <div class="ioninput">
-                      <ion-label class="inputLabel">Nom :</ion-label>
-                      <ion-input class="custom.input" type="text" formControlName="nom"></ion-input>
+                  <!-- bloc container  -->
+                  <div class="bloc_content">
+                    <!--block 1-->
+
+                    <div class="bloc1">
+
+                      <div class="ioninput">
+                        <label class="inputLabel">Nom :</label>
+                        <br>
+                        <input class="custom_input" placeholder="Votre nom..." type="text" formControlName="nom">
+                      </div>
+  
+                      <div class="ioninput">
+                        <label class="inputLabel">Adresse :</label>
+                        <br>
+                        <input class="custom_input" type="text" placeholder="Votre adresse..." formControlName="adresse">
+                      </div>
+
                     </div>
 
-                    <div class="ioninput">
-                      <ion-label class="inputLabel">Adresse :</ion-label>
-                      <ion-input type="text" formControlName="adresse"></ion-input>
-                    </div>
                   </div>
 
-                  <div class="bloc2"><!--block 2-->
+                  <!-- ================================= LA DIFFERENCE  -->
+                  
+                  <!-- bloc container  -->
+                  <div class="bloc_content">
+                    <!--block 2-->
+
+                    <div class="bloc1">
+
+                      <div class="ioninput">
+                        <label class="inputLabel">Imam :</label>
+                        <br>
+                        <input class="custom_input" placeholder="Nom Imam ..." type="text" formControlName="Imam">
+                      </div>
+  
+                      <div class="ioninput">
+                        <label class="inputLabel">longitude :</label>
+                        <br>
+                        <input class="custom_input" type="number" placeholder="Votre longitude..." formControlName="longitude">
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <!-- <div class="bloc2">
                     <div class="ioninput">
                       <ion-label style="margin-bottom: 30px !important;" class="inputLabel">Imam:</ion-label>
                       <ion-input type="text" formControlName="imam"></ion-input>
@@ -74,16 +131,25 @@
                       <ion-label class="inputLabel">longitude:</ion-label>
                       <ion-input type="number" formControlName="longitude"></ion-input>
                     </div>
-                  </div>
+                  </div> -->
 
                 </div>
-                <div class="bloc3"><!--block 3-->
-                  <div class="ioninput">
-                    <ion-label class="inputLabel">latitude :</ion-label>
-                    <ion-input id="inputBloc3" type="number" formControlName="latitude"></ion-input>
-                  </div>
-                </div>
 
+                  <!-- bloc container  -->
+                  <div class="bloc_content">
+                    <!--block 2-->
+
+                    <div class="bloc1">
+
+                      <div class="ioninput">
+                        <label class="inputLabel">latitude :</label>
+                        <br>
+                        <input class="custom_input3" placeholder="Nom Imam ..." type="text" formControlName="Imam">
+                      </div>
+
+                    </div>
+
+                  </div>
 
                 <!--::::::::::::::::::::::::::::::::::::::::::::::: heure de  priere du mosque:::::::::::::::::::::::::::::::::::::::-->
                 <h2>Heure de prière :</h2>
@@ -92,60 +158,107 @@
                   <div class="horaire">
 
                     <div class="contour-input">
-                      <div class="first">
-                        <div>
-                          <ion-label position="floating"
-                            style=" font-weight: bold; margin-left: 15px;">Fadjr</ion-label>
-                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Fadjr" formControlName="fadjr"></ion-input>
-                        </div>
 
-                        <div>
-                          <ion-label position="floating"
-                            style=" font-weight: bold; margin-left: 15px;">Magreb</ion-label>
-                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Magreb" formControlName="magreb"></ion-input>
-                        </div>
+                      <!-- Debut de mon input first container  -->
+                      <div class="first_container">
+                          <div class="first">
+                            <div>
+                              <label class="label_content">Fadjr</label>
+                              <br>
+                              <input type="time" class="input_priere" placeholder="Fadjr" formControlName="fadjr">
+                            </div>
+
+                            <div>
+                              <label class="label_content">Magreb</label>
+                              <br>
+                              <input type="time" class="input_priere" placeholder="Magreb" formControlName="magreb">
+                            </div>
+
+                          </div>
 
                       </div>
-                      <div class="seconds">
+                      <!-- Fin de mon input first container  -->
+
+                      <!-- Debut de mon input Seconds container  -->
+                      <div class="first_container">
+                          <div class="first">
+                            <div>
+                              <label class="label_content">Zohr</label>
+                              <br>
+                              <input type="time" class="input_priere" placeholder="Zohr" formControlName="zohr">
+                            </div>
+                            
+                            <div>
+                              <label class="label_content">Magreb</label>
+                              <br>
+                              <input type="time" class="input_priere" placeholder="Isha" formControlName="isha">
+                            </div>
+
+                          </div>
+
+                      </div>
+                      <!-- Fin de mon input Seconds container  -->
+
+                      <!-- Debut de mon input third container  -->
+                      <div class="first_container">
+                        <div class="first">
+                          <div>
+                            <label class="label_content">Asr</label>
+                            <br>
+                            <input type="time" class="input_priere" placeholder="Asr" formControlName="asri">
+                          </div>
+                          
+                          <div>
+                            <label class="label_content">Djouma</label>
+                            <br>
+                            <input type="time" class="input_priere" placeholder="Djouma" formControlName="djouma">
+                          </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Fin de mon input third container  -->
+                      
+
+                      <!-- <div class="seconds">
                         <div>
                           <ion-label position="floating" style=" font-weight: bold; margin-left: 15px;">Zohr</ion-label>
-                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Zohr" formControlName="zohr"></ion-input>
+                          <input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Zohr" formControlName="zohr">
                         </div>
 
                         <div>
                           <ion-label position="floating" style=" font-weight: bold; margin-left: 15px;">Isha</ion-label>
-                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Isha" formControlName="isha"></ion-input>
+                          <input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Isha" formControlName="isha">
                         </div>
-                      </div>
-
-                      <div class="third">
+                      </div> -->
+                      <!-- <div class="third">
                         <div>
                           <ion-label style=" font-weight: bold; margin-left: 15px;">Asr</ion-label>
-                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Asr" formControlName="asri"></ion-input>
+                          <input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Asr" formControlName="asri">
                         </div>
 
 
                         <div>
                           <label position="floating"
                             style=" font-weight: bold; margin-bottom: 20px; margin-left: 15px;">Djouma</label>
-                          <ion-input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Djouma" formControlName="djouma"></ion-input>
+                          <input style=" width: 120px !important; margin: 10px;" type="time" class="input"
+                            placeholder="Djouma" formControlName="djouma">
                         </div>
-                      </div>
+                      </div> -->
                     </div>
-                  </div>
-                
+                    
 
-                <div class="buttonIonic">
-                  <button id="open" type="button" (click)="onSubmit()" ajoutRadio.valid>Enregistrer</button>
-                  <button id="close" (click)="modal.dismiss()">Fermer</button>
+                    <div class="buttonIonic">
+                      <button id="close" (click)="modal.dismiss()">Fermer</button>
+                      <button id="open" type="button" (click)="onSubmit()" ajoutRadio.valid>Enregistrer</button>
+                    </div>
+
+                  </div>   
+
                 </div>
-              </div>
 
 
               </div>
