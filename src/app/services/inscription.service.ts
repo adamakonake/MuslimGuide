@@ -3,6 +3,7 @@ import { Inscription } from '../admin/inscription/model';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from
 export class InscriptionService {
 
  
-  constructor(private readonly firestore: Firestore, private auth : Auth) { }
+  constructor(private readonly firestore: Firestore, private auth : Auth,private route:Router) { }
 
     async addInscription(inscription: Inscription) {
       return await createUserWithEmailAndPassword(
@@ -40,8 +41,14 @@ export class InscriptionService {
         email,
         password
       ).then((result) =>{
+        this.route.navigateByUrl("admin-accueil");
         return result.user
-      })
+       
+      }).catch((err)=>{
+        return err.message;
+      });
     }
+
+    // FSEG2021MA004115
 
 }

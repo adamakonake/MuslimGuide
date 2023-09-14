@@ -60,6 +60,10 @@ export class AccueilPage implements OnInit, AfterViewInit {
     this.route.navigateByUrl("/radio")
   }
 
+  goToKaaba(){
+    this.route.navigateByUrl("/kaba")
+  }
+
   ngAfterViewInit(): void {
     const carousel = document.querySelector(".igx-carousel__inner");
     const carou = carousel as HTMLDivElement

@@ -42,3 +42,82 @@
     font-weight: bold;
     margin: 0px;
 }
+
+// ============================== 
+
+.bare_container {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.bare {
+    height: 1px;
+    width: 100%;
+    background-color: #25A069;
+    z-index: 1000000000000;
+}
+
+
+
+// =============== CHIFFRE POUR LE CORAN ================== 
+
+.compteur_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compteur {
+    position: relative;
+}
+
+.icon_compteur {
+    position: absolute;
+    top: 15px;
+    right: 9px;
+}
+
+.icon_compteur .icon_hexagon {
+    font-size: 30px;
+    color: #25A069;
+}
+
+.compteur .paragraphe {
+    position: relative;
+    top: 5px;
+    left: -19px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+// =============== CHIFFRE EN FRANCAIS ================== 
+
+.description_container {
+    display: flex;
+}
+
+.compteur_chiffre {
+    // margin-top: -8px;
+    // margin-right: 15px;
+    align-items: center;
+    display: flex;
+    margin-left: -10px;
+}
+
+.compteur_chiffre .paragraphe_chiffre {
+    font-size: 20px;
+    font-weight: 500;
+    color: #25A069;
+}
+
+.compteur_chiffre .tire {
+    padding-left: 2px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.compteur_chiffre_francais {
+    margin-left: 3px;
+}

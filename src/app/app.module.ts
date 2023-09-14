@@ -1,8 +1,10 @@
 import { MbscModule } from '@mobiscroll/angular';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+// import { AngularFireModule } from '@angular/fire';
 
 // Import Firebase modules + environment
 
@@ -16,11 +18,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AngularFireModule} from '@angular/fire/compat'
+ import {AngularFireModule} from '@angular/fire/compat'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth'
 import { getFirestore } from 'firebase/firestore';
+import { FirestoreModule } from '@angular/fire/firestore';
 import { from } from 'rxjs';
 
 
@@ -33,13 +36,22 @@ const firebaseConfig = {
   appId: "1:975293651580:web:fafb2bc9b8b1917f5507f9",
   measurementId: "G-DRCYLTXDRG"
 };
-
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    // AngularFireModule.initializeApp(firebaseConfig),
+
+    // FirestoreModule.initializeApp(environment.firebase), 
+    FirestoreModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+
     MbscModule,   
     FormsModule, 
+    ToastrModule.forRoot({
+      closeButton:true,
+      progressBar:true
+    }),
     provideAuth(()=>getAuth()),
     provideFirebaseApp(()=>initializeApp(firebaseConfig)), 
     provideFirestore(()=>getFirestore()),
