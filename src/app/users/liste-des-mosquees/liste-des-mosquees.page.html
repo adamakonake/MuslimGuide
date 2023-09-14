@@ -41,15 +41,39 @@
           <img src="../../../assets/image/image 10.png" alt=" Mosquée" />
         </div> -->
         <ion-content>
+
+        
+          
           <ion-list> 
-            <ion-item  *ngFor="let mosque of mosquee">
+
+            <div class="search-container">
+              <input type="search" [(ngModel)]="searchTerm" class="recherche">
+              <div class="search-icon">
+                <ion-icon name="search-outline"></ion-icon>
+              </div>
+            </div>
+            
+            <!-- <div *ngFor="let mosque of sortMosque(searchTerm); let i = index" class="event-info">
+            <div class="ident">
+              <div class="loc">
+                <i id="icon-location" class="fa-solid fa-location-dot"></i>
+                <p class="lieu">{{ mosque.adresse }}</p>
+              </div>
+              <div class="info-imam">
+                <i id="icon-imam" class="fa-regular fa-user"></i>
+                <p class="nom-imam" [innerHTML]="highlight(mosque.nom, searchTerm)"></p> 
+              </div>
+            </div>
+          </div> -->
+
+             <ion-item  *ngFor="let mosque of sortMosque(searchTerm)">
                 <img src="../../../assets/image/image 10.png" alt="">
                 <div class="ident">
-                  <h1>{{ mosque.nom }}</h1>
+                  <h1  [innerHTML]="highlight(mosque.nom, searchTerm)">{{ mosque.nom }}</h1>
                   <h2>{{ mosque.adresse }}</h2>
                 </div>
         <ion-icon  name="location"></ion-icon>
-      </ion-item> 
+      </ion-item>  
     </ion-list>
  </ion-content> 
         

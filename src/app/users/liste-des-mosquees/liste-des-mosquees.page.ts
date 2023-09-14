@@ -15,6 +15,7 @@ import { MosqueeService } from '../services/mosquee.service';
 })
 export class ListeDesMosqueesPage implements OnInit {
   mosquee:any=[];
+  searchTerm: string ='';
   constructor(private mosqueeService: MosqueeService) { }
  
   ngOnInit() {
@@ -32,5 +33,33 @@ export class ListeDesMosqueesPage implements OnInit {
     })
   }
   
+  searchMosque(searchTerm: string) {
+    if (!searchTerm) {
+        return this.mosquee;
+    }
+
+    return this.mosquee.filter((mosque: { name: string; }) => 
+        mosque.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+}
+
+highlight(text: string, search: string): string {
+  if (!search) {
+    return text;
+  }
+  const pattern = search.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  const regex = new RegExp(pattern, "gi");
+  return text.replace(regex, match => `<b>${match}</b>`);
+}
+
+sortMosque(searchTerm: string) {
+  if (!searchTerm) {
+    return this.mosquee;
+  }
+
+  return this.mosquee.sort((a: any, b: { nom: string; }) => 
+    b.nom.toLowerCase().includes(searchTerm.toLowerCase()) ? 1 : -1
+  );
+}
 
 }

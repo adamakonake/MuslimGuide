@@ -7,7 +7,7 @@ import { MosqueeService } from 'src/app/users/services/mosquee.service';
   styleUrls: ['./liste-mosquee.page.scss'],
 })
 export class ListeMosqueePage implements OnInit {
-
+  searchTerm: string ='';
   mosquee:any;
   constructor(private mosqueeService: MosqueeService) { }
  
@@ -26,6 +26,34 @@ export class ListeMosqueePage implements OnInit {
     })
   }
 
+  searchMosque(searchTerm: string) {
+    if (!searchTerm) {
+        return this.mosquee;
+    }
+
+    return this.mosquee.filter((mosque: { name: string; }) => 
+        mosque.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+}
+
+highlight(text: string, search: string): string {
+  if (!search) {
+    return text;
+  }
+  const pattern = search.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  const regex = new RegExp(pattern, "gi");
+  return text.replace(regex, match => `<b>${match}</b>`);
+}
+
+sortMosque(searchTerm: string) {
+  if (!searchTerm) {
+    return this.mosquee;
+  }
+
+  return this.mosquee.sort((a: any, b: { nom: string; }) => 
+    b.nom.toLowerCase().includes(searchTerm.toLowerCase()) ? 1 : -1
+  );
+}
   modifierMosquee( index: number){
     this.mosqueeService.updateMosque(this.mosquee[index].id,this.mosquee[index])
   }

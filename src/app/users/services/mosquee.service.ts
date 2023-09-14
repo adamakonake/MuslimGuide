@@ -73,26 +73,21 @@ export class MosqueeService {
           name: 'adresse',
           type: 'text',
           placeholder: 'Adresse de la mosquée',
-          value: mosquee.imam
+          value: mosquee.adresse
         },
-        {
-          name: 'longitude',
-          type: 'text',
-          placeholder: 'modifier longitude',
-          value: mosquee.longitude
-        },
-        {
-          name: 'adresse',
-          type: 'text',
-          placeholder: 'modifier longitude',
-          value: mosquee.latitude
-        },
-        {
-          name: 'adresse',
-          type: 'text',
-          placeholder: 'Adresse de la mosquée',
-          value: mosquee.horaire
-        }
+        // {
+        //   name: 'longitude',
+        //   type: 'text',
+        //   placeholder: 'modifier lagitude',
+        //   value: mosquee.longitude
+        // },
+        // {
+        //   name: 'adresse',
+        //   type: 'text',
+        //   placeholder: 'modifier longitude',
+        //   value: mosquee.latitude
+        // }
+       
       ],
       buttons: [
         {
