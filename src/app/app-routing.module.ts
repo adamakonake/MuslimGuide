@@ -133,7 +133,11 @@ const routes: Routes = [
   {
     path: 'sourate-liste',
     loadChildren: () => import('./users/sourate-liste/sourate-liste.module').then( m => m.SourateListePageModule)
+  },  {
+    path: 'modifierlecteur',
+    loadChildren: () => import('./admin/modifierlecteur/modifierlecteur.module').then( m => m.ModifierlecteurPageModule)
   }
+
 
 
 

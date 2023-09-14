@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {collectionData, Firestore} from '@angular/fire/firestore';
 import { Lecteur } from '../admin/ajout-lecteur/mode';
 import {addDoc, collection, deleteDoc, doc} from 'firebase/firestore';
+import {updateDoc} from "@firebase/firestore";
 
 @Injectable({
   providedIn: 'any'
@@ -35,7 +36,10 @@ export class LecteurService {
     const data = doc(this.firestore, "Lecteur", lecteurId);
     return deleteDoc(data);
   }
-
+  updateLecteur(lecteurId: string, updatedLecteurData: Partial<Lecteur>) {
+    const data = doc(this.firestore, "Lecteur", lecteurId);
+    return updateDoc(data, updatedLecteurData);
+  }
 
 }
 

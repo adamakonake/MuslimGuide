@@ -13,7 +13,7 @@
     <!-- Debut Pour les recherche bare search_container  -->
     <div class="search_container">
       <div class="recherche_bare">
-        <input type="search" name="search" placeholder="Recherche" [(ngModel)]="recherche" (input)="filterLecteur()">
+        <input type="search" name="search" placeholder="Recherche" [(ngModel)]="recherche">
 
         <!-- mon icon de recherche  -->
         <i class="ri-search-line icon_search"></i>
@@ -22,22 +22,25 @@
     <!-- Fin Pour les recherche bare search_container  -->
   </div>
 
-<ion-card *ngFor="let lecteur of lecteurs">
-  <ion-card-content>
-    <div class="iman">
-      <div class="photo">
-        <img [src]="lecteur.photo" alt="la photo de l'iman">
+  <ion-card *ngFor="let lecteur of lecteurs">
+    <ion-card-content>
+      <!-- Add a ngIf check to ensure the lecteur passes the filter -->
+      <div class="iman" *ngIf="lecteurFiltre(lecteur)">
+        <div class="photo">
+          <img [src]="lecteur.photo" alt="la photo de l'iman">
+        </div>
+        <div class="nom">
+          <h2>Nom:{{lecteur.nom}}</h2>
+          <h2>Prénom: {{lecteur.prenom}}</h2>
+          <h2>Nationalité: {{lecteur.nationalite}}</h2>
+        </div>
       </div>
-      <div class="nom">
-        <h2>Nom:{{lecteur.nom}}</h2>
-        <h2>Prénom: {{lecteur.prenom}}</h2>
-        <h2>Nationalité: {{lecteur.nationalite}}</h2>
+      <div class="btn-actions">
+        <ion-icon color="success" name="create-outline" (click)="modifier(lecteur)" ></ion-icon>
+
+        <ion-icon color="danger" name="trash-outline" (click)="deleteLecteur(lecteur)"></ion-icon>
       </div>
-    </div>
-    <div class="btn-actions">
-          <ion-icon color="success" name="create-outline"></ion-icon>
-          <ion-icon color="danger" name="trash-outline" (click)="deleteLecteur(lecteur)"></ion-icon>
-    </div>
-  </ion-card-content>
-</ion-card>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

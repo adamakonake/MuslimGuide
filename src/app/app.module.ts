@@ -22,7 +22,6 @@ import { provideFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth'
 import { getFirestore } from 'firebase/firestore';
 import { FirestoreModule } from '@angular/fire/firestore';
-import { from } from 'rxjs';
 
 
 const firebaseConfig = {
