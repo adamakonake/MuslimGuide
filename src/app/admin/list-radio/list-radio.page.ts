@@ -40,8 +40,8 @@ export class ListRadioPage implements OnInit {
   // // ];
   // AjoutDesRadiosPage: any;
 
-  constructor(private fb: FormBuilder, 
-    private radioService: RadioService, 
+  constructor(private fb: FormBuilder,
+    private radioService: RadioService,
     private animationCtrl: AnimationController,
     private toastr: ToastrService,
     public alertController: AlertController,
@@ -65,14 +65,9 @@ export class ListRadioPage implements OnInit {
     this.toastr.success('Radio ajouter avec succès !', 'Succès' , {positionClass: 'toast-bottom-center', toastClass: 'toast-success', timeOut: 300000000});
     console.log(this.ajoutRadio.value + "je trouve quelque chose")
     console.log(this.radioService.addRadio(newRadio));
-  
+
    }
-   
-     
-  // get fmFilterer(){
-  //   return this.radios.map((radio: { nom: any; frequence: any; }, index: any) =>({nom:radio.nom,frequence:radio.frequence,index}))
-  //   .filter(((radio: { nom: string; })=>radio.nom.toLowerCase().includes(this.recherche.toLowerCase())));
-  // }
+
   ngOnInit() {
     this.radioService.getRadio().subscribe((result)=>{
       this.radios = result;
@@ -88,7 +83,7 @@ export class ListRadioPage implements OnInit {
     this.radioService.updateRadio(this.radios[index].id,this.radios[index])
   }
 
-  
+
   // ::::::::::::::::::::::::::::::::::::traitement poppup pour animation::::::::::::::::::::::::::::::
   enterAnimation = (baseEl: HTMLElement) => {
     const root = baseEl.shadowRoot;
