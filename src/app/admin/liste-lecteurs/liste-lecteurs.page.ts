@@ -43,9 +43,31 @@ export class ListeLecteursPage implements OnInit {
   }
 
 
-  deleteLecteur(lecteur: Lecteur) {
-    const lecteurId = lecteur.id;
+  async deleteLecteur(lecteur: Lecteur) {
+    const alert = await this.alertController.create({
+      header: 'Confirmation',
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          handler: () => {
+            console.log('Modification annulée');
+          }
+        },
+        {
+          text: 'Confirmer',
+          handler: () => {
+            this.confirmer(lecteur); // Appeler la fonction de confirmation
+          }
+        }
+      ]
+    });
 
+    await alert.present();
+  }
+
+  confirmer(lecteur: Lecteur) {
+    const lecteurId = lecteur.id;
     if (lecteurId) {
       this.lecteurService.deleteLecteur(lecteurId).then(() => {
         this.lecteurs = this.lecteurs.filter((l: Lecteur) => l !== lecteur);
@@ -59,18 +81,19 @@ export class ListeLecteursPage implements OnInit {
 
 
 
+
   async modifier(lecteur: Lecteur) {
     const alert = await this.alertController.create({
       header: 'Modifier Lecteur',
       inputs: [
         {
-          name: 'nom',
+          name: 'Nom',
           type: 'text',
           placeholder: 'Nom',
           value: lecteur.nom
         },
         {
-          name: 'prenom',
+          name: 'Prénom',
           type: 'text',
           placeholder: 'Prénom',
           value: lecteur.prenom
