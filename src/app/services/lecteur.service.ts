@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import {collectionData, Firestore} from '@angular/fire/firestore';
 import { Lecteur } from '../admin/ajout-lecteur/mode';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
-import { Subject } from 'rxjs';
+import {addDoc, collection, deleteDoc, doc, updateDoc} from 'firebase/firestore';
+import {map, of, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'any'
 })
 export class LecteurService {
+  lecteur:any[]=[];
 
   playEnd = new Subject<number>;
   audio = new Audio();
@@ -23,9 +24,9 @@ export class LecteurService {
       prenom: lecteur.prenom,
       nationalite: lecteur.nationalite,
       photo: lecteur.photo,
-      
+
     });
-    
+
   }
 
   playQuran(index : number, source : string){
@@ -43,7 +44,7 @@ export class LecteurService {
 
     this.audio.onended = (e) =>{
       this.playEnd.next(this.index);
-    }    
+    }
 
     // if(index == this.isPlay ){
     //   this.audio.pause()
@@ -60,4 +61,27 @@ export class LecteurService {
     //   }
     // }
   }
+// Amadou Touré
+  getLecteur(){
+    if (this.lecteur.length > 0) {
+      return of(this.lecteur);
+    }
+    const data = collection(this.firestore, "Lecteur");
+    return collectionData(data, { idField: 'id' }).pipe(
+      map((resultat: any[]) => {
+        this.lecteur = resultat.map(lecteur => ({ id: lecteur.id, ...lecteur }));
+        return this.lecteur;
+      })
+    );
+  }
+
+  deleteLecteur(lecteurId: string) {
+    const data = doc(this.firestore, "Lecteur", lecteurId);
+    return deleteDoc(data);
+  }
+  updateLecteur(lecteurId: string, updatedLecteurData: Partial<Lecteur>) {
+    const data = doc(this.firestore, "Lecteur", lecteurId);
+    return updateDoc(data, updatedLecteurData);
+  }
+
 }

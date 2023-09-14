@@ -1,4 +1,5 @@
 export class Lecteur{
+    id?:string
     nom!: string;
     prenom!: string;
     nationalite!: string;
