@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData } from '@angular/fire/firestore';
+import { Firestore, collectionData, doc } from '@angular/fire/firestore';
 // import { Mosquee } from '../models/mosquee';
-import { addDoc, deleteDoc, collection, doc  } from 'firebase/firestore';
+import { addDoc, deleteDoc, collection  } from 'firebase/firestore';
 
 import { Mosquee } from '../models/mosquee';
 import { AlertController } from '@ionic/angular';
@@ -31,14 +31,14 @@ export class MosqueeService {
      
     }).then(docRef => {
       const heuresCollection = collection(docRef, 'Heures');
-      return addDoc(heuresCollection, {
-        // fadjr:mosquee.fadjr,
-        // zohr:mosquee.zohr,
-        // asri:mosquee.asri,
-        // magreb:mosquee.magreb,
-        // isha:mosquee.isha,
-        // djouma:mosquee.djouma
-      });
+      // return addDoc(heuresCollection, {
+      //   // fadjr:mosquee.fadjr,
+      //   // zohr:mosquee.zohr,
+      //   // asri:mosquee.asri,
+      //   // magreb:mosquee.magreb,
+      //   // isha:mosquee.isha,
+      //   // djouma:mosquee.djouma
+      // });
     });
   }
 

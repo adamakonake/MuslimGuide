@@ -11,10 +11,10 @@ const routes: Routes = [
     redirectTo: 'page-de-bienvenu',
     pathMatch: 'full'
   },
-  {
-    path: 'annonce',
-    loadChildren: () => import('./users/annonce/annonce.module').then( m => m.AnnoncePageModule)
-  },
+  // {
+  //   path: 'annonce',
+  //   loadChildren: () => import('./users/annonce/annonce.module').then( m => m.AnnoncePageModule)
+  // },
   {
     path: 'pageaffichage/:numero',
     loadChildren: () => import('./users/pageaffichage/pageaffichage.module').then( m => m.PageaffichagePageModule)
