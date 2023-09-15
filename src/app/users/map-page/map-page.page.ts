@@ -16,10 +16,10 @@ export class MapPagePage implements OnInit, OnDestroy {
   map : any;
   routing : any;
   private mosqueePositionIcon: Icon = icon({
-    iconUrl : "../../assets/iconPositionMosque.png"
+    iconUrl : "../../assets/iconPositionMosque1.png"
   });
   private myPositionIcon: Icon = icon({
-    iconUrl: "../../assets/iconMyPosition.png"
+    iconUrl: "../../assets/iconMyPosition1.png"
   });
   // "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png"
 
@@ -56,8 +56,13 @@ export class MapPagePage implements OnInit, OnDestroy {
 
     Geolocation.getCurrentPosition().then((result) =>{
       //Marker.prototype.options.icon = this.defaultIcon;
+      this.watchCoordinate = {
+        latitude : result.coords.latitude,
+        longitude : result.coords.longitude
+      };
       this.map = L.map("map").setView([result.coords.latitude, result.coords.longitude], 19);
 
+      console.log(this.map)
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -95,6 +100,10 @@ export class MapPagePage implements OnInit, OnDestroy {
     //   console.log(e);
     // }
 
+  }
+
+  goToMyPosition(){
+    this.map.panTo(new L.LatLng(this.watchCoordinate.latitude, this.watchCoordinate.longitude));
   }
 
   ngOnDestroy(): void {

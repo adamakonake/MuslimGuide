@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData } from '@angular/fire/firestore';
+import { Firestore, collectionData, docSnapshots } from '@angular/fire/firestore';
 // import { Mosquee } from '../models/mosquee';
 import { addDoc, deleteDoc, collection, doc, updateDoc, getDoc  } from 'firebase/firestore';
 
@@ -7,6 +7,7 @@ import { Mosquee } from '../models/mosquee';
 import { AlertController } from '@ionic/angular';
 
 import { HorairesPrière } from '../models/horaires-prière';
+import { map } from 'rxjs';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
@@ -115,8 +116,49 @@ export class MosqueeService {
      });
      await alert.present();
    }
-   
- 
+
+  // async removeMosque(index: number) {
+  //   const alert = await this.alertController.create({
+  //     header: 'Confirmation',
+  //     message: 'Voulez-vous vraiment supprimer cette mosquée ?',
+  //     buttons: [
+  //       {
+  //         text: 'Annuler',
+  //         role: 'cancel',
+  //         cssClass: 'secondary',
+  //       }, {
+  //         text: 'Supprimer',
+  //         handler: async () => { // Ajoutez async ici
+  //           const mosqueDoc = doc(this.firestore, 'Mosquee', this.mosque[index].id); // Utilisez l'ID de la mosquée
+  //           await deleteDoc(mosqueDoc); // Supprimez le document de Firestore
+  //           this.mosque.splice(index, 1); // Supprimez la mosquée de la liste locale
+  //         }
+  //       }
+  //     ]
+  //   });
+  
+  //   await alert.present();
+  // }
+  
+//   let horaireReference = collection/collectionMosquee/collection/collectionMosquee // Votre référence de document Firestore pour 'horaire'
+// horaireReference.get().then((doc) => {
+//     if (doc.exists) {
+//         console.log("Données du document:", doc.data());
+//     } else {
+//         console.log("Aucun document correspondant !");
+//     }
+// }).catch((error) => {
+//     console.log("Erreur lors de la récupération du document:", error);
+// });
+
+  getMosqueeById(mosqueeId: any){
+    const mosqueeDocRef = doc(this.firestore, "Mosquee", mosqueeId);
+    return docSnapshots(mosqueeDocRef).pipe(map(doc =>{
+      const id = doc.id;
+      const data = doc.data();
+      return {id, ...data}
+    }))
+  }
   
  
    async removeMosque(index: number) {
