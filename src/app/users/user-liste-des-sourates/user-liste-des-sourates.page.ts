@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import el from '@mobiscroll/angular/dist/js/i18n/el';
 import { LecteurService } from 'src/app/services/lecteur.service';
 
 @Component({
@@ -98,14 +99,19 @@ export class UserListeDesSouratesPage implements OnInit {
     { nom: 'An-Nas', isPlaying: false }*/
   ];
   audio : any;
-  sourateList : any;
+  sourateList : any[] = [];
   sourateAudioList : any;
   nom='Mamadou';
   prenom='Daffé'
   photo="../../assets/icon/mamadou_daffe.jpg";
   recherche: string='';
+  ////
   isPlay! : number;
   isPause! : number;
+  isReady : boolean = false;
+  currentTime = 0;
+  timeMax = 0;
+  name! : string;
   /*index = this.sourates.map((sourate, index) => ({nom: sourate.nom, isPlaying: sourate.isPlaying, index}));*/
   get sourateFiltres() {
     return this.sourates.map((sourate, index) => ({ nom: sourate.nom, isPlaying: sourate.isPlaying,numero:sourate.numeroSourate, index})).filter(sourate => sourate.nom.toLowerCase().includes(this.recherche.toLowerCase()));
@@ -114,17 +120,30 @@ export class UserListeDesSouratesPage implements OnInit {
   constructor(private activatedRoute : ActivatedRoute, private http : HttpClient, private lecteurService : LecteurService) { }
 
   ngOnInit() {
-    this.lecteurService.playEnd.subscribe(result=>{
+    this.lecteurService.timeMax.subscribe(result=>{
+      this.timeMax =result
+    })
+    this.lecteurService.currentTime.subscribe(resul=>{
+      this.currentTime = resul
+    })
+    this.lecteurService.playPaused.subscribe(result=>{
       this.isPause = result;
+    })
+    this.lecteurService.isInit.subscribe(result =>{
+      this.isReady = result;
+    })
+    this.lecteurService.playNext.subscribe(result =>{
+      this.isPlay = result;
     })
     this.activatedRoute.paramMap.subscribe(params =>{
       const id = params.get("identifient")
       this.http.get("https://api.quran.com/api/v4/chapters").subscribe((result : any)=>{
         this.sourateList = result.chapters;
       });
-      this.http.get("https://api.quran.com/api/v4/chapter_recitations/"+id).subscribe((result : any)=>{
-        this.sourateAudioList = result.audio_files;
-      })
+      this.lecteurService.initCoranAudio(id);
+      // this.http.get("https://api.quran.com/api/v4/chapter_recitations/"+id).subscribe((result : any)=>{
+      //   this.sourateAudioList = result.audio_files;
+      // })
     })
   }
 
@@ -150,14 +169,18 @@ export class UserListeDesSouratesPage implements OnInit {
   // }
 
   playQuran(index : number){
-    if(this.isPlay == index){
-      if(this.isPause == index)
-        this.isPause = -1;
-      else
-        this.isPause = index;
-    }
-    this.isPlay = index;
-    this.lecteurService.playQuran(index,this.sourateAudioList[index].audio_url)
+    console.log(index)
+    // console.log(this.isPlay)
+    // if(this.isPlay == index){
+    //   if(this.isPause == index)
+    //     this.isPause = -1;
+    //   else
+    //     this.isPause = index;
+    // }else{
+      
+    // }
+    // this.isPlay = index;
+    this.lecteurService.playQuran(index)
     // if(index == this.isPlay ){
     //   this.audio.pause()
     // }else{
@@ -173,4 +196,36 @@ export class UserListeDesSouratesPage implements OnInit {
     //   }
     // }
   }
+
+  secondeToTime(value : number){
+    let heure;
+    let minute;
+    let seconds
+    if(value >= (60*60)){
+      heure = Math.floor(value/(60*60));
+      minute = Math.floor((value%(60*60))/60);
+      seconds = Math.floor(value%60);
+    }else{
+      minute = Math.floor(value/60);
+      seconds = Math.floor(value % 60);
+    }
+
+    if(heure){
+      return heure+" : "+minute+" : "+seconds;
+    }else{
+      return minute+" : "+seconds
+    }
+  }
+
+  playNext(){
+    this.lecteurService.goToNext();
+  }
+  playPrev(){
+    this.lecteurService.goToPrev();
+  }
+
+  download(index : number){
+    this.lecteurService.download(index,this.sourateList[index].name_simple);
+  }
+
 }

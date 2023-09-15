@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RadioService } from './radio.service';
+import { RadioService } from './RadioService';
 
 describe('RadioService', () => {
   let service: RadioService;

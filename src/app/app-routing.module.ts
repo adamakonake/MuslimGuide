@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'list-radio',
+    redirectTo: 'accueil',
     pathMatch: 'full'
   },
   {
@@ -143,7 +143,11 @@ const routes: Routes = [
   {
     path: 'liste-mosquee',
     loadChildren: () => import('./admin/liste-mosquee/liste-mosquee.module').then( m => m.ListeMosqueePageModule)
+  },  {
+    path: 'mosquee',
+    loadChildren: () => import('./users/mosquee/mosquee.module').then( m => m.MosqueePageModule)
   }
+
 
 ];
 

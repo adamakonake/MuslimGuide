@@ -30,7 +30,7 @@
             <p class="sourateNameEn">{{ sourate.name_simple }}</p>
           </div>
           <div class="bouton-jouer">
-            <button [disabled]="!sourateAudioList" [ngStyle]="{'background-color': isPlay == i ? 'rgba(37,160,105, 0.5)' : 'transparent'}" (click)="playQuran(i)">
+            <button [disabled]="!isReady" [ngStyle]="{'background-color': isPlay == i ? 'rgba(37,160,105, 0.5)' : 'transparent'}" (click)="playQuran(i)">
               <ion-icon *ngIf="isPlay != i || isPause == i " name="play-outline"></ion-icon>
               <ion-icon *ngIf="isPlay == i && isPause != i" name="pause-outline"></ion-icon>
             </button>
@@ -40,3 +40,49 @@
     </ion-card>
   </div>
 </ion-content>
+<ion-footer [ngClass]="isPlay >-1 ? 'footerShow' : 'footerHide'">
+  <div class="footerBody">
+
+    <div class="flexGroupe">
+      <button type="button" (click)="download(isPlay)">
+        <ion-icon class="btn download" color="light" name="download-outline"></ion-icon>
+      </button>
+      <p class="footerTitreSourate" [innerHTML]="isPlay > -1 ? sourateList[isPlay].name_simple  : 'cliquez'"></p>
+      <div class="footerBtnGroup">
+        <button type="button" [disabled]="isPlay <= 0" class="playBack" (click)="playPrev()">
+          <ion-icon class="btn" color="light" name="play-back-outline"></ion-icon>
+        </button>
+        <button type="button" (click)="playQuran(isPlay)">
+          <ion-icon *ngIf="isPause == isPlay" class="btnPlay" color="light" size="large" name="play-circle-outline"></ion-icon>
+          <ion-icon *ngIf="isPause != isPlay" class="btnPlay" color="light" size="large" name="pause-circle-outline"></ion-icon>
+        </button>
+        <button type="button" [disabled]="isPlay >= sourateList.length" class="playNext" (click)="playNext()">
+          <ion-icon class="btn" color="light" name="play-forward-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <ion-range aria-label="Temperature" [max]="timeMax" min="0" [value]="currentTime">
+      <span slot="end" [innerHTML]="secondeToTime(timeMax)"></span>
+      <span slot="start" [innerHTML]="secondeToTime(currentTime)"></span>
+    </ion-range>
+    
+    <!-- <div class="footerBtnGroup">
+      <p class="footerTitreSourate">titre du sourate</p>
+      <div class="cote left">
+        <ion-icon color="light" name="download-outline"></ion-icon>
+        <ion-icon color="light" name="play-back-outline"></ion-icon>
+      </div>
+      <div>
+        <ion-icon class="btnPlay" color="light" size="large" name="play-circle-outline"></ion-icon>
+      </div>
+      <div class="cote right">
+        <ion-icon color="light" name="play-forward-outline"></ion-icon>
+        <ion-icon color="light" name="add-circle-outline"></ion-icon>
+      </div>
+    </div>
+    <ion-range aria-label="Temperature" max="100" min="0" color="favorite">
+      <span slot="start">00 : 00</span>
+      <span slot="end">00 : 00</span>
+    </ion-range> -->
+  </div>
+</ion-footer>
