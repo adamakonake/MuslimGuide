@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 // import { Mosquee } from '../models/mosquee';
-import { addDoc, deleteDoc, collection, doc, updateDoc  } from 'firebase/firestore';
+import { addDoc, deleteDoc, collection, doc, updateDoc, getDoc  } from 'firebase/firestore';
 
 import { Mosquee } from '../models/mosquee';
 import { AlertController } from '@ionic/angular';
