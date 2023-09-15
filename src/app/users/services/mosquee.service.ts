@@ -18,19 +18,56 @@ export class MosqueeService {
 
  mosque:any[] = [];
  horairesPrière=[];
+  collection: any;
+ 
+ //mosque: Mosquee[];
 
+//  constructor() {
+//    this.mosque = [
+//      {
+//        id: '1234567890',
+//        nom: 'Mosquée de la Prière',
+//        adresse: 'Rue de la Prière, 75000 Paris',
+//        latitude: 48.856700,
+//        longitude: 2.345600,
+//      },
+//    ];
+//  }
   
 
   constructor(private readonly firestore: Firestore,
-    public alertController:AlertController) { }
+    public alertController:AlertController) { 
+      this.mosque = [
+             {
+               nom:this. mosque,
+               adresse:this.mosque ,
+               latitude: this.mosque,
+               longitude: this.mosque,
+             },
+           ];
+    }
 
 
-  createMosquee(mosquee:Mosquee, horairesPrière:HorairesPrière ){
+  async createMosquee(mosquee:Mosquee, horairesPrière:HorairesPrière ){
 
     // créer une référence à la collection “Mosquee” dans Firestore
    const collectionMosquee= collection(this.firestore, "Mosquee"); 
-    const collectionHeure = collection(this.firestore, "Horaires")
-   
+    const collectionHeure = collection(this.firestore, "Horaires");
+    // Vérifie si la mosquée existe déjà
+    
+ const existingMosque = await this.collection(this.firestore, "Mosquee")
+ .where('nom', '==', mosquee.nom)
+ .where('latitude', '==', mosquee.latitude)
+ .where('longitude', '==', mosquee.longitude)
+ .get();
+
+if (existingMosque.docs.length > 0) {
+  // La mosquée existe déjà
+  return {
+    error: 'La mosquée existe déjà'
+  }
+  throw new Error("La mosquée existe déjà");
+} else {
     
     return addDoc(collectionHeure,{
       fadjr:horairesPrière.fadjr,
@@ -51,13 +88,14 @@ export class MosqueeService {
         });
 
     });
-  };
+  }}
 
 
   getMosquee(){
     const collectionMosquee = collection(this.firestore,'Mosquee');
     return collectionData(collectionMosquee,{idField:'id'})
   }
+
 
   async updateMosque(index: string, mosquee:any) {
     const alert = await this.alertController.create({
@@ -75,18 +113,18 @@ export class MosqueeService {
           placeholder: 'Adresse de la mosquée',
           value: mosquee.adresse
         },
-        // {
-        //   name: 'longitude',
-        //   type: 'text',
-        //   placeholder: 'modifier lagitude',
-        //   value: mosquee.longitude
-        // },
-        // {
-        //   name: 'adresse',
-        //   type: 'text',
-        //   placeholder: 'modifier longitude',
-        //   value: mosquee.latitude
-        // }
+         {
+           name: 'longitude',
+           type: 'text',
+           placeholder: 'modifier lagitude',
+           value: mosquee.longitude
+         },
+         {
+           name: 'adresse',
+           type: 'text',
+           placeholder: 'modifier longitude',
+           value: mosquee.latitude
+         }
        
       ],
       buttons: [
@@ -112,9 +150,8 @@ export class MosqueeService {
   }
   
 
- 
 
-  async removeMosque(index: number) {
+  async removeMosque(index: string) {
     const alert = await this.alertController.create({
       header: 'Confirmation',
       message: 'Voulez-vous vraiment supprimer cette mosquée ?',
@@ -126,9 +163,10 @@ export class MosqueeService {
         }, {
           text: 'Supprimer',
           handler: async () => { // Ajoutez async ici
-            const mosqueDoc = doc(this.firestore, 'Mosquee', this.mosque[index].id); // Utilisez l'ID de la mosquée
-            await deleteDoc(mosqueDoc); // Supprimez le document de Firestore
-            this.mosque.splice(index, 1); // Supprimez la mosquée de la liste locale
+            const radioDoc = doc(this.firestore, 'Mosquee', index); // Utilisez l'ID de la radio
+            await deleteDoc(radioDoc); // Supprimez le document de Firestore
+            //this.radio.splice(index, 1); // Supprimez la radio de la liste locale
+            console.log("azertyuiop")
           }
         }
       ]
@@ -136,7 +174,6 @@ export class MosqueeService {
   
     await alert.present();
   }
-  
   
  
 }

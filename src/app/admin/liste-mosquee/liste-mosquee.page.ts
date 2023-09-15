@@ -17,7 +17,7 @@ export class ListeMosqueePage implements OnInit {
       let mosquee : any[] = [];
       console.log(result)
       result.forEach(mosque =>{
-        //const documentRef = doc(this.firestore, mosque.horaire.path)
+        // const documentRef = doc(this.firestore, mosque.horaire.path)
         mosque.horaire = mosque.horaire.path
         mosquee.push(mosque);
       })
