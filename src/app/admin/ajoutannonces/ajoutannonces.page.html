@@ -1,65 +1,82 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>ajoutannonces</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="container">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">ajoutannonces</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content> -->
-<!-- <ion-header class="vert">
-
-      <div class="barrehaut"></div>
-
-</ion-header> -->
-
-<div class="vert">
-  .
-</div>
-
-
-<ion-content class="">
+  <!-- Mon content  -->
   <form [formGroup]="addannonceForm" (ngSubmit)="onSubmit()">
-    <div class="contourt">
-      <h1 style="padding-top: 30px;">Ajouter Annonce</h1>
-      <div class="cadreblanc">
 
-        <div class="first">
-          <div>
-            <ion-label position="floating" style="margin-left: 10%; font-weight: bold;">Date :</ion-label>
-            <ion-input type="date" style=" text-align: center;" class="input" formControlName='date'></ion-input>
-          </div>
-
-          <div>
-            <ion-label position="floating" style="margin-left: 10px; font-weight: bold;">Nom Mosquée :</ion-label>
-            <ion-input type="text" style="text-align: center;" class="input" placeholder=".........."
-              formControlName='nomMosquee'></ion-input>
-          </div>
-
-        </div>
-        <div class="seconds">
-          <div>
-            <ion-label position="floating" style="margin-left: 10px; font-weight: bold;">Heure preche :</ion-label>
-            <ion-input type="time" style=" text-align: center;" class="input" placeholder="hh:mm"
-              formControlName='heurePreche'></ion-input>
-          </div>
-
-          <div>
-            <ion-label position="floating" style="margin-left: 10px; font-weight: bold;">Heures tabsir :</ion-label>
-            <ion-input type="time" style=" text-align: center;" class="input" placeholder="hh:mm"
-              formControlName='heureTabsir'></ion-input>
-          </div>
-
-          <div class="button">
-            <input type="submit" ajoutAnonnce.valid value="Ajouter"
-              style=" text-align: center;height: 50px;width: 100%; background-color: #25A069; border-radius: 20px;">
-          </div>
-        </div>
-      </div>
+    <!-- le titre de notre page  -->
+    <div class="title">
+      <h2>Ajouter Annonce</h2>
     </div>
+
+    <!-- Mon container de cadre blanc  -->
+    <div class="cadre_blanc_container">
+      <!-- mon cadre blanc  -->
+      <div class="cadre_blanc">
+
+        <!-- Le Debut de mon input container  -->
+        <div class="container_input">
+
+          <!-- Le global de mon input  -->
+          <div class="date_global">
+ 
+            <!-- mon premier input  -->
+            <div class="date_content">
+              <label for="date" class="mon_label"> Date </label>
+              <br> <!-- Juste un espace -->
+              <input type="date" class="mon_input" id="date" name="date" formControlName='date' required>
+            </div>
+
+            
+            <!-- mon deuxième input  -->
+            <div class="date_content">
+              <label for="name_mosque" class="mon_label"> Nom Mosquée </label>
+              <br> <!-- Juste un espace -->
+              <!-- <input type="date" class="mon_input" id="date" name="date" required> -->
+              <select class="mon_input"  name="name_mosque" id="name_mosque" formControlName='nomMosquee'>
+                <option value="Choisis un mosqué">Choisis un mosquée</option>
+                <option *ngFor="let mosquee of mosqueeData" [value]="mosquee.id">{{ mosquee.nom }}</option>
+                <!-- <option value="Mosquée Mille et une Merveille">Mosquée Mille et une Merveille</option>
+                <option value="">Mosquée Cité Mali Univers</option>
+                <option value="">Mosquée Fayçal</option> -->
+              </select>
+            </div>
+
+            <!-- le double de input  -->
+            <div class="double_input">
+
+              <!-- Pour le premier  -->
+              <div class="date_content_double1">
+                <label for="heure_preche" class="mon_label_double"> Heure preche </label>
+                <br> <!-- Juste un espace -->
+                <input type="time" class="mon_input_double" id="heure_preche" name="heure_preche" formControlName='heurePreche' required>
+              </div>
+
+              <!-- Pour le deuxième  -->
+              <div class="date_content_double2">
+                <label for="heure_tabsir" class="mon_label_double"> Heure Tabsir </label>
+                <br> <!-- Juste un espace -->
+                <input type="time" class="mon_input_double" id="heure_tabsir" name="heure_tabsir" formControlName='heureTabsir' required>
+              </div>
+
+            </div>
+
+
+            
+            <div class="buttonIonic">
+              <button type="submit" value="Fermer" id="close" >Fermer</button>
+
+              <button type="submit" ajoutAnonnce.valid value="Ajouter" id="open" >Ajouter</button>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- La Fin de mon input container  -->
+
+      </div>
+
+    </div>
+
   </form>
-</ion-content>
+  <!-- (click)=" naviguerVersliste()" -->
+</div>

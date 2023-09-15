@@ -49,3 +49,22 @@ button.example-custom-date-class {
 .mat-calendar-body-selected{
     background-color: #25A069;
 }
+
+// :::::::::::::::::::::::::::tableau en bas::::::::::::::::::::::::::::::::::
+table {
+    margin-top: 40px;
+    border-collapse: collapse; /* Pour fusionner les bordures des cellules */
+    width: 90%; /* Largeur de la table à 100% du conteneur parent */
+  }
+  
+  /* Style des lignes */
+  tr {
+    background-color: #fffefe; /* Couleur de fond pour les lignes */
+    border-bottom: 2px solid #ccc; /* Bordure inférieure de 2px solide en couleur grise */
+  }
+  
+  /* Style des cellules (colonnes) */
+  td {
+    padding: 10px; /* Espacement interne des cellules */
+    text-align: center; /* Alignement du texte au centre */
+  }
