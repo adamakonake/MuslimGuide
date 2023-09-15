@@ -68,7 +68,6 @@ export class ListeMosqueePage implements OnInit {
     console.log("onSubmit")
     if(this.createMosqueeForm.valid){
       console.log("form")
-      
 
       const mosquee = new Mosquee(
         this.createMosqueeForm.value.nom!,
