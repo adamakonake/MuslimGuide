@@ -24,27 +24,11 @@
 
   </div>
 
-  <!--<div class="container">
-     <button class="btn" id="open-modal" expand="block">
-      <i class="fa-solid fa-plus"></i>
-      Ajouter
-    </button>
 
-    <div class="search-container">
-      <input type="search" value="" class="recherche">
-      <div class="search-icon">
-        <ion-icon name="search-outline"></ion-icon>
-        
-      </div>
-    </div>
-  </div> -->
-<!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
-<!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
-
-<div class="container_event">
+<div class="container_event" *ngFor="let mosque of mosquee; let i = index">
   
-  <div class="event-info">
-    <div class="localisation">
+  <!--<div class="event-info">
+     <div class="localisation">
 
       <div class="loc">
         <i id="icon-location" class="fa-solid fa-location-dot"></i>
@@ -57,10 +41,35 @@
       </div>
     </div>
 
-    <div class="action"><!--different action icon-->
+    <div class="action">
       <i class="fa-regular fa-pen-to-square"></i>
       <i class="fa-solid fa-trash"></i>
     </div>
+  </div> -->
+
+  <!-- pour sy -->
+  <div class="container_evenement">
+
+    <div class="local_page">
+
+      <div class="page_information_sy">
+        <i id="icon-location_sy" class="fa-solid fa-location-dot"></i>
+        <p class="lieu_sy"> {{ mosque.adresse }} </p>
+      </div>
+
+      <div class="page_information_sy">
+        <i id="icon-location_sy" class="fa-regular fa-user"></i>
+        <p class="lieu_sy changement_sy"> {{ mosque.nom }} </p>
+      </div>
+      
+    </div>
+
+    <!-- ============== -->
+    <div class="action_page"><!--different action icon-->
+      <i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square icon_put"></i>
+      <i (click)="supprimerMosquee(i)" class="fa-solid fa-trash icon_delete"></i>
+    </div>
+
   </div>
 
 </div>
@@ -275,14 +284,15 @@
 
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::traitement de Togo:::::::::::::::::::::::::::::::-->
 
-<div *ngFor="let mosque of mosquee; let i = index" class="event-info">
-  <!-- <img src="../../../assets/image/image 10.png" alt=""> -->
+<!-- <img src="../../../assets/image/image 10.png" alt=""> -->
+
+<!-- <div *ngFor="let mosque of mosquee; let i = index" class="event-info">
   
   <div class="localisation">
     
     <div class="loc">
       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-   <p class="lieu">{{ mosque.adresse }}</p>
+      <p class="lieu">{{ mosque.adresse }}</p>
     </div>
 
     <div class="info-imam">
@@ -292,11 +302,11 @@
 
   </div>
 
-<div class="action">
-<i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square"></i>  
-<i (click)="supprimerMosquee(i)" class="fa-solid fa-trash"></i>
-</div>
-</div>
+  <div class="action">
+    <i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square"></i>  
+    <i (click)="supprimerMosquee(i)" class="fa-solid fa-trash"></i>
+  </div>
+</div> -->
 
 </ion-content>
 <!----::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
