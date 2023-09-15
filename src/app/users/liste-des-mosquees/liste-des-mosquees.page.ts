@@ -3,6 +3,7 @@ import { collection, collectionData } from '@angular/fire/firestore';
 import { doc } from 'firebase/firestore';
 import { Firestore } from 'firebase/firestore';
 import { MosqueeService } from '../services/mosquee.service';
+import { Router } from '@angular/router';
 
 
 
@@ -15,7 +16,7 @@ import { MosqueeService } from '../services/mosquee.service';
 })
 export class ListeDesMosqueesPage implements OnInit {
   mosquee:any=[];
-  constructor(private mosqueeService: MosqueeService) { }
+  constructor(private mosqueeService: MosqueeService, private route : Router) { }
   // getMosquee(){
   //   const collectionMosquee = collection(this.firestore,'Mosquee');
   //   collectionData(collectionMosquee,{idField:'id'}).subscribe((result : any[])=>{
@@ -45,5 +46,8 @@ export class ListeDesMosqueesPage implements OnInit {
     })
   }
   
+  goToDetail(id : any){
+    this.route.navigateByUrl("details-mosquees/"+id);
+  }
 
 }

@@ -10,7 +10,12 @@
       <ion-title size="large">mapPage</ion-title>
     </ion-toolbar>
   </ion-header> -->
-  <div id="map"></div>
+  <div class="mapDiv">
+    <button type="button" class="myPos" (click)="goToMyPosition()">
+      <ion-icon size="large" name="locate-outline"></ion-icon>
+    </button>
+    <div id="map"></div>
+  </div>
   <!-- <ion-card>
     <ion-card-content>
       Lat : {{watchCoordinate.latitude }}

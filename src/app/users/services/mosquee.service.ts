@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData } from '@angular/fire/firestore';
+import { Firestore, collectionData, docSnapshots } from '@angular/fire/firestore';
 // import { Mosquee } from '../models/mosquee';
 import { addDoc, deleteDoc, collection, doc  } from 'firebase/firestore';
 
@@ -7,6 +7,7 @@ import { Mosquee } from '../models/mosquee';
 import { AlertController } from '@ionic/angular';
 
 import { HorairesPrière } from '../models/horaires-prière';
+import { map } from 'rxjs';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
@@ -113,7 +114,14 @@ export class MosqueeService {
 //     console.log("Erreur lors de la récupération du document:", error);
 // });
 
-  
+  getMosqueeById(mosqueeId: any){
+    const mosqueeDocRef = doc(this.firestore, "Mosquee", mosqueeId);
+    return docSnapshots(mosqueeDocRef).pipe(map(doc =>{
+      const id = doc.id;
+      const data = doc.data();
+      return {id, ...data}
+    }))
+  }
   
   async deleteMosquee(mosqueeId: string) {
     const mosqueeDoc = doc(this.firestore, "Mosquee", mosqueeId);

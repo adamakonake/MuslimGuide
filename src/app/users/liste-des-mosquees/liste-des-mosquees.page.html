@@ -42,9 +42,9 @@
         </div> -->
         <ion-content>
           <ion-list> 
-            <ion-item  *ngFor="let mosque of mosquee">
+            <ion-item  *ngFor="let mosque of mosquee" goToDetail>
                 <img src="../../../assets/image/image 10.png" alt="">
-                <div class="ident">
+                <div class="ident" (click)="goToDetail(mosque.id)">
                   <h1>{{ mosque.nom }}</h1>
                   <h2>{{ mosque.adresse }}</h2>
                 </div>
