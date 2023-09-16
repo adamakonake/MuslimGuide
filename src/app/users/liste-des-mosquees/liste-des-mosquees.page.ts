@@ -33,6 +33,12 @@ export class ListeDesMosqueesPage implements OnInit {
     })
   }
   
+  // ngOnInit() {
+  //   this.mosqueeService.getMosquee().subscribe((result: any[]) => {
+  //   this.mosquee = result;
+  //   });
+  //   }
+  
   searchMosque(searchTerm: string) {
     if (!searchTerm) {
         return this.mosquee;

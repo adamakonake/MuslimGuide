@@ -11,20 +11,26 @@ export class ListeMosqueePage implements OnInit {
   mosquee:any;
   constructor(private mosqueeService: MosqueeService) { }
  
+  // ngOnInit() {
+  //   this.mosqueeService.getMosquee().subscribe((result : any[])=>{
+  //     //const docc = doc(this.firestore,result.horaire)
+  //     let mosquee : any[] = [];
+  //     console.log(result)
+  //     result.forEach(mosque =>{
+  //       // const documentRef = doc(this.firestore, mosque.horaire.path)
+  //       mosque.horaire = mosque.horaire.path
+  //       mosquee.push(mosque);
+  //     })
+  //     //console.log(mosquee)
+  //     this.mosquee = mosquee;
+  //   })
+  // }
+
   ngOnInit() {
-    this.mosqueeService.getMosquee().subscribe((result : any[])=>{
-      //const docc = doc(this.firestore,result.horaire)
-      let mosquee : any[] = [];
-      console.log(result)
-      result.forEach(mosque =>{
-        // const documentRef = doc(this.firestore, mosque.horaire.path)
-        mosque.horaire = mosque.horaire.path
-        mosquee.push(mosque);
-      })
-      //console.log(mosquee)
-      this.mosquee = mosquee;
-    })
-  }
+    this.mosqueeService.getMosquee().subscribe((result: any[]) => {
+    this.mosquee = result;
+    });
+    }
 
   searchMosque(searchTerm: string) {
     if (!searchTerm) {

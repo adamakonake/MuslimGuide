@@ -69,8 +69,8 @@
              <ion-item  *ngFor="let mosque of sortMosque(searchTerm)">
                 <img src="../../../assets/image/image 10.png" alt="">
                 <div class="ident">
-                  <h1  [innerHTML]="highlight(mosque.nom, searchTerm)">{{ mosque.nom }}</h1>
-                  <h2>{{ mosque.adresse }}</h2>
+                  <h6  [innerHTML]="highlight(mosque.nom, searchTerm)">{{ mosque.nom }}</h6>
+                  <p>{{ mosque.adresse }}</p>
                 </div>
         <ion-icon  name="location"></ion-icon>
       </ion-item>  

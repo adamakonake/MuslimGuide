@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData } from '@angular/fire/firestore';
+import { Firestore, collectionData, docSnapshots } from '@angular/fire/firestore';
 // import { Mosquee } from '../models/mosquee';
 import { addDoc, deleteDoc, collection, doc, updateDoc  } from 'firebase/firestore';
 
@@ -7,6 +7,7 @@ import { Mosquee } from '../models/mosquee';
 import { AlertController } from '@ionic/angular';
 
 import { HorairesPrière } from '../models/horaires-prière';
+import { map } from 'rxjs';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
@@ -18,6 +19,7 @@ export class MosqueeService {
 
  mosque:any[] = [];
  horairesPrière=[];
+ horaire : any;
   collection: any;
  
  //mosque: Mosquee[];
@@ -36,21 +38,12 @@ export class MosqueeService {
   
 
   constructor(private readonly firestore: Firestore,
-    public alertController:AlertController) { 
-      this.mosque = [
-             {
-               nom:this. mosque,
-               adresse:this.mosque ,
-               latitude: this.mosque,
-               longitude: this.mosque,
-             },
-           ];
-    }
+    public alertController:AlertController) {  }
 
 
   async createMosquee(mosquee:Mosquee, horairesPrière:HorairesPrière ){
 
-    // créer une référence à la collection “Mosquee” dans Firestore
+    // créer une référence à la collection “Mosquee” et "Horaires" dans Firestore
    const collectionMosquee= collection(this.firestore, "Mosquee"); 
     const collectionHeure = collection(this.firestore, "Horaires");
     // Vérifie si la mosquée existe déjà
@@ -63,9 +56,6 @@ export class MosqueeService {
 
 if (existingMosque.docs.length > 0) {
   // La mosquée existe déjà
-  return {
-    error: 'La mosquée existe déjà'
-  }
   throw new Error("La mosquée existe déjà");
 } else {
     
@@ -96,8 +86,31 @@ if (existingMosque.docs.length > 0) {
     return collectionData(collectionMosquee,{idField:'id'})
   }
 
+  getMosqueeById(mosqueeId: any){
+    const mosqueeDocRef = doc(this.firestore, "Mosquee", mosqueeId);
+    return docSnapshots(mosqueeDocRef).pipe(map(doc =>{
+      const id = doc.id;
+      const data = doc.data();
+      return {id, ...data}
+    }))
+  }
+
+  getHoraireById(horaireId:any){
+    const horaireDocRef = doc(this.firestore, horaireId);
+    return docSnapshots(horaireDocRef).pipe(map(doc=>{
+      const id = doc.id;
+      const data = doc .data();
+      return {id, ...data}
+    }))
+  }
+
+
 
   async updateMosque(index: string, mosquee:any) {
+    console.log("heure "+mosquee.horaire.path)
+    this.getHoraireById(mosquee.horaire.path).subscribe((result)=>{
+      this.horaire = result;
+    })
     const alert = await this.alertController.create({
       header: 'Modifier la mosquée',
       inputs: [
@@ -115,17 +128,54 @@ if (existingMosque.docs.length > 0) {
         },
          {
            name: 'longitude',
-           type: 'text',
+           type: 'number',
            placeholder: 'modifier lagitude',
-           value: mosquee.longitude
+           value: mosquee.longitude,
          },
          {
-           name: 'adresse',
-           type: 'text',
+           name: 'latitude',
+           type: 'number',
            placeholder: 'modifier longitude',
            value: mosquee.latitude
-         }
-       
+         },
+
+         {
+          name: 'fadjr',
+          type: 'time',
+          placeholder: 'fadjr',
+          value: this.horaire.fadjr
+        },
+        {
+          name: 'zohr',
+          type: 'time',
+          placeholder: 'zohr',
+          value: this.horaire.zohr
+        },
+         {
+           name: 'asri',
+           type: 'time',
+           placeholder: 'modifier ',
+           value: this.horaire.asri,
+         },
+         {
+           name: 'magreb',
+           type: 'time',
+           placeholder: 'modifier ',
+           value: this.horaire.magreb
+         },
+         {
+          name: 'isha',
+          type: 'time',
+          placeholder: 'modifier ',
+          value: this.horaire.asri,
+        },
+        {
+          name: 'djouma',
+          type: 'time',
+          placeholder: 'modifier ',
+          value: this.horaire.djouma
+        }
+
       ],
       buttons: [
         {
@@ -134,14 +184,28 @@ if (existingMosque.docs.length > 0) {
         },
          {
           text: 'Modifier',
-          handler: async (data:Mosquee) => {
+          handler: async (data:any) => {
 
             console.log(this.firestore)
-            const mosqueeDoc = doc(this.firestore, 'Mosquee', index);
+            const mosqueeDoc = doc(this.firestore, 'Mosquee', index)
             await updateDoc(mosqueeDoc, {
               nom: data.nom,
-              adresse: data.adresse
+              adresse: data.adresse,
+              longitude:data.longitude,
+              latitude:data.latitude,
             });
+
+            console.log(this.firestore)
+            const heureDoc = doc(this.firestore,mosquee.horaire.path)
+            await updateDoc(heureDoc, {  
+              fadjr:data.fadjr,
+              zohr:data.zohr,
+              asri:data.asri,
+              magreb:data.magreb,
+              isha:data.isha,
+              djouma:data.djouma
+            });
+
           }
         }
       ]
@@ -149,8 +213,7 @@ if (existingMosque.docs.length > 0) {
     await alert.present();
   }
   
-
-
+ 
   async removeMosque(index: string) {
     const alert = await this.alertController.create({
       header: 'Confirmation',
