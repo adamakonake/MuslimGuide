@@ -79,9 +79,9 @@ export class LecteurService {
     const data = doc(this.firestore, "Lecteur", lecteurId);
     return deleteDoc(data);
   }
-  updateLecteur(lecteurId: string, updatedLecteurData: Partial<Lecteur>) {
+  updateLecteur(lecteurId: string, lecteur: Partial<Lecteur>) {
     const data = doc(this.firestore, "Lecteur", lecteurId);
-    return updateDoc(data, updatedLecteurData);
+    return updateDoc(data,lecteur);
   }
 
 }

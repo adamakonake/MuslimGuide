@@ -124,25 +124,21 @@ export class ListeLecteursPage implements OnInit {
 
     await alert.present();
   }
-  enregistrerModifications(lecteur: Lecteur, data: any) {
-    const lecteurId = lecteur.id;
-
-    if (lecteurId) {
-      this.lecteurService.updateLecteur(lecteurId, {
-        nom: data.nom,
-        prenom: data.prenom,
-        nationalite: data.nationalite,
-        photo: lecteur.photo
-      }).then(() => {
-        console.log('Modification enregistrée avec succès');
-      }).catch((error) => {
-        console.error("Error updating lecteur: ", error);
-      });
-    } else {
-      console.error("Lecteur ID is undefined");
-    }
+enregistrerModifications(lecteur: Lecteur, data: any) {
+  const lecteurId = lecteur.id;
+  if(lecteurId){
+    this.lecteurService.updateLecteur(lecteurId, {
+      nom: data.Nom,
+      prenom: data.Prénom,
+      nationalite: data.nationalite
+      // Ne pas inclure 'photo' dans l'objet de mise à jour
+    }).then(() => {
+      console.log('Modification enregistrée avec succès');
+    }).catch((error) => {
+      console.error("Error updating lecteur: ", error);
+    });
+  } else {
+    console.error("Lecteur ID is undefined");
   }
-
-
-
+}
 }
