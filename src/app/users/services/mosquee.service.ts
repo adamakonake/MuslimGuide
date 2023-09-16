@@ -20,7 +20,7 @@ export class MosqueeService {
  horairesPrière=[];
 
   constructor(private readonly firestore: Firestore,
-    public alertController:AlertController) { }
+    private alertController:AlertController) { }
 
 
   createMosquee(mosquee:Mosquee, horairesPrière:HorairesPrière ){
