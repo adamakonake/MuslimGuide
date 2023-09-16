@@ -51,7 +51,7 @@
     <!-- Debut Pour les recherche bare search_container  -->
     <div  class="search_container">
       <div class="recherche_bare">
-        <input type="search" name="search" placeholder="Recherche">
+        <input type="search" (input)="onSearch($event)" name="search" placeholder="Recherche">
         <!-- mon icon de recherche  -->
         <i class="ri-search-line icon_search"></i>
       </div>

@@ -34,7 +34,7 @@
               <!-- <input type="date" class="mon_input" id="date" name="date" required> -->
               <select class="mon_input"  name="name_mosque" id="name_mosque" formControlName='nomMosquee'>
                 <option value="Choisis un mosqué">Choisis un mosquée</option>
-                <option *ngFor="let mosquee of mosqueeData" [value]="mosquee.id">{{ mosquee.nom }}</option>
+                <option *ngFor="let mosquee of mosqueeData" [value]="mosquee.nom">{{ mosquee.nom }}</option>
                 <!-- <option value="Mosquée Mille et une Merveille">Mosquée Mille et une Merveille</option>
                 <option value="">Mosquée Cité Mali Univers</option>
                 <option value="">Mosquée Fayçal</option> -->
@@ -63,7 +63,7 @@
 
             
             <div class="buttonIonic">
-              <button type="submit" value="Fermer" id="close" >Fermer</button>
+              <button type="reset" id="close" (click)="naviguerAnnonces()">Fermer</button>
 
               <button type="submit" ajoutAnonnce.valid value="Ajouter" id="open" >Ajouter</button>
             </div>

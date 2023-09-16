@@ -23,6 +23,7 @@ export class ListRadioPage implements OnInit {
   ajoutRadio: FormGroup;
   isModalOpen = false;
   radios: any;
+  raioFilter: any;
   firestore!: Firestore;
   submitted = false;
 
@@ -60,14 +61,14 @@ export class ListRadioPage implements OnInit {
         });
         await alert.present();
         // return Promise.reject("champs obligatoire");
-        
-       
-      }else{
+
+
+      } else {
         this.ajoutRadio.reset();
         this.submitted = false;
         await this.modalController.dismiss();
       }
-      
+
     } else {
 
       console.log("error");
@@ -77,6 +78,7 @@ export class ListRadioPage implements OnInit {
   }
 
   ngOnInit() {
+    this.filterByNom();
     this.radioService.getRadio().subscribe((result) => {
       this.radios = result;
     })
@@ -120,6 +122,49 @@ export class ListRadioPage implements OnInit {
   leaveAnimation = (baseEl: HTMLElement) => {
     return this.enterAnimation(baseEl).direction('reverse');
   };
+
+  
+  // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::filtre par nom:::::::::::::::::::::
+
+  filterByNom() {
+
+    this.radioService.getRadio().subscribe((result) => {
+      this.radios = result;
+      this.raioFilter = result;
+      console.log(this.radios)
+
+
+      //trier par ordre alphabetique
+      this.radios.sort(
+        (
+          a: { radioA: string; },
+          b: { radioB: string; }
+        ) => {
+          const radioA = a.radioA;
+          const radioB = b.radioB;
+
+          if (radioA < radioB) {
+            return -1;
+          }
+          if (radioA > radioB) {
+            return 1;
+          }
+          return 0;
+        });
+    })
+  
+  }
+
+  // :::::::::::::::::::::::::::::::::::::::::::::::bar de recherche:::::::::::::::::::::::::::::::
+  onSearch(ev: any) {
+     ev.target.value;
+     this.radios = this.raioFilter;
+     console.log(this.radios + "radios selected");
+    const filteredData = this.radios.filter((rdio: any) => rdio.nom.includes(ev.target.value));
+    this.radios = filteredData;
+    console.log(filteredData);
+
+  }
 
 }
 
