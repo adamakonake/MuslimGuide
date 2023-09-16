@@ -16,95 +16,71 @@
 
 ///////////////////////////ajouter une annonce depuis le sevice///////////////////////////////////
      async addannonce(annonce: Annonce): Promise<DocumentReference> {
-    //   // Vérifiez si tous les champs sont remplis
-       if (!annonce.date || !annonce.nomMosquee || !annonce.heurePreche || !annonce.heureTabsir) {
-         // Affichez un message d'erreur modal à l'utilisateur
-          const alert = await this.alertController.create({
-            header: 'Erreur',
-            message: 'Attention un champs vide ne peut être enregitré!',
-            buttons: ['OK']
-          });
     
-          await alert.present();
-    
-          // Rejetez la promesse pour éviter d'ajouter le document incorrect
-          return Promise.reject('Les champs obligatoires ne sont pas définis.');
-        }
        const document= collection(this.firestore, "Annonce");
        console.log(annonce);
        return addDoc(document,{
-        
          date : annonce.date,
          nomMosquee : annonce.nomMosquee,
          heurePreche : annonce.heurePreche,
          heureTabsir : annonce.heureTabsir,
-       
-      });
-    
+       });
     }
+///////////////////////////verification doublons et champs vides///////////////////////////////////
 
-    // async addannonce(annonce: Annonce): Promise<DocumentReference> {
-    //   try {
-    //     // Vérifiez si tous les champs obligatoires sont remplis
-    //     if (!annonce.date || !annonce.nomMosquee || !annonce.heurePreche || !annonce.heureTabsir) {
-    //       // Affichez un message d'erreur modal à l'utilisateur
-    //       const alert = await this.alertController.create({
-    //         header: 'Erreur',
-    //         message: 'Attention, un champ vide ne peut pas être enregistré!',
-    //         buttons: ['OK']
-    //       });
+    async addAnnonce(annonce: Annonce) {
+      console.log("je rentre")
+      let check = true;
+      const q = query(collection(this.firestore, 'Annonce'));
+      const querySnapShoot = await getDocs(q);
+      console.log(querySnapShoot.docs);
+      for (let index in querySnapShoot.docs) {
+
+       console.log(querySnapShoot.docs[index].data()['nomMosquee']);
+        if(querySnapShoot.docs[index].data()['nomMosquee'] == annonce.nomMosquee){
+              check = false;
+        }
+      }
+      //CHAMPS VIDE/////////////////////////////////////////////
+      if (!annonce.date || !annonce.nomMosquee || !annonce.heurePreche || !annonce.heureTabsir) {
+        // Affichez un message d'erreur modal à l'utilisateur
+         const alert = await this.alertController.create({
+           header: 'Erreur',
+           message: 'Attention un champs vide ne peut être enregitré!',
+           buttons: ['OK']
+         });
+   
+         await alert.present();
+   
+         // Rejetez la promesse pour éviter d'ajouter le document incorrect
+         return Promise.reject('Les champs obligatoires ne sont pas définis.');
+       }
+     //CHAMPS VIDE/////////////////////////////////////////////////
+
+     //VERIFICATION DOUBLONS//////////////////////////////////////////
+
+      if(check){
+        const data = collection(this.firestore, "Annonce");
+        console.log("je vais ajouter")
+        return  await addDoc(data, {
+          date: annonce.date,
+          nomMosquee: annonce.nomMosquee,
+          heurePreche: annonce.heurePreche,
+          heureTabsir: annonce.heureTabsir,
+        });
+      }else{
+        const alert = await this.alertController.create({
+          header: 'Erreur',
+          message: 'Attention, nom similaire',
+          buttons: ['OK']
+        });
+        await alert.present();
+        return "";
+      }
+  
+    }
     
-    //       await alert.present();
-    
-    //       // Rejetez la promesse pour éviter d'ajouter le document incorrect
-    //       return Promise.reject('Les champs obligatoires ne sont pas définis.');
-    //     }
-    
-    //     // Vérifiez s'il existe déjà une annonce avec les mêmes données
-    //     const document = collection(this.firestore, 'Annonce');
-    //     const querySnapshot = await getDocs(query(
-    //       document,
-    //       where('date', '==', annonce.date),
-    //       where('nomMosquee', '==', annonce.nomMosquee),
-    //       where('heurePreche', '==', annonce.heurePreche),
-    //       where('heureTabsir', '==', annonce.heureTabsir)
-    //     ));
-    
-    //     if (!querySnapshot.empty) {
-    //       // Une annonce similaire existe déjà, affichez un message d'erreur modal à l'utilisateur
-    //       const alert = await this.alertController.create({
-    //         header: 'Erreur',
-    //         message: 'Une annonce similaire existe déjà!',
-    //         buttons: ['OK']
-    //       });
-    
-    //       await alert.present();
-    
-    //       // Rejetez la promesse pour éviter d'ajouter le doublon
-    //       return Promise.reject('Une annonce similaire existe déjà.');
-    //     }
-    
-    //     // Ajoutez la nouvelle annonce car il n'y a pas de doublon
-    //     console.log(annonce);
-    
-    //     // Utilisez la méthode addDoc pour ajouter le document
-    //     const newDocumentRef = await addDoc(document, {
-    //       date: annonce.date,
-    //       nomMosquee: annonce.nomMosquee,
-    //       heurePreche: annonce.heurePreche,
-    //       heureTabsir: annonce.heureTabsir,
-    //     });
-    
-    //     // Renvoyez la référence au nouveau document ajouté
-    //     return newDocumentRef;
-    //   } catch (error) {
-    //     console.error('Erreur lors de l\'ajout de l\'annonce : ', error);
-    //     // Vous pouvez afficher un message d'erreur modal ou gérer l'erreur comme vous le souhaitez
-    //     throw error;
-    //   }
-    // }
-    
-    //recuperer les ajout d'annonce dans la liste annonces
+    //recuperer les ajout d'annonce dans la liste annonces//////////////////////////////////////////////////
     getlistannonce(){
       const document = collection(this.firestore, "Annonce");
       // this.annonces = [];
@@ -115,6 +91,7 @@
     async updateannonce(index : string, annonce:any){
       const modal = await this.alertController.create({
         header: 'Modification',
+        
         inputs :[{
           name: 'date',
           type : 'date',
@@ -132,7 +109,6 @@
           placeholder :'hh:mm',
           value : annonce.heurePreche // prends les valeurs d'heure de preche 
         },
-
         {
           name : 'heureTabsir',
           type : 'time',
@@ -231,6 +207,7 @@
   
       const nomsMosquees: string[] = [];
   
+      
       for (const doc of querySnapshot.docs) {
         const data = doc.data();
         if (data['nomMosquee']) {
@@ -270,13 +247,3 @@
 
 
 
-
-
-
-
-
-
-
-
-// `${data['date']}, ${data['heurePreche']}, ${data['heureTabsir']}`;
-// && data['heurePreche'] 
