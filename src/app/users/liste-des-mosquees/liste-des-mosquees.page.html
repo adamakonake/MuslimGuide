@@ -1,46 +1,31 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Liste des Mosquées</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 
-
-
- 
-
-     <!--<div class="list">
-      <div class="mosque-item">
-        <div class="mosque-image">
-          <img src="../../../assets/image/image 10.png" alt=" Mosquée" />
-        </div>
-        <div class="mosque-details">
-          <h2>{{ mosque.name }}</h2>
-          <p>{{ mosque.adresse }}</p>
-         
-        </div>
-        <div class="location-icon">
-          <ion-icon name="location"></ion-icon>
-        </div>
-      </div>
-      <div class="mosque-item">
-        <div class="mosque-image">
-          <img src="../../../assets/image/image 10.png" alt=" Mosquée" />
-        </div>
-        <div class="mosque-details">
-          <h2>{{ mosque.name }}</h2>
-          <p>{{ mosque.adresse }}</p>
-          
-         
-        </div>
-        <div class="location-icon">
-          <ion-icon name="location"></ion-icon>
-        </div>
-      </div>
-      <div class="mosque-item">
-        <div class="mosque-image">
-          <img src="../../../assets/image/image 10.png" alt=" Mosquée" />
-        </div> -->
         <ion-content>
+          <div class="headRoundVert">
+            <div class="headRoundBlanc">
+            </div>
+          </div>
+
+          <div class="color">
+            <h1 class="ion-title">LISTE MOSQUEES</h1>
+            <p> قائمة الإعلانات </p>
+            <div class=" cercle">
+              <img id="imageMosque" src="../../../assets/image/icone.png" alt="">
+            </div>
+          </div>
+
+          <div class="div_ajouter_search">
+        
+            <!-- Debut Pour les recherche bare search_container  -->
+            <div class="search_container">
+              <div class="recherche_bare">
+                <input type="search" name="search" placeholder="Recherche">
+                <!-- mon icon de recherche  -->
+                <i class="ri-search-line icon_search"></i>
+              </div>
+            </div>
+            <!-- Fin Pour les recherche bare search_container  -->
+        
+          </div>
           <ion-list> 
             <ion-item  *ngFor="let mosque of mosquee" goToDetail>
                 <img src="../../../assets/image/image 10.png" alt="">

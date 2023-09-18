@@ -1,22 +1,48 @@
-.color{
-    // width: 100%;
+
+
+.headRoundVert{
+    width: 100%;
+    height: 50px;
     background-color: #25A069;
     position: relative;
-    height: 150px;
-    // margin-left: 20px;
-    display: flex;  
+}
+.headRoundBlanc{
+    width: 100%;
+    height: 20px;
+    background-color: white;
+    border-radius: 20px 20px 0px 0px;
+    position: absolute;
+    bottom: 0px;
 }
 
-.color2{
-    position: absolute;
+.headerVer{
     width: 100%;
-    background-color: #FFF;
-    height: 50px;
-    border-radius: 20px 20px 0px 0px;
-    bottom: 0px;
-    
+      height: 50px;
+      position: relative;
+      background-color: #25A069;
+      border: #f78503 1px solid;
+  }
   
+
+.color{
+    
+    // border: red solid;
+    background-color: #25A069;
+    height: 150px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-right: 15px;
 }
+p{
+    color: #ffffff;
+    font-size: 22px;
+    margin-left: 30%;
+    margin-top: 1px;
+}
+
+
 .ion-title{
  color: var(--Blanc, #FFF);
  font-family: Inter;
