@@ -1,8 +1,8 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>liste-evenement</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+
+
+
+
 
 <ion-content [fullscreen]="true">
   <!-- <ion-header collapse="condense">
@@ -15,13 +15,13 @@
    <h2 class="titre"> Liste des évènements</h2>
 
    <div class="container">
-   <button  class="btn">
-    <i class="fa-solid fa-plus"></i>
+   <button  class="btn" >
+    <i class="fa-solid fa-plus" ></i>
     Ajouter
    </button>
 
    <div class="search-container">
-    <input type="search" value="" class="recherche">
+    <input type="search" class="recherche" (input)="onSearch($event)">
     <div class="search-icon">
       <ion-icon name="search-outline"></ion-icon>
       <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
@@ -31,143 +31,40 @@
 <!-- </div> -->
 </div>
 
-   <div class="event-info">
-    <div class="localisation">
-      <div class="loc">
-        <i id="icon-location" class="fa-solid fa-location-dot"></i>
-     <p class="lieu">ACI 2000</p>
-      </div>
-      <div class="info-imam">
-        <i id="icon-imam" class="fa-regular fa-user"></i>
-        <p class="nom-imam">Imam Aly</p> 
-      </div>
-   
-      
-      </div>
-    <div class="date">
-      <p class="date-exact">28-09-2023</p>
-      <p class="heure">21:00</p>
-    </div>
+<table class="conatiner_table">
+  <thead>
+    <tr>
+      <th><ion-label class="ecriture">Type</ion-label></th>
+      <th><ion-label class="ecriture"><span class="dessus">Lieu</span> Evenement</ion-label></th>
+      <th><ion-label class="ecriture">Dates</ion-label></th>
+      <th><ion-label class="ecriture"><span class="dessus">Heures</span> Evenement</ion-label></th>
+      <th><ion-label class="ecriture"><span class="dessus">Description</span></ion-label></th>
+      <th><ion-label class="ecriture"> Actions</ion-label></th>
+    </tr>
+  </thead>
+  <br>
+  <tbody *ngIf="evenement" >
+    <tr *ngFor="let evenements of evenement "class="custom-row">
+      <td><ion-label class="write">{{evenements.type}}</ion-label></td>
+      <td><ion-label class="write">{{evenements.lieu}}</ion-label></td>
+      <td><ion-label class="write">{{evenements.date}}</ion-label></td>
+      <td><ion-label class="write">{{evenements.heure}}</ion-label></td>
+      <td><ion-label class="write">{{evenements.description}}</ion-label></td>
+      <!-- <td><ion-label class="write"></ion-label></td> -->
 
-    <div class="action">
-      <i class="fa-regular fa-pen-to-square"></i>  
-      <i class="fa-solid fa-trash"></i> </div>
+      <td>
+        <ion-buttons slot="end">
+            <!-- Icône de modification -->
+            <ion-icon name="create" style="cursor: pointer;" (click)="updateeven(evenements)" ></ion-icon>
+            <!-- Icône de suppression -->
+            <ion-icon name="trash" style="color: #FF1203; cursor: pointer;" (click)="deleteEvenById(evenements.id)" ></ion-icon>
+            
+        </ion-buttons>
+      </td>
+      <td></td>
+    </tr>
 
-   </div>
-   <div class="event-info">
-    <div class="localisation">
-      <div class="loc">
-        <i id="icon-location" class="fa-solid fa-location-dot"></i>
-     <p class="lieu">ACI 2000</p>
-      </div>
-      <div class="info-imam">
-        <i id="icon-imam" class="fa-regular fa-user"></i>
-        <p class="nom-imam">Imam Aly</p> 
-      </div>
-   
-      
-      </div>
-    <div class="date">
-      <p class="date-exact">28-09-2023</p>
-      <p class="heure">21:00</p>
-    </div>
+  </tbody>
 
-    <div class="action">
-      <i class="fa-regular fa-pen-to-square"></i>  
-      <i class="fa-solid fa-trash"></i> </div>
-
-   </div>
-   <div class="event-info">
-    <div class="localisation">
-      <div class="loc">
-        <i id="icon-location" class="fa-solid fa-location-dot"></i>
-     <p class="lieu">ACI 2000</p>
-      </div>
-      <div class="info-imam">
-        <i id="icon-imam" class="fa-regular fa-user"></i>
-        <p class="nom-imam">Imam Aly</p> 
-      </div>
-   
-      
-      </div>
-    <div class="date">
-      <p class="date-exact">28-09-2023</p>
-      <p class="heure">21:00</p>
-    </div>
-
-    <div class="action">
-      <i class="fa-regular fa-pen-to-square"></i>  
-      <i class="fa-solid fa-trash"></i> </div>
-
-   </div>
-   <div class="event-info">
-    <div class="localisation">
-      <div class="loc">
-        <i id="icon-location" class="fa-solid fa-location-dot"></i>
-     <p class="lieu">ACI 2000</p>
-      </div>
-      <div class="info-imam">
-        <i id="icon-imam" class="fa-regular fa-user"></i>
-        <p class="nom-imam">Imam Aly</p> 
-      </div>
-   
-      
-      </div>
-    <div class="date">
-      <p class="date-exact">28-09-2023</p>
-      <p class="heure">21:00</p>
-    </div>
-
-    <div class="action">
-      <i class="fa-regular fa-pen-to-square"></i>  
-      <i class="fa-solid fa-trash"></i> </div>
-
-   </div>
-   <div class="event-info">
-    <div class="localisation">
-      <div class="loc">
-        <i id="icon-location" class="fa-solid fa-location-dot"></i>
-     <p class="lieu">ACI 2000</p>
-      </div>
-      <div class="info-imam">
-        <i id="icon-imam" class="fa-regular fa-user"></i>
-        <p class="nom-imam">Imam Aly</p> 
-      </div>
-   
-      
-      </div>
-    <div class="date">
-      <p class="date-exact">28-09-2023</p>
-      <p class="heure">21:00</p>
-    </div>
-
-    <div class="action">
-      <i class="fa-regular fa-pen-to-square"></i>  
-      <i class="fa-solid fa-trash"></i> </div>
-
-   </div>
-   <div class="event-info">
-    <div class="localisation">
-      <div class="loc">
-        <i id="icon-location" class="fa-solid fa-location-dot"></i>
-     <p class="lieu">ACI 2000</p>
-      </div>
-      <div class="info-imam">
-        <i id="icon-imam" class="fa-regular fa-user"></i>
-        <p class="nom-imam">Imam Aly</p> 
-      </div>
-   
-      
-      </div>
-    <div class="date">
-      <p class="date-exact">28-09-2023</p>
-      <p class="heure">21:00</p>
-    </div>
-
-    <div class="action">
-      <i class="fa-regular fa-pen-to-square"></i>  
-      <i class="fa-solid fa-trash"></i> </div>
-
-   </div>
-
-</ion-content>
+  
+</table>

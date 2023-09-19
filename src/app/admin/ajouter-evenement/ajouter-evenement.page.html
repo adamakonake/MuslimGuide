@@ -8,9 +8,9 @@
       <form [formGroup]="addevenForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
               <label for="nom">Type :</label>
-              <input type="text" id="type" name="type" placeholder="Quel type d'évenement ?"  formControlName = 'type'>
+              <input type="text" id="type" name="type" placeholder="Quel?"  formControlName = 'type'>
           </div><br>
-
+          
           <div class="form-group">
             <label for="nom">Lieu :</label>
             <input type="text" id="type" name="type" placeholder="Où se tiendra t-il ?"  formControlName = 'lieu'>
@@ -23,18 +23,20 @@
 
         <div class="form-group">
           <label for="heure">Heure:</label>
-          <input type="text" id="heure" name="heure" formControlName = 'heure' required>
+          <input type="time" id="heure" name="heure" formControlName = 'heure' required>
+          
       </div><br>
 
           <div class="form-group">
               <label for="description">Description :</label>
               <textarea  id="description"  name="description" placeholder="Décrivez l'évenement" formControlName = 'description' required></textarea>
           </div>
-         
-          <button type="submit" ajoutEven.valid>Ajouter</button>
+          <button id="open" type="submit" ajoutEven.valid>Ajouter</button> 
       </form>
+
+
   </div>
-  <!-- <img src="../../../assets/image/mosquee.jpg" alt="">  -->
+  <!-- <img src="../../../assets/image/mosquee.jpg" alt=""> -->
 </body>
 
 <!-- 
