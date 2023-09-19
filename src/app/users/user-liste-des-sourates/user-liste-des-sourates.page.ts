@@ -99,12 +99,13 @@ export class UserListeDesSouratesPage implements OnInit {
     { nom: 'An-Nas', isPlaying: false }*/
   ];
   audio : any;
-  sourateList : any[] = [];
+  sourateList : any;
   sourateAudioList : any;
   nom='Mamadou';
   prenom='Daffé'
   photo="../../assets/icon/mamadou_daffe.jpg";
   recherche: string='';
+  forMe : boolean = false;
   ////
   isPlay! : number;
   isPause! : number;
@@ -112,6 +113,11 @@ export class UserListeDesSouratesPage implements OnInit {
   currentTime = 0;
   timeMax = 0;
   name! : string;
+
+  //////////////////////////////////////////////// v2 //////////////////////////////////////////////////////
+  imamId! : string | null;
+  //////////////////////////////////////////////// v2 //////////////////////////////////////////////////////
+
   /*index = this.sourates.map((sourate, index) => ({nom: sourate.nom, isPlaying: sourate.isPlaying, index}));*/
   get sourateFiltres() {
     return this.sourates.map((sourate, index) => ({ nom: sourate.nom, isPlaying: sourate.isPlaying,numero:sourate.numeroSourate, index})).filter(sourate => sourate.nom.toLowerCase().includes(this.recherche.toLowerCase()));
@@ -120,6 +126,7 @@ export class UserListeDesSouratesPage implements OnInit {
   constructor(private activatedRoute : ActivatedRoute, private http : HttpClient, private lecteurService : LecteurService) { }
 
   ngOnInit() {
+
     this.lecteurService.timeMax.subscribe(result=>{
       this.timeMax =result
     })
@@ -134,17 +141,29 @@ export class UserListeDesSouratesPage implements OnInit {
     })
     this.lecteurService.playNext.subscribe(result =>{
       this.isPlay = result;
+      console.log("salut "+result)
     })
+
+    ///////////////////////////////////////// V2 //////////////////////////////////////////
     this.activatedRoute.paramMap.subscribe(params =>{
-      const id = params.get("identifient")
-      this.http.get("https://api.quran.com/api/v4/chapters").subscribe((result : any)=>{
-        this.sourateList = result.chapters;
+      const id = params.get("identifient");
+      this.imamId = id;
+      this.lecteurService.initCoran(id).subscribe((coranList : any)=>{
+        this.sourateList = coranList.chapters;
       });
-      this.lecteurService.initCoranAudio(id);
-      // this.http.get("https://api.quran.com/api/v4/chapter_recitations/"+id).subscribe((result : any)=>{
-      //   this.sourateAudioList = result.audio_files;
-      // })
     })
+    ///////////////////////////////////////// V2 //////////////////////////////////////////
+
+    // this.activatedRoute.paramMap.subscribe(params =>{
+    //   const id = params.get("identifient")
+    //   this.http.get("https://api.quran.com/api/v4/chapters").subscribe((result : any)=>{
+    //     this.sourateList = result.chapters;
+    //   });
+    //   this.lecteurService.initCoranAudio(id);
+    //   // this.http.get("https://api.quran.com/api/v4/chapter_recitations/"+id).subscribe((result : any)=>{
+    //   //   this.sourateAudioList = result.audio_files;
+    //   // })
+    // })
   }
 
 
@@ -180,7 +199,7 @@ export class UserListeDesSouratesPage implements OnInit {
       
     // }
     // this.isPlay = index;
-    this.lecteurService.playQuran(index)
+    this.lecteurService.playCoran(index)
     // if(index == this.isPlay ){
     //   this.audio.pause()
     // }else{

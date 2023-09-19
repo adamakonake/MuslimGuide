@@ -111,4 +111,14 @@ export class MapPagePage implements OnInit, OnDestroy {
       Geolocation.clearWatch({id : this.watchId})
   }
 
+  calcDist(lat : number, lng : number){
+    const rayonDeLaTerre = 6371.07103;
+    const radiusLatUser = lat * (Math.PI/180);
+    const radiusLatMosq = 12.632895 * (Math.PI/180);
+    const latitudeDiff = radiusLatMosq - radiusLatUser;
+    const longitudeDiff = (-8.028002-lng)*(Math.PI/180);
+    const distance = 2 * rayonDeLaTerre * Math.sin(Math.sqrt(Math.sin(latitudeDiff/2) * Math.sin(latitudeDiff/2) + Math.cos(radiusLatUser) * Math.cos(radiusLatMosq) * Math.sin(longitudeDiff/2) * Math.sin(longitudeDiff/2)))
+    console.log(distance)
+  }
+
 }
