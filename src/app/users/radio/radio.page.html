@@ -19,6 +19,7 @@
                </div>
              <div class="h3"><h3>Mhz</h3></div>
            </div>
+
             <!-- <div class="cont2">
           <a href="https://www.radio.fr/s/radiodambebamako"><p>RADIO DAMBE FM </p></a>
 
@@ -45,12 +46,24 @@
         <h1>100.10 <span>Mhz</span></h1>
       </div> -->
              <!-- </div> -->
+        </div><br>
+        <div class="ajouter_Recherche">
+          <!-- Ici ce Pour les recherche bare container  -->
+          <div class="Recherche_container">
+            <div class="recherche_bare">
+              <input type="search" [(ngModel)]="searchTerm"  placeholder="Recherche">
+              <!-- mon icon de recherche  -->
+              <i class="ri-search-line icon_search"></i>
+              <i class="bi bi-search"></i>
+            </div>
+          </div>
         </div>
+
      </div>
          <!--ici ce pour recupere la liste de radio on va pausse un condition *ngFor  -->
          <!--ensuite on appel le radio par son nom et sa frequence dans 2 acolade comme ca-->
-       <div class="cont2" *ngFor="let radio of radios">
-          <p >{{radio.nom}}</p>
+       <div class="cont2" *ngFor="let radio of sortRadio(searchTerm)">
+          <p [innerHTML]="highlight(radio.nom, searchTerm)"></p>
           <h1 >{{radio.frequence}}<span>Mhz</span></h1>
        </div>
 </div>
