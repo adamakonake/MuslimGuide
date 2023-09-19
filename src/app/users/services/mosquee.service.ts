@@ -159,6 +159,15 @@ export class MosqueeService {
       return {id, ...data}
     }))
   }
+
+  getHoraireById(horaireId : any){
+    const horaireDocRef = doc(this.firestore,horaireId);
+    return docSnapshots(horaireDocRef).pipe(map(doc =>{
+      const id = doc.id;
+      const data = doc.data();
+      return {id, ...data}
+    }))
+  }
   
  
    async removeMosque(index: number) {

@@ -19,19 +19,20 @@
   </div>
 
   <div class="carousel-container">
-    <igx-carousel #carousel [pause]="false" [interval]="5000" >
+    <igx-carousel #carousel [pause]="false" [interval]="5000" [navigation]="false" [gesturesSupport]="true" >
         <igx-slide >
           <div class="cardSlide">
             <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
             <div class="hintGreen">
               <div class="infoPriere">
                 <p class="nomPriere">Fadjr</p>
-                <p class="heurePriere">05 : 10</p>
-                <p class="nomMosquee">Mille et une merveille</p>
+                <p class="heurePriere" *ngIf="mosquee">{{horaireMosquee.fadjr}}</p>
+                <p class="nomMosquee" *ngIf="mosquee">{{mosquee.nom}}</p>
+                <p *ngIf="!mosquee"> Connectez-vous svp</p>
               </div>
               <div class="localPosition">
                 <img src="../../../assets/icone_position_sm.png" alt="" srcset="">
-                <span>Hamdallaye ACI</span>
+                <span *ngIf="mosquee">{{mosquee.adresse}}</span>
               </div>
             </div>
           </div>
@@ -41,13 +42,14 @@
             <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
             <div class="hintGreen">
               <div class="infoPriere">
-                <p class="nomPriere">Dohr</p>
-                <p class="heurePriere">05 : 10</p>
-                <p class="nomMosquee">Mille et une merveille</p>
+                <p class="nomPriere">Zohr</p>
+                <p class="heurePriere" *ngIf="mosquee">{{horaireMosquee.zohr}}</p>
+                <p class="nomMosquee" *ngIf="mosquee">{{mosquee.nom}}</p>
+                <p *ngIf="!mosquee"> Connectez-vous svp</p>
               </div>
               <div class="localPosition">
                 <img src="../../../assets/icone_position_sm.png" alt="" srcset="">
-                <span>Hamdallaye ACI</span>
+                <span *ngIf="mosquee">{{mosquee.adresse}}</span>
               </div>
             </div>
           </div>
@@ -57,20 +59,21 @@
             <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
             <div class="hintGreen">
               <div class="infoPriere">
-                <p class="nomPriere">Fadjr</p>
-                <p class="heurePriere">05 : 10</p>
-                <p class="nomMosquee">Mille et une merveille</p>
+                <p class="nomPriere">Asri</p>
+                <p class="heurePriere" *ngIf="mosquee">{{horaireMosquee.asri}}</p>
+                <p class="nomMosquee" *ngIf="mosquee">{{mosquee.nom}}</p>
+                <p *ngIf="!mosquee"> Connectez-vous svp</p>
               </div>
               <div class="localPosition">
                 <img src="../../../assets/icone_position_sm.png" alt="" srcset="">
-                <span>Hamdallaye ACI</span>
+                <span *ngIf="mosquee">{{mosquee.adresse}}</span>
               </div>
             </div>
           </div>
         </igx-slide>
         <ng-template igxCarouselIndicator></ng-template>
-        <ng-template  igxCarouselPrevButton let-disabled></ng-template>
-        <ng-template  igxCarouselNextButton let-disabled></ng-template>
+        <!-- <ng-template  igxCarouselPrevButton let-disabled></ng-template>
+        <ng-template  igxCarouselNextButton let-disabled></ng-template> -->
     </igx-carousel>
     <div class="btnMosquee" >
       <img (click)="goToMosquee()" class="logoMapMosquee" src="../../../assets/icons8-marqueur-de-plan-96.png" alt="" srcset="">

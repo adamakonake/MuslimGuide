@@ -40,7 +40,7 @@
     </ion-card>
   </div>
 </ion-content>
-<ion-footer [ngClass]="isPlay >-1 ? 'footerShow' : 'footerHide'">
+<ion-footer *ngIf="sourateList" [ngClass]="isPlay >-1 ? 'footerShow' : 'footerHide'">
   <div class="footerBody">
 
     <div class="flexGroupe">
