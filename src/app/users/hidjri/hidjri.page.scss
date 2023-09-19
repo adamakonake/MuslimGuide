@@ -49,3 +49,43 @@ button.example-custom-date-class {
 .mat-calendar-body-selected{
     background-color: #25A069;
 }
+
+// :::::::::::::::::::::::::::tableau en bas::::::::::::::::::::::::::::::::::
+table {
+    margin-top: 40px;
+    border-collapse: collapse; /* Pour fusionner les bordures des cellules */
+    width: 100%; /* Largeur de la table à 100% du conteneur parent */
+  }
+  
+  /* Style des lignes */
+  tr:nth-child(even) {
+    background-color: #e7e3e3; /* Couleur de fond pour les lignes */
+    border-bottom: 2px solid #ccc; /* Bordure inférieure de 2px solide en couleur grise */
+    margin-top: 20px;
+  }
+
+  tr , th {
+    font-size: 20px;
+  }
+
+  th {
+    color: #25A069!important;
+    letter-spacing: 1px;
+  }
+
+  td , th {
+    padding: 12px;
+  }
+  
+  /* Style des cellules (colonnes) */
+  td {
+    padding: 10px; /* Espacement interne des cellules */
+    text-align: center; /* Alignement du texte au centre */
+    margin-top: 10px; 
+  }
+
+  .grandDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

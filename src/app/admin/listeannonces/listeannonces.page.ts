@@ -53,8 +53,8 @@ export class ListeannoncesPage implements OnInit {
       //trier par ordre alphabetique
       this.annoncee.sort((a: { nomMosquee: string; },
         b: { nomMosquee: string; }) => {
-        const nomMosqueeA = a.nomMosquee.toLowerCase();
-        const nomMosqueeB = b.nomMosquee.toLowerCase();
+        const nomMosqueeA = a.nomMosquee;
+        const nomMosqueeB = b.nomMosquee;
       
         if (nomMosqueeA < nomMosqueeB) {
           return -1;
@@ -73,7 +73,7 @@ export class ListeannoncesPage implements OnInit {
   }
   //code pour la recherche
   onSearch(ev:any) {
-     console.log(ev.target.value);
+    //  console.log(ev.target.value);
      console.log(this.annoncee);
       this.annoncee = this.annonceSaved;
      const filteredData = this.annoncee.filter((ann:any) => ann.nomMosquee.includes(ev.target.value));

@@ -24,4 +24,30 @@
   <mat-card class="calendar">
   <mat-calendar [(selected)]="selectDate" (viewChanged)="changeThColor()" (monthSelected)="changeThColor()" (selectedChange)="changeColor()" ></mat-calendar>
 </mat-card>
+
+<div class="grandDate">
+  <table>
+    <tr> <!-- Ligne d'en-tête -->
+      <th>Nom</th>
+      <th>Date</th>
+    </tr>
+    <tr> <!-- Ligne de données -->
+      <td>Exemple 1</td>
+      <td>2023-09-14</td>
+    </tr>
+    <tr>
+      <td>Exemple 2</td>
+      <td>2023-09-15</td>
+    </tr>
+    <tr>
+      <td>Exemple 3</td>
+      <td>2023-09-15</td>
+    </tr>
+    <tr>
+      <td>Exemple 4</td>
+      <td>2023-09-15</td>
+    </tr>
+    <!-- Vous pouvez ajouter plus de lignes de données ici si nécessaire -->
+  </table>
+</div>
 </ion-content>

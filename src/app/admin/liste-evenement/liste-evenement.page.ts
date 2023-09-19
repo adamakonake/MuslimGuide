@@ -1,3 +1,4 @@
+import { Even } from './../../users/models/even';
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 // import { error } from 'console';
@@ -53,5 +54,7 @@ export class ListeEvenementPage implements OnInit {
       console.error('Erreur')
     }
   }
+  // ::::::::::::::::::::::::::::::::::::traitement poppup pour animation:::::::::::::::::::::::::::::::::::::::::::::::::::
+  
 
 }

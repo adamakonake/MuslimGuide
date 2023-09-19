@@ -1,64 +1,69 @@
 
 <ion-content class="contenant">
   <div class="container">
-  <div class="color">
-    <h1 class="ion-title">LISTE ANNONCE</h1>
-    <div class="color2"></div>
-  </div>
+    <div class="headRoundVert">
+      <div class="headRoundBlanc">
+        
+  
+      </div>
+    </div>
+    
+    <div class="color">
+      <h1 class="ion-title">LISTE ANNONCE</h1>
+      <p> قائمة الإعلانات </p>
+    </div>
+  
 
-      <!-- mes buttons -->
-  <div class="haut">
-    <!-- button pour ajout -->
-      <div class="ajout" style="cursor: pointer;" (click)="naviguerVersAjoutAnnonces()">
-         <ion-icon style="margin-top:-2px; font-size: 10px; " color="light" name="add-outline"></ion-icon> 
-          <ion-title style="margin-top: -27px; margin-left: 13px; color: white;">Ajouter</ion-title>   
+    <!-- mes buttons -->
+    <div class="haut">
+      <!-- button pour ajout -->
+      <div class="ajout"  (click)="naviguerVersAjoutAnnonces()">
+        <!-- <ion-icon style="margin-top:-2px; font-size: 10px; " color="light" name="add-outline"></ion-icon> -->
+        <button id="buttonnAdd" type="button" >Ajouter</button>
       </div>
       <!-- barre de recherche -->
       <div class="search-container">
-        <ion-searchbar (input)="onSearch($event)"></ion-searchbar>
-       
+        <span></span>
+        <ion-searchbar  (input)="onSearch($event)"></ion-searchbar>
       </div>
-    </div> 
-      
-      <!-- ENTETE LISTE -->
+    </div>
 
+
+    <!-- ENTETE LISTE -->
+
+    <br>
+    <table class="conatiner_table">
+      <thead>
+        <tr>
+          <th><ion-label class="ecriture">Date</ion-label></th>
+          <th><ion-label class="ecriture"><span class="dessus">Noms</span> Mosquées</ion-label></th>
+          <th><ion-label class="ecriture"><span class="dessus">Heures</span> Preches</ion-label></th>
+          <th><ion-label class="ecriture"><span class="dessus">Heures</span> Tafsir</ion-label></th>
+          <th><ion-label class="ecriture"> Actions</ion-label></th>
+        </tr>
+      </thead>
       <br>
-      <table class="conatiner_table">
-        <thead>
-          <tr>
-            <th><ion-label class="ecriture">Date</ion-label></th>
-            <th><ion-label class="ecriture"><span class="dessus">Noms</span> Mosquées</ion-label></th>
-            <th><ion-label class="ecriture"><span class="dessus">Heures</span> Preches</ion-label></th>
-            <th><ion-label class="ecriture"><span class="dessus">Heures</span> Tafsir</ion-label></th>
-            <th><ion-label class="ecriture"> Actions</ion-label></th>
-          </tr>
-        </thead>
-        <br>
-        <tbody *ngIf="annoncee">
-          <tr *ngFor="let annonce of annoncee" class="custom-row">
-            <td><ion-label class="write">{{ annonce.date }}</ion-label></td>
-            <td><ion-label class="write">{{ annonce.nomMosquee }}</ion-label></td>
-            <td><ion-label class="write">{{ annonce.heurePreche }}</ion-label></td>
-            <td><ion-label class="write">{{ annonce.heureTabsir }}</ion-label></td>
-            <td>
-              <ion-buttons slot="end">
-                  <!-- Icône de modification -->
-                  <ion-icon name="create" style="cursor: pointer;" (click)="modifierannonce(annonce)" ></ion-icon>
-                  <!-- Icône de suppression -->
-                  <ion-icon name="trash" style="color: #FF1203; cursor: pointer;" (click)="deleteAnnonceById(annonce.id)" ></ion-icon>
-                  
-              </ion-buttons>
-            </td>
-            <td></td>
-          </tr>
+      <tbody *ngIf="annoncee">
+        <tr *ngFor="let annonce of annoncee" class="custom-row">
+          <td><ion-label class="write">{{ annonce.date }}</ion-label></td>
+          <td><ion-label class="write">{{ annonce.nomMosquee }}</ion-label></td>
+          <td><ion-label class="write">{{ annonce.heurePreche }}</ion-label></td>
+          <td><ion-label class="write">{{ annonce.heureTabsir }}</ion-label></td>
 
-        </tbody>
+          <td>
+            <ion-buttons slot="end">
+              <!-- Icône de modification -->
+              <ion-icon name="create" style="cursor: pointer;" (click)="modifierannonce(annonce)"></ion-icon>
+              <!-- Icône de suppression -->
+              <ion-icon name="trash" style="color: #FF1203; cursor: pointer;"
+                (click)="deleteAnnonceById(annonce.id)"></ion-icon>
 
-        
-      </table>
+            </ion-buttons>
+          </td>
+        </tr>
+      </tbody>
 
 
-
-
-
-    
+    </table>
+  </div>
+</ion-content>

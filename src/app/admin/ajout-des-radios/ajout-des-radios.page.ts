@@ -18,7 +18,7 @@ export class AjoutDesRadiosPage implements OnInit {
   radio:any[]=[];
   isEditing: boolean = false;
   index:any;
-  
+
   constructor(private fb: FormBuilder, private radioService: RadioService, ) {
     this.ajoutRadio = this.fb.group({
       nom: ['', Validators.required],
@@ -38,11 +38,12 @@ export class AjoutDesRadiosPage implements OnInit {
     // });
   }
 
- 
-   
-   
-  
+
+
+
+
    submit(){
+   
     const newRadio = new Radio(
       this.ajoutRadio.value.nom!,
       this.ajoutRadio.value.frequence!,
@@ -50,11 +51,11 @@ export class AjoutDesRadiosPage implements OnInit {
     )
     console.log(this.ajoutRadio.value + "je trouve quelque chose")
     console.log(this.radioService.addRadio(newRadio));
-  
+
    }
-  
+
 }
-  
-  
+
+
 
 

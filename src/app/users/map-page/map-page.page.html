@@ -1,16 +1,21 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>mapPage</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">mapPage</ion-title>
     </ion-toolbar>
-  </ion-header>
-  <div id="map"></div>
+  </ion-header> -->
+  <div class="mapDiv">
+    <button type="button" class="myPos" (click)="goToMyPosition()">
+      <ion-icon size="large" name="locate-outline"></ion-icon>
+    </button>
+    <div id="map"></div>
+  </div>
   <!-- <ion-card>
     <ion-card-content>
       Lat : {{watchCoordinate.latitude }}

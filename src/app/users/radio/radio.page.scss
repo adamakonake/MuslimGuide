@@ -40,16 +40,19 @@
   justify-content: space-between;
 }
 h4{
+  color: white;
   text-align: start;
   font-size: 12px;
   margin-left: 5%;
 }
 h6{
+  color: white;
   text-align: end;
 font-size: 10px;
 margin-right: 5%;
 }
 .titreFm{
+  color: white;
   font-size: 70px;
   margin: 0px;
 }
@@ -87,4 +90,53 @@ margin-right: 5%;
   font-weight: bold;
   margin: 0px;
 }
+.bak{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+ion-content{
+  background-color: white;
+  background-repeat: no-repeat;
 
+}
+.Recherche_container{
+    display: flex;
+    // margin-top: 12px;
+    margin-right: 10px;
+    justify-content: right;
+    color: white;
+    border-radius: 50%;
+    color:white;
+}
+.btn_container{
+  border-radius: 50%;
+  margin-top: 12px;
+  width: 50%;
+}
+.recherche_bare input {
+  width: 239px;
+  height: 40px;
+  border: none;
+  background-color: #E0E0E0;
+  color: black;
+  border-radius: 10px;
+  padding-left: 55px;
+  outline: none;
+}
+.recherche_bare {
+  position: relative;
+}
+.recherche_bare .icon_search {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 2px;
+  border-radius: 10px;
+  background-color: var(--color-secondaire);
+  width: 42px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

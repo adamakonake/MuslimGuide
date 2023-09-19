@@ -24,44 +24,55 @@
 
   </div>
 
-  <!--<div class="container">
-     <button class="btn" id="open-modal" expand="block">
-      <i class="fa-solid fa-plus"></i>
-      Ajouter
-    </button>
 
-    <div class="search-container">
-      <input type="search" value="" class="recherche">
-      <div class="search-icon">
-        <ion-icon name="search-outline"></ion-icon>
-        
-      </div>
-    </div>
-  </div> -->
-<!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
-<!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
-
-<div class="container_event">
+<div class="container_event" *ngFor="let mosque of mosquee; let i = index">
   
-  <div class="event-info">
-    <div class="localisation">
+  <!-- <div class="event-info"> -->
+    <!-- <div class="localisation">
 
       <div class="loc">
         <i id="icon-location" class="fa-solid fa-location-dot"></i>
         <p class="lieu">ACI 2000</p>
-      </div>
+      </div> -->
 
-      <div class="info-imam">
+      <!-- <div class="info-imam">
         <i id="icon-imam" class="fa-regular fa-user"></i>
         <p class="nom-imam">Imam Aly</p>
+
       </div>
     </div>
 
-    <div class="action"><!--different action icon-->
+    <div class="action">
       <i class="fa-regular fa-pen-to-square"></i>
       <i class="fa-solid fa-trash"></i>
     </div>
+  </div> -->
+
+  <!-- pour sy -->
+  <div class="container_evenement">
+
+    <div class="local_page">
+
+      <div class="page_information_sy">
+        <i id="icon-location_sy" class="fa-solid fa-location-dot"></i>
+        <p class="lieu_sy"> {{ mosque.adresse }} </p>
+      </div>
+
+      <div class="page_information_sy">
+        <i id="icon-location_sy" class="fa-regular fa-user"></i>
+        <p class="lieu_sy changement_sy"> {{ mosque.nom }} </p>
+      </div>
+      
+    </div>
+
+    <!-- ============== -->
+    <div class="action_page"><!--different action icon-->
+      <i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square icon_put"></i>
+      <i (click)="supprimerMosquee(i)" class="fa-solid fa-trash icon_delete"></i>
+    </div>
+
   </div>
+
 
 </div>
 
@@ -110,7 +121,7 @@
                       <div class="ioninput">
                         <label class="inputLabel">Imam :</label>
                         <br>
-                        <input class="custom_input" placeholder="Nom Imam ..." type="text" formControlName="Imam">
+                        <input class="custom_input" placeholder="Nom Imam ..." type="text" formControlName="imam">
                       </div>
   
                       <div class="ioninput">
@@ -122,17 +133,6 @@
                     </div>
 
                   </div>
-                  <!-- <div class="bloc2">
-                    <div class="ioninput">
-                      <ion-label style="margin-bottom: 30px !important;" class="inputLabel">Imam:</ion-label>
-                      <ion-input type="text" formControlName="imam"></ion-input>
-                    </div>
-
-                    <div class="ioninput">
-                      <ion-label class="inputLabel">longitude:</ion-label>
-                      <ion-input type="number" formControlName="longitude"></ion-input>
-                    </div>
-                  </div> -->
 
                 </div>
 
@@ -145,7 +145,7 @@
                       <div class="ioninput">
                         <label class="inputLabel">latitude :</label>
                         <br>
-                        <input class="custom_input3" placeholder="Nom Imam ..." type="text" formControlName="Imam">
+                        <input type="number" class="custom_input3" placeholder="latitude ..."  formControlName="latitude">
                       </div>
 
                     </div>
@@ -190,7 +190,7 @@
                             </div>
                             
                             <div>
-                              <label class="label_content">Magreb</label>
+                              <label class="label_content">Isha</label>
                               <br>
                               <input type="time" class="input_priere" placeholder="Isha" formControlName="isha">
                             </div>
@@ -220,35 +220,6 @@
                     </div>
                     <!-- Fin de mon input third container  -->
                       
-
-                      <!-- <div class="seconds">
-                        <div>
-                          <ion-label position="floating" style=" font-weight: bold; margin-left: 15px;">Zohr</ion-label>
-                          <input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Zohr" formControlName="zohr">
-                        </div>
-
-                        <div>
-                          <ion-label position="floating" style=" font-weight: bold; margin-left: 15px;">Isha</ion-label>
-                          <input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Isha" formControlName="isha">
-                        </div>
-                      </div> -->
-                      <!-- <div class="third">
-                        <div>
-                          <ion-label style=" font-weight: bold; margin-left: 15px;">Asr</ion-label>
-                          <input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Asr" formControlName="asri">
-                        </div>
-
-
-                        <div>
-                          <label position="floating"
-                            style=" font-weight: bold; margin-bottom: 20px; margin-left: 15px;">Djouma</label>
-                          <input style=" width: 120px !important; margin: 10px;" type="time" class="input"
-                            placeholder="Djouma" formControlName="djouma">
-                        </div>
-                      </div> -->
                     </div>
                     
 
@@ -275,14 +246,15 @@
 
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::traitement de Togo:::::::::::::::::::::::::::::::-->
 
-<div *ngFor="let mosque of mosquee; let i = index" class="event-info">
-  <!-- <img src="../../../assets/image/image 10.png" alt=""> -->
+<!-- <img src="../../../assets/image/image 10.png" alt=""> -->
+
+<!-- <div *ngFor="let mosque of mosquee; let i = index" class="event-info">
   
   <div class="localisation">
     
     <div class="loc">
       <i id="icon-location" class="fa-solid fa-location-dot"></i>
-   <p class="lieu">{{ mosque.adresse }}</p>
+      <p class="lieu">{{ mosque.adresse }}</p>
     </div>
 
     <div class="info-imam">
@@ -292,11 +264,11 @@
 
   </div>
 
-<div class="action">
-<i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square"></i>  
-<i (click)="supprimerMosquee(i)" class="fa-solid fa-trash"></i>
-</div>
-</div>
+  <div class="action">
+    <i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square"></i>  
+    <i (click)="supprimerMosquee(i)" class="fa-solid fa-trash"></i>
+  </div>
+</div> -->
 
 </ion-content>
 <!----::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->

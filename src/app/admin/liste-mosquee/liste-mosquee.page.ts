@@ -1,6 +1,6 @@
 
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AnimationController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
 import { HorairesPrière } from 'src/app/users/models/horaires-prière';
@@ -13,11 +13,12 @@ import { MosqueeService } from 'src/app/users/services/mosquee.service';
   styleUrls: ['./liste-mosquee.page.scss'],
 })
 export class ListeMosqueePage implements OnInit {
+  createMosqueeForm: FormGroup;
   mosquee: any;
 
   ngOnInit() {
     this.mosqueeService.getMosquee().subscribe((result : any[])=>{
-      
+      console.log(this.mosqueeService.getMosquee()+ " successfully")
       //const docc = doc(this.firestore,result.horaire)
       let mosquee : any[] = [];
       console.log(result)
@@ -37,19 +38,7 @@ export class ListeMosqueePage implements OnInit {
 
 
 
-  createMosqueeForm = this.formBuilder.group({
-    nom: ['', Validators.required],
-    adresse: ['', Validators.required],
-    imam: ['', Validators.required],
-    longitude: [0, Validators.required],
-    latitude: [0, Validators.required],
-    fadjr: ['', Validators.required],
-    zohr: ['', Validators.required],
-    asri: ['', Validators.required],
-    magreb: ['', Validators.required],
-    isha: ['', Validators.required],
-    djouma: ['', Validators.required],
-  });
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,34 +46,62 @@ export class ListeMosqueePage implements OnInit {
     private animationCtrl: AnimationController,
     private toastr: ToastrService,
     private elementRef: ElementRef
-  ) { }
+  ) { 
+    this.createMosqueeForm = this.formBuilder.group({
+      nom: ['', Validators.required],
+      adresse: ['', Validators.required],
+      imam: ['', Validators.required],
+      longitude: [0, Validators.required],
+      latitude: [0, Validators.required],
+      fadjr: ['', Validators.required],
+      zohr: ['', Validators.required],
+      asri: ['', Validators.required],
+      magreb: ['',Validators.required],
+      isha: ['',Validators.required],
+      djouma: ['', Validators.required],
+    });
+  }
+
+
   // button click pour ajouter 
   onSubmit() {
-    const mosquee = new Mosquee(
-      this.createMosqueeForm.value.nom!,
-      this.createMosqueeForm.value.adresse!,
-      this.createMosqueeForm.value.imam!,
-      this.createMosqueeForm.value.longitude!,
-      this.createMosqueeForm.value.latitude!,
-      // this.createMosqueeForm.value.fadjr!,
-      // this.createMosqueeForm.value.zohr!,
-      // this.createMosqueeForm.value.asri!,
-      // this.createMosqueeForm.value.magreb!,
-      // this.createMosqueeForm.value.isha!,
-      // this.createMosqueeForm.value.djouma!
+    console.log("onSubmit")
+    if(this.createMosqueeForm.valid){
+      console.log("form")
 
-    )
+      const mosquee = new Mosquee(
+        this.createMosqueeForm.value.nom!,
+        this.createMosqueeForm.value.adresse!,
+        this.createMosqueeForm.value.imam!,
+        this.createMosqueeForm.value.longitude!,
+        this.createMosqueeForm.value.latitude!,
+        // this.createMosqueeForm.value.fadjr!,
+        // this.createMosqueeForm.value.zohr!,
+        // this.createMosqueeForm.value.asri!,
+        // this.createMosqueeForm.value.magreb!,
+        // this.createMosqueeForm.value.isha!,
+        // this.createMosqueeForm.value.djouma!
+  
+      )
+      
+      const horaires = new HorairesPrière(
+        this.createMosqueeForm.value.fadjr!,
+        this.createMosqueeForm.value.zohr!,
+        this.createMosqueeForm.value.asri!,
+        this.createMosqueeForm.value.magreb!,
+        this.createMosqueeForm.value.isha!,
+        this.createMosqueeForm.value.djouma!
+      )
+      console.log(this.createMosqueeForm.value)
+      console.log(this.mosqueeService.createMosquee(mosquee,horaires));
+      
+      
     
-    const horaires = new HorairesPrière(
-      this.createMosqueeForm.value.fadjr!,
-      this.createMosqueeForm.value.zohr!,
-      this.createMosqueeForm.value.asri!,
-      this.createMosqueeForm.value.magreb!,
-      this.createMosqueeForm.value.isha!,
-      this.createMosqueeForm.value.djouma!
-    )
-    console.log(this.createMosqueeForm.value)
-    console.log(this.mosqueeService.createMosquee(mosquee,horaires));
+    }else{
+  
+      console.log("Error")
+
+    }
   }
   // ::::::::::::::::::::::::::::::::fin de traitement de formulaire :::::::::::::::::::::::::::::::::::::::::::
   isModalOpen = false;
