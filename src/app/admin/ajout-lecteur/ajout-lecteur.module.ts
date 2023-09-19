@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AjoutLecteurPageRoutingModule } from './ajout-lecteur-routing.module';
 
 import { AjoutLecteurPage } from './ajout-lecteur.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { AjoutLecteurPage } from './ajout-lecteur.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AjoutLecteurPageRoutingModule
   ],
   declarations: [AjoutLecteurPage]

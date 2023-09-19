@@ -31,11 +31,6 @@ export class AjoutLecteurPage implements OnInit {
     });
    }
 
-   
-   // Vous pouvez également prévisualiser l'image si nécessaire
-   // e.target.result contient l'URL de l'image prévisualisée
-
-
    onFileSelected(event: any) {
      const file: File = event.target.files[0];
      if (file) {
@@ -51,19 +46,6 @@ export class AjoutLecteurPage implements OnInit {
      }
    }
    
-
-  // onFileSelected(event: any) {
-  //   const file: File = event.target.files[0];
-  //   if (file) {
-  //     this.selectedImage = file;
-  //     const reader = new FileReader();
-  //     reader.onload = (e: any) => {
-  //       const imageUrl = e.target.result;
-  //       console.log('URL de l\'image prévisualisée :', imageUrl);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
 
     submit() {
       console.log("je suis clik")
