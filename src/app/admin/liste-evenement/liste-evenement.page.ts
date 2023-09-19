@@ -1,9 +1,8 @@
 import { Even } from './../../users/models/even';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Firestore } from '@firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
+// import { error } from 'console';
 import { AjoutenvenService } from 'src/app/services/ajoutenven.service';
-// import { Even } from 'src/app/users/models/even';
 
 @Component({
   selector: 'app-liste-evenement',
@@ -11,84 +10,51 @@ import { AjoutenvenService } from 'src/app/services/ajoutenven.service';
   styleUrls: ['./liste-evenement.page.scss'],
 })
 export class ListeEvenementPage implements OnInit {
-  ajoutEvenement!: FormGroup;
-  isModalOpen = false;
-  even:any;
-  firestore!: Firestore;
+  evenement: any;
+  evenementSaved: any;
+  
 
- ajoutevenement = this.formbuider.group({
-    type : ['', Validators.required],
-    lieu : ['', Validators.required],
-    date : [new Date, Validators.required],
-    heure : ['' , Validators.required],
-    description : ['', Validators.required]
-  })
-  animationCtrl: any;
-  addevenForm: any;
-  toastr: any;
+  constructor(private firestore : Firestore,
+              private ajoueven : AjoutenvenService) { }
 
-  constructor( private formbuider: FormBuilder,private ajouteven : AjoutenvenService) {
-
+  ngOnInit() {
+    this.getAllEvent();
   }
-  ngOnInit() {}
 
-  onSubmit(){
-    console.log("je suis de dans")
-    const even = new Even(
-      this.ajoutEvenement.value.type!,
-      this.ajoutEvenement.value.lieu!,
-      this.ajoutEvenement.value.date!,
-      this.ajoutEvenement.value.heure!,
-      this.ajoutEvenement.value.description!
+  //////////code pour la barre de recherche///////////////
+  onSearch(ev: any){
+  console.log(ev.target.value);
+    console.log('pas de rechche');
+  this.evenement= this.evenementSaved;
+  const filteredData = this.evenement.filter((even: any)=>even.lieu.includes(ev.target.value));
+  this.evenement = filteredData;
+  console.log(filteredData);
+  console.log('recherche effectuer')
+  }
+  /////////RECUPERATION DE LA METHODE DE RECUPERATION DANS LE SERVICE/////////////////////////
+  getAllEvent(){
+    this.ajoueven.getlistevenment().subscribe(result =>{
+      this.evenement = result;
+      this.evenementSaved = result;
+      console.log(this.evenement, 'je suis raatrapper');
 
-    )
-    this.toastr.success('Radio ajouter avec succès !', 'Succès' , {positionClass: 'toast-bottom-center', toastClass: 'toast-success', timeOut: 300000000});
-    console.log(this.ajoutEvenement.value)
-    console.log(this.ajouteven.ajoutenven(even));
+    });}
 
+  //////////////////////////modification///////////////////////////////////
+  updateeven(evenement : any){
+    this.ajoueven.updateeven(evenement.id, evenement);
+  }
+
+  //////////////RECUPERATION DE LA METHODE DE SUPPRESSION//////////////////
+  async deleteEvenById(evenementId : string): Promise<void>{
+    try{
+      await this.ajoueven.deleteEvenById(evenementId);
+      console.log('Suppression effectuer')
+    }catch(error){
+      console.error('Erreur')
+    }
   }
   // ::::::::::::::::::::::::::::::::::::traitement poppup pour animation:::::::::::::::::::::::::::::::::::::::::::::::::::
-  enterAnimation = (baseEl: HTMLElement) => {
-    console.log("je suis");
-    const root = baseEl.shadowRoot;
-
-    const backdropAnimation = this.animationCtrl
-      .create()
-      .addElement(root!.querySelector('ion-backdrop')!)
-      .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
-
-    const wrapperAnimation = this.animationCtrl
-      .create()
-      .addElement(root!.querySelector('.modal-wrapper')!)
-      .keyframes([
-        { offset: 0, opacity: '0', transform: 'scale(0)' },
-        { offset: 1, opacity: '0.99', transform: 'scale(1)' },
-      ]);
-
-    return this.animationCtrl
-      .create()
-      .addElement(baseEl)
-      .easing('ease-out')
-      .duration(500)
-      .addAnimation([backdropAnimation, wrapperAnimation]);
-  };
-
-  leaveAnimation = (baseEl: HTMLElement) => {
-    return this.enterAnimation(baseEl).direction('reverse');
-  };
-  // submit(){
-  //   const newEven = new Even(
-  //     this.ajoutevenement.value.type!,
-  //     this.ajoutevenement.value.lieu!,
-  //     this.ajoutevenement.value.date!,
-  //     this.ajoutevenement.value.heure!,
-  //     this.ajoutevenement.value.description!
-
-  //   )
-  //   this.toastr.success('Radio ajouter avec succès !', 'Succès' , {positionClass: 'toast-bottom-center', toastClass: 'toast-success', timeOut: 300000000});
-  //   console.log(this.ajoutevenement.value + "je trouve quelque chose")
-  //   console.log(this.ajoutevenement.ajoutenven(Even));
-
-  //  }
+  
 
 }

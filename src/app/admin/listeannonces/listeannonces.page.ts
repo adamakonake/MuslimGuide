@@ -3,6 +3,8 @@ import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AjoutannonceService } from '../services/ajoutannonce.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MosqueeService } from 'src/app/users/services/mosquee.service';
+import { catchError } from 'rxjs';
 
 
 @Component({
@@ -17,8 +19,9 @@ export class ListeannoncesPage implements OnInit {
   annoncee : any ;
   annonceSaved:any;
   confirmdialogVisible: boolean | undefined;
+  mosqueeData: any[] | undefined;
    
-  constructor( private firestor : Firestore, private ajoutrService : AjoutannonceService, private router: Router, private formBuider : FormBuilder) {
+  constructor( private firestor : Firestore, private ajoutrService : AjoutannonceService, private router: Router, private formBuider : FormBuilder,private mosqueeservice : MosqueeService) {
    
   }
  //lien ajout button
@@ -28,6 +31,16 @@ export class ListeannoncesPage implements OnInit {
 
   ngOnInit(){
     this.getAllAnnonces();
+
+     //recuperation de la liste des mosque dans mon ajout pour la liste 
+     this.mosqueeservice.getMosquee().pipe(
+      catchError((error) => {
+        console.error('Erreur lors de la récupération des données :', error);
+        return []; 
+      })
+    ).subscribe((data: any[]) => {
+      this.mosqueeData = data;
+    });
   }
 
   //methode pour la recuperation
@@ -73,8 +86,7 @@ export class ListeannoncesPage implements OnInit {
     try {
       await this.ajoutrService.deleteAnnonceById(annonceId);
       console.log('Annonce supprimée avec succès');
-      
-      this.annoncee = this.annoncee.filter((annonce: { id: string; }) => annonce.id !== annonceId);
+    //  this.annoncee = this.annoncee.filter((annonce: { id: string; }) => annonce.id !== annonceId);
     } catch (error) {
       console.error('Erreur lors de la suppression : ', error);
     }

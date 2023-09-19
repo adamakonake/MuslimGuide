@@ -1,21 +1,13 @@
-
-
-
-:root {
-    --color-principal : #25A069;
-    --color-secondaire : #D79A10;
-    --color-blanc: #FFFFFF;
-    --color-noir: #000000;
-    --font-w200: 200;
-    --font-w300: 300;
-    --font-w400: 400;
-    --font-w500: 500;
-    --font-w600: 600;
-    --font-w700: 700;
-  }
-
-  .container {
-    width: 100%;
+body {
+    font-family: Arial, sans-serif;
+    background: url("../../../assets/image/mosquee.png") no-repeat center center / cover;
+    background-color: #fff;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     background-image: url('../../../assets/image/mosquee.png');
     background-size: cover;
@@ -121,17 +113,15 @@
     margin-top: 20px;
 }
 
-.btn_ajouter{
-    padding: 13px 20px;
-    margin: 10px;
-    background-color: var(--color-principal);
-    color: var(--color-blanc);
-    border-radius: 10px;
-    letter-spacing: 1px;
+button {
+    background-color: #007F6E; /* Blanc */
+    color: rgb(231, 2, 2); 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    &:hover{
-        background-color: #165f3e;
-    }
+    margin-top: 10%;
+    width: 60%;
 }
 
 
