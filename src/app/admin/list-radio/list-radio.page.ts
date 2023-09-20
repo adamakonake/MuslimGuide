@@ -38,7 +38,7 @@ export class ListRadioPage implements OnInit {
   ) {
     this.ajoutRadio = this.fb.group({
       nom: ['', Validators.required],
-      frequence: ['', Validators.maxLength(4)]
+      frequence: ['', Validators.required]
     });
 
   }

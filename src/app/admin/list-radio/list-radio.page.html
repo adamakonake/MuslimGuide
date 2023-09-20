@@ -123,7 +123,7 @@
 
                  <div>
                     <ion-label label-placement="stacked">Frequence de la Radio</ion-label>
-                    <ion-input type="number"  [ngClass]="{'is-invalid':submitted && ajoutRadio.get('frequence')!.errors}" style="padding-left: 15px!important;"  name="frequence"
+                    <ion-input type="number" class="form-control" [ngClass]="{'is-invalid':submitted && ajoutRadio.get('frequence')!.errors}" style="padding-left: 15px!important;"  name="frequence"
                     formControlName="frequence" fill="outline" placeholder="Enter la Frequence ici"></ion-input>
                     <div *ngIf="submitted && ajoutRadio.get('frequence')!.errors" class="text-danger" >
                       <p> Ce champs est obligatoire </p>
