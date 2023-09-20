@@ -167,7 +167,7 @@ if (existingMosque.docs.length > 0) {
           name: 'isha',
           type: 'time',
           placeholder: 'modifier ',
-          value: this.horaire.asri,
+          value: this.horaire.isha,
         },
         {
           name: 'djouma',
