@@ -1,0 +1,110 @@
+
+ion-content{
+    --background:white;
+}
+
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 5%;
+}
+
+.profil{
+   font-size: 20px;
+   font-weight: bold;
+}
+
+
+ion-icon{
+    font-size: 25px;
+
+}
+
+.photo{
+   justify-content: center;
+   display: flex;
+   align-items: center;
+   margin-top: 15%;
+}
+.photo>ion-icon{
+
+    font-size: 40px;
+    margin-left: -5%;
+    background-color: white;
+    border-radius: 50%;
+
+}
+
+img{
+    border: 5px solid #25A069;
+    border-radius: 50%;
+}
+.nom{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 3%;
+}
+
+.info-admin{
+    margin-top: 20%;
+    margin-left: 2%;
+
+}
+
+.text{
+    margin-left: 5%;
+    font-size: 20px;
+
+}
+
+.text>span{
+    justify-content: center;
+    
+}
+
+.trait{
+    height: 10px;
+    font-weight: bold;
+    width: 100%;
+    color: black;
+}
+
+.logout{
+    margin-top: 16%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.logout>ion-icon{
+    font-size: 40px;
+}
+
+// .logout>ion-icon{
+//     font-size: 50px;
+//     font-weight: bold;
+//     backdrop-filter: blur(10px);
+// }
+
+.btn-pass{
+   
+    background-color: #25A069;
+    color: white;
+    margin-left: 20%;
+    height: 50px;
+    width: 230px;
+    border: 2px solid #25A069;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 15%;
+
+}
+
+
+.disconnect{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

@@ -14,7 +14,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class RadioService {
   radio: any;
- 
+
   // radio:any=[];
 
   constructor(private readonly firestore: Firestore, public alertController: AlertController
@@ -26,19 +26,13 @@ export class RadioService {
     return addDoc(data,{
       nom: radio.nom,
       frequence: radio.frequence,
-      
     });
-    
+
+
   }
   getRadio(){
   const data = collection(this.firestore,'Radio');
-  return collectionData(data, {idField:'id'})//.subscribe((result:any[])=>{
-  // result.forEach(async radio=>{
-  //   radio=radio
-  //   this.radio.push(radio)
-  // })
-  // })
-  // return this.radio
+  return collectionData(data, {idField:'id'}) 
   }
 
    // Importez deleteDoc
@@ -100,7 +94,7 @@ async updateRadio(index: string, radio:any) {
         handler: async (data) => {
           ////this.radio[index].nom = data.nom; // Mettre à jour le nom de la radio
           //this.radio[index].frequence = data.frequence;  // Mettre à jour la frequence de la radio
-          
+
         console.log(this.firestore)
           const radioDoc = doc(this.firestore, 'Radio', index); // Utilisez l'ID de la radio
           await updateDoc(radioDoc, {

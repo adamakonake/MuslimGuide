@@ -56,7 +56,7 @@ export class AjoutmosquePage implements OnInit {
       this.createMosqueeForm.value.djouma!
     )
     console.log(this.createMosqueeForm.value)
-    console.log(this.mosqueeService.createMosquee(mosquee));
+    console.log(this.mosqueeService.createMosquee(mosquee,horaires));
   }
   // async createMosquee() {
   //   const loading = await this.loadingCtrl.create();

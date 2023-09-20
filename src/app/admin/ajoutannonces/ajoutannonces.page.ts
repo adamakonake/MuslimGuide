@@ -26,6 +26,10 @@ export class AjoutannoncesPage implements OnInit {
   constructor( private formBuilder: FormBuilder, private ajoutannonce: AjoutannonceService, private router : Router,private ajoutrService : AjoutannonceService,
               ) { }
 
+              naviguerVersliste() {
+                this.router.navigateByUrl("/listeannonces");
+              }          
+
   ngOnInit() {
     //  this.annoncee = this.ajoutrService.getlistannonce()
     //this.getData();

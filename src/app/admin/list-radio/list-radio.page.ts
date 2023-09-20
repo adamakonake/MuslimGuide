@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Radio } from './mode';
 import { ToastrService } from 'ngx-toastr';
 import { AlertController, AnimationController, ModalController, NavController ,} from '@ionic/angular';
 
 import { RadioService } from '../services/radio.service';
-import { Firestore } from '@firebase/firestore';
+
+// import { AlertController, ModalController, NavController } from '@ionic/angular';
+import { AjoutDesRadiosPage } from '../ajout-des-radios/ajout-des-radios.page';
+import { doc, updateDoc, deleteDoc, Firestore } from '@firebase/firestore';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Radio } from './mode';
+// import { Radio } from '../ajout-des-radios/mode';
+
 
 @Component({
   selector: 'app-list-radio',
@@ -17,6 +24,13 @@ export class ListRadioPage implements OnInit {
   isModalOpen = false;
   radios:any;
   firestore!: Firestore;
+  // searchControl = new FormControl();
+  // items$: Observable<any[]> | undefined;
+  // radios=[
+  //   {nom: 'RADIO DAMBE', frequence:'90.6',index:0},
+  //   {nom: 'RADIO KLEDOU', frequence:'84.6',index: 1},
+  //   {nom: 'RADIO RENOUVEAU', frequence:'91.8',index: 2},
+  // ];
 
   // recherche:string= '';
   // // radios=[
@@ -26,8 +40,8 @@ export class ListRadioPage implements OnInit {
   // // ];
   // AjoutDesRadiosPage: any;
 
-  constructor(private fb: FormBuilder, 
-    private radioService: RadioService, 
+  constructor(private fb: FormBuilder,
+    private radioService: RadioService,
     private animationCtrl: AnimationController,
     private toastr: ToastrService,
     public alertController: AlertController,
@@ -51,9 +65,9 @@ export class ListRadioPage implements OnInit {
     this.toastr.success('Radio ajouter avec succès !', 'Succès' , {positionClass: 'toast-bottom-center', toastClass: 'toast-success', timeOut: 300000000});
     console.log(this.ajoutRadio.value + "je trouve quelque chose")
     console.log(this.radioService.addRadio(newRadio));
-  
+
    }
-   
+
   ngOnInit() {
     this.radioService.getRadio().subscribe((result)=>{
       this.radios = result;
@@ -69,7 +83,7 @@ export class ListRadioPage implements OnInit {
     this.radioService.updateRadio(this.radios[index].id,this.radios[index])
   }
 
-  
+
   // ::::::::::::::::::::::::::::::::::::traitement poppup pour animation::::::::::::::::::::::::::::::
   enterAnimation = (baseEl: HTMLElement) => {
     const root = baseEl.shadowRoot;

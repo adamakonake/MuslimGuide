@@ -52,14 +52,11 @@ const routes: Routes = [
     path: 'lire-coran',
     loadChildren: () => import('./users/lire-coran/lire-coran.module').then( m => m.LireCoranPageModule)
   },
-  // {
-  //   path: 'details-mosquees',
-  //   loadChildren: () => import('./users/details-mosquees/details-mosquees.module').then( m => m.DetailsMosqueesPageModule)
-  // },
   {
-    path: 'details-mosquees/:id',
+    path: 'details-mosquees',
     loadChildren: () => import('./users/details-mosquees/details-mosquees.module').then( m => m.DetailsMosqueesPageModule)
   },
+
   {
     path: 'liste-evenement',
     loadChildren: () => import('./admin/liste-evenement/liste-evenement.module').then( m => m.ListeEvenementPageModule)
@@ -141,7 +138,11 @@ const routes: Routes = [
   {
     path: 'sourate-liste',
     loadChildren: () => import('./users/sourate-liste/sourate-liste.module').then( m => m.SourateListePageModule)
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./admin/profile/profile.module').then( m => m.ProfilePageModule)
   }
+
 
 
 

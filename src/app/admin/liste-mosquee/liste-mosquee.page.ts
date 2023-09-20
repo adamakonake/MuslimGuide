@@ -1,7 +1,9 @@
+
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AnimationController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
+import { HorairesPrière } from 'src/app/users/models/horaires-prière';
 import { Mosquee } from 'src/app/users/models/mosquee';
 import { MosqueeService } from 'src/app/users/services/mosquee.service';
 
@@ -11,9 +13,22 @@ import { MosqueeService } from 'src/app/users/services/mosquee.service';
   styleUrls: ['./liste-mosquee.page.scss'],
 })
 export class ListeMosqueePage implements OnInit {
-
+  mosquee: any;
 
   ngOnInit() {
+    this.mosqueeService.getMosquee().subscribe((result : any[])=>{
+      
+      //const docc = doc(this.firestore,result.horaire)
+      let mosquee : any[] = [];
+      console.log(result)
+      result.forEach(mosque =>{
+        //const documentRef = doc(this.firestore, mosque.horaire.path)
+        mosque.horaire = mosque.horaire.path
+        mosquee.push(mosque);
+      })
+      //console.log(mosquee)
+      this.mosquee = mosquee;
+    })
   }
 
   // :::::::::::::::::::::::::::::::::::::::::poppup ajout mosquee formullaire::::::::::::::::::::::::::::
@@ -59,8 +74,17 @@ export class ListeMosqueePage implements OnInit {
       // this.createMosqueeForm.value.djouma!
 
     )
+    
+    const horaires = new HorairesPrière(
+      this.createMosqueeForm.value.fadjr!,
+      this.createMosqueeForm.value.zohr!,
+      this.createMosqueeForm.value.asri!,
+      this.createMosqueeForm.value.magreb!,
+      this.createMosqueeForm.value.isha!,
+      this.createMosqueeForm.value.djouma!
+    )
     console.log(this.createMosqueeForm.value)
-    console.log(this.mosqueeService.createMosquee(mosquee));
+    console.log(this.mosqueeService.createMosquee(mosquee,horaires));
   }
   // ::::::::::::::::::::::::::::::::fin de traitement de formulaire :::::::::::::::::::::::::::::::::::::::::::
   isModalOpen = false;
@@ -96,5 +120,13 @@ export class ListeMosqueePage implements OnInit {
 
 
 
+
+  modifierMosquee( index: number){
+    this.mosqueeService.updateMosque(this.mosquee[index].id,this.mosquee[index])
+  }
+
+  supprimerMosquee(index:number){
+    this.mosqueeService.removeMosque(this.mosquee[index].id,)
+  }
 
 }

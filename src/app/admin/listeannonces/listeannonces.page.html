@@ -17,23 +17,18 @@
   <div class="color">
     <h1 class="ion-title">LISTE ANNONCE</h1>
     <div class="color2"></div>
-   
   </div>
+
       <!-- mes buttons -->
   <div class="haut">
+    <!-- button pour ajout -->
       <div class="ajout" style="cursor: pointer;" (click)="naviguerVersAjoutAnnonces()">
          <ion-icon style="margin-top:-2px; font-size: 10px; " color="light" name="add-outline"></ion-icon>  <ion-title style="margin-top: -27px; margin-left: 13px; color: white;">Ajouter</ion-title>   
       </div>
-      <!-- <div class="recherche" >
-        <ion-searchbar show-clear-button="always" value="search" ></ion-searchbar>
-      </div> -->
+      <!-- barre de recherche -->
       <div class="search-container">
         <ion-searchbar (input)="onSearch($event)"></ion-searchbar>
-        <!-- <div class="search-icon">
-          <ion-icon name="search-outline"></ion-icon> -->
-          <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
-        <!-- </div>
-        <ion-icon name="close-outline" class="annuler"></ion-icon> -->
+       
       </div>
     </div>
      
@@ -47,7 +42,7 @@
             <th><ion-label class="ecriture">Date</ion-label></th>
             <th><ion-label class="ecriture"><span class="dessus">Noms</span> Mosquées</ion-label></th>
             <th><ion-label class="ecriture"><span class="dessus">Heures</span> Preches</ion-label></th>
-            <th><ion-label class="ecriture"><span class="dessus">Heures</span> Tabsir</ion-label></th>
+            <th><ion-label class="ecriture"><span class="dessus">Heures</span> Tafsir</ion-label></th>
             <th><ion-label class="ecriture"> Actions</ion-label></th>
           </tr>
         </thead>
@@ -61,18 +56,25 @@
             <td>
               <ion-buttons slot="end">
                   <!-- Icône de modification -->
-                  <ion-icon name="create" style="cursor: pointer;"></ion-icon>
+                  <ion-icon name="create" style="cursor: pointer;" (click)="modifierannonce(annonce)" ></ion-icon>
                   <!-- Icône de suppression -->
                   <ion-icon name="trash" style="color: #FF1203; cursor: pointer;" (click)="deleteAnnonceById(annonce.id)" ></ion-icon>
-                  <!-- <app-confirmation-dialog
-                  *ngIf="isconfirmdialogVisible"
-                  (confirmed)="confirmDelete()">
-                  </app-confirmation-dialog>
-                  -->
+                  
               </ion-buttons>
             </td>
             <td></td>
           </tr>
+
+
+
+
+
+
+           <!-- <div class="search-icon">
+          <ion-icon name="search-outline"></ion-icon> -->
+          <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
+        <!-- </div>
+        <ion-icon name="close-outline" class="annuler"></ion-icon> -->
           <!-- <br><br>
           <tr class="custom-row">
             <td><ion-label class="write">jj/mm/date</ion-label></td>

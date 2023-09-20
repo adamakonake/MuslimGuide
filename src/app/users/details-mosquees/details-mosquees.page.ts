@@ -11,6 +11,10 @@ export class DetailsMosqueesPage implements OnInit {
   constructor( private route:Router) { }
 
   ngOnInit() {
+   
+    
+
+
   }
 
 

@@ -8,20 +8,20 @@
         </div>
       </div>
   </ion-header>
-  <div>
-    <!-- <ion-list> -->
+  <div class="bak">
 
        <div class="element">
         <div class="conteneur">
-        <div class="cont1">
-          <div class="imag">
-            <p class="titreFm">FM</p>
-            <img class="logoRadio" src="../../../assets/radio.png" alt="">
-          </div>
-          <div class="h3"><h3>Mhz</h3></div>
-          </div>
-         <div class="cont2">
-        <p >RADIO DAMBE FM </p>
+           <div class="cont1">
+               <div class="imag">
+                  <p class="titreFm">FM</p>
+                  <img class="logoRadio" src="../../../assets/radio.png" alt="">
+               </div>
+             <div class="h3"><h3>Mhz</h3></div>
+           </div>
+            <!-- <div class="cont2">
+          <a href="https://www.radio.fr/s/radiodambebamako"><p>RADIO DAMBE FM </p></a>
+
         <h1 >90.6 <span>Mhz</span></h1>
       </div>
       <div class="cont2">
@@ -43,9 +43,15 @@
       <div class="cont2">
         <p>DINE KUNKA FM </p>
         <h1>100.10 <span>Mhz</span></h1>
-      </div>
-    </div>
-    </div>
-    <!-- </ion-list> -->
-  </div>
+      </div> -->
+             <!-- </div> -->
+        </div>
+     </div>
+         <!--ici ce pour recupere la liste de radio on va pausse un condition *ngFor  -->
+         <!--ensuite on appel le radio par son nom et sa frequence dans 2 acolade comme ca-->
+       <div class="cont2" *ngFor="let radio of radios">
+          <p >{{radio.nom}}</p>
+          <h1 >{{radio.frequence}}<span>Mhz</span></h1>
+       </div>
+</div>
 </ion-content>
