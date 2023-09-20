@@ -1,147 +1,89 @@
-<div class="container"> 
 
-<body>
- 
-  <h2>Ajouter un évenement</h2>
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::new modification -->
+<ion-content [fullscreen]="true">
   <div class="container">
-    
-      
-      <form [formGroup]="addevenForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-              <label for="nom">Type :</label>
-              <input type="text" id="type" name="type" placeholder="Quel?"  formControlName = 'type'>
-          </div><br>
-          
-          <div class="form-group">
-            <label for="nom">Lieu :</label>
-            <input type="text" id="type" name="type" placeholder="Où se tiendra t-il ?"  formControlName = 'lieu'>
-        </div><br>
 
-          <div class="form-group">
-            <label for="heure">Heure:</label>
-            <input type="text" id="heure" name="heure" formControlName = 'heure' required>
-        </div><br>
+    <!-- Mon content  -->
+    <form [formGroup]="ajoutEvenement" (ngSubmit)="onSubmit()">
 
-        <div class="form-group">
-          <label for="heure">Heure:</label>
-          <input type="time" id="heure" name="heure" formControlName = 'heure' required>
-          
-      </div><br>
+      <!-- le titre de notre page  -->
+      <div class="title">
+        <h2>Ajouter un évenement</h2>
+      </div>
 
-          <div class="form-group">
-              <label for="description">Description :</label>
-              <textarea  id="description"  name="description" placeholder="Décrivez l'évenement" formControlName = 'description' required></textarea>
+      <!-- Mon container de cadre blanc  -->
+      <div class="cadre_blanc_container">
+        <!-- mon cadre blanc  -->
+        <div class="cadre_blanc">
+
+          <!-- Le Debut de mon input container  -->
+          <div class="container_input">
+
+            <!-- Le global de mon input  -->
+            <div class="date_global">
+
+              <!-- mon premier input  -->
+              <div class="date_content">
+                <label for="date" class="mon_label"> Date </label> 
+                <br> <!-- Juste un espace -->
+                <input type="date" class="mon_input" id="date" name="date" formControlName='date' required>
+              </div>
+
+
+              <!-- mon deuxième input  -->
+              <div class="date_content">
+                <label for="name_mosque" class="mon_label">Type </label> 
+                <br> <!-- Juste un espace -->
+                <input type="text" class="mon_input" name="type" placeholder="Quel?" formControlName='type' required>
+
+              </div>
+
+              <div class="date_content">
+                <label for="name_mosque" class="mon_label">Lieu </label> 
+                <br> <!-- Juste un espace -->
+                <input type="text" class="mon_input" name="lieu" placeholder="Quel?" formControlName='lieu' required>
+
+              </div>
+
+              <!-- le double de input  -->
+              <div class="double_input">
+
+                <!-- Pour le premier  -->
+                <div class="date_content_double1">
+                  <label for="heure_preche" class="mon_label"> Heure </label>
+                  <br> <!-- Juste un espace -->
+                  <input type="time" class="mon_input" id="heure_preche" name="heure" formControlName='heure'
+                    required>
+                </div>
+
+
+
+              </div>
+
+              <div class="date_content">
+                <label for="name_mosque" class="mon_label">Description </label> 
+                <br> <!-- Juste un espace -->
+                <textarea type="" class="mon_input" name="type" placeholder="Quel?" formControlName='type'
+                  required> </textarea>
+
+              </div>
+
+              <div class="buttonIonic">
+                <button type="reset" id="close" (click)="naviguerAnnonces()">Fermer</button>
+
+                <button  type="submit"  value="Ajouter" id="open">Ajouter</button>
+              </div>
+
+            </div>
+
           </div>
-          <button id="open" type="submit" ajoutEven.valid>Ajouter</button> 
-      </form>
-
-
-  </div>
-  <!-- <img src="../../../assets/image/mosquee.jpg" alt=""> -->
-</body>
-
-
-<!--
-
-
-
-<ion-content  [fullscreen]="true">
-  <div class="entete">
-    <ion-icon name="share-alt"></ion-icon>
-  <h1>Ajouter </h1>
-  </div>
-     <form >
-
-      <div class="ion">
-        <div class="custom-input-container">
-          <ion-label label-placement="floating">Type de l'evénement</ion-label>
-          <input class="togo" fill="outline" placeholder="Quel type d'événement ?">
-        </div>
-
-        <div class="custom-input-container">
-          <ion-label label-placement="stacked">Date</ion-label>
-          <input class="togo" fill="outline" placeholder="Quel jour ?">
-        </div>
-
-        <div class="custom-input-container">
-          <ion-label label-placement="floating">Heure</ion-label>
-          <input class="togo" fill="outline" placeholder="A quelle heure?" minHeight="05">
-        </div>
-
-        <div class="custom-input-container">
-          <ion-label label-placement="floating">Lieu</ion-label>
-          <input class="togo" fill="outline" placeholder="Où se tiendra t-il ?" minHeight="05">
-        </div>
-
-        <div class="custom-input-container">
-          <ion-label label-placement="floating">Description</ion-label>
-
-            <textarea class="textarea" rows="3" placeholder="Decrivez votre évenement ici"></textarea>
+          <!-- La Fin de mon input container  -->
 
         </div>
+
       </div>
 
-
-
-
-      <ion-button color="success">Ajouter</ion-button>
     </form>
-
-
- </ion-content>
-
-
- -->
- <!-- :::::::::::::::::::::::::poppup de formulaire d'ajout-evenement:::::::::::::::::::::::::::: -->
-
- <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
-  <ng-template>
-    <ion-content>
-      <div class="poppup">
-        <h1>Ajouter</h1>
-        <div class="formlairePoppup">
-          <form [formGroup]="ajoutEvenement" >
-
-            <div class="ion">
-              <div>
-                <ion-label label-placement="floating">Type d'evénement</ion-label>
-                <ion-input style="padding-left: 15px!important;" type="text" name="nom" formControlName="nom"
-                  fill="outline" placeholder="Enter Nom ici"></ion-input>
-              </div>
-              <div>
-                <ion-label label-placement="floating">Entre Date Evenement</ion-label>
-                <ion-input style="padding-left: 15px!important;" type="date" name="date" formControlName="date"
-                  fill="outline" placeholder="date"></ion-input>
-              </div>
-              <div>
-                <ion-label label-placement="floating">Entre heure</ion-label>
-                <ion-input style="padding-left: 15px!important;" type="time" name="nom" formControlName="nom"
-                  fill="outline" placeholder="...:..."></ion-input>
-              </div>
-              <div>
-                <ion-label label-placement="floating">Entre un Lieu</ion-label>
-                <ion-input style="padding-left: 15px!important;" type="text" name="nom" formControlName="nom"
-                  fill="outline" placeholder="Enter Lien ici"></ion-input>
-              </div>
-
-              <div>
-                <ion-label label-placement="stacked">Faire un Description</ion-label>
-                <ion-input style="padding-left: 15px!important;" type="number" name="frequence"
-                  formControlName="frequence" fill="outline" placeholder="Enter la Frequence ici"></ion-input>
-              </div>
-            </div>
-
-            <div class="buttonIonic">
-               <button id="open" type="button"(onclick)="onSubmit()">Enregistrer</button>
-               <button id="close" (click)="modal.dismiss()">Fermer</button>
-              <!-- <ion-button id="open" type="submit" ajout evenement.valid>Enregistrer</ion-button>
-              <ion-button idid="close"  (click)="modal.dismiss()">Fermer</ion-button> -->
-            </div>
-
-          </form>
-        </div>
-      </div>
-
-    </ion-content>
-  </ng-template>
-</ion-modal>
+    <!-- (click)=" naviguerVersliste()" -->
+  </div>
+</ion-content>

@@ -1,70 +1,63 @@
+<ion-header>
+  <div class="head">
+    <h2 class="titre"> Liste des évènements</h2>
+    <div class="div_ajouter_search">
 
 
+      <div class="btn_container">
+        <button type="button" class="btn_ajout" (click)="naviguerVersAjoutEvenement()">
+          Ajouter
+        </button>
+      </div>
 
+      <!-- Debut Pour les recherche bare search_container  -->
+      <div class="search_container">
+        <div class="recherche_bare">
+          <input type="search" name="search" placeholder="Recherche" (input)="onSearch($event)">
+          <!-- mon icon de recherche  -->
+          <i class="ri-search-line icon_search"></i>
+        </div>
+      </div>
+      <!-- Fin Pour les recherche bare search_container  -->
 
-
-
-<ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">liste-evenement</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
-
-
-   <h2 class="titre"> Liste des évènements</h2>
-
-   <div class="container">
-   <button  class="btn" >
-    <i class="fa-solid fa-plus" ></i>
-    Ajouter
-   </button>
-
-   <div class="search-container">
-    <input type="search" class="recherche" (input)="onSearch($event)">
-    <div class="search-icon">
-      <ion-icon name="search-outline"></ion-icon>
-      <!-- <ion-searchbar show-clear-button="always" cancel-button="true" [(ngModel)]="searchTerm"></ion-searchbar> -->
-      <!-- <ion-icon name="close-outline" class="annuler"></ion-icon> -->
     </div>
   </div>
-<!-- </div> -->
-</div>
+</ion-header>
 
-<table class="conatiner_table">
-  <thead>
-    <tr>
-      <th><ion-label class="ecriture">Type</ion-label></th>
-      <th><ion-label class="ecriture"><span class="dessus">Lieu</span> Evenement</ion-label></th>
-      <th><ion-label class="ecriture">Dates</ion-label></th>
-      <th><ion-label class="ecriture"><span class="dessus">Heures</span> Evenement</ion-label></th>
-      <th><ion-label class="ecriture"><span class="dessus">Description</span></ion-label></th>
-      <th><ion-label class="ecriture"> Actions</ion-label></th>
-    </tr>
-  </thead>
-  <br>
-  <tbody *ngIf="evenement" >
-    <tr *ngFor="let evenements of evenement "class="custom-row">
-      <td><ion-label class="write">{{evenements.type}}</ion-label></td>
-      <td><ion-label class="write">{{evenements.lieu}}</ion-label></td>
-      <td><ion-label class="write">{{evenements.date}}</ion-label></td>
-      <td><ion-label class="write">{{evenements.heure}}</ion-label></td>
-      <td><ion-label class="write">{{evenements.description}}</ion-label></td>
-      <!-- <td><ion-label class="write"></ion-label></td> -->
+<ion-content [fullscreen]="true">
+  <div class="contenuPage">
+    
 
-      <td>
-        <ion-buttons slot="end">
-            <!-- Icône de modification -->
-            <ion-icon name="create" style="cursor: pointer;" (click)="updateeven(evenements)" ></ion-icon>
-            <!-- Icône de suppression -->
-            <ion-icon name="trash" style="color: #FF1203; cursor: pointer;" (click)="deleteEvenById(evenements.id)" ></ion-icon>
-            
-        </ion-buttons>
-      </td>
-      <td></td>
-    </tr>
 
-  </tbody>
+    <div class="conten" *ngFor="let evenements of evenement ">
+      <div class="cadre">
+        <div class="nom">{{evenements.type}}</div>
 
-  
-</table>
+        <div class="millieu">
+          <!-- <p class="type">Type:</p> -->
+          <p >Lieu : {{evenements.lieu}}</p>
+          <p >Description : {{evenements.description}}</p>
+        </div>
+
+        <div class="bat">
+          <div>
+            <ion-buttons slot="end">
+              <!-- Icône de modification -->
+              <ion-icon name="create" style="cursor: pointer;" (click)="updateeven(evenements)"></ion-icon>
+              <!-- Icône de suppression -->
+              <ion-icon name="trash" style="color: #FF1203; cursor: pointer;"
+                (click)="deleteEvenById(evenements.id)"></ion-icon>
+            </ion-buttons>
+          </div>
+          <div>{{evenements.date}}</div>
+          <div>{{evenements.heure}}</div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>

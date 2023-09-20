@@ -76,7 +76,7 @@ p{
   }
 
   .search-icon {
-    position: absolute;
+     position: absolute;
     right: 5px;
     left: 1px;
     top: 50%;
@@ -111,11 +111,12 @@ ion-icon{
 
 
 .haut{
-    // border: red 1px solid;
+    //  border: red 1px solid;
     margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    // border: 2px solid red;
     
 }
 
