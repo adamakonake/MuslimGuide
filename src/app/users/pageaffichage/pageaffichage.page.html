@@ -10,13 +10,15 @@
       <ion-title size="large">pageaffichage</ion-title>
     </ion-toolbar>
   </ion-header> -->
-  <div class="headRoundVert">
-    <div class="headRoundBlanc">
-
+  <div class="customToolBarDiv">
+    <div class="headRoundVert">
+      <div class="headRoundBlanc">
+  
+      </div>
     </div>
-  </div>
-  <div class="titleBarr">
-    <p *ngIf="name.length !=0" >{{ name }}</p>
+    <div class="titleBarr">
+      <p *ngIf="name.length !=0" >{{ name }}</p>
+    </div>
   </div>
   <div *ngIf="ayahs">
     <div class="sourateDive" *ngFor="let i= index ; let ayas of ayahs">
@@ -28,7 +30,7 @@
 
           <div class="compteur">
             <div class="icon_compteur">
-              <i class="ri-hexagon-fill icon_hexagon"></i>
+              <i class="ri-hexagon-fill icon_hexagon" ></i>
               <!-- <i class="ri-hexagon-line icon_hexagon"></i> -->
             </div>
             <p class="paragraphe"> {{ (i + 1).toLocaleString('ar-EG', { minimumFractionDigits: 0 }) }} </p>

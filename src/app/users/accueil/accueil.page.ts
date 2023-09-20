@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
 import { LocalNotifications } from '@capacitor/local-notifications';
@@ -14,13 +14,16 @@ import { Mosquee } from '../models/mosquee';
   templateUrl: './accueil.page.html',
   styleUrls: ['./accueil.page.scss'],
 })
-export class AccueilPage implements OnInit, AfterViewInit {
+export class AccueilPage implements OnInit, AfterViewInit, OnDestroy {
 
   apiKey = "ee179fc833ed4af9ad062cfabc51004b";
   test:string = "salut";
   mosquee : any;
   horaireMosquee : any;
   audio = new Audio();
+  timer = "--/--/--";
+  nextPriyerTimeName = "-----";
+  intarval : any;
   constructor( private route : Router, private http : HttpClient,private mosqueeService : MosqueeService) { }
 
   ngOnInit() {
@@ -49,6 +52,7 @@ export class AccueilPage implements OnInit, AfterViewInit {
           // const date = new Date(new Date().setTime(((+asri[0]*(60*60000))+(+asri[1]*60000)-5*60000)))
           // console.log(date.toLocaleTimeString())
           // console.log(this.diminuerUneHeureDe5Min(this.horaireMosquee.zohr))
+          this.getNextPriyerTime(heure);
           this.createNotification(heure)
         })
         console.log(mosqueeTemp[0])
@@ -154,11 +158,22 @@ export class AccueilPage implements OnInit, AfterViewInit {
     return distance;
   }
 
+  timeInMillisecond(time : string){
+    const heureDecompose = time.split(":");
+    const heureEnMilliSec = +heureDecompose[0]*(60*60000);
+    const minuteEnMilliSec = +heureDecompose[1]*60000;
+    const date = new Date();
+    date.setHours(+heureDecompose[0])
+    date.setMinutes(+heureDecompose[1])
+    console.log(date.toLocaleTimeString())
+    return date.getTime();
+  }
+
   diminuerUneHeureDe5Min(heureMinute : string){
     const heureDecompose = heureMinute.split(":");
     const heureEnMilliSec = +heureDecompose[0]*(60*60000);
     const minuteEnMilliSec = +heureDecompose[1]*60000;
-    const heureMinuteEnMilliSec = (heureEnMilliSec+minuteEnMilliSec)-5*60000 //l'heure total en milliseconde -5 minute
+    const heureMinuteEnMilliSec = (heureEnMilliSec + minuteEnMilliSec)-5*60000 //l'heure total en milliseconde -5 minute
     return new Date(new Date().setTime(heureMinuteEnMilliSec)).toLocaleTimeString().split(":");
   }
 
@@ -274,7 +289,7 @@ export class AccueilPage implements OnInit, AfterViewInit {
           id : 5,
           title : "Muslim Guide",
           body : "<p>er</p>",
-          channelId : "ischa",
+          channelId : "isha",
           schedule : {
             on : {
               hour : +this.diminuerUneHeureDe5Min(heure.isha)[0],
@@ -300,11 +315,67 @@ export class AccueilPage implements OnInit, AfterViewInit {
     })
   }
 
+  startCountDownTimer(time : string){
+    const heureMinuteEnMilliSec = this.timeInMillisecond(time);
+    // const heureMinuteEnMilliSec = new Date(new Date().setTime(this.timeInMillisecond(time))).getTime();
+    if(this.intarval){
+      clearInterval(this.intarval)
+    }
+    this.intarval = setInterval(()=>{
+      const diff = heureMinuteEnMilliSec - new Date().getTime();
+
+      // const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      this.timer = hours+":"+minutes+":"+seconds
+
+      if (diff < 0) {
+        clearInterval(this.intarval);
+        this.getNextPriyerTime(this.horaireMosquee)
+      }
+    },1000);
+  }
+
+  getNextPriyerTime(horairePriere : any){
+    const nowTime = new Date().getTime();
+    console.log(nowTime+"   "+this.timeInMillisecond(horairePriere.fadjr));
+    if(nowTime < this.timeInMillisecond(horairePriere.fadjr)){
+      this.nextPriyerTimeName = "Fadjr"
+      this.startCountDownTimer(horairePriere.fadjr)
+    }
+    if(nowTime < this.timeInMillisecond(horairePriere.zohr) && nowTime > this.timeInMillisecond(horairePriere.fadjr)){
+      this.nextPriyerTimeName = "Zohr"
+      this.startCountDownTimer(horairePriere.zohr)
+    }
+    if(nowTime < this.timeInMillisecond(horairePriere.asri) && nowTime > this.timeInMillisecond(horairePriere.zohr)){
+      this.nextPriyerTimeName = "Asri"
+      this.startCountDownTimer(horairePriere.asri)
+    }
+    if(nowTime < this.timeInMillisecond(horairePriere.magreb) && nowTime > this.timeInMillisecond(horairePriere.asri)){
+      this.nextPriyerTimeName = "Magreb"
+      this.startCountDownTimer(horairePriere.magreb)
+    }
+    if(nowTime < this.timeInMillisecond(horairePriere.isha) && nowTime > this.timeInMillisecond(horairePriere.magreb)){
+      this.nextPriyerTimeName = "Isha"
+      this.startCountDownTimer(horairePriere.isha)
+    }
+
+  }
+
   ngAfterViewInit(): void {
     const carousel = document.querySelector(".igx-carousel__inner");
     const carou = carousel as HTMLDivElement
     console.log(carou)
     carou.style.minHeight="175px";
+    carou.style.backgroundColor="white";
+  }
+
+  ngOnDestroy(): void {
+    if(this.intarval){
+      clearInterval(this.intarval)
+    }
   }
 
 }

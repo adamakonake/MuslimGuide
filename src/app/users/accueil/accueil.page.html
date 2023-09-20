@@ -1,20 +1,35 @@
-<!-- <ion-header [translucent]="true">
+<!-- <ion-header >
   <ion-toolbar>
     <ion-title>accueil</ion-title>
   </ion-toolbar>
 </ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
+  <!-- <ion-header >
     <div class="headRoundVert">
       <div class="headRoundBlanc">
 
       </div>
     </div>
   </ion-header> -->
-  <div class="headRoundVert">
-    <div class="headRoundBlanc">
-
+  
+  <div class="customToolBarDiv">
+    <div class="timerToolBar">
+      <!-- <img class="logoApp" src="../../../assets/logo_app_white.png" alt="" srcset=""> -->
+      <span class="nameApp">Muslim Guide</span>
+      <div class="timerDiv">
+        <div class="currentHoraireName">
+          <p>{{nextPriyerTimeName}}</p>
+        </div>
+        <div>
+          <p>- {{timer}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="headRoundVert">
+      <div class="headRoundBlanc">
+  
+      </div>
     </div>
   </div>
 
@@ -75,44 +90,44 @@
         <!-- <ng-template  igxCarouselPrevButton let-disabled></ng-template>
         <ng-template  igxCarouselNextButton let-disabled></ng-template> -->
     </igx-carousel>
-    <div class="btnMosquee" >
+    <ion-card class="btnMosquee" >
       <img (click)="goToMosquee()" class="logoMapMosquee" src="../../../assets/icons8-marqueur-de-plan-96.png" alt="" srcset="">
       <p>MOSQUEE</p>
-    </div>
+    </ion-card>
     <div class="btnGroupe">
-      <div class="btnQuran" (click)="goToQuran()">
+      <ion-card class="btnQuran" (click)="goToQuran()">
         <img class="logoQuran" src="../../../assets/logo_quran.png" alt="" srcset="">
         <p>QURAN</p>
-      </div>
-      <div class="btnAudio" (click)="goToAudio()">
+      </ion-card>
+      <ion-card class="btnAudio" (click)="goToAudio()">
         <img class="logoCalendar" src="../../../assets/soudais.png" alt="" srcset="">
         <p>AUDIO QURAN</p>
-      </div>
+      </ion-card>
     </div>
     <div class="btnGroupe">
-      <div class="btnKaaba" (click)="goToKaaba()">
+      <ion-card class="btnKaaba" (click)="goToKaaba()">
         <img class="logoKaaba" src="../../../assets/logo_kaaba_bouss.png" alt="" srcset="">
         <p>KAABA</p>
-      </div>
-      <div class="btnHidjri" (click)="goToHijri()">
+      </ion-card>
+      <ion-card class="btnHidjri" (click)="goToHijri()">
         <img class="logoCalendar" src="../../../assets/logo_calendar.png" alt="" srcset="">
         <p>HIDJRI</p>
-      </div>
+      </ion-card>
     </div>
     <div class="btnGroupe">
-      <div class="btnAnnonce" (click)="goToAnnonce()">
+      <ion-card class="btnAnnonce" (click)="goToAnnonce()">
         <img class="logoAnnonce" src="../../../assets/icons8-annonce-80.png" alt="" srcset="">
         <p>ANNONCE</p>
-      </div>
-      <div class="btnTasbih" (click)="goToChapelet()">
+      </ion-card>
+      <ion-card class="btnTasbih" (click)="goToChapelet()">
         <img class="logoTasbih" src="../../../assets/icons8-chapelet-64.png" alt="" srcset="">
         <p>TASBIH</p>
-      </div>
+      </ion-card>
     </div>
-    <div class="btnFm" (click)="goToRadio()">
+    <ion-card class="btnFm" (click)="goToRadio()">
       <img class="logoFm" src="../../../assets/icons8-radio-50.png" alt="" srcset="">
       <p>RADIO</p>
-    </div>
+    </ion-card>
     <p>{{test}}</p>
 </div>
 

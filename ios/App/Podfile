@@ -29,6 +29,7 @@ def capacitor_pods
   pod 'CapacitorKeyboard', :path => '../../node_modules/@capacitor/keyboard'
   pod 'CapacitorLocalNotifications', :path => '../../node_modules/@capacitor/local-notifications'
   pod 'CapacitorStatusBar', :path => '../../node_modules/@capacitor/status-bar'
+  pod 'CapacitorMusicControlsPluginV3', :path => '../../node_modules/capacitor-music-controls-plugin-v3'
 end
 
 target 'App' do
