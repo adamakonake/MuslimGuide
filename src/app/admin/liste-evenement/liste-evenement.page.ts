@@ -1,6 +1,7 @@
 import { Even } from './../../users/models/even';
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 // import { error } from 'console';
 import { AjoutenvenService } from 'src/app/services/ajoutenven.service';
 
@@ -15,6 +16,7 @@ export class ListeEvenementPage implements OnInit {
   
 
   constructor(private firestore : Firestore,
+              private router: Router,
               private ajoueven : AjoutenvenService) { }
 
   ngOnInit() {
@@ -53,6 +55,11 @@ export class ListeEvenementPage implements OnInit {
     }catch(error){
       console.error('Erreur')
     }
+  }
+
+  //lien ajout button
+  naviguerVersAjoutEvenement() {
+    this.router.navigateByUrl("/ajouter-evenement");
   }
   // ::::::::::::::::::::::::::::::::::::traitement poppup pour animation:::::::::::::::::::::::::::::::::::::::::::::::::::
   

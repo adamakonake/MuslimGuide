@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Firestore } from '@firebase/firestore';
 
 import { AjoutenvenService } from 'src/app/services/ajoutenven.service';
@@ -21,6 +22,7 @@ export class AjouterEvenementPage implements OnInit {
 
 
   constructor( private formbuider: FormBuilder,
+    private router : Router,
     private ajouteven : AjoutenvenService) {
 
      this.ajoutEvenement = this.formbuider.group({
@@ -32,6 +34,10 @@ export class AjouterEvenementPage implements OnInit {
       })
 
      }
+     //lien ajout button////////////////////////////////////////////
+  naviguerAnnonces() {
+    this.router.navigateByUrl("/liste-evenement");
+  }
   ngOnInit() {}
 
   onSubmit(){
@@ -44,7 +50,7 @@ export class AjouterEvenementPage implements OnInit {
       this.ajoutEvenement.value.description!
 
     )
-    this.toastr.success('Radio ajouter avec succès !', 'Succès' , {positionClass: 'toast-bottom-center', toastClass: 'toast-success', timeOut: 300000000});
+    // this.toastr.success('Radio ajouter avec succès !', 'Succès' , {positionClass: 'toast-bottom-center', toastClass: 'toast-success', timeOut: 300000000});
     console.log(this.ajoutEvenement.value)
     console.log(this.ajouteven.ajoutenven(even));
   }
