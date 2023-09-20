@@ -141,6 +141,14 @@ const routes: Routes = [
   },  {
     path: 'profile',
     loadChildren: () => import('./admin/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'update-email',
+    loadChildren: () => import('./admin/update-email/update-email.module').then( m => m.UpdateEmailPageModule)
+  },
+  {
+    path: 'update-password',
+    loadChildren: () => import('./admin/update-password/update-password.module').then( m => m.UpdatePasswordPageModule)
   }
 
 
