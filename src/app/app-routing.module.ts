@@ -147,7 +147,11 @@ const routes: Routes = [
   {
     path: 'mosquee',
     loadChildren: () => import('./users/mosquee/mosquee.module').then( m => m.MosqueePageModule)
+  },  {
+    path: 'evenements',
+    loadChildren: () => import('./users/evenements/evenements.module').then( m => m.EvenementsPageModule)
   }
+
 
 
 ];
