@@ -1,57 +1,51 @@
+<ion-header>
+  <div class="head">
+    <h2 class="titre"> Liste des évènements</h2>
+    <div class="div_ajouter_search">
 
 
+     
+      <!-- Debut Pour les recherche bare search_container  -->
+      <div class="search_container">
+        <div class="recherche_bare">
+          <input type="search" name="search" placeholder="Recherche" (input)="onSearch($event)">
+          <!-- mon icon de recherche  -->
+          <i class="ri-search-line icon_search"></i>
+        </div>
+      </div>
+      <!-- Fin Pour les recherche bare search_container  -->
 
-
-
+    </div>
+  </div>
+</ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">liste-evenement</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
+  <div class="contenuPage">
+    
 
 
-   <h2 class="titre"> Liste des évènements</h2>
+    <div class="conten" *ngFor="let even of evenement" >
+      <div class="cadre">
+      <!-- tafsir -->
+        <div class="nom">{{even.type}}</div>
 
-   <div class="container">
-  
+        <div class="millieu">
+          <!-- <p class="type">Type:</p> -->
+          <p >Lieu :{{even.lieu}}</p>
+          <p >Description :{{even.description}}</p>
+        </div>
 
-   <div class="search-container">
-    <input type="search" class="recherche" >
-    <!-- <div class="search-icon">
-      <ion-icon name="search-outline"></ion-icon>
-      
-    </div> -->
+        <div class="bat">
+         
+          <div >{{even.date}}</div>
+          <div >{{even.heure}}</div>
+        </div>
+
+
+
+      </div>
+    </div>
   </div>
-<!-- </div> -->
-</div>
 
-<table class="conatiner_table">
-  <thead>
-    <tr>
-      <th><ion-label class="ecriture">Type</ion-label></th>
-      <th><ion-label class="ecriture"><span class="dessus">Lieu</span></ion-label></th>
-      <th><ion-label class="ecriture">Dates</ion-label></th>
-      <th><ion-label class="ecriture"><span class="dessus">Heures</span> </ion-label></th>
-      <th><ion-label class="ecriture"><span class="dessus">Description</span></ion-label></th>
-     
-    </tr>
-  </thead>
-  <br>
-  <tbody  >
-    <tr class="custom-row">
-      <td><ion-label class="write"></ion-label></td>
-      <td><ion-label class="write"></ion-label></td>
-      <td><ion-label class="write"></ion-label></td>
-      <td><ion-label class="write"></ion-label></td>
-      <td><ion-label class="write"></ion-label></td>
-      <!-- <td><ion-label class="write"></ion-label></td> -->
 
-      <td></td>
-    </tr>
-
-  </tbody>
-
-  
-</table>
+</ion-content>

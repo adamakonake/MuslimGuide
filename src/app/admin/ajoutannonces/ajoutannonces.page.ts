@@ -69,12 +69,10 @@ export class AjoutannoncesPage implements OnInit {
     );
     //verifier si une annonce existante est a
     console.log(this.addannonceForm.value)
-    console.log("Je suis la")
     this.ajoutannonce.addAnnonce(mosquee);
-    console.log("Je suis la")
     this.addannonceForm.reset();
     this.router.navigateByUrl("/listeannonces")
     
-  };
+  };// console.log("Je suis la")// console.log("Je suis la")
 
 }
