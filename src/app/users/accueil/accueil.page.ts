@@ -8,6 +8,7 @@ import { async } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MosqueeService } from '../services/mosquee.service';
 import { Mosquee } from '../models/mosquee';
+import {NavigationBar} from '@capgo/capacitor-navigation-bar'
 
 @Component({
   selector: 'app-accueil',
@@ -24,6 +25,7 @@ export class AccueilPage implements OnInit, AfterViewInit, OnDestroy {
   timer = "--/--/--";
   nextPriyerTimeName = "-----";
   intarval : any;
+  titresHoraire = ['fadjr','zohr','asri','magreb','isha','djouma']
   constructor( private route : Router, private http : HttpClient,private mosqueeService : MosqueeService) { }
 
   ngOnInit() {
@@ -108,6 +110,7 @@ export class AccueilPage implements OnInit, AfterViewInit, OnDestroy {
     //   // this.audio.load()
     // })
     StatusBar.setBackgroundColor({color : "#25A069"})
+    NavigationBar.setNavigationBarColor({color : "#E5E5E5"})
   }
 
   // watchPosition() {
@@ -315,8 +318,15 @@ export class AccueilPage implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  startCountDownTimer(time : string){
-    const heureMinuteEnMilliSec = this.timeInMillisecond(time);
+  startCountDownTimer(time : string,fadjr : boolean){
+    let heureMinuteEnMilliSec = this.timeInMillisecond(time);
+    if(fadjr){
+      const date = new Date()
+      date.setDate(date.getDate()+1)
+      date.setHours(+time.split(":")[0])
+      date.setMinutes(+time.split(":")[1])
+      heureMinuteEnMilliSec = date.getTime()
+    }
     // const heureMinuteEnMilliSec = new Date(new Date().setTime(this.timeInMillisecond(time))).getTime();
     if(this.intarval){
       clearInterval(this.intarval)
@@ -343,23 +353,30 @@ export class AccueilPage implements OnInit, AfterViewInit, OnDestroy {
     console.log(nowTime+"   "+this.timeInMillisecond(horairePriere.fadjr));
     if(nowTime < this.timeInMillisecond(horairePriere.fadjr)){
       this.nextPriyerTimeName = "Fadjr"
-      this.startCountDownTimer(horairePriere.fadjr)
+      this.startCountDownTimer(horairePriere.fadjr,false)
+      return
     }
     if(nowTime < this.timeInMillisecond(horairePriere.zohr) && nowTime > this.timeInMillisecond(horairePriere.fadjr)){
       this.nextPriyerTimeName = "Zohr"
-      this.startCountDownTimer(horairePriere.zohr)
+      this.startCountDownTimer(horairePriere.zohr,false)
+      return
     }
     if(nowTime < this.timeInMillisecond(horairePriere.asri) && nowTime > this.timeInMillisecond(horairePriere.zohr)){
       this.nextPriyerTimeName = "Asri"
-      this.startCountDownTimer(horairePriere.asri)
+      this.startCountDownTimer(horairePriere.asri,false)
+      return
     }
     if(nowTime < this.timeInMillisecond(horairePriere.magreb) && nowTime > this.timeInMillisecond(horairePriere.asri)){
       this.nextPriyerTimeName = "Magreb"
-      this.startCountDownTimer(horairePriere.magreb)
+      this.startCountDownTimer(horairePriere.magreb,false)
+      return
     }
     if(nowTime < this.timeInMillisecond(horairePriere.isha) && nowTime > this.timeInMillisecond(horairePriere.magreb)){
       this.nextPriyerTimeName = "Isha"
-      this.startCountDownTimer(horairePriere.isha)
+      this.startCountDownTimer(horairePriere.isha,false)
+    }else{
+      this.nextPriyerTimeName = "Fadjr"
+      this.startCountDownTimer(horairePriere.fadjr,true)
     }
 
   }
@@ -370,6 +387,10 @@ export class AccueilPage implements OnInit, AfterViewInit, OnDestroy {
     console.log(carou)
     carou.style.minHeight="175px";
     carou.style.backgroundColor="white";
+
+    const carouselLabel = document.querySelector(".igx-carousel__label")
+    const span = carouselLabel as HTMLSpanElement
+    span.style.display = "none"
   }
 
   ngOnDestroy(): void {

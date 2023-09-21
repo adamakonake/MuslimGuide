@@ -35,47 +35,13 @@
 
   <div class="carousel-container">
     <igx-carousel #carousel [pause]="false" [interval]="5000" [navigation]="false" [gesturesSupport]="true" >
-        <igx-slide >
+        <igx-slide *ngFor="let titre of titresHoraire" >
           <div class="cardSlide">
             <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
             <div class="hintGreen">
               <div class="infoPriere">
-                <p class="nomPriere">Fadjr</p>
-                <p class="heurePriere" *ngIf="mosquee">{{horaireMosquee.fadjr}}</p>
-                <p class="nomMosquee" *ngIf="mosquee">{{mosquee.nom}}</p>
-                <p *ngIf="!mosquee"> Connectez-vous svp</p>
-              </div>
-              <div class="localPosition">
-                <img src="../../../assets/icone_position_sm.png" alt="" srcset="">
-                <span *ngIf="mosquee">{{mosquee.adresse}}</span>
-              </div>
-            </div>
-          </div>
-        </igx-slide>
-        <igx-slide >
-          <div class="cardSlide">
-            <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
-            <div class="hintGreen">
-              <div class="infoPriere">
-                <p class="nomPriere">Zohr</p>
-                <p class="heurePriere" *ngIf="mosquee">{{horaireMosquee.zohr}}</p>
-                <p class="nomMosquee" *ngIf="mosquee">{{mosquee.nom}}</p>
-                <p *ngIf="!mosquee"> Connectez-vous svp</p>
-              </div>
-              <div class="localPosition">
-                <img src="../../../assets/icone_position_sm.png" alt="" srcset="">
-                <span *ngIf="mosquee">{{mosquee.adresse}}</span>
-              </div>
-            </div>
-          </div>
-        </igx-slide>
-        <igx-slide >
-          <div class="cardSlide">
-            <img class="imgMosquee" src="../../../assets/mosque_icon.png" alt="" srcset="">
-            <div class="hintGreen">
-              <div class="infoPriere">
-                <p class="nomPriere">Asri</p>
-                <p class="heurePriere" *ngIf="mosquee">{{horaireMosquee.asri}}</p>
+                <p class="nomPriere">{{titre | titlecase}}</p>
+                <p class="heurePriere" *ngIf="mosquee">{{horaireMosquee[titre]}}</p>
                 <p class="nomMosquee" *ngIf="mosquee">{{mosquee.nom}}</p>
                 <p *ngIf="!mosquee"> Connectez-vous svp</p>
               </div>
