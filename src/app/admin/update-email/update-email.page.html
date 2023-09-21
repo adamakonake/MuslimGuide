@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>update-Email</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">update-Email</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <div class="container_connexion_global">
+  <div class="div_title_inscription">
+    <h2 class="title_inscrire">Modifier votre email</h2>
+  </div>
+
+  <form [formGroup]="connexionForm" class="container_formulaire">
+
+    <div class="formulaire" >
+
+      <!-- input de votre email  -->
+      <div class="champ_input">
+        <i class="ri-mail-line identfiant_icon"></i>
+        <input type="email"  class="input_focus" id="email" placeholder="example@gmail.com" autocomplete="on" formControlName="email" required>
+        <label for="email" class="label">Votre ancien email</label>
+        <i class="ri-information-line input_info_icon"></i>
+      </div>
+      <!-- input de votre email  -->
+      <div class="champ_input">
+        <i class="ri-mail-line identfiant_icon"></i>
+        <input type="email"  class="input_focus" id="email" placeholder="example@gmail.com" autocomplete="on" formControlName="email" required>
+        <label for="email" class="label">Votre nouveau email</label>
+        <i class="ri-information-line input_info_icon"></i>
+      </div>
+
+      <!-- input de votre password  -->
+      <div class="champ_input">
+        <i class="ri-git-repository-private-fill identfiant_icon"></i>
+        <input [type]="passwordType" class="input_focus" id="password" placeholder="**************" autocomplete="on" formControlName="password" required>
+        <label for="password" class="label">Votre mot de passe</label>
+        <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
+        <i class="input_info_icon" (click)="togglePassword()">
+          <ng-container *ngIf="!passwordShown">
+            <i class="ri-eye-close-line"></i> <!-- icône de l'œil barré -->
+          </ng-container>
+          <ng-container *ngIf="passwordShown">
+            <i class="ri-eye-line"></i> <!-- icône de l'œil -->
+          </ng-container>
+        </i>
+      </div>
+
+      <!-- input de votre password  -->
+      <div class="champ_input">
+        <i class="ri-git-repository-private-fill identfiant_icon"></i>
+        <input [type]="passwordType" class="input_focus" id="password" placeholder="**************" autocomplete="on" formControlName="password" required>
+        <label for="password" class="label">Confirmer votre mot de passe</label>
+        <!-- <i class="ri-eye-close-line input_info_icon" (click)="togglePassword()"></i> -->
+        <i class="input_info_icon" (click)="togglePassword()">
+          <ng-container *ngIf="!passwordShown">
+            <i class="ri-eye-close-line"></i> <!-- icône de l'œil barré -->
+          </ng-container>
+          <ng-container *ngIf="passwordShown">
+            <i class="ri-eye-line"></i> <!-- icône de l'œil -->
+          </ng-container>
+        </i>
+      </div>
+
+      <!-- le button de submit  -->
+      <div class="btn_submit_global">
+        <ion-button type="submit" class="btn_submit"> Modifier </ion-button>
+      </div>
+
+      <!-- Pour verifier si un administrateur a deja un compte  -->
+      <!-- <div class="verifier_admin">
+        <p class="message_para">Contunier en tant que ?</p>
+        <p class="message2_para"> <a class="message_lien" href="#">Utilisateur</a></p>
+      </div> -->
+
+    </div>
+
+</form>
+
+<!-- Le bare de or qui est en dessous de ma formulaire  -->
+<!-- <div class="container_bare">
+  <div class="bare">
+    <p class="or"> Or</p>
+  </div>
+</div> -->
+
+<!-- image qui est en dessous de mon bare  -->
+<div class="container_image_connexion">
+
+  <div class="image_connexion">
+    <img class="img_connexion" src="../../../assets/img_sy/image_coran.png" alt="image de logo">
+  </div>
+
+</div>
+</div>
+
+</ion-content>

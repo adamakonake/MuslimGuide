@@ -39,6 +39,10 @@ export class AdminAccueilPage implements OnInit {
     this.route.navigateByUrl("connexion");
   }
 
+   goToDetailAdmin(id:any) {
+    this.route.navigateByUrl("profile/:id");
+   }
+
 
 
 }

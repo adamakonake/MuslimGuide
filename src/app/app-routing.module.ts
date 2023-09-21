@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { Path } from 'leaflet';
 
 const routes: Routes = [
   {
@@ -9,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'accueil',
+    redirectTo: 'page-de-bienvenu',
     pathMatch: 'full'
   },
   {
@@ -57,6 +56,7 @@ const routes: Routes = [
     path: 'details-mosquees/:id',
     loadChildren: () => import('./users/details-mosquees/details-mosquees.module').then( m => m.DetailsMosqueesPageModule)
   },
+
   {
     path: 'liste-evenement',
     loadChildren: () => import('./admin/liste-evenement/liste-evenement.module').then( m => m.ListeEvenementPageModule)
@@ -139,7 +139,6 @@ const routes: Routes = [
     path: 'sourate-liste',
     loadChildren: () => import('./users/sourate-liste/sourate-liste.module').then( m => m.SourateListePageModule)
   },
-
   {
     path: 'liste-mosquee',
     loadChildren: () => import('./admin/liste-mosquee/liste-mosquee.module').then( m => m.ListeMosqueePageModule)
@@ -147,9 +146,19 @@ const routes: Routes = [
   {
     path: 'mosquee',
     loadChildren: () => import('./users/mosquee/mosquee.module').then( m => m.MosqueePageModule)
+  },
+  {
+    path: 'profile/:id',
+    loadChildren: () => import('./admin/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'update-email',
+    loadChildren: () => import('./admin/update-email/update-email.module').then( m => m.UpdateEmailPageModule)
+  },
+  {
+    path: 'update-password',
+    loadChildren: () => import('./admin/update-password/update-password.module').then( m => m.UpdatePasswordPageModule)
   }
-
-
 ];
 
 @NgModule({

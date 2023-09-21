@@ -2,23 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-// drag and drop 
-
-
 import { IonicModule } from '@ionic/angular';
 
-import { ChapeletPageRoutingModule } from './chapelet-routing.module';
+import { ProfilePageRoutingModule } from './profile-routing.module';
 
-import { ChapeletPage } from './chapelet.page';
+import { ProfilePage } from './profile.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ChapeletPageRoutingModule
+    ProfilePageRoutingModule
   ],
-
-  declarations: [ChapeletPage,]
+  declarations: [ProfilePage]
 })
-export class ChapeletPageModule {}
+export class ProfilePageModule {}

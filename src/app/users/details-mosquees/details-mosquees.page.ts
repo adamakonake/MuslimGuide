@@ -25,4 +25,7 @@ export class DetailsMosqueesPage implements OnInit {
     })
   }
 
+
+
+
 }
