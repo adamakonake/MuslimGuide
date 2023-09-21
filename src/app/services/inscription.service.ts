@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Inscription } from '../admin/inscription/model';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, docSnapshots } from '@angular/fire/firestore';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,12 +42,19 @@ export class InscriptionService {
         email,
         password
       ).then((result) =>{
-        this.route.navigateByUrl("admin-accueil");
-        return result.user
-       
+        this.route.navigateByUrl("admin-accueil/"+result.user.uid);
       }).catch((err)=>{
         return err.message;
       });
+    }
+
+    getAdminId(idAdmin : any){
+      const adminDocRef = doc(this.firestore,"Admin",idAdmin)
+      return docSnapshots(adminDocRef).pipe(map(doc =>{
+        const id = doc.id;
+        const data = doc.data();
+        return {id, ...data}
+      }))
     }
 
     // FSEG2021MA004115

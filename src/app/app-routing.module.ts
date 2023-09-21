@@ -42,7 +42,7 @@ const routes: Routes = [
     loadChildren: () => import('./users/hidjri/hidjri.module').then( m => m.HidjriPageModule)
   },
   {
-    path: 'admin-accueil',
+    path: 'admin-accueil/:id',
     loadChildren: () => import('./admin/admin-accueil/admin-accueil.module').then( m => m.AdminAccueilPageModule)
   },
   {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { InscriptionService } from 'src/app/services/inscription.service';
 
 @Component({
   selector: 'app-admin-accueil',
@@ -9,9 +10,17 @@ import { Router } from '@angular/router';
 })
 export class AdminAccueilPage implements OnInit {
 
-  constructor(private auth:Auth, private route:Router) { }
+  admin : any;
+  constructor(private auth:Auth, private route:Router, private activatedRoute : ActivatedRoute, private inscriptionService : InscriptionService) { }
 
   ngOnInit() {
+    this.activatedRoute.paramMap.subscribe(param => {
+      const id = param.get("id")
+      this.inscriptionService.getAdminId(id).subscribe((result:any)=>{
+        this.admin = result;
+        // console.log("adminacc ",this.admin)
+      })
+    })
   }
 
   goToListMosque(){
@@ -37,6 +46,10 @@ export class AdminAccueilPage implements OnInit {
   logout(){
     this.auth.signOut();
     this.route.navigateByUrl("connexion");
+  }
+
+  goToProfil(){
+    this.route.navigateByUrl("")
   }
 
 

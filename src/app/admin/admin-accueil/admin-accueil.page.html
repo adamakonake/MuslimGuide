@@ -114,7 +114,7 @@
         <!-- Le nom de profils de administrateur  -->
         <div class="div_name_profil">
           <!-- nom en question  -->
-          <h3 class="name_profile">Adama Konake</h3>
+          <h3 class="name_profile" *ngIf="admin">{{admin.nom}} {{admin.prenom}}</h3>
         </div>
         <!-- div de image administrateur  -->
         <div class="img_profile">
