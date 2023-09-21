@@ -11,10 +11,10 @@ const routes: Routes = [
     redirectTo: 'page-de-bienvenu',
     pathMatch: 'full'
   },
-  {
-    path: 'annonce',
-    loadChildren: () => import('./users/annonce/annonce.module').then( m => m.AnnoncePageModule)
-  },
+  // {
+  //   path: 'annonce',
+  //   loadChildren: () => import('./users/annonce/annonce.module').then( m => m.AnnoncePageModule)
+  // },
   {
     path: 'pageaffichage/:numero',
     loadChildren: () => import('./users/pageaffichage/pageaffichage.module').then( m => m.PageaffichagePageModule)
@@ -53,7 +53,7 @@ const routes: Routes = [
     loadChildren: () => import('./users/lire-coran/lire-coran.module').then( m => m.LireCoranPageModule)
   },
   {
-    path: 'details-mosquees/:id',
+    path: 'details-mosquees',
     loadChildren: () => import('./users/details-mosquees/details-mosquees.module').then( m => m.DetailsMosqueesPageModule)
   },
 
