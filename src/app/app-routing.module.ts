@@ -138,8 +138,9 @@ const routes: Routes = [
   {
     path: 'sourate-liste',
     loadChildren: () => import('./users/sourate-liste/sourate-liste.module').then( m => m.SourateListePageModule)
-  },  {
-    path: 'profile',
+  },
+  {
+    path: 'profile/:id',
     loadChildren: () => import('./admin/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
