@@ -23,7 +23,7 @@
     <img src="../../../assets/soudais.png" alt="">
   </div>
   <div class="nom">
-    <h1>Moussa Bane</h1>
+    <h1 *ngIf="admin">{{admin.nom}} {{admin.prenom}}</h1>
     
   </div>
 
@@ -32,15 +32,15 @@
   <div class="info-admin">
     <div class="text">
       <div class="trait"></div>
-      <h1>Prenom :  <span> Moussa </span> </h1>
+      <h1 *ngIf="admin">Prenom :  <span> {{admin.prenom}} </span> </h1>
     </div>
     <div class="text">
       <div class="trait"></div>
-      <h1>Nom :  <span> Bane</span> </h1>
+      <h1 *ngIf="admin">Nom :  <span> {{admin.nom}}</span> </h1>
     </div>
     <div class="text">
       <div class="trait"></div>
-      <h1>Email :  <span> bane8251@gmail.com</span> </h1>
+      <h1 *ngIf="admin">Email :  <span> {{admin.email}}</span> </h1>
     </div>
   </div>
 
@@ -51,7 +51,7 @@
   <div class="logout">
     <ion-icon color="success" name="log-out-outline"></ion-icon>
   </div>
-  <div class="disconnect">
+  <div class="disconnect" (click)="logout()">
     <h1>Déconnection</h1>
   </div>
 

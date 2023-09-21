@@ -3,12 +3,10 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
 import { LocalNotifications } from '@capacitor/local-notifications';
-import { StatusBar, Style } from '@capacitor/status-bar';
 import { async } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MosqueeService } from '../services/mosquee.service';
 import { Mosquee } from '../models/mosquee';
-import {NavigationBar} from '@capgo/capacitor-navigation-bar'
 
 @Component({
   selector: 'app-accueil',
@@ -109,8 +107,7 @@ export class AccueilPage implements OnInit, AfterViewInit, OnDestroy {
     //   // this.audio.src = "";
     //   // this.audio.load()
     // })
-    StatusBar.setBackgroundColor({color : "#25A069"})
-    NavigationBar.setNavigationBarColor({color : "#E5E5E5"})
+    
   }
 
   // watchPosition() {
