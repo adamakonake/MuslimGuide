@@ -55,7 +55,6 @@
          // Rejetez la promesse pour éviter d'ajouter le document incorrect
          return Promise.reject('Les champs obligatoires ne sont pas définis.');
        }
-     //CHAMPS VIDE/////////////////////////////////////////////////
 
      //VERIFICATION DOUBLONS//////////////////////////////////////////
 
@@ -240,10 +239,3 @@
     }
      
 } 
-
-
-
-
-
-
-

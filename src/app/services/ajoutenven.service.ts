@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, collectionData } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { addDoc, collection, deleteDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc } from 'firebase/firestore';
 import { Even } from '../users/models/even';
 import { AlertController } from '@ionic/angular';
 
@@ -19,7 +19,7 @@ export class AjoutenvenService {
   }
 
 //////////////////ajout evenement /////////////////////////////////
-  ajoutenven (evenement : Even){
+  async ajoutenven (evenement : Even) : Promise<DocumentReference>{
     const document= collection(this.firestore, "Even");
     return addDoc(document,{
       type : evenement.type,
@@ -31,6 +31,56 @@ export class AjoutenvenService {
 
   }
 
+  /////////GESTION DE CHAMPS VIDE //////////////////
+  async ajoutEven(evenement: Even) {
+    let check = true;
+    const q = query(collection(this.firestore, 'Even'));
+    const querySnapShoot = await getDocs(q);
+    console.log(querySnapShoot.docs);
+    for (let index in querySnapShoot.docs) {
+
+     console.log(querySnapShoot.docs[index].data()['date']);
+      if(querySnapShoot.docs[index].data()['date'] == evenement.date){
+            check = false;
+      }
+    }
+    //CHAMPS VIDE/////////////////////////////////////////////
+    if (!evenement.type || !evenement.lieu || !evenement.heure || !evenement.description || !evenement.date) {
+      // Affichez un message d'erreur modal à l'utilisateur
+       const alert = await this.alertController.create({
+         header: 'Erreur',
+         message: 'Attention un champs vide ne peut être enregitré!',
+         buttons: ['OK']
+       });
+ 
+       await alert.present();
+ 
+       // Rejetez la promesse pour éviter d'ajouter le document incorrect
+       return Promise.reject('Les champs obligatoires ne sont pas définis.');
+     }
+
+   //VERIFICATION DOUBLONS//////////////////////////////////////////
+
+    if(check){
+      const data = collection(this.firestore, "Even");
+      return  await addDoc(data, {
+        type: evenement.type,
+        lieu: evenement.lieu,
+        heure: evenement.heure,
+        description: evenement.description,
+        date : evenement.date,
+      });
+    }else{
+      const alert = await this.alertController.create({
+        header: 'Erreur',
+        message: 'Attention, Date simillaire non enregistrable',
+        buttons: ['OK']
+      });
+      await alert.present();
+      return "";
+    }
+
+  }
 //////////////////////RECUPERATION EVENEMENT ///////////////////////////////////
 getlistevenment(){
   const document = collection(this.firestore,"Even" )

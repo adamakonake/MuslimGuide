@@ -1,0 +1,74 @@
+<ion-header>
+  <!-- ::::::::::::::::::::::::::: -->
+  <div class="headRoundVert">
+    <div class="headRoundBlanc">
+      
+
+    </div>
+  </div>
+  
+ 
+
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="color">
+    <h1 class="ion-title">Liste des évènements</h1>
+    <p id="arab"> قائمة الإعلانات </p>
+    <!-- <div class="image">
+     
+    </div> -->
+  
+  </div>
+  <!-- :::::::::::::::::::::::::::::::: -->
+
+  <div class="head">
+    <!-- <h2 class="titre"> </h2> -->
+    <div class="div_ajouter_search">
+
+      <!-- :::::::::::::::::::::::: -->
+
+     
+      <!-- Debut Pour les recherche bare search_container  -->
+      <div class="search_container">
+        <div class="recherche_bare">
+          <input type="search" name="search" placeholder="Recherche" (input)="onSearch($event)">
+          <!-- mon icon de recherche  -->
+          <i class="ri-search-line icon_search"></i>
+        </div>
+      </div>
+      <!-- Fin Pour les recherche bare search_container  -->
+
+    </div>
+  </div>
+
+
+<!-- <ion-content [fullscreen]="true"> -->
+  <div class="contenuPage">
+    
+
+
+    <div class="conten" *ngFor="let even of evenement" >
+      <div class="cadre">
+      <!-- tafsir -->
+        <div class="nom">{{even.type}}</div>
+
+        <div class="millieu">
+          <!-- <p class="type">Type:</p> -->
+          <p >Lieu :{{even.lieu}}</p>
+          <p >Description :{{even.description}}</p>
+        </div>
+
+        <div class="bat">
+         
+          <div >{{even.date}}</div>
+          <div >{{even.heure}}</div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>

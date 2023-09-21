@@ -34,15 +34,13 @@
               <div class="date_content">
                 <label for="name_mosque" class="mon_label">Type </label> 
                 <br> <!-- Juste un espace -->
-                <input type="text" class="mon_input" name="type" placeholder="Quel?" formControlName='type' required>
-
+                <input type="text" class="mon_input" name="type" placeholder="quels type?" formControlName='type' required>
               </div>
 
               <div class="date_content">
                 <label for="name_mosque" class="mon_label">Lieu </label> 
                 <br> <!-- Juste un espace -->
                 <input type="text" class="mon_input" name="lieu" placeholder="Quel?" formControlName='lieu' required>
-
               </div>
 
               <!-- le double de input  -->
@@ -55,8 +53,6 @@
                   <input type="time" class="mon_input" id="heure_preche" name="heure" formControlName='heure'
                     required>
                 </div>
-
-
 
               </div>
 
@@ -71,7 +67,7 @@
               <div class="buttonIonic">
                 <button type="reset" id="close" (click)="naviguerAnnonces()">Fermer</button>
 
-                <button  type="submit"  value="Ajouter" id="open">Ajouter</button>
+                <button  type="submit" value="Ajouter" id="open">Ajouter</button>
               </div>
 
             </div>

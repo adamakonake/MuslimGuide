@@ -6,13 +6,14 @@ import { Firestore } from '@firebase/firestore';
 import { AjoutenvenService } from 'src/app/services/ajoutenven.service';
 import { Even } from 'src/app/users/models/even';
 
+
 @Component({
   selector: 'app-ajouter-evenement',
   templateUrl: './ajouter-evenement.page.html',
   styleUrls: ['./ajouter-evenement.page.scss'],
 })
 export class AjouterEvenementPage implements OnInit {
-  ajoutEvenement: FormGroup ;
+  // ajoutEvenement: FormGroup ;
   isModalOpen = false;
   radios:any;
   firestore!: Firestore;
@@ -20,18 +21,18 @@ export class AjouterEvenementPage implements OnInit {
   addevenForm: any;
   toastr: any;
 
-
-  constructor( private formbuider: FormBuilder,
-    private router : Router,
-    private ajouteven : AjoutenvenService) {
-
-     this.ajoutEvenement = this.formbuider.group({
+ ajoutEvenement = this.formbuider.group({
         type : ['', Validators.required],
         lieu : ['', Validators.required],
         date : [new Date, Validators.required],
         heure : ['' , Validators.required],
         description : ['', Validators.required]
       })
+  constructor( private formbuider: FormBuilder,
+    private router : Router,
+    private ajouteven : AjoutenvenService) {
+
+   
 
      }
      //lien ajout button////////////////////////////////////////////
@@ -48,12 +49,13 @@ export class AjouterEvenementPage implements OnInit {
       this.ajoutEvenement.value.date!,
       this.ajoutEvenement.value.heure!,
       this.ajoutEvenement.value.description!
-
     )
-    // this.toastr.success('Radio ajouter avec succès !', 'Succès' , {positionClass: 'toast-bottom-center', toastClass: 'toast-success', timeOut: 300000000});
     console.log(this.ajoutEvenement.value)
-    console.log(this.ajouteven.ajoutenven(even));
+    this.ajouteven.ajoutEven(even);
+    this.ajoutEvenement.reset();
+    this.router.navigateByUrl("/liste-evenement")
   }
+ // console.log(this.ajouteven.ajoutenven(even));
   // ::::::::::::::::::::::::::::::::::::traitement poppup pour animation:::::::::::::::::::::::::::::::::::::::::::::::::::
   enterAnimation = (baseEl: HTMLElement) => {
     const root = baseEl.shadowRoot;
