@@ -100,3 +100,42 @@ ion-icon{
     margin-left: 5%;
     position: relative;
 }
+
+
+// chapelet
+/* chapelet.page.scss */
+
+.chapelet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  .boules-top,
+  .boules-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .boule {
+    width: 40px; /* Largeur de chaque bille */
+    height: 40px; /* Hauteur de chaque bille */
+    background-color: green; /* Couleur des billes */
+    border-radius: 50%; /* Forme circulaire */
+    margin: 8px 0; /* Espacement vertical entre les billes */
+    cursor: pointer;
+  }
+  
+  .chapelet-trait {
+    width: 2px; /* Largeur du trait */
+    height: 100%; /* Hauteur du trait pour atteindre le bas */
+    background-color: green; /* Couleur du trait */
+  }
+  
+
+
+  

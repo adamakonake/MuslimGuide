@@ -3,6 +3,8 @@ import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AjoutannonceService } from '../services/ajoutannonce.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MosqueeService } from 'src/app/users/services/mosquee.service';
+import { catchError } from 'rxjs';
 
 
 @Component({
@@ -17,8 +19,9 @@ export class ListeannoncesPage implements OnInit {
   annoncee : any ;
   annonceSaved:any;
   confirmdialogVisible: boolean | undefined;
+  mosqueeData: any[] | undefined;
    
-  constructor( private firestor : Firestore, private ajoutrService : AjoutannonceService, private router: Router, private formBuider : FormBuilder) {
+  constructor( private firestor : Firestore, private ajoutrService : AjoutannonceService, private router: Router, private formBuider : FormBuilder,private mosqueeservice : MosqueeService) {
    
   }
  //lien ajout button
@@ -28,6 +31,16 @@ export class ListeannoncesPage implements OnInit {
 
   ngOnInit(){
     this.getAllAnnonces();
+
+     //recuperation de la liste des mosque dans mon ajout pour la liste 
+     this.mosqueeservice.getMosquee().pipe(
+      catchError((error) => {
+        console.error('Erreur lors de la récupération des données :', error);
+        return []; 
+      })
+    ).subscribe((data: any[]) => {
+      this.mosqueeData = data;
+    });
   }
 
   //methode pour la recuperation
@@ -40,8 +53,8 @@ export class ListeannoncesPage implements OnInit {
       //trier par ordre alphabetique
       this.annoncee.sort((a: { nomMosquee: string; },
         b: { nomMosquee: string; }) => {
-        const nomMosqueeA = a.nomMosquee.toLowerCase();
-        const nomMosqueeB = b.nomMosquee.toLowerCase();
+        const nomMosqueeA = a.nomMosquee;
+        const nomMosqueeB = b.nomMosquee;
       
         if (nomMosqueeA < nomMosqueeB) {
           return -1;
@@ -55,17 +68,12 @@ export class ListeannoncesPage implements OnInit {
     //return this.annoncee;
   }
 
-  //methode de modification 
-
-  // modifierannonce(index : string){
-  //   this.ajoutrService.updateannonce(this.annoncee[index].id, this.annoncee[index])
-  // }
   modifierannonce(annonce: any) {
     this.ajoutrService.updateannonce(annonce.id, annonce);
   }
   //code pour la recherche
   onSearch(ev:any) {
-     console.log(ev.target.value);
+    //  console.log(ev.target.value);
      console.log(this.annoncee);
       this.annoncee = this.annonceSaved;
      const filteredData = this.annoncee.filter((ann:any) => ann.nomMosquee.includes(ev.target.value));
@@ -78,8 +86,7 @@ export class ListeannoncesPage implements OnInit {
     try {
       await this.ajoutrService.deleteAnnonceById(annonceId);
       console.log('Annonce supprimée avec succès');
-      
-      this.annoncee = this.annoncee.filter((annonce: { id: string; }) => annonce.id !== annonceId);
+    //  this.annoncee = this.annoncee.filter((annonce: { id: string; }) => annonce.id !== annonceId);
     } catch (error) {
       console.error('Erreur lors de la suppression : ', error);
     }
@@ -93,50 +100,3 @@ export class ListeannoncesPage implements OnInit {
 
 
 
-
-
-
-
-// methode de recherche
-  // onSearchChange() {
-  //   console.log("je change")
-  //   // this.ajoutrService.searchQuery = this.searchQuery; // Passez la valeur de recherche au service
-  //   //this.ajoutrService.getlistannonce();
-  // }
-
-// //ouvre la boite a dialogue de la confirmation dans le composant confirm
-//   confirmdialog(){
-//     this.confirmdialogVisible = true;
-//   }
-
-
-//confirmation de la suppresion apres que l'utilisation ai condirmer
-//   confirmDelete(){
-//     this.deleteAnnonceById(this.annoncee);
-//     this.confirmdialogVisible = false;
-  
-// }
-
-   //   const annonceIdToDelete = 'votre_id';
-  //   try {
-  //     await this.ajoutrService.deleteAnnonceById(annonceIdToDelete);
-  //     console.log('Annonce supprimée avec succès');
-  //     // La suppression a réussi, vous pouvez mettre à jour votre liste d'annonces ici si nécessaire.
-  //     this.annoncee = this.ajoutrService.getlistannonce();
-  //   } catch (error) {
-  //     console.error('Erreur lors de la suppression : ', error);
-  //   }
-  // }
-    
-
-//   try {
-//     // Supprimer l'annonce (utilisez votre propre logique pour déterminer l'annonce à supprimer)
-//     await this.ajoutrService.deleteAnnonceById(this.annoncee);
-//     console.log('Annonce supprimée avec succès');
-    
-//     // Mettez à jour votre liste d'annonces ici après la suppression
-//     this.annoncee = this.ajoutrService.getlistannonce();
-//   } catch (error) {
-//     console.error('Erreur lors de la suppression : ', error);
-//   
-// 

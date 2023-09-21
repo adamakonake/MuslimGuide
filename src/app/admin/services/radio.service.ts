@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Query } from '@angular/core';
 // Import Firebase modules + environment
 
 import { Radio } from '../list-radio/mode';
 
-import { Firestore, collectionData } from '@angular/fire/firestore';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { Firestore, collectionData, docSnapshots } from '@angular/fire/firestore';
+import { addDoc, collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore';
 import { async } from '@angular/core/testing';
 import { deleteDoc, updateDoc } from 'firebase/firestore';
 import { AlertController } from '@ionic/angular';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'any'
@@ -20,14 +21,20 @@ export class RadioService {
   constructor(private readonly firestore: Firestore, public alertController: AlertController
     ) { }
 
-  addRadio(radio: Radio) {
-    const data = collection(this.firestore, "Radio");
-    console.log( "Radio");
-    return addDoc(data,{
-      nom: radio.nom,
-      frequence: radio.frequence,
-    });
-
+  async addRadio(radio: Radio) {
+    const q = query(collection(this.firestore, 'Radio'),where('nom', '==', radio.nom));
+    const querySnapShoot = await getDocs(q);
+    if(querySnapShoot.empty){
+      const data = collection(this.firestore, "Radio");
+      console.log( "Radio");
+      return addDoc(data,{
+        nom: radio.nom,
+        frequence: radio.frequence,
+      });
+    }else{
+      return "erreur";
+    }
+    
 
   }
   getRadio(){
@@ -60,13 +67,6 @@ async removeRadio(index: string, ) {
   await alert.present();
 }
 
-// async updateRadio(index: string) {
-//   const radioDoc = doc(this.firestore, 'Radio', index); // Utilisez l'ID de la radio
-//   await updateDoc(radioDoc, {
-//     nom: '',
-//     frequence: 0
-//   }); // Mettez à jour le document dans Firestore avec les nouvelles valeurs
-// }
 
 async updateRadio(index: string, radio:any) {
   const alert = await this.alertController.create({
@@ -106,6 +106,26 @@ async updateRadio(index: string, radio:any) {
     ]
   });
   await alert.present();
+}
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::recuperation nom et id radio:::::::::::::::::::::
+
+getRadioById(radioId: any){
+  const mosqueeDocRef = doc(this.firestore, "Radio", radioId);
+  return docSnapshots(mosqueeDocRef).pipe(map(doc =>{
+    const id = doc.id;
+    const data = doc.data();
+    return {id, ...data}
+  }))
+}
+
+  async getRadioByNom(nom: string){
+   const q = query(collection(this.firestore, 'Radio'),where('nom', '==', nom));
+   
+   return await getDocs(q)
+}
+
+filterByNom(nom: string){
+  
 }
 
 }

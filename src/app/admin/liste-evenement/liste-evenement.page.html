@@ -1,18 +1,11 @@
-<ion-content [fullscreen]="true">
-
-  <h2 class="titre"> Liste des évènements</h2>
-
-  <div class="container">
-    <button id="open-modal" expand="block" class="btn">
-      <i class="fa-solid fa-plus"></i>
-      Ajouter
-    </button>
-
-
+<ion-header>
+  <div class="head">
+    <h2 class="titre"> Liste des évènements</h2>
     <div class="div_ajouter_search">
 
+
       <div class="btn_container">
-        <button id="open-modal" expand="block" class="btn_ajout">
+        <button type="button" class="btn_ajout" (click)="naviguerVersAjoutEvenement()">
           Ajouter
         </button>
       </div>
@@ -20,7 +13,7 @@
       <!-- Debut Pour les recherche bare search_container  -->
       <div class="search_container">
         <div class="recherche_bare">
-          <input type="search" name="search" placeholder="Recherche">
+          <input type="search" name="search" placeholder="Recherche" (input)="onSearch($event)">
           <!-- mon icon de recherche  -->
           <i class="ri-search-line icon_search"></i>
         </div>
@@ -28,205 +21,43 @@
       <!-- Fin Pour les recherche bare search_container  -->
 
     </div>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="contenuPage">
+    
 
 
-    <div class="event-info">
-      <div class="localisation">
-        <div class="loc">
-          <i id="icon-location" class="fa-solid fa-location-dot"></i>
-          <p class="lieu">ACI 2000</p>
+    <div class="conten" *ngFor="let evenements of evenement ">
+      <div class="cadre">
+        <div class="nom">{{evenements.type}}</div>
+
+        <div class="millieu">
+          <!-- <p class="type">Type:</p> -->
+          <p >Lieu : {{evenements.lieu}}</p>
+          <p >Description : {{evenements.description}}</p>
         </div>
-        <div class="info-imam">
-          <i id="icon-imam" class="fa-regular fa-user"></i>
-          <p class="nom-imam">Imam Aly</p>
-        </div>
 
-
-      </div>
-      <div class="date">
-        <p class="date-exact">28-09-2023</p>
-        <p class="heure">21:00</p>
-      </div>
-
-      <div class="action">
-        <i class="fa-regular fa-pen-to-square"></i>
-        <i class="fa-solid fa-trash"></i>
-      </div>
-
-    </div>
-    <div class="event-info">
-      <div class="localisation">
-        <div class="loc">
-          <i id="icon-location" class="fa-solid fa-location-dot"></i>
-          <p class="lieu">ACI 2000</p>
-        </div>
-        <div class="info-imam">
-          <i id="icon-imam" class="fa-regular fa-user"></i>
-          <p class="nom-imam">Imam Aly</p>
+        <div class="bat">
+          <div>
+            <ion-buttons slot="end">
+              <!-- Icône de modification -->
+              <ion-icon name="create" style="cursor: pointer;" (click)="updateeven(evenements)"></ion-icon>
+              <!-- Icône de suppression -->
+              <ion-icon name="trash" style="color: #FF1203; cursor: pointer;"
+                (click)="deleteEvenById(evenements.id)"></ion-icon>
+            </ion-buttons>
+          </div>
+          <div>{{evenements.date}}</div>
+          <div>{{evenements.heure}}</div>
         </div>
 
 
-      </div>
-      <div class="date">
-        <p class="date-exact">28-09-2023</p>
-        <p class="heure">21:00</p>
-      </div>
-
-      <div class="action">
-        <i class="fa-regular fa-pen-to-square"></i>
-        <i class="fa-solid fa-trash"></i>
-      </div>
-
-    </div>
-    <div class="event-info">
-      <div class="localisation">
-        <div class="loc">
-          <i id="icon-location" class="fa-solid fa-location-dot"></i>
-          <p class="lieu">ACI 2000</p>
-        </div>
-        <div class="info-imam">
-          <i id="icon-imam" class="fa-regular fa-user"></i>
-          <p class="nom-imam">Imam Aly</p>
-        </div>
-
 
       </div>
-      <div class="date">
-        <p class="date-exact">28-09-2023</p>
-        <p class="heure">21:00</p>
-      </div>
-
-      <div class="action">
-        <i class="fa-regular fa-pen-to-square"></i>
-        <i class="fa-solid fa-trash"></i>
-      </div>
-
-    </div>
-    <div class="event-info">
-      <div class="localisation">
-        <div class="loc">
-          <i id="icon-location" class="fa-solid fa-location-dot"></i>
-          <p class="lieu">ACI 2000</p>
-        </div>
-        <div class="info-imam">
-          <i id="icon-imam" class="fa-regular fa-user"></i>
-          <p class="nom-imam">Imam Aly</p>
-        </div>
-
-
-      </div>
-      <div class="date">
-        <p class="date-exact">28-09-2023</p>
-        <p class="heure">21:00</p>
-      </div>
-
-      <div class="action">
-        <i class="fa-regular fa-pen-to-square"></i>
-        <i class="fa-solid fa-trash"></i>
-      </div>
-
-    </div>
-    <div class="event-info">
-      <div class="localisation">
-        <div class="loc">
-          <i id="icon-location" class="fa-solid fa-location-dot"></i>
-          <p class="lieu">ACI 2000</p>
-        </div>
-        <div class="info-imam">
-          <i id="icon-imam" class="fa-regular fa-user"></i>
-          <p class="nom-imam">Imam Aly</p>
-        </div>
-
-
-      </div>
-      <div class="date">
-        <p class="date-exact">28-09-2023</p>
-        <p class="heure">21:00</p>
-      </div>
-
-      <div class="action">
-        <i class="fa-regular fa-pen-to-square"></i>
-        <i class="fa-solid fa-trash"></i>
-      </div>
-
-    </div>
-    <div class="event-info">
-      <div class="localisation">
-        <div class="loc">
-          <i id="icon-location" class="fa-solid fa-location-dot"></i>
-          <p class="lieu">ACI 2000</p>
-        </div>
-        <div class="info-imam">
-          <i id="icon-imam" class="fa-regular fa-user"></i>
-          <p class="nom-imam">Imam Aly</p>
-        </div>
-
-
-      </div>
-      <div class="date">
-        <p class="date-exact">28-09-2023</p>
-        <p class="heure">21:00</p>
-      </div>
-
-      <div class="action">
-        <i class="fa-regular fa-pen-to-square"></i>
-        <i class="fa-solid fa-trash"></i>
-      </div>
-
     </div>
   </div>
 
-  <!-- </ion-content> -->
 
-  <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
-    <ng-template>
-      <ion-content>
-        <div class="poppup">
-          <h1>Ajouter</h1>
-          <div class="formlairePoppup">
-            <form [formGroup]="ajoutevenement">
-
-              <div class="ion">
-                <div>
-                  <ion-label label-placement="floating">Type d'evénement</ion-label>
-                  <ion-input style="padding-left: 15px!important;" type="text" name="nom" formControlName="nom"
-                    fill="outline" placeholder="Enter Nom ici"></ion-input>
-                </div>
-                <div>
-                  <ion-label label-placement="floating">Entre Date</ion-label>
-                  <ion-input style="padding-left: 15px!important;" type="date" name="date" formControlName="date"
-                    fill="outline" placeholder="date"></ion-input>
-                </div>
-                <div>
-                  <ion-label label-placement="floating">Entre heure</ion-label>
-                  <ion-input style="padding-left: 15px!important;" type="time" name="nom" formControlName="nom"
-                    fill="outline" placeholder="...:..."></ion-input>
-                </div>
-                <div>
-                  <ion-label label-placement="floating">Nom de la Radio</ion-label>
-                  <ion-input style="padding-left: 15px!important;" type="text" name="nom" formControlName="nom"
-                    fill="outline" placeholder="Enter Lien ici"></ion-input>
-                </div>
-
-                <div>
-                  <ion-label label-placement="stacked">Faire un Description</ion-label>
-                  <ion-input style="padding-left: 15px!important;" type="number" name="frequence"
-                    formControlName="frequence" fill="outline" placeholder="Enter la Frequence ici"></ion-input>
-                </div>
-              </div>
-
-              <div class="buttonIonic">
-                <button id="open" type="button" (onclick)="onSubmit()">Enregistrer</button>
-                <button id="close" (click)="modal.dismiss()">Fermer</button>
-                <!-- <ion-button id="open" type="submit" ajout evenement.valid>Enregistrer</ion-button>
-              <ion-button idid="close"  (click)="modal.dismiss()">Fermer</ion-button> -->
-              </div>
-
-            </form>
-          </div>
-        </div>
-
-      </ion-content>
-    </ng-template>
-  </ion-modal>
 </ion-content>

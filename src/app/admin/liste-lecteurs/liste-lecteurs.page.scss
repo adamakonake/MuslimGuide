@@ -55,17 +55,17 @@
 .nom{
   margin-top: -2%;
   margin-left: 10%;
-  
+
 }
 
 .prenom{
   margin-top: 1%;
   margin-left: 10%;
-  
+
 }
 
 .nationnalite{
-  
+
   margin-left: 10%;
   margin-top: -5%;
 }
@@ -93,7 +93,7 @@
   margin-left: 30%;
   margin-top: 20px;
   display: flex;
-  
+
 }
 
 
@@ -129,18 +129,18 @@
 }
 
 .recherche{
-  padding-left: 30px; 
-  padding-right: 35px; 
+  padding-left: 30px;
+  padding-right: 35px;
   height: 30px;
-  width: 80%; 
+  width: 80%;
   border: 1px solid rgb(223, 223, 183);
   margin-top: 4%;
   margin-left: 9%;
   margin-right: 5%;
   border-radius: 15px;
   background-color:#E0E0E0;
-  text-align: center; 
-  position: relative; 
+  text-align: center;
+  position: relative;
 }
 
 .search-container {
@@ -160,8 +160,8 @@
   margin-left: 9%;
   border-radius: 20px;
   transform: translateY(-50%);
-  background: var(--Couleur-Or, #D79A10); 
-} 
+  background: var(--Couleur-Or, #D79A10);
+}
 
 .search-icon>ion-icon{
   margin-left: 19%;
@@ -174,7 +174,7 @@
  margin-left: 2%;
  border-radius: 50%;
  margin-top: 2%;
- 
+
 }
 
 
@@ -199,7 +199,173 @@
   .icon{
     margin-left: -10px;
     margin-top: 20px;
+  }.titre{
+     color: #25A068;
+     display: flex;
+     justify-content:center;
+   }
+
+  .btn-add{
+    text-transform: capitalize;
   }
+
+  .btn{
+    margin-left: 5%;
+    margin-top: 3%;
+    border-radius: 20px;
+    height: 30px;
+    width: 100px;
+    color: white;
+    background-color: #25A068;
+  }
+  .event-info>img>.nom>.prenom>.nationnalite{
+    margin-left: 10px;
+  }
+
+  .localisation{
+
+    margin: -1%;
+    width: 250px;
+  }
+
+  .loc{
+    display: block;
+    margin-left: 45%;
+    // width: 120px;
+    padding: -10px;
+    margin-top: -60px;
+  }
+
+  .icon-user{
+    margin-top: 10px;
+  }
+
+  .date{
+    margin-left: 10%;
+  }
+  .date-exact{
+    width: 100px;
+    margin-top: 8px;
+  }
+
+
+  .actions{
+    margin-left: 30%;
+    margin-top: 20px;
+    display: flex;
+
+  }
+
+
+
+  .fa-regular{
+    color: #25A068;
+    margin-left: 10%;
+  }
+
+  .action>.fa-solid {
+    color: red;
+  }
+
+  .icon>ion-icon{
+    margin-left: 25%;
+    margin-top: 10%;
+  }
+
+
+  // recherche
+  .div_ajouter_search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: static;
+    top: 0;
+  }
+  .search_container {
+    margin-top: 12px;
+    margin-right: 10px;
+  }
+  .recherche_bare input {
+    width: 239px;
+    height: 40px;
+    border: none;
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    padding-left: 55px;
+    outline: none;
+  }
+
+  .recherche_bare {
+    position: relative;
+  }
+
+  .recherche_bare .icon_search {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 2px;
+    border-radius: 10px;
+    background-color: var(--color-secondaire);
+    width: 42px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .div_ajouter_search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: static;
+    top: 0;
+  }
+
+  .btn_container {
+    margin-top: 12px;
+    margin-left: 10px;
+  }
+
+  button.btn_ajout {
+    padding: 12px 25px;
+    background-color: var(--color-principal);
+    color: var(--color-blanc);
+    border-radius: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+
+  .search-icon>ion-icon{
+    margin-left: 19%;
+    margin-top: 10%;
+  }
+  @media screen  and (min-width: 320px){
+
+    .loc {
+      margin-top: -80px;
+      margin-left: 85px;
+    }
+  }
+  ion-card-content{
+    display: flex;
+  }
+  .iman{
+    display: flex;
+  }
+  .photo img{
+    border-radius:20%;
+    padding:5%;
+  }
+  .btn-actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+  }
+  .nom{
+    padding:5%;
+  }
+
 
 
 }

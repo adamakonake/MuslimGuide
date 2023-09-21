@@ -1,8 +1,9 @@
 export class Lecteur{
-    nom!: string;
-    prenom!: string;
-    nationalite!: string;
-    photo!: File;
+    id?:string
+    nom: string;
+    prenom: string;
+    nationalite: string;
+    photo: File;
 
     constructor(nom: string, prenom: string, nationalite: string, photo: File){
         this.nom = nom;

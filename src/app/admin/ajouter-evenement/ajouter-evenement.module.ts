@@ -9,6 +9,7 @@ import { AjouterEvenementPageRoutingModule } from './ajouter-evenement-routing.m
 
 import { AjouterEvenementPage } from './ajouter-evenement.page';
 
+
 @NgModule({
   imports: [
     CommonModule,

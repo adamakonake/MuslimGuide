@@ -51,7 +51,7 @@
     <!-- Debut Pour les recherche bare search_container  -->
     <div  class="search_container">
       <div class="recherche_bare">
-        <input type="search" name="search" placeholder="Recherche">
+        <input type="search" (input)="onSearch($event)" name="search" placeholder="Recherche">
         <!-- mon icon de recherche  -->
         <i class="ri-search-line icon_search"></i>
       </div>
@@ -114,14 +114,20 @@
               <div class="ion">
                 <div>
                   <ion-label label-placement="floating">Nom de la Radio</ion-label>
-                  <ion-input style="padding-left: 15px!important;" type="text" name="nom" formControlName="nom"
+                  <ion-input class="form-control" [ngClass]="{'is-invalid':submitted && ajoutRadio.get('nom')!.errors}" style="padding-left: 15px!important;" type="text" name="nom" formControlName="nom"
                     fill="outline" placeholder="Enter Nom ici"></ion-input>
+                    <div *ngIf="submitted && ajoutRadio.get('nom')!.errors" class="text-danger" >
+                      <p> Ce champs est obligatoire </p>
+                  </div>
                 </div>
 
-                <div>
-                  <ion-label label-placement="stacked">Frequence de la Radio</ion-label>
-                  <ion-input style="padding-left: 15px!important;" type="number" name="frequence"
+                 <div>
+                    <ion-label label-placement="stacked">Frequence de la Radio</ion-label>
+                    <ion-input type="number" class="form-control" [ngClass]="{'is-invalid':submitted && ajoutRadio.get('frequence')!.errors}" style="padding-left: 15px!important;"  name="frequence"
                     formControlName="frequence" fill="outline" placeholder="Enter la Frequence ici"></ion-input>
+                    <div *ngIf="submitted && ajoutRadio.get('frequence')!.errors" class="text-danger" >
+                      <p> Ce champs est obligatoire </p>
+                    </div>
                 </div>
               </div>
 

@@ -4,7 +4,7 @@
   import { deleteDoc } from 'firebase/firestore';
   import { Annonce } from 'src/app/users/models/annonce';
   import { AlertController } from '@ionic/angular';
-import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
+// import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
   
   @Injectable({
     providedIn: 'any'
@@ -15,34 +15,71 @@ import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
     constructor(private readonly firestore: Firestore, private alertController : AlertController) {}
 
 ///////////////////////////ajouter une annonce depuis le sevice///////////////////////////////////
-    async addannonce(annonce: Annonce): Promise<DocumentReference> {
-      // Vérifiez si tous les champs sont remplis
-       if (!annonce.date || !annonce.nomMosquee || !annonce.heurePreche || !annonce.heureTabsir) {
-         // Affichez un message d'erreur modal à l'utilisateur
+     async addannonce(annonce: Annonce): Promise<DocumentReference> {
+    
+       const document= collection(this.firestore, "Annonce");
+       console.log(annonce);
+       return addDoc(document,{
+         date : annonce.date,
+         nomMosquee : annonce.nomMosquee,
+         heurePreche : annonce.heurePreche,
+         heureTabsir : annonce.heureTabsir,
+       });
+    }
+///////////////////////////verification doublons et champs vides///////////////////////////////////
+
+    async addAnnonce(annonce: Annonce) {
+      console.log("je rentre")
+      let check = true;
+      const q = query(collection(this.firestore, 'Annonce'));
+      const querySnapShoot = await getDocs(q);
+      console.log(querySnapShoot.docs);
+      for (let index in querySnapShoot.docs) {
+
+       console.log(querySnapShoot.docs[index].data()['nomMosquee']);
+        if(querySnapShoot.docs[index].data()['nomMosquee'] == annonce.nomMosquee){
+              check = false;
+        }
+      }
+      //CHAMPS VIDE/////////////////////////////////////////////
+      if (!annonce.date || !annonce.nomMosquee || !annonce.heurePreche || !annonce.heureTabsir) {
+        // Affichez un message d'erreur modal à l'utilisateur
          const alert = await this.alertController.create({
            header: 'Erreur',
-           message: 'Attention champs vide non enregistrable ',
+           message: 'Attention un champs vide ne peut être enregitré!',
            buttons: ['OK']
          });
-    
+   
          await alert.present();
-    
+   
          // Rejetez la promesse pour éviter d'ajouter le document incorrect
          return Promise.reject('Les champs obligatoires ne sont pas définis.');
        }
-      const document= collection(this.firestore, "Annonce");
-      console.log(annonce);
-      return addDoc(document,{
-        
-        date : annonce.date,
-        nomMosquee : annonce.nomMosquee,
-        heurePreche : annonce.heurePreche,
-        heureTabsir : annonce.heureTabsir,
-       
-      });
-    
+
+     //VERIFICATION DOUBLONS//////////////////////////////////////////
+
+      if(check){
+        const data = collection(this.firestore, "Annonce");
+        console.log("je vais ajouter")
+        return  await addDoc(data, {
+          date: annonce.date,
+          nomMosquee: annonce.nomMosquee,
+          heurePreche: annonce.heurePreche,
+          heureTabsir: annonce.heureTabsir,
+        });
+      }else{
+        const alert = await this.alertController.create({
+          header: 'Erreur',
+          message: 'Attention, nom similaire',
+          buttons: ['OK']
+        });
+        await alert.present();
+        return "";
+      }
+  
     }
-    //recuperer les ajout d'annonce dans la liste annonces
+    
+    //recuperer les ajout d'annonce dans la liste annonces//////////////////////////////////////////////////
     getlistannonce(){
       const document = collection(this.firestore, "Annonce");
       // this.annonces = [];
@@ -53,6 +90,7 @@ import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
     async updateannonce(index : string, annonce:any){
       const modal = await this.alertController.create({
         header: 'Modification',
+        
         inputs :[{
           name: 'date',
           type : 'date',
@@ -70,7 +108,6 @@ import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
           placeholder :'hh:mm',
           value : annonce.heurePreche // prends les valeurs d'heure de preche 
         },
-
         {
           name : 'heureTabsir',
           type : 'time',
@@ -126,31 +163,41 @@ import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
               }
 
  /////////////////////////// Méthode pour supprimer une annonce par ID////////////////////////////////////////
-    async deleteAnnonceById(annonceId: string): Promise<void> {
-      try {
-        const documentRef = doc(this.firestore, 'Annonce', annonceId);
-        const supp = await this.alertController.create({
-          header: 'Suppression',
-          message: 'Attention, voulez-vous vraiment supprimer ?',
-          buttons: [
-            {
-              text: 'Non',
-              role: 'cancel',
-            },
-            {
-              text: 'Oui',
-              handler: async () => {
-                await deleteDoc(documentRef);
-                
-              },
-            },
-          ],
-        });
-        await supp.present();
-      } catch (error) {
-        console.error('Erreur lors de la suppression : ', error);
-      }
-    }
+ async deleteAnnonceById(annonceId: string): Promise<void> {
+  try {
+    const documentRef = doc(this.firestore, 'Annonce', annonceId);
+    
+    // Désactivez le bouton "Supprimer" jusqu'à ce que l'utilisateur fasse un choix dans la boîte de dialogue
+    const supp = await this.alertController.create({
+      header: 'Suppression',
+      message: 'Attention, voulez-vous vraiment supprimer ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+        },
+        { 
+          text: 'Oui',
+          handler: async () => {
+            try {
+              // Supprimez le document
+              await deleteDoc(documentRef);
+              // Suppression réussie,  afficher un message de confirmation ici si nécessaire
+            } catch (error) {
+              console.error('Erreur lors de la suppression : ', error);
+            }
+          },
+        },
+      ],
+    });
+
+    // Affichez la boîte de dialogue
+    await supp.present();
+  } catch (error) {
+    console.error('Erreur lors de la création de la boîte de dialogue : ', error);
+  }
+}
+
 
 ///////////////////METHODES POUR RECUPERER UNIQUEMENTS LES NOM DES MOSQUES///////////////////
    
@@ -159,6 +206,7 @@ import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
   
       const nomsMosquees: string[] = [];
   
+      
       for (const doc of querySnapshot.docs) {
         const data = doc.data();
         if (data['nomMosquee']) {
@@ -191,20 +239,3 @@ import { map } from '@mobiscroll/angular/dist/js/core/util/misc';
     }
      
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// `${data['date']}, ${data['heurePreche']}, ${data['heureTabsir']}`;
-// && data['heurePreche'] 

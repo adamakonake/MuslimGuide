@@ -43,6 +43,7 @@ export class AjoutDesRadiosPage implements OnInit {
 
 
    submit(){
+   
     const newRadio = new Radio(
       this.ajoutRadio.value.nom!,
       this.ajoutRadio.value.frequence!,

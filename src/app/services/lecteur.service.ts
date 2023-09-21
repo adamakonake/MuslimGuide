@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import {collectionData, Firestore} from '@angular/fire/firestore';
 import { Lecteur } from '../admin/ajout-lecteur/mode';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
-import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { saveAs } from 'file-saver'
 import { LocalNotifications } from '@capacitor/local-notifications';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 
+import {addDoc, collection, deleteDoc, doc, updateDoc} from 'firebase/firestore';
+import {map, of, Subject} from 'rxjs';
+
+
 @Injectable({
   providedIn: 'any'
 })
 export class LecteurService {
+  lecteur:any[]=[];
 
   playPaused = new Subject<number>;
   isInit = new Subject<boolean>;
@@ -43,9 +46,9 @@ export class LecteurService {
       prenom: lecteur.prenom,
       nationalite: lecteur.nationalite,
       photo: lecteur.photo,
-      
+
     });
-    
+
   }
 
   initCoranAudio(id : any){
@@ -174,6 +177,7 @@ export class LecteurService {
     }
 
     this.audio.onended = (e) =>{
+
       if(this.index < this.sourateListAudio.length){
         this.audio.src = this.sourateListAudio[index+1].audio_url;
         this.audio.load();
@@ -237,4 +241,29 @@ export class LecteurService {
 
     saveAs(this.sourateListAudio[index].audio_url,nom)
   }
+
+// Amadou Touré
+  getLecteur(){
+    if (this.lecteur.length > 0) {
+      return of(this.lecteur);
+    }
+    const data = collection(this.firestore, "Lecteur");
+    return collectionData(data, { idField: 'id' }).pipe(
+      map((resultat: any[]) => {
+        this.lecteur = resultat.map(lecteur => ({ id: lecteur.id, ...lecteur }));
+        return this.lecteur;
+      })
+    );
+  }
+
+  deleteLecteur(lecteurId: string) {
+    const data = doc(this.firestore, "Lecteur", lecteurId);
+    return deleteDoc(data);
+  }
+  updateLecteur(lecteurId: string, lecteur: Partial<Lecteur>) {
+    const data = doc(this.firestore, "Lecteur", lecteurId);
+    return updateDoc(data,lecteur);
+  }
+
+
 }

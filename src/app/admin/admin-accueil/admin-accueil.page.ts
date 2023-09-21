@@ -48,8 +48,8 @@ export class AdminAccueilPage implements OnInit {
     this.route.navigateByUrl("connexion");
   }
 
-  goToProfil(){
-    this.route.navigateByUrl("")
+  goToDetailAdmin(id:any) {
+  this.route.navigateByUrl("profile/:id");
   }
 
 

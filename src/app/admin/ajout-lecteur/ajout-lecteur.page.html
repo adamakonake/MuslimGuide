@@ -1,4 +1,5 @@
 <!-- <ion-content  [fullscreen]="true"> -->
+<ion-content>
   <div class="container_ajout_lecteur">
 
     <div class="title_principal">
@@ -15,30 +16,33 @@
           <img [src]="selectedImage ? selectedImage : ''" *ngIf="selectedImage">
         </div>
       </div>
-      
+
       <div class="upload_input">
         <input type="file" (change)="onFileSelected($event)" accept="image/*">
       </div>
 
       <div class="formulaire">
-        
+
         <div class="form_content">
 
           <!-- input de votre nom  -->
           <div class="champ_input">
-            <input type="text" name="nom" id="nom-lecteur" class="input_focus" formControlName="nom" placeholder="Saisir le nom de lecteur" autocomplete="on" required>
+            <input type="text" name="nom" id="nom-lecteur" class="input_focus" formControlName="nom"
+              placeholder="Saisir le nom de lecteur" autocomplete="on" required>
             <label for="nom-lecteur" class="label">Nom Lecteur</label>
           </div>
 
           <!-- input de votre prénom  -->
           <div class="champ_input">
-            <input type="text" name="prenom" id="prenom-lecteur" class="input_focus" formControlName="prenom" placeholder="Saisir le prénom de lecteur" autocomplete="off" required>
+            <input type="text" name="prenom" id="prenom-lecteur" class="input_focus" formControlName="prenom"
+              placeholder="Saisir le prénom de lecteur" autocomplete="off" required>
             <label for="prenom-lecteur" class="label">Prénom Lecteur</label>
           </div>
 
           <!-- input de votre email  -->
           <div class="champ_input">
-            <input type="text" name="nationalite" id="nationalite-lecteur" class="input_focus" formControlName="nationalite" placeholder="Saisir la nationalite de Lecteur" autocomplete="off" required>
+            <input type="text" name="nationalite" id="nationalite-lecteur" class="input_focus"
+              formControlName="nationalite" placeholder="Saisir la nationalite de Lecteur" autocomplete="off" required>
             <label for="nationalite-lecteur" class="label">Nationalite Lecteur</label>
           </div>
 
@@ -46,40 +50,15 @@
 
       </div>
 
-      
-        <div class="container_button">
-          <!-- le button de submit  -->
-          <div class="btn_submit_global">
-            <ion-button type="submit" class="btn_submit"> Ajouter </ion-button>
-          </div>
+
+      <div class="container_button">
+        <!-- le button de submit  -->
+        <div class="btn_submit_global">
+          <ion-button type="submit" class="btn_submit"> Ajouter </ion-button>
         </div>
-        
+      </div>
+
 
     </form>
   </div>
-<!-- </ion-content> -->
-
-<!-- <div class="arrier"><br><br>
-  <div class="ajout">Ajout de Lecteur</div><br><br>
-    <form [formGroup]="ajoutLecteur" (ngSubmit)="submit()" class="arrier">
-      <div class="liste">
-        <div class="pDiv">
-
-          <label class="photo" for="ajout-lecteur">Photo </label><br>
-          <input type="file" (change)="onFileSelected($event)" accept="image/*" >
-
-          <label for="nom-lecteur">Nom Lecteur</label><br>
-          <input type="text" id="nom-lecteur" name="nom" formControlName="nom" ><br><br>
-
-          <label for="prenom-lecteur">Prenom Lecteur</label><br>
-          <input type="text" id="prenom-lecteur" name="prenom" formControlName="prenom" ><br><br>
-
-          <label for="Nationalite-lecteur">Nationalite Lecteur</label><br>
-          <input type="text" id="Nationalite-lecteur" name="nationalite" formControlName="nationalite" >
-
-      </div>
-      <button type="submit" ajoutLecteur.valid class="btn">Ajouter</button><br><br>
-    
-     </div>
-  </form>
-  </div> -->
+</ion-content>
