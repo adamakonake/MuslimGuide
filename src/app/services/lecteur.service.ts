@@ -31,9 +31,9 @@ export class LecteurService {
   isNotification = false;
   imamListInited = false;
   imams : any;
-  // sourateTitreList : any;
-  // sourateTitre = new Subject<string>;
-  // titre! : string;
+  sourateTitreList : any;
+  sourateTitre = new Subject<string>;
+  titre! : string;
   //////////////////////////////////////////////// v2 //////////////////////////////////////////////////////
 
   constructor(private readonly firestore: Firestore, private http : HttpClient) { }
@@ -58,13 +58,15 @@ export class LecteurService {
     if(!this.imamListInited){
       this.http.get("https://api.quran.com/api/v4/resources/recitations").subscribe((result : any)=>{
         this.imams = result.recitations;
-      })
-      // this.http.get("https://api.quran.com/api/v4/chapters").subscribe((result : any)=>{
-      //   this.sourateTitreList = result.chapters;
-      // })
-      // this.sourateTitre.subscribe(result=>{
-      //   this.titre = result;
-      // })
+      });
+      this.http.get("https://api.quran.com/api/v4/chapters").subscribe((result : any)=>{
+        this.sourateTitreList = result.chapters;
+      });
+      this.sourateTitre.subscribe(result=>{
+        this.titre = result;
+      });
+
+      this.imamListInited = true;
     }
     this.isInit.next(true);
   }
@@ -94,7 +96,7 @@ export class LecteurService {
     if(this.index != index){
       this.currentImamId = this.imamId;
       this.index = index;
-      // this.sourateTitre.next(this.sourateTitreList[this.index].name_simple);
+      this.sourateTitre.next(this.sourateTitreList[this.index].name_simple);
       this.playNext.next(this.index);
       this.audio.src = this.sourateListAudio[index].audio_url;
       this.audio.load();
@@ -111,7 +113,7 @@ export class LecteurService {
       }else{
         this.currentImamId = this.imamId;
         this.index = index;
-        // this.sourateTitre.next(this.sourateTitreList[this.index].name_simple);
+        this.sourateTitre.next(this.sourateTitreList[this.index].name_simple);
         this.playNext.next(this.index)
         this.audio.src = this.sourateListAudio[index].audio_url;
         this.audio.load();
@@ -153,6 +155,7 @@ export class LecteurService {
     // }
     
   }
+  
     
   ///////////////////////////////////////// V2 //////////////////////////////////////////
 

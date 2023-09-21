@@ -12,19 +12,18 @@
       </div>
     </div>
   </ion-header>
-  <div class="titleBarr">
+  <ion-card class="titleBarr">
     <p>HIJDRI</p>
-  </div>
+  </ion-card>
   <!-- <div class="calendar">
     <mbsc-datepicker  [controls]="['calendar']" [calendarSystem]="hijriCalendar" [locale]="localeAr" display="inline" placeholder="Please Select..."></mbsc-datepicker>
   </div>
   <input matInput [matDatepicker]="picker">
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker> -->
-  <mat-card class="calendar">
+  <ion-card class="calendar">
   <mat-calendar [(selected)]="selectDate" (viewChanged)="changeThColor()" (monthSelected)="changeThColor()" (selectedChange)="changeColor()" ></mat-calendar>
-</mat-card>
-
+</ion-card>
 <div class="grandDate">
   <table>
     <tr> <!-- Ligne d'en-tête -->

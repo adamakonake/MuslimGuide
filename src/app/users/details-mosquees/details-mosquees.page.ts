@@ -9,13 +9,18 @@ import { MosqueeService } from '../services/mosquee.service';
 })
 export class DetailsMosqueesPage implements OnInit {
   mosquee : any;
+  horaire : any;
   constructor( private activatedRoute : ActivatedRoute, private mosqueeService : MosqueeService) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((parms)=>{
       const id = parms.get("id");
-      this.mosqueeService.getMosqueeById(id).subscribe(result=>{
+      this.mosqueeService.getMosqueeById(id).subscribe((result : any)=>{
         this.mosquee = result
+        this.mosqueeService.getHoraireById(result.horaire.path).subscribe(heures =>{
+          this.horaire = heures
+          console.log(this.horaire);
+        })
       })
     })
   }
