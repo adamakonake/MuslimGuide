@@ -1,9 +1,5 @@
-
 <ion-content [fullscreen]="true">
-
-
   <h2 class="titre"> Liste des mosquées</h2> <!---titre-->
-
   <div class="div_ajouter_search">
 
     <div class="btn_container">
@@ -15,7 +11,7 @@
     <!-- Debut Pour les recherche bare search_container  -->
     <div class="search_container">
       <div class="recherche_bare">
-        <input type="search" name="search" placeholder="Recherche">
+        <input type="search" [(ngModel)]="searchTerm" name="search" placeholder="Recherche">
         <!-- mon icon de recherche  -->
         <i class="ri-search-line icon_search"></i>
       </div>
@@ -24,35 +20,25 @@
 
   </div>
 
-
-<div class="container_event" *ngFor="let mosque of mosquee; let i = index">
-  
-  <div class="container_evenement">
-
-    <div class="local_page">
-
-      <div class="page_information_sy">
-        <i id="icon-location_sy" class="fa-solid fa-location-dot"></i>
-        <p class="lieu_sy"> {{ mosque.adresse }} </p>
+   
+  <!-- </div> -->
+  <div *ngFor="let mosque of sortMosque(searchTerm); let i = index" class="event-info">
+    <div class="localisation">
+      <div class="loc">
+        <i id="icon-location" class="fa-solid fa-location-dot"></i>
+        <p class="lieu">{{ mosque.adresse }}</p>
       </div>
-
-      <div class="page_information_sy">
-        <i id="icon-location_sy" class="fa-regular fa-user"></i>
-        <p class="lieu_sy changement_sy"> {{ mosque.nom }} </p>
+      <div class="info-imam">
+        <i id="icon-imam" class="fa-regular fa-user"></i>
+        <p class="nom-imam" [innerHTML]="highlight(mosque.nom, searchTerm)"></p>
       </div>
-      
     </div>
 
-    <!-- ============== -->
-    <div class="action_page"><!--different action icon-->
-      <i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square icon_put"></i>
-      <i (click)="supprimerMosquee(i)" class="fa-solid fa-trash icon_delete"></i>
+    <div class="action">
+      <i (click)="modifierMosquee(i)" class="fa-regular fa-pen-to-square"></i>
+      <i (click)="supprimerMosquee(i)" class="fa-solid fa-trash"></i>
     </div>
-
   </div>
-
-
-</div>
 
   <!--::::::::::::::::::::::::::::::::::: formlairePoppup::::::::::::::::::::::::::::::::::::::::::::::; -->
 
@@ -62,7 +48,7 @@
         <div class="poppup" style="padding-top: 25px;">
           <h1>Ajout Mosquées</h1>
           <div class="formlairePoppup">
-            <form [formGroup]="createMosqueeForm" >
+            <form [formGroup]="createMosqueeForm">
               <div class="contourt">
 
                 <div class="block">
@@ -75,13 +61,21 @@
                       <div class="ioninput">
                         <label class="inputLabel">Nom :</label>
                         <br>
-                        <input class="custom_input" placeholder="Votre nom..." type="text" formControlName="nom">
+                        <input id="custom_input"  class="form-control" [ngClass]="{'is-invalid':submitted && createMosqueeForm.get('nom')!.errors}"
+                         placeholder="Votre nom..." type="text" formControlName="nom">
+                         <div *ngIf="submitted && createMosqueeForm.get('nom')!.errors" class="text-danger" >
+                          <p class="text-danger"> Obligatoire </p>
                       </div>
-  
+                      </div>
+
                       <div class="ioninput">
                         <label class="inputLabel">Adresse :</label>
                         <br>
-                        <input class="custom_input" type="text" placeholder="Votre adresse..." formControlName="adresse">
+                        <input id="custom_input"  class="form-control" [ngClass]="{'is-invalid':submitted && createMosqueeForm.get('adresse')!.errors}" type="text"
+                         placeholder="Votre adresse..." formControlName="adresse">
+                         <div *ngIf="submitted && createMosqueeForm.get('adresse')!.errors" class="text-danger" >
+                          <p class="text-danger"> Obligatoire </p>
+                      </div>
                       </div>
 
                     </div>
@@ -89,7 +83,7 @@
                   </div>
 
                   <!-- ================================= LA DIFFERENCE  -->
-                  
+
                   <!-- bloc container  -->
                   <div class="bloc_content">
                     <!--block 2-->
@@ -99,13 +93,22 @@
                       <div class="ioninput">
                         <label class="inputLabel">Imam :</label>
                         <br>
-                        <input class="custom_input" placeholder="Nom Imam ..." type="text" formControlName="imam">
+                        <input id="custom_input"  class="form-control" [ngClass]="{'is-invalid':submitted && createMosqueeForm.get('imam')!.errors}"
+                         placeholder="Nom Imam ..." type="text" formControlName="imam">
+                         <div *ngIf="submitted && createMosqueeForm.get('imam')!.errors" class="text-danger" >
+                          <p class="text-danger"> Obligatoire </p>
                       </div>
-  
+                      </div>
+
                       <div class="ioninput">
                         <label class="inputLabel">longitude :</label>
                         <br>
-                        <input class="custom_input" type="number" placeholder="Votre longitude..." formControlName="longitude">
+                        <input id="custom_input"  class="form-control" [ngClass]="{'is-invalid':submitted && createMosqueeForm.get('longitude')!.errors}" type="number"
+                         placeholder="Votre longitude..."  formControlName="longitude">
+                         <div *ngIf="submitted && createMosqueeForm.get('longitude')!.errors"  >
+                          <p class="text-danger">  Obligatoire </p>
+                      </div>
+                         
                       </div>
 
                     </div>
@@ -114,25 +117,29 @@
 
                 </div>
 
-                  <!-- bloc container  -->
-                  <div class="bloc_content">
-                    <!--block 2-->
+                <!-- bloc container  -->
+                <div class="bloc_content">
+                  <!--block 2-->
 
-                    <div class="bloc1">
+                  <div class="bloc1">
 
-                      <div class="ioninput">
-                        <label class="inputLabel">latitude :</label>
-                        <br>
-                        <input type="number" class="custom_input3" placeholder="latitude ..."  formControlName="latitude">
-                      </div>
-
+                    <div class="ioninput">
+                      <label  class="inputLabel">latitude :</label>
+                      <br>
+                      <input type="number" id="custom_input3"  class="form-control" [ngClass]="{'is-invalid':submitted && createMosqueeForm.get('latitude')!.errors}"
+                       placeholder="latitude ..." formControlName="latitude">
+                       <div *ngIf="submitted && createMosqueeForm.get('latitude')!.errors" class="text-danger" >
+                        <p class="text-danger"> Obligatoire </p>
+                    </div>
                     </div>
 
                   </div>
 
+                </div>
+
                 <!--::::::::::::::::::::::::::::::::::::::::::::::: heure de  priere du mosque:::::::::::::::::::::::::::::::::::::::-->
                 <h2>Heure de prière :</h2>
-                <div class="horairePriere" >
+                <div class="horairePriere">
 
                   <div class="horaire">
 
@@ -140,40 +147,40 @@
 
                       <!-- Debut de mon input first container  -->
                       <div class="first_container">
-                          <div class="first">
-                            <div>
-                              <label class="label_content">Fadjr</label>
-                              <br>
-                              <input type="time" class="input_priere" placeholder="Fadjr" formControlName="fadjr">
-                            </div>
-
-                            <div>
-                              <label class="label_content">Magreb</label>
-                              <br>
-                              <input type="time" class="input_priere" placeholder="Magreb" formControlName="magreb">
-                            </div>
-
+                        <div class="first">
+                          <div>
+                            <label class="label_content">Fadjr</label>
+                            <br>
+                            <input type="time" class="input_priere" placeholder="Fadjr" formControlName="fadjr">
                           </div>
+
+                          <div>
+                            <label class="label_content">Magreb</label>
+                            <br>
+                            <input type="time" class="input_priere" placeholder="Magreb" formControlName="magreb">
+                          </div>
+
+                        </div>
 
                       </div>
                       <!-- Fin de mon input first container  -->
 
                       <!-- Debut de mon input Seconds container  -->
                       <div class="first_container">
-                          <div class="first">
-                            <div>
-                              <label class="label_content">Zohr</label>
-                              <br>
-                              <input type="time" class="input_priere" placeholder="Zohr" formControlName="zohr">
-                            </div>
-                            
-                            <div>
-                              <label class="label_content">Isha</label>
-                              <br>
-                              <input type="time" class="input_priere" placeholder="Isha" formControlName="isha">
-                            </div>
-
+                        <div class="first">
+                          <div>
+                            <label class="label_content">Zohr</label>
+                            <br>
+                            <input type="time" class="input_priere" placeholder="Zohr" formControlName="zohr">
                           </div>
+
+                          <div>
+                            <label class="label_content">Isha</label>
+                            <br>
+                            <input type="time" class="input_priere" placeholder="Isha" formControlName="isha">
+                          </div>
+
+                        </div>
 
                       </div>
                       <!-- Fin de mon input Seconds container  -->
@@ -186,7 +193,7 @@
                             <br>
                             <input type="time" class="input_priere" placeholder="Asr" formControlName="asri">
                           </div>
-                          
+
                           <div>
                             <label class="label_content">Djouma</label>
                             <br>
@@ -195,22 +202,20 @@
 
                         </div>
 
+                      </div>
+                      <!-- Fin de mon input third container  -->
+
                     </div>
-                    <!-- Fin de mon input third container  -->
-                      
-                    </div>
-                    
+
 
                     <div class="buttonIonic">
                       <button id="close" (click)="modal.dismiss()">Fermer</button>
                       <button id="open" type="button" (click)="onSubmit()" ajoutRadio.valid>Enregistrer</button>
                     </div>
 
-                  </div>   
+                  </div>
 
                 </div>
-
-
               </div>
             </form>
           </div>
@@ -219,11 +224,4 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-
-
-
-<!-- :::::::::::::::::::::::::::::::::::::::::::::::traitement de Togo:::::::::::::::::::::::::::::::-->
-
 </ion-content>
-<!----::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
-<!--  -->

@@ -6,6 +6,7 @@ export class Mosquee {
     imam!:string;
     longitude!:number;
     latitude!:number
+  horaire: any;
    
   constructor  (
         nom:string,

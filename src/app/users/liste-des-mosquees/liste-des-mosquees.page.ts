@@ -13,8 +13,12 @@ import { Router } from '@angular/router';
 export class ListeDesMosqueesPage implements OnInit {
   mosquee:any=[];
 
+
   constructor(private mosqueeService: MosqueeService, private route : Router) { }
   
+
+  searchTerm: string ='';
+
   ngOnInit() {
     console.log("Starting")
     this.mosqueeService.getMosquee().subscribe((result : any[])=>{
@@ -32,8 +36,44 @@ export class ListeDesMosqueesPage implements OnInit {
     })
   }
   
+
   goToDetail(id : any){
     this.route.navigateByUrl("details-mosquees/"+id);
   }
+
+  // ngOnInit() {
+  //   this.mosqueeService.getMosquee().subscribe((result: any[]) => {
+  //   this.mosquee = result;
+  //   });
+  //   }
+  
+  searchMosque(searchTerm: string) {
+    if (!searchTerm) {
+        return this.mosquee;
+    }
+
+    return this.mosquee.filter((mosque: { name: string; }) => 
+        mosque.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+}
+
+highlight(text: string, search: string): string {
+  if (!search) {
+    return text;
+  }
+  const pattern = search.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  const regex = new RegExp(pattern, "gi");
+  return text.replace(regex, match => `<b>${match}</b>`);
+}
+
+sortMosque(searchTerm: string) {
+  if (!searchTerm) {
+    return this.mosquee;
+  }
+
+  return this.mosquee.sort((a: any, b: { nom: string; }) => 
+    b.nom.toLowerCase().includes(searchTerm.toLowerCase()) ? 1 : -1
+  );
+}
 
 }
