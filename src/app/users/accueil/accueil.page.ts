@@ -153,7 +153,7 @@ export class AccueilPage implements OnInit, AfterViewInit, OnDestroy {
     const radiusLatMosq = latMosq * (Math.PI/180);
     const latitudeDiff = radiusLatMosq - radiusLatUser;
     const longitudeDiff = (lngMosq-lngUser)*(Math.PI/180);
-    const distance = 2 * rayonDeLaTerre * Math.sin(Math.sqrt(Math.sin(latitudeDiff/2) * Math.sin(latitudeDiff/2) + Math.cos(radiusLatUser) * Math.cos(radiusLatMosq) * Math.sin(longitudeDiff/2) * Math.sin(longitudeDiff/2)))
+    const distance = 2 * rayonDeLaTerre * Math.sin(Math.sqrt(Math.sin(latitudeDiff/2) * Math.sin(latitudeDiff/2) + Math.cos(radiusLatUser) * Math.cos(radiusLatMosq) * Math.sin(longitudeDiff/2) * Math.sin(longitudeDiff/2)));
     console.log(distance)
     return distance;
   }
