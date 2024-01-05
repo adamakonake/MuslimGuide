@@ -10,7 +10,7 @@ import { HorairesPrière } from '../models/horaires-prière';
 import { map } from 'rxjs';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
-
+  
 
 @Injectable({
   providedIn: 'any'
@@ -26,7 +26,7 @@ export class MosqueeService {
 
 
 
-  constructor(private readonly firestore: Firestore,
+  constructor(private firestore: Firestore,
     public alertController: AlertController) { }
 
   async createMosquee(mosquee: Mosquee, horairesPrière: HorairesPrière) {
